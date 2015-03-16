@@ -1,5 +1,32 @@
 # Removes external libraries' files.
 material/lib/*
+
+# Saves bootstrap files.
+!material/lib/bootstrap
+material/lib/bootstrap/*
+!material/lib/bootstrap/dist
+material/lib/bootstrap/dist/*
+!material/lib/bootstrap/dist/js
+!material/lib/bootstrap/dist/css
+material/lib/bootstrap/dist/js/*
+material/lib/bootstrap/dist/css/*
+!material/lib/bootstrap/dist/css/bootstrap.min.css
+!material/lib/bootstrap/dist/js/bootstrap.min.js
+
+# Saves moment files.
+!material/lib/moment
+material/lib/moment/*
+!material/lib/moment/min
+material/lib/moment/min/*
+!material/lib/moment/min/moment.min.js
+
+# Saves jquery files.
+!material/lib/jquery
+material/lib/jquery/*
+!material/lib/jquery/dist
+material/lib/jquery/dist/*
+!material/lib/jquery/dist/jquery.min.js
+
 # Except those we use.
 !*/bootstrap.min.js
 !*/moment.min.js
