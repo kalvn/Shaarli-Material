@@ -296,38 +296,38 @@ hr.darker{
     color: rgba(255, 255, 255, 0.30);
 }
 
-.button-blue{
+.button-primary{
     color: #fff;
     background-color: #2196F3;
 }
-.button-blue:hover,
-.button-blue:focus{
+.button-primary:hover,
+.button-primary:focus{
     background-color: #1E88E5;
     text-decoration: none;
     color: #fff;
 }
-.button-blue:active{
+.button-primary:active{
     background-color: #1976D2;
 }
-.button-blue:disabled{
+.button-primary:disabled{
     background-color: rgba(255, 255, 255, 0.12);
     color: rgba(255, 255, 255, 0.3);
 }
 
-.button-pink{
+.button-alert{
     color: #fff;
-    background-color: #E91E63;
+    background-color: #F44336;
 }
-.button-pink:hover,
-.button-pink:focus{
-    background-color: #D81B60;
+.button-alert:hover,
+.button-alert:focus{
+    background-color: #E53935;
     text-decoration: none;
     color: #fff;
 }
-.button-pink:active{
-    background-color: #C2185B;
+.button-alert:active{
+    background-color: #D32F2F;
 }
-.button-pink:disabled{
+.button-alert:disabled{
     background-color: rgba(255, 255, 255, 0.12);
     color: rgba(255, 255, 255, 0.3);
 }
@@ -380,10 +380,13 @@ label.active{
     list-style: none;
 }
 .popup ul li{
-    padding: 5px 10px;
     cursor: pointer;
 }
-.popup ul li:hover{
+.popup ul li a{
+    display: block;
+    padding: 5px 10px;
+}
+.popup ul li a:hover{
     background-color: #eee;
 }
 .popup input[type=text]{

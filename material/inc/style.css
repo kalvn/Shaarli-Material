@@ -39,7 +39,7 @@
     display: block;
     bottom: 50px;
     right: 50px;
-    background-color: #db4437;
+    background-color: #F44336;
     width: 56px;
     height: 56px;
     border-radius: 50%;
@@ -172,21 +172,6 @@
     margin: 15px 0 15px 0;
     overflow: hidden;
 }
-.link-outer.private{
-}
-.link-outer .link-inner{
-    
-}
-.link-outer.private .link-inner{
-    border: 1px solid black;
-    -webkit-border-image: url(../images/links/private.png) 25% repeat;
-    -moz-border-image: url(../images/links/private.png) 25% repeat;
-    border-image: url(../images/links/private.png) 25% repeat;
-    border-width: 5px;
-    border-top: 0;
-    border-right: 0;
-    border-bottom: 0;
-}
 .link-header{
     padding: 15px;
     border-bottom: 1px solid #eee;
@@ -207,6 +192,13 @@ a.link-title{
 }
 a.link-title:hover{
     color: #999;
+}
+.private a.link-title{
+    color: #B71C1C;
+}
+.private a.link-title:before{
+    content: url(../images/links/key_small.png);
+    margin-right: 10px;
 }
 .link-date{
     font-size: 80%;
@@ -318,6 +310,9 @@ a.link-url:hover{
     color: #999;
     font-size: 90%;
 }
+.from-bookrmarklet #footer{
+    margin-top: 10px;
+}
 
 /* Page Login */
 .page-login{
@@ -331,6 +326,10 @@ a.link-url:hover{
 .page-edit{
     margin-top: 50px;
     margin-bottom: 50px;
+}
+.from-bookrmarklet .page-edit{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .page-tools{
     margin-bottom: 50px;
