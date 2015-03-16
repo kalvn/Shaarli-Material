@@ -2,22 +2,67 @@
 <html>
 <head>{include="includes"}{$timezone_js}</head>
 <body onload="document.installform.setlogin.focus();">
-<div id="install">
-    <h1>Shaarli</h1>
-    It looks like it's the first time you run Shaarli. Please configure it:<br>
-    <form method="POST" action="#" name="installform" id="installform">
-        <table>
-            <tr><td><b>Login:</b></td><td><input type="text" name="setlogin" size="30"></td></tr>
-            <tr><td><b>Password:</b></td><td><input type="password" name="setpassword" size="30"></td></tr>
-            {$timezone_html}
-            <tr><td><b>Page title:</b></td><td><input type="text" name="title" size="30"></td></tr>
-            <tr><td valign="top"><b>Update:</b></td><td>
-                <input type="checkbox" name="updateCheck" id="updateCheck" checked="checked"><label for="updateCheck">&nbsp;Notify me when a new release is ready</label></td>
-            </tr>
-            <tr><td colspan="2"><input type="submit" name="Save" value="Save config" class="bigbutton"></td></tr>
-        </table>
-    </form>
+<div id="install" class="container page-install">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form method="POST" action="#" name="installform" id="installform" class="card">
+                <div class="card-title">Welcome to your Shaarli</div>
+                <div class="card-body">
+                    <p>It looks like it's the first time you run Shaarli. Please configure it.</p>
+                    <div class="form-entry">
+                        <label for="setlogin">Login</label>
+                        <input type="text" name="setlogin" id="setlogin" size="30"/>
+                    </div>
+                    <div class="form-entry">
+                        <label for="setpassword">Password</label>
+                        <input type="password" id="setpassword" name="setpassword" size="30"/>
+                    </div>
+                    <div class="form-entry">
+                        <label for="continent">Timezone</label>
+                        <div id="timezone-toremove">{$timezone_html}</div>
+                        <div class="row">
+                            <div class="col-sm-6" id="timezone-continent">
+                                <select name="continent" id="continent" onchange="onChangecontinent();"></select>
+                            </div>
+                            <div class="col-sm-6" id="timezone-city">
+                                <select name="city" id="city"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-entry">
+                        <label for="title">Page title</label>
+                        <input type="text" name="title" id="title" size="30"/>
+                    </div>
+                    <div class="form-entry">
+                        <label for="updateCheck">Update</label><br/>
+                        <input type="checkbox" name="updateCheck" id="updateCheck" checked="checked">
+                        <label for="updateCheck">&nbsp;Notify me when a new release is ready</label>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" name="Save" value="Save this configuration" class="button-raised button-blue pull-right"/>
+                    <div class="clearfix"></div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+<script>
+    $(document).ready(function(){
+        // Allows to customize the timezone chooser.
+        var currentContinent = $('#continent').val();
+        var currentCity = $('#city').val();
+        var optionsContinent = $('#continent').html();
+        var optionsCity = $('#city').html();
+        var selectContinent = '<select name="continent" id="continent" onchange="onChangecontinent();">';
+        var selectCity = '<select name="city" id="city">';
+
+        $('#timezone-toremove').remove();
+
+        $('#timezone-continent').html(selectContinent + optionsContinent + '</select>');
+        $('#timezone-city').html(selectCity + optionsCity + '</select>');
+    });
+</script>
 {include="page.footer"}
 </body>
 </html>

@@ -68,9 +68,9 @@ $(document).ready(function(){
         // Disable original click event.
         return false;
     });
-    $('#overlay').on('click', function(){
+    $('#overlay,#image-popup').on('click', function(){
         $('#image-popup').fadeOut();
-        $(this).fadeOut();
+        $('#overlay').fadeOut();
     });
 
     // Material forms.

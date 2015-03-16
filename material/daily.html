@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>{include="includes"}</head>
-<body>
-<div id="pageheader">{include="page.header"}</div>
+<body class="dark-toolbar">
+{include="page.header"}
 <div class="daily">
     <div class="dailyAbout">
       All links of one day<br>in a single page.<br>
-	  {if="$previousday"} <a href="?do=daily&amp;day={$previousday}"><b>&lt;</b>Previous day</a>{else}<b>&lt;</b>Previous day{/if}
-	  - 
-	  {if="$nextday"}<a href="?do=daily&amp;day={$nextday}">Next day<b>&gt;</b></a>{else}Next day<b>&gt;</b>{/if}
+      {if="$previousday"} <a href="?do=daily&amp;day={$previousday}"><b>&lt;</b>Previous day</a>{else}<b>&lt;</b>Previous day{/if}
+      - 
+      {if="$nextday"}<a href="?do=daily&amp;day={$nextday}">Next day<b>&gt;</b></a>{else}Next day<b>&gt;</b>{/if}
       <br><br>
-	  <a href="?do=dailyrss" title="1 RSS entry per day"><img src="images/feed-icon-14x14.png#" alt="rss_feed">Daily RSS Feed</a>
+      <a href="?do=dailyrss" title="1 RSS entry per day"><img src="images/feed-icon-14x14.png#" alt="rss_feed">Daily RSS Feed</a>
     </div>
-    <div class="dailyTitle"><img src="../images/floral_left.png" width="51" height="50" class="nomobile" alt="floral_left"> The Daily Shaarli <img src="../images/floral_right.png" width="51" height="50" class="nomobile" alt="floral_right"></div>
+    <div class="dailyTitle"><img src="images/floral_left.png" width="51" height="50" class="nomobile" alt="floral_left"> The Daily Shaarli <img src="images/floral_right.png" width="51" height="50" class="nomobile" alt="floral_right"></div>
     <div class="dailyDate"><span class="nomobile">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span> {$day} <span class="nomobile">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span></div>
     <div class="clear"></div>
 
@@ -25,7 +25,7 @@
                     <div class="dailyEntry">
                         <div class="dailyEntryPermalink">
                             <a href="?{$link.linkdate|smallHash}">
-                                <img src="../images/squiggle2.png" width="25" height="26" title="permalink" alt="permalink">
+                                <img src="images/squiggle2.png" width="25" height="26" title="permalink" alt="permalink">
                             </a>
                         </div>
                         {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
@@ -55,7 +55,7 @@
     {else}
          <div class="dailyNoEntry">No articles on this day.</div>
     {/if}
-    <div id="closing"><img src="../images/squiggle_closing.png" width="66" height="61" alt="-"></div>
+    <div id="closing"><img src="images/squiggle_closing.png" width="66" height="61" alt="-"></div>
 </div>
 {include="page.footer"}
 </body>

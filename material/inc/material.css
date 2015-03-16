@@ -130,6 +130,9 @@ hr.darker{
 .mbl{
     margin-bottom: 30px;
 }
+.dark{
+    background-color: #000;
+}
 
 /* Bookmarklet */
 .bookmarklet{

@@ -29,8 +29,8 @@
 .add-link{
     position: fixed;
     display: block;
-    bottom: 30px;
-    right: 30px;
+    bottom: 50px;
+    right: 50px;
     background-color: #db4437;
     width: 56px;
     height: 56px;
@@ -62,6 +62,9 @@
     margin-bottom: 15px;
 
     color: #fff;
+}
+.dark-toolbar .header-main{
+    background-color: #000;
 }
 .header-main a{
     color: #fff;
@@ -323,4 +326,155 @@ a.link-url:hover{
 }
 .page-tools{
     margin-bottom: 50px;
+}
+
+/* Picture wall */
+.picwall-pictureframe{
+    float: left;
+    position: relative;
+    overflow: hidden;
+    width: 120px;
+    height: 90px;
+    text-align: center;
+}
+.picwall-link{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #666;
+    background-color: rgba(100, 100, 100, .7);
+    color: #fff;
+    font-size: 80%;
+}
+.picwall-pictureframe:hover .picwall-link{
+    display: block;
+    text-decoration: none;
+}
+.picwall-link:hover{
+    color: #fff;
+}
+
+/* Daily */
+div.daily {
+    font-family: Georgia, 'DejaVu Serif', Norasi, serif;
+    background-color: #E6D6BE;
+    /* Background paper texture by BashCorpo:
+       http://www.bashcorpo.dk/textures.php
+       http://bashcorpo.deviantart.com/art/Grungy-paper-texture-v-5-22966998  */
+    background-image: url("../images/Paper_texture_v5_by_bashcorpo_w1000.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+    border-bottom: 2px solid black;
+    margin-top: -15px;
+}
+
+#daily_col1 {
+    float: left;
+    position: relative;
+    width: 33%;
+    padding-left: 1%;
+}
+
+#daily_col2 {
+    float: left;
+    position: relative;
+    width: 33%;
+}
+
+#daily_col3 {
+    float: left;
+    position: relative;
+    width: 33%;
+}
+
+div.dailyAbout {
+    float: left;
+    border: 1px solid black;
+    font-size: 8pt;
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+}
+
+div.dailyAbout a {
+    color: #890500;
+}
+
+div.dailyAbout img {
+    position: relative;
+    top: 3px;
+    margin-right: 4px;
+    width: 14px;
+    height: 14px;
+}
+
+div.dailyTitle {
+    font-weight: bold;
+    font-size: 44pt;
+    text-align: center;
+    padding: 10px 20px 0px 20px;
+}
+
+div.dailyDate {
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+    padding: 0px 20px 30px 20px;
+}
+
+/* Individual entries in "Daily": */
+div.dailyEntry {
+    margin: 5px 10px 2px 5px;
+    font-size: 11pt;
+    border-top: 1px solid #555;
+}
+
+div.dailyEntry a {
+    text-decoration: none;
+    color: #890500;
+}
+
+div.dailyEntryTags {
+    font-size: 7.75pt;
+}
+
+div.dailyEntryTitle {
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+div.dailyEntryLinkdate {
+    font-size: 8pt;
+}
+
+div.dailyEntryThumbnail {
+    width: 100%;
+    text-align: center;
+    background-color: rgb(128, 128, 128);
+    background: url(../images/50pc_transparent.png);
+    padding: 4px 0px 2px 0px;
+}
+
+div.dailyEntryDescription {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    text-align: justify;
+    overflow: auto;
+}
+
+div.dailyNoEntry {
+    text-align: center;
+    padding: 40px 0px 90px 0px;
+}
+
+.daily #closing {
+    clear: both;
+    text-align: center;
+    padding-bottom: 20px;
 }
