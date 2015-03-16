@@ -2,14 +2,27 @@
 <html>
 <head>{include="includes"}</head>
 <body>
-<div id="pageheader">
-	{include="page.header"}
-	<div id="toolsdiv">
-	    <a href="?do=export&amp;what=all"><b>Export all</b> <span>: Export all links</span></a><br><br>
-	    <a href="?do=export&amp;what=public"><b>Export public</b> <span>: Export public links only</span></a><br><br>
-	    <a href="?do=export&amp;what=private"><b>Export private</b> <span>: Export private links only</span></a>
-	    <div class="clear"></div>
-	</div>
+{include="page.header"}
+<div id="toolsdiv" class="container page-export">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="list">
+                <h1 class="list-header">Export my links</h1>
+                <a href="?do=export&amp;what=all" class="list-item">
+                    <div class="list-item-title">Export all</div>
+                    <div class="list-item-subtitle">Export all links</div>
+                </a>
+                <a href="?do=export&amp;what=public" class="list-item">
+                    <div class="list-item-title">Export public</div>
+                    <div class="list-item-subtitle">Export public links only</div>
+                </a>
+                <a href="?do=export&amp;what=private" class="list-item">
+                    <div class="list-item-title">Export private</div>
+                    <div class="list-item-subtitle">Export private links only</div>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 {include="page.footer"}
 </body>

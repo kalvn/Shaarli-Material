@@ -27,8 +27,5 @@ material/lib/jquery/*
 material/lib/jquery/dist/*
 !material/lib/jquery/dist/jquery.min.js
 
-# Except those we use.
-!*/bootstrap.min.js
-!*/moment.min.js
-!*/bootstrap.min.css
-!*/jquery.min.js
+# Saves awesomplete
+!material/lib/awesomplete

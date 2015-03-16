@@ -95,24 +95,4 @@ $(document).ready(function(){
             }
         }
     });
-
-    $('input.tags-autocomplete').autocomplete({
-        lookup: function (query, done) {
-            var results = [];
-
-            $.getJSON(shaarli.source + '?ws=singletag&term=' + query, function(data){
-                var obj = JSON.parse(data);
-                $.each(obj, function(i, res){
-                    results.push({
-                        value: res,
-                        data: 'pouic'
-                    });
-                });
-            });
-
-            done(results);
-        }
-        /*paramName: 'term',
-        serviceUrl: shaarli.source + '?ws=singletag'*/
-    });
 });

@@ -1,4 +1,9 @@
-
+/* Awesomplete override */
+.awesomplete ul{
+    z-index: 400;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+}
 
 /* Image zoom */
 .overlay{
@@ -297,7 +302,7 @@ a.link-url:hover{
 /* Footer */
 #footer{
     text-align: center;
-    margin-top: 20px;
+    margin-top: 50px;
     margin-bottom: 15px;
     color: #999;
     font-size: 90%;

@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>{include="includes"}</head>
+<head>
+    <link type="text/css" rel="stylesheet" href="lib/awesomplete/awesomplete.css" />
+    <script src="tpl/material/lib/awesomplete/awesomplete.min.js#"></script>
+    {include="includes"}
+</head>
 <body
 {if="$link.title==''"}onload="document.linkform.lf_title.focus();"
 {elseif="$link.description==''"}onload="document.linkform.lf_description.focus();"
@@ -30,7 +34,8 @@
                     </div>
                     <div class="form-entry">
                         <label for="lf_tags">Tags</label><br/>
-                        <input type="text" name="lf_tags" id="lf_tags" value="{$link.tags|htmlspecialchars}" placeholder="Tags, separated by a comma...">
+                        <input type="text" id="lf_tags" name="lf_tags" id="lf_tags" value="{$link.tags|htmlspecialchars}" class="lf_input"
+                            data-list="{loop="$tags"}{$key}, {/loop}" data-multiple autocomplete="off" />
                     </div>
                     <div class="form-entry">
                         <input type="checkbox" {if="($link_is_new && $GLOBALS['privateLinkByDefault']==true) || $link.private == true"}checked="checked"{/if} name="lf_private" id="lf_private">
@@ -43,38 +48,25 @@
                     <input type="submit" value="Cancel" name="cancel_edit" class="button pull-right">
                     <div class="clearfix"></div>
                 </div>
-
-                {ignore}
-
-                <i>URL</i><br><input type="text" name="lf_url" value="{$link.url|htmlspecialchars}" class="lf_input"><br>
-                <i>Title</i><br><input type="text" name="lf_title" value="{$link.title|htmlspecialchars}" class="lf_input"><br>
-                <i>Description</i><br><textarea name="lf_description" rows="4" cols="25">{$link.description|htmlspecialchars}</textarea><br>
-                <i>Tags</i><br><input type="text" id="lf_tags" name="lf_tags" value="{$link.tags|htmlspecialchars}" class="lf_input"><br>
-                {if="($link_is_new && $GLOBALS['privateLinkByDefault']==true) || $link.private == true"}
-                <input type="checkbox" checked="checked" name="lf_private" id="lf_private">
-                &nbsp;<label for="lf_private"><i>Private</i></label><br>
-                {else}
-                <input type="checkbox"  name="lf_private" id="lf_private">
-                &nbsp;<label for="lf_private"><i>Private</i></label><br>
-                {/if}
-                <input type="submit" value="Save" name="save_edit" class="bigbutton">
-                <input type="submit" value="Cancel" name="cancel_edit" class="bigbutton">
-                {if="!$link_is_new"}<input type="submit" value="Delete" name="delete_link" class="bigbutton delete" onClick="return confirmDeleteLink();">{/if}
-                <input type="hidden" name="token" value="{$token}">
-                {if="$http_referer"}<input type="hidden" name="returnurl" value="{$http_referer|htmlspecialchars}">{/if}
-
-                {/ignore}
             </form>
         </div>
     </div>
 </div>
 {include="page.footer"}
-{if="($GLOBALS['config']['OPEN_SHAARLI'] || isLoggedIn()) && empty($GLOBALS['disablejquery'])"}
+{if="($GLOBALS['config']['OPEN_SHAARLI'] || isLoggedIn())"}
 <script>
-$(document).ready(function()
-{
-    $('#lf_tags').autocomplete({source:'{$source}?ws=tags',minLength:1});
-});
+    (function($){
+        new Awesomplete($('input[data-multiple]'), {
+            filter: function(text, input) {
+                return Awesomplete.FILTER_CONTAINS(text, input.match(/[^ ]*$/)[0]);
+            },
+            replace: function(text) {
+                var before = this.input.value.match(/^.+ \s*|/)[0];
+                this.input.value = before + text + " ";
+            },
+            minChars: 1
+        });
+    })(Awesomplete.$);
 </script>
 {/if}
 </body>
