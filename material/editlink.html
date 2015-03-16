@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>{include="includes"}</head>
+<body
+{if="$link.title==''"}onload="document.linkform.lf_title.focus();"
+{elseif="$link.description==''"}onload="document.linkform.lf_description.focus();"
+{else}onload="document.linkform.lf_tags.focus();"{/if} >
+{include="page.header"}
+<div id="editlinkform" class="container page-edit">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form method="POST" name="linkform" class="card">
+                <input type="hidden" name="lf_linkdate" value="{$link.linkdate}">
+                <input type="hidden" name="token" value="{$token}">
+                {if="$http_referer"}<input type="hidden" name="returnurl" value="{$http_referer|htmlspecialchars}">{/if}
+
+                <div class="card-title">{if="!$link_is_new"}Edit a link{else}Add a new link{/if}</div>
+                <div class="card-body">
+                    <div class="form-entry">
+                        <label for="lf_url">URL</label><br/>
+                        <input type="text" name="lf_url" id="lf_url" value="{$link.url|htmlspecialchars}" placeholder="Type a url...">
+                    </div>
+                    <div class="form-entry">
+                        <label for="lf_title">Title</label><br/>
+                        <input type="text" name="lf_title" id="lf_title" value="{$link.title|htmlspecialchars}" placeholder="Title...">
+                    </div>
+                    <div class="form-entry">
+                        <label for="lf_description">Description</label><br/>
+                        <textarea name="lf_description" id="lf_description" placeholder="Describe the link..." rows="4">{$link.description|htmlspecialchars}</textarea>
+                    </div>
+                    <div class="form-entry">
+                        <label for="lf_tags">Tags</label><br/>
+                        <input type="text" name="lf_tags" id="lf_tags" value="{$link.tags|htmlspecialchars}" placeholder="Tags, separated by a comma...">
+                    </div>
+                    <div class="form-entry">
+                        <input type="checkbox" {if="($link_is_new && $GLOBALS['privateLinkByDefault']==true) || $link.private == true"}checked="checked"{/if} name="lf_private" id="lf_private">
+                        &nbsp;<label for="lf_private">Private</label>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    {if="!$link_is_new"}<input type="submit" value="Delete" name="delete_link" class="button-raised button-pink" onClick="return confirmDeleteLink();">{/if}
+                    <input type="submit" value="Save" name="save_edit" class="button-raised button-blue pull-right">
+                    <input type="submit" value="Cancel" name="cancel_edit" class="button pull-right">
+                    <div class="clearfix"></div>
+                </div>
+
+                {ignore}
+
+                <i>URL</i><br><input type="text" name="lf_url" value="{$link.url|htmlspecialchars}" class="lf_input"><br>
+                <i>Title</i><br><input type="text" name="lf_title" value="{$link.title|htmlspecialchars}" class="lf_input"><br>
+                <i>Description</i><br><textarea name="lf_description" rows="4" cols="25">{$link.description|htmlspecialchars}</textarea><br>
+                <i>Tags</i><br><input type="text" id="lf_tags" name="lf_tags" value="{$link.tags|htmlspecialchars}" class="lf_input"><br>
+                {if="($link_is_new && $GLOBALS['privateLinkByDefault']==true) || $link.private == true"}
+                <input type="checkbox" checked="checked" name="lf_private" id="lf_private">
+                &nbsp;<label for="lf_private"><i>Private</i></label><br>
+                {else}
+                <input type="checkbox"  name="lf_private" id="lf_private">
+                &nbsp;<label for="lf_private"><i>Private</i></label><br>
+                {/if}
+                <input type="submit" value="Save" name="save_edit" class="bigbutton">
+                <input type="submit" value="Cancel" name="cancel_edit" class="bigbutton">
+                {if="!$link_is_new"}<input type="submit" value="Delete" name="delete_link" class="bigbutton delete" onClick="return confirmDeleteLink();">{/if}
+                <input type="hidden" name="token" value="{$token}">
+                {if="$http_referer"}<input type="hidden" name="returnurl" value="{$http_referer|htmlspecialchars}">{/if}
+
+                {/ignore}
+            </form>
+        </div>
+    </div>
+</div>
+{include="page.footer"}
+{if="($GLOBALS['config']['OPEN_SHAARLI'] || isLoggedIn()) && empty($GLOBALS['disablejquery'])"}
+<script>
+$(document).ready(function()
+{
+    $('#lf_tags').autocomplete({source:'{$source}?ws=tags',minLength:1});
+});
+</script>
+{/if}
+</body>
+</html>

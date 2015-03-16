@@ -1,0 +1,15 @@
+{if="$page_current != $page_max"}
+<div class="paging">
+    
+        <div class="page-changer">
+            {if="$previous_page_url"}
+                <a href="{$previous_page_url}" class="paging-older" title="Older">&#x25C4;</a>
+            {/if}
+                <span class="paging-current">page {$page_current} / {$page_max} </span>
+            {if="$next_page_url"}
+                <a href="{$next_page_url}" class="paging-newer" title="Newer">&#x25BA;</a>
+            {/if}
+        </div>
+    
+    </div>
+{/if}

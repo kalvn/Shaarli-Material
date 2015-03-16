@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>{include="includes"}</head>
+<body onload="document.addform.post.focus();">
+{include="page.header"}
+<div id="headerform" class="page-add container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+        	<form method="GET" action="" name="addform" class="form-add card">
+                <div class="card-title">Add a new link</div>
+                <div class="card-body">
+                    <div class="form-entry">
+                        <label for="post">URL of the link</label><br/>
+                        <input type="text" name="post" id="post" placeholder="Type a url...">
+                    </div>
+                </div>
+        		<div class="card-footer">
+                    <input type="submit" value="Add link" class="button button-blue pull-right"/>
+                    <div class="clearfix"></div>
+                </div>
+        	</form>
+        </div>
+    </div>
+</div>
+{include="page.footer"}
+</body>
+</html>

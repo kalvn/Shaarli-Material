@@ -1,0 +1,7 @@
+# Removes external libraries' files.
+material/lib/*
+# Except those we use.
+!*/bootstrap.min.js
+!*/moment.min.js
+!*/bootstrap.min.css
+!*/jquery.min.js
