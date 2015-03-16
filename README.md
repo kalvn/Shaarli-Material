@@ -3,9 +3,9 @@ Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), t
 
 
 ## Requirements
-You need to have Shaarli 0.0.44beta installed or above. It's important because the way to customize themes has changed a bit lately.
+You need to have Shaarli 0.0.44beta installed or above. It's important because the way to customize themes has changed a bit in this version.
 
-But upgrading Shaarli is really easy, take a look at the [official project](https://github.com/shaarli/Shaarli).
+If you run an older version, take a look at the [official project](https://github.com/shaarli/Shaarli) to upgrade.
 
 
 ## Installation
@@ -25,7 +25,7 @@ Access your Shaarli and enjoy your new Material theme.
 ## Configuration
 You can configure a few things by adding the following lines in the `data/options.php` file of your Shaarli installation.
 
-### Change the display of the dates using the "from xxx" notation.
+### Change the display of the dates using the "5 days ago" notation.
 The `MATERIAL_DATE_PATTERN` is optional. If you don't put it, the date resolution will be automatically done via the javascript `Date` object. But it can lead to bad behavior depending on your web server's locale configuration. So it's definitely better to put it.
 
     $GLOBALS['config']['MATERIAL_DATE_FROMNOW'] = true;
