@@ -69,6 +69,9 @@ button{
 em{
     font-style: italic;
 }
+strong{
+    font-weight: bold;
+}
 input[type=text],
 input[type=search],
 input[type=number],

@@ -5,6 +5,14 @@
     border-radius: 2px;
 }
 
+/* Nothing found */
+.nothing-found{
+    text-align: center;
+    font-size: 160%;
+    color: #999;
+    margin-bottom: 100px;
+}
+
 /* Image zoom */
 .overlay{
     display: none;

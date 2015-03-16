@@ -8,11 +8,13 @@
     {include="linklist.paging"}
 
     {if="count($links)==0"}
-        <div>Nothing found.</div>
-        <!-- TODO : eventuellement faire un background fullsize avec une image pour illustrer. -->
+        <div class="text-center">
+            <img src="images/sad_star.png" alt="Nothing found" />
+        </div>
+        <div class="nothing-found">There is a problem... We found nothing for <strong>{if="$search_type=='fulltext'"}{$search_crits}{/if}{if="$search_type=='tags'"}{loop="search_crits"}{$value|htmlspecialchars}{/loop}{/if}</strong>.</div>
     {else}
         {if="$search_type=='fulltext'"}
-            <div id="searchcriteria">{$result_count} results for <i>{$search_crits}</i></div>
+            <div id="searchcriteria">{$result_count} results for <strong>{$search_crits}</strong></div>
         {/if}
         {if="$search_type=='tags'"}
             <div id="searchcriteria">{$result_count} results for tags <i>
