@@ -29,16 +29,17 @@
     z-index: 600;
     position: fixed;
     top: 20%;
-    left: 50%;
-    margin-left: -140px;
+    left: 0;
+    width: 100%;
+    text-align: center;
 }
 
 
 .add-link{
     position: fixed;
     display: block;
-    bottom: 50px;
-    right: 50px;
+    bottom: 5%;
+    right: 5%;
     background-color: #F44336;
     width: 56px;
     height: 56px;
@@ -70,6 +71,16 @@
     margin-bottom: 15px;
 
     color: #fff;
+    max-height: 56px;
+}
+.header-main.unfold{
+    overflow: visible;
+    max-height: none;
+}
+@media (max-width: 1199px){
+    .header-main{
+        overflow: hidden;
+    }
 }
 .dark-toolbar .header-main{
     background-color: #000;

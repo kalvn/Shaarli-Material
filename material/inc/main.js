@@ -12,8 +12,6 @@ $(document).ready(function(){
     });
 
     $('.popup-trigger').on('click', function(){
-
-        // var $popup = $(this).find('.popup');
         var $popup = $('#' + $(this).data('popup'));
 
         if($popup.is(':visible')){
@@ -21,7 +19,8 @@ $(document).ready(function(){
         } else{
             $('.popup').hide();
             $popup.fadeIn(400, function(){
-                 $(this).find('input[type=text]').first().focus();
+                // Removed the focus because it opens the keyboard on mobile device and it's not very nice.
+                // $(this).find('input[type=text]').first().focus();
             });
         }
     });
@@ -31,6 +30,11 @@ $(document).ready(function(){
             event.preventDefault();
             return false;
         }
+    });
+
+    // Menu.
+    $('.icon-unfold').on('click', function(){
+        $('.header-main').toggleClass('unfold');
     });
 
     // Search field for tags.
@@ -43,10 +47,18 @@ $(document).ready(function(){
     });
 
     // Change date format for recent entries.
-    $('.link-actual-date').each(function(index){
-        var newDate = moment($(this).html(), 'DD/MM/YYYY HH:mm:ss').fromNow();
-        $(this).html(newDate);
-    });
+    if(shaarli.fromNow && (shaarli.fromNow === 'true' || shaarli.fromNow === '1')){
+        $('.link-actual-date').each(function(index){
+            var pattern = shaarli.datePattern;
+            var newDate = '';
+            if(pattern){
+                newDate = moment($(this).html(), pattern).fromNow();
+            } else{
+                newDate = moment(new Date($(this).html())).fromNow();
+            }
+            $(this).html(newDate);
+        });
+    }
 
     // Hide empty thumbnails.
     $('.thumb').each(function(){

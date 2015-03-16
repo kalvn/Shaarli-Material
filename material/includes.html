@@ -12,10 +12,14 @@
 {if="is_file('inc/user.css')"}<link type="text/css" rel="stylesheet" href="inc/user.css" />{/if}
 <script src="lib/jquery/dist/jquery.min.js"></script>
 <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="lib/moment/min/moment.min.js"></script>
+{if="isset($GLOBALS['config']['MATERIAL_DATE_FROMNOW']) && ($GLOBALS['config']['MATERIAL_DATE_FROMNOW'] === true || $GLOBALS['config']['MATERIAL_DATE_FROMNOW'] === 'true')"}
+    <script src="lib/moment/min/moment.min.js"></script>
+{/if}
 <script>
     var shaarli = {
-        source: '{$source}'
+        source: '{$source}',
+        fromNow: '{if="isset($GLOBALS['config']['MATERIAL_DATE_FROMNOW'])"}{$GLOBALS['config']['MATERIAL_DATE_FROMNOW']}{/if}',
+        datePattern: '{if="isset($GLOBALS['config']['MATERIAL_DATE_PATTERN'])"}{$GLOBALS['config']['MATERIAL_DATE_PATTERN']}{/if}'
     }
 </script>
 <script src="inc/main.js"></script>

@@ -409,7 +409,8 @@ label.active{
 .icon-rss,
 .icon-private,
 .icon-private-active,
-.icon-filter{
+.icon-filter,
+.icon-fold{
     width: 20px;
     height: 20px;
     background-size: 20px;
@@ -435,6 +436,12 @@ label.active{
 }
 .icon-filter{
     background-image: url(../images/toolbar/filter.png);   
+}
+.icon-unfold{
+    background-image: url(../images/toolbar/chevron-down.png);
+}
+.unfold .icon-unfold{
+    background-image: url(../images/toolbar/chevron-up.png)
 }
 .icon-edit,
 .icon-delete,

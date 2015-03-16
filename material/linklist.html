@@ -11,7 +11,7 @@
         <div class="text-center">
             <img src="images/sad_star.png" alt="Nothing found" />
         </div>
-        <div class="nothing-found">There is a problem... We found nothing for <strong>{if="$search_type=='fulltext'"}{$search_crits}{/if}{if="$search_type=='tags'"}{loop="search_crits"}{$value|htmlspecialchars}{/loop}{/if}</strong>.</div>
+        <div class="nothing-found">Sorry... We found nothing{if="$search_type=='fulltext'"} for <strong>{$search_crits}</strong>{elseif="$search_type=='tags'"} for<strong>{loop="search_crits"} {$value|htmlspecialchars}{/loop}</strong>{else}{/if}.</div>
     {else}
         {if="$search_type=='fulltext'"}
             <div id="searchcriteria">{$result_count} results for <strong>{$search_crits}</strong></div>
