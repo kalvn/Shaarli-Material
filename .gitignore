@@ -31,5 +31,6 @@ material/lib/jquery/dist/*
 !material/lib/awesomplete
 
 # Saves blazy
+!material/lib/blazy
 material/lib/blazy/*
 !material/lib/blazy/blazy.min.js

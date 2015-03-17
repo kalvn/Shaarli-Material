@@ -7,7 +7,7 @@ Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), t
 
 ![Shaarli Material Screenshot Home](https://raw.githubusercontent.com/kalvn/Shaarli-Material/master/material/screenshots/settings.png)
 
-![Shaarli Material Screenshot Home](https://raw.githubusercontent.com/kalvn/Shaarli-Material/master/material/screenshots/home_mobile.png) ![Shaarli Material Screenshot Home](https://raw.githubusercontent.com/kalvn/Shaarli-Material/master/material/screenshots/settings_mobile.png)
+![Shaarli Material Screenshot Home](https://raw.githubusercontent.com/kalvn/Shaarli-Material/master/material/screenshots/home_mobile.png =300x) ![Shaarli Material Screenshot Home](https://raw.githubusercontent.com/kalvn/Shaarli-Material/master/material/screenshots/settings_mobile.png =300x)
 
 
 ## Requirements
