@@ -4,10 +4,8 @@ Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), t
 
 ## Screenshots
 ![Shaarli Material Screenshot Home](https://raw.githubusercontent.com/kalvn/Shaarli-Material/master/material/screenshots/home.png)
-
-![Shaarli Material Screenshot Home](https://raw.githubusercontent.com/kalvn/Shaarli-Material/master/material/screenshots/settings.png)
-
-![Shaarli Material Screenshot Home](https://raw.githubusercontent.com/kalvn/Shaarli-Material/master/material/screenshots/home_mobile.png =300x) ![Shaarli Material Screenshot Home](https://raw.githubusercontent.com/kalvn/Shaarli-Material/master/material/screenshots/settings_mobile.png =300x)
+![Shaarli Material Screenshot Settings](https://raw.githubusercontent.com/kalvn/Shaarli-Material/master/material/screenshots/settings.png)
+![Shaarli Material Screenshot Mobile](https://raw.githubusercontent.com/kalvn/Shaarli-Material/master/material/screenshots/home_mobile.png)
 
 
 ## Requirements
@@ -57,7 +55,7 @@ A read-only demo is available on my personal Shaarli : http://exystenz.com/links
 
 ------------------------------------------------------------------------------
 
-Shaarli Material was tested and validated on Shaarli 0.0.44beta.
+Shaarli Material was tested and validated on Shaarli 0.0.45beta.
 
 You can download Shaarli on the project page: http://sebsauvage.net/wiki/doku.php?id=php:shaarli
 
