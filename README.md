@@ -2,8 +2,16 @@
 Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), the famous personal, minimalist, super-fast, no-database delicious clone.
 
 
+## Screenshots
+![Shaarli Material Screenshot Home](https://raw.githubusercontent.com/kalvn/Shaarli-Material/master/material/screenshots/home.png)
+
+![Shaarli Material Screenshot Home](https://raw.githubusercontent.com/kalvn/Shaarli-Material/master/material/screenshots/settings.png)
+
+![Shaarli Material Screenshot Home](https://raw.githubusercontent.com/kalvn/Shaarli-Material/master/material/screenshots/home_mobile.png) ![Shaarli Material Screenshot Home](https://raw.githubusercontent.com/kalvn/Shaarli-Material/master/material/screenshots/settings_mobile.png)
+
+
 ## Requirements
-You need to have Shaarli 0.0.44beta installed or above. It's important because the way to customize themes has changed a bit in this version.
+You need to have Shaarli **0.0.44beta** installed or above. It's important because the way to customize themes has changed a bit in this version.
 
 If you run an older version, take a look at the [official project](https://github.com/shaarli/Shaarli) to upgrade.
 
