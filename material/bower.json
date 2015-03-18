@@ -2,20 +2,20 @@
   "name": "Shaarli Material Theme",
   "version": "0.1.0",
   "authors": [
-  "kalvn <kalvnthereal@gmail.com>"
+    "kalvn <kalvnthereal@gmail.com>"
   ],
   "moduleType": [
-  "globals"
+    "globals"
   ],
   "license": "MIT",
   "private": true,
   "ignore": [
-  "**/.*",
-  "node_modules",
-  "bower_components",
-  "test",
-  "tests",
-  "lib"
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "lib"
   ],
   "dependencies": {
     "jquery": ">=1.11.0 <2.0.0",
