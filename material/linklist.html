@@ -30,7 +30,7 @@
 
     <div class="links-list">
         {loop="links"}
-            <div class="link-outer{if="$value.class"} {$value.class}{/if}">
+            <div id="{$value.linkdate|smallHash}" class="link-outer{if="$value.class"} {$value.class}{/if}">
                 <div class="link-inner">
                     <div class="link-header">
                         <div class="row">
