@@ -1,3 +1,7 @@
+# Sublime Text files.
+*.sublime-project
+*.sublime-workspace
+
 # Removes external libraries' files.
 material/lib/*
 
@@ -27,10 +31,10 @@ material/lib/jquery/*
 material/lib/jquery/dist/*
 !material/lib/jquery/dist/jquery.min.js
 
-# Saves awesomplete
+# Saves awesomplete.
 !material/lib/awesomplete
 
-# Saves blazy
+# Saves blazy.
 !material/lib/blazy
 material/lib/blazy/*
 !material/lib/blazy/blazy.min.js

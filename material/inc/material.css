@@ -100,6 +100,10 @@ textarea:focus{
 textarea{
     resize: vertical;
 }
+input[type=checkbox]{
+    vertical-align: middle;
+    margin: 0 5px 0 0;
+}
 select{
     width: 100%;
     padding: 6px 12px;

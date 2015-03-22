@@ -39,25 +39,33 @@
                     </div>
                     <div class="form-entry">
                         <label for="disablesessionprotection">Security</label><br/>
-                        <input type="checkbox" name="disablesessionprotection" id="disablesessionprotection" {if="!empty($GLOBALS['disablesessionprotection'])"}checked{/if}/>
-                        <label for="disablesessionprotection">&nbsp;Disable session cookie hijacking protection</label>
+                        <label for="disablesessionprotection">
+                            <input type="checkbox" name="disablesessionprotection" id="disablesessionprotection" {if="!empty($GLOBALS['disablesessionprotection'])"}checked{/if}/>
+                            Disable session cookie hijacking protection
+                        </label>
                         <div>Check this if you get disconnected often or if your IP address changes often.</div>
                     </div>
                     <div class="form-entry">
                         <label for="privateLinkByDefault">Default link privacy</label><br/>
-                        <input type="checkbox" name="privateLinkByDefault" id="privateLinkByDefault" {if="!empty($GLOBALS['privateLinkByDefault'])"}checked{/if}/>
-                        <label for="privateLinkByDefault">&nbsp;All new links are private by default</label>
+                        <label for="privateLinkByDefault">
+                            <input type="checkbox" name="privateLinkByDefault" id="privateLinkByDefault" {if="!empty($GLOBALS['privateLinkByDefault'])"}checked{/if}/>
+                            All new links are private by default
+                        </label>
                     </div>
                     <div class="form-entry">
                         <label for="enableRssPermalinks">Enable RSS Permalinks</label><br/>
-                        <input type="checkbox" name="enableRssPermalinks" id="enableRssPermalinks" {if="!empty($GLOBALS['config']['ENABLE_RSS_PERMALINKS'])"}checked{/if}/>
-                        <label for="enableRssPermalinks">&nbsp;Switches the RSS feed URLs between full URLs and shortlinks.</label>
+                        <label for="enableRssPermalinks">
+                            <input type="checkbox" name="enableRssPermalinks" id="enableRssPermalinks" {if="!empty($GLOBALS['config']['ENABLE_RSS_PERMALINKS'])"}checked{/if}/>
+                            Switches the RSS feed URLs between full URLs and shortlinks.
+                        </label>
                         <div>Enabling it will show a permalink in the description, and the feed item will be linked to the absolute URL. Disabling it swaps this behaviour around (permalink in title and link in description). RSS Permalinks are currently <b>{if="$GLOBALS['config']['ENABLE_RSS_PERMALINKS']"}enabled{else}disabled{/if}</b>.</div>
                     </div>
                     <div class="form-entry">
                         <label for="updateCheck">Update</label><br/>
-                        <input type="checkbox" name="updateCheck" id="updateCheck" {if="!empty($GLOBALS['config']['ENABLE_UPDATECHECK'])"}checked{/if}/>
-                        <label for="updateCheck">&nbsp;Notify me when a new release is ready</label></td>
+                        <label for="updateCheck">
+                            <input type="checkbox" name="updateCheck" id="updateCheck" {if="!empty($GLOBALS['config']['ENABLE_UPDATECHECK'])"}checked{/if}/>
+                            Notify me when a new release is ready
+                         </label>
                     </div>
                 </div>
                 <div class="card-footer">

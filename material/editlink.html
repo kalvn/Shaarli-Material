@@ -39,8 +39,10 @@
                             data-list="{loop="$tags"}{$key}, {/loop}" data-multiple autocomplete="off" />
                     </div>
                     <div class="form-entry">
-                        <input type="checkbox" {if="($link_is_new && $GLOBALS['privateLinkByDefault']==true) || $link.private == true"}checked="checked"{/if} name="lf_private" id="lf_private">
-                        &nbsp;<label for="lf_private">Private</label>
+                        <label for="lf_private">
+                            <input type="checkbox" {if="($link_is_new && $GLOBALS['privateLinkByDefault']==true) || $link.private == true"}checked="checked"{/if} name="lf_private" id="lf_private"/>
+                            Private
+                        </label>
                     </div>
                 </div>
                 <div class="card-footer">
