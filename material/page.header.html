@@ -53,24 +53,7 @@
                                 </div>
                             </div>
                         </div>
-                        {if="$GLOBALS['config']['SHOW_ATOM']"}
-                            <div class="toolbar-button-container">
-                                <button type="button" class="icon-rss popup-trigger" data-popup="popup-rss" title="RSS Feeds"></button>
-                                <div id="popup-rss" class="popup popup-rss">
-                                    <div class="popup-title">RSS feeds</div>
-                                    <div class="popup-body">
-                                        <ul>
-                                            <li><a href="{$feedurl}?do=rss{$searchcrits}">RSS Feed</a></li>
-                                            <li><a href="{$feedurl}?do=atom{$searchcrits}">ATOM Feed</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        {else}
-                            <a href="{$feedurl}?do=rss{$searchcrits}" class="icon-rss" title="RSS Feed"></a>
-                        {/if}
                         <a href="?do=tools" class="icon-tools" title="Tools"></a>
-                        
                     {elseif="$GLOBALS['config']['OPEN_SHAARLI']"}
                         <a href="?do=tools" class="icon-tools" title="Tools"></a>
                     {else}
@@ -85,12 +68,27 @@
                                 </div>
                             </div>
                         </div>
-                        
                     {/if}
                     {if="isLoggedIn()"}
                     <a href="?privateonly" class="icon-private{if="$privateonly"}-active{/if}" title="{if="$privateonly"}Click to see all links{else}Click to see only private links{/if}"></a>
                     {/if}
 
+                    {if="$GLOBALS['config']['SHOW_ATOM']"}
+                        <div class="toolbar-button-container">
+                            <button type="button" class="icon-rss popup-trigger" data-popup="popup-rss" title="RSS Feeds"></button>
+                            <div id="popup-rss" class="popup popup-rss">
+                                <div class="popup-title">RSS feeds</div>
+                                <div class="popup-body">
+                                    <ul>
+                                        <li><a href="{$feedurl}?do=rss{$searchcrits}">RSS Feed</a></li>
+                                        <li><a href="{$feedurl}?do=atom{$searchcrits}">ATOM Feed</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    {else}
+                        <a href="{$feedurl}?do=rss{$searchcrits}" class="icon-rss" title="RSS Feed"></a>
+                    {/if}
                     <div class="toolbar-button-container">
                         <button type="button" class="icon-filter popup-trigger" data-popup="popup-filter" title="Change links per page"></button>
                         <div id="popup-filter" class="popup popup-filter">
