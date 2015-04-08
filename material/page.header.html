@@ -110,7 +110,7 @@
             </div>
         </div>
     </div>
-    {if="isLoggedIn() || $GLOBALS['config']['OPEN_SHAARLI']"}
+    {if="(isLoggedIn() || $GLOBALS['config']['OPEN_SHAARLI']) && !isset($_GET['edit_link']) && !isset($_GET['post']) && (!isset($_GET['do']) || !in_array($_GET['do'], array('addlink', 'changepasswd', 'configure', 'changetag', 'import', 'export')))"}
         <a href="?do=addlink" class="add-link">
             <div class="add-link-icon"></div>
         </a>
