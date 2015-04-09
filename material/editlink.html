@@ -46,9 +46,9 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    {if="!$link_is_new"}<input type="submit" value="Delete" name="delete_link" class="button-raised button-alert" onClick="return confirmDeleteLink();">{/if}
                     <input type="submit" value="Save" name="save_edit" class="button-raised button-primary pull-right">
                     <input type="submit" value="Cancel" name="cancel_edit" class="button pull-right">
+                    {if="!$link_is_new"}<input type="submit" value="Delete" name="delete_link" class="button-raised button-alert" onClick="return confirmDeleteLink();">{/if}
                     <div class="clearfix"></div>
                 </div>
             </form>
