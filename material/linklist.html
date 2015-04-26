@@ -52,12 +52,14 @@
                         </div>
                     </div>
                     <div class="link-content">
-                        {if="$value.description"}
-                            <div class="link-description">
-                                <div class="thumb">{$value.url|thumbnail}</div>
-                                <p>{$value.description}</p>
-                            </div>
-                        {/if}
+                        
+                        <div>
+                            <div class="thumb">{$value.url|thumbnail}</div>
+                            {if="$value.description"}
+                                <p class="link-description">{$value.description}</p>
+                            {/if}
+                        </div>
+                        
                     </div>
                     <div class="link-footer">
                         <div class="row">

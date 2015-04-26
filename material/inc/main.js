@@ -61,11 +61,11 @@ $(document).ready(function(){
     }
 
     // Hide empty thumbnails.
-    $('.thumb').each(function(){
+    /*$('.thumb').each(function(){
         if($(this).html().trim() === ''){
             $(this).remove();
         }
-    });
+    });*/
 
     // QR Code.
     $('.icon-qrcode').on('click', function(){
