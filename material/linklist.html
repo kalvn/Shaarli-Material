@@ -1,3 +1,4 @@
+{$dateFormat=isset($GLOBALS['config']['MATERIAL_PHP_DATE_PATTERN'])?$GLOBALS['config']['MATERIAL_PHP_DATE_PATTERN']:'%c'}
 <!DOCTYPE html>
 <html>
 <head>{include="includes"}</head>
@@ -40,7 +41,7 @@
                             <div class="col-sm-4">
                                 <div class="link-date">
                                     {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
-                                        <span title="Permalink - {function="strftime($GLOBALS['config']['MATERIAL_PHP_DATE_PATTERN'], $value.timestamp)"}"><a href="?{$value.linkdate|smallHash}" class="link-actual-date">{function="strftime($GLOBALS['config']['MATERIAL_PHP_DATE_PATTERN'], $value.timestamp)"}</a></span>
+                                        <span title="Permalink - {function="strftime($dateFormat, $value.timestamp)"}"><a href="?{$value.linkdate|smallHash}" class="link-actual-date">{function="strftime($dateFormat, $value.timestamp)"}</a></span>
                                     {else}
                                         <span title="Short link here"><a href="?{$value.linkdate|smallHash}">Permalink</a></span>
                                     {/if}
@@ -94,7 +95,7 @@
                                 </form>
                                 {/if}
                                 <a href="http://qrfree.kaywa.com/?l=1&amp;s=8&amp;d={$scripturl|urlencode}%3F{$value.linkdate|smallHash}" 
-                                    class="icon-qrcode" data-permalink="{$scripturl}?{$value.linkdate|smallHash}" title="{function="strftime($GLOBALS['config']['MATERIAL_PHP_DATE_PATTERN'], $value.timestamp)"}"></a>
+                                    class="icon-qrcode" data-permalink="{$scripturl}?{$value.linkdate|smallHash}" title="{function="strftime($dateFormat, $value.timestamp)"}"></a>
                             </div>
                         </div>
                     </div>

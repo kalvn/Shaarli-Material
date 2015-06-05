@@ -1,3 +1,4 @@
+{$dateFormat=isset($GLOBALS['config']['MATERIAL_PHP_DATE_PATTERN'])?$GLOBALS['config']['MATERIAL_PHP_DATE_PATTERN']:'%c'}
 <!DOCTYPE html>
 <html>
 <head>{include="includes"}</head>
@@ -30,7 +31,7 @@
                         </div>
                         {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
                             <div class="dailyEntryLinkdate">
-                                <a href="?{$link.linkdate|smallHash}">{function="strftime($GLOBALS['config']['MATERIAL_PHP_DATE_PATTERN'], $link.timestamp)"}</a>
+                                <a href="?{$link.linkdate|smallHash}">{function="strftime($dateFormat, $link.timestamp)"}</a>
                             </div>
                         {/if}
                         {if="$link.tags"}
