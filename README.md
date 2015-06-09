@@ -11,11 +11,14 @@ Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), t
 ## Requirements
 You need to have Shaarli **0.0.44beta** installed or above. You can try with version 0.0.43beta but there might be some issues with PHP variable I use and that don't exist in `index.php`.
 
-Older versions won't work, take a look at the [official project](https://github.com/shaarli/Shaarli) to upgrade.
+Older versions won't work, take a look at the [official project](https://github.com/shaarli/Shaarli) to download or upgrade.
+
+
+## Download
+To download this theme, [visit this page](https://github.com/kalvn/Shaarli-Material/releases) and choose the version matching the version of your Shaarli installation. Both use the same notation.
 
 
 ## Installation
-
 Download the `material` folder into the `tpl` directory of your Shaarli installation. It should be next to existing `.html` files.
 
 In your Shaarli installation, open the `options.php` file which is inside the `data` folder. If it doesn't exist, create it.
@@ -30,38 +33,44 @@ $GLOBALS['config']['RAINTPL_TPL'] = 'tpl/material/' ; // keep the trailing slash
 Access your Shaarli and enjoy your new Material theme.
 
 
-## Configuration
-You can configure a few things by adding the following lines in the `data/options.php` file of your Shaarli installation. If the file doesn't exist, just create it.
+## Additional configuration
+You can configure a few things using the `data/options.php` file of your Shaarli installation. If the file doesn't exist, just create it.
 
-Note: a example file is available with all possible options plus explanations: https://github.com/kalvn/Shaarli-Material/blob/master/material/options.example.php.txt
-
-### Change the format of dates
-You can use the `MATERIAL_PHP_DATE_PATTERN` parameter to change the format of dates. To find out what to write, check this: https://php.net/manual/function.strftime.php
+Here is an example of the whole file. It's available here as well: https://github.com/kalvn/Shaarli-Material/blob/master/material/options.example.php.txt
 
 ```php
+<?php
+// ### REQUIRED ###
+// Sets the active template directory (keep the trailing slash!).
+$GLOBALS['config']['RAINTPL_TPL'] = 'tpl/material/' ;
+
+// ### OPTIONAL ###
+// Customizes the date format. Check this to know what to write: https://php.net/manual/function.strftime.php
+// ex: '%d/%m/%Y' will output for example '30/05/2015'.
 $GLOBALS['config']['MATERIAL_PHP_DATE_PATTERN'] = '%d/%m/%Y %H:%M:%S';
+
+// ### OPTIONAL ###
+// If set to true, enables dates to be displayed with the 'from now' notation.
+// ex: 2 days ago.
+// Set it to false to disable this.
+$GLOBALS['config']['MATERIAL_DATE_FROMNOW'] = false;
+
+// ### OPTIONAL ### (but REQUIRED if MATERIAL_DATE_FROMNOW is enabled)
+// This date pattern MUST match the MATERIAL_PHP_DATE_PATTERN option but doesn't use the same notation.
+// Check this for more information about the notation: http://momentjs.com/docs/#/parsing/string-format/
+// ex: 'DD/MM/YYYY'.
+// It's used to correctly convert dates to the 'from now' notation.
+$GLOBALS['config']['MATERIAL_DATE_PATTERN'] = 'DD/MM/YYYY HH:mm:ss';
+?>
 ```
-
-
-### Change the display of the dates using the "5 days ago" notation.
-The `MATERIAL_DATE_PATTERN` is optional. If you don't put it, the date resolution will be automatically done via the javascript `Date` object. But it can lead to bad behavior depending on your web server's locale configuration. So it's definitely better to put it. It should output the same thing than the parameter `MATERIAL_PHP_DATE_PATTERN` above.
-
-```php
-$GLOBALS['config']['MATERIAL_DATE_FROMNOW'] = true;
-$GLOBALS['config']['MATERIAL_DATE_PATTERN'] = 'DD/MM/YYYY HH:mm:ss'; // optional
-```
-
-To know what format to use, start by putting `MATERIAL_DATE_FROMNOW` to false. Then have a look on the format of links date in your Shaarli. Then check [this page](http://momentjs.com/docs/#/parsing/string-format/) to know what format to use.
-
-For other interesting configuration options, [check this](https://github.com/shaarli/Shaarli/wiki#main-dataoptionsphp-file).
 
 
 ## Libraries used
-This theme use a few Javascript libraries.
+This theme uses a few Javascript libraries.
 
-- [jquery](http://jquery.com/)
+- [jQuery](http://jquery.com/)
 - [Bootstrap](http://getbootstrap.com/)
-- [moment.js](http://momentjs.com/) (only if you activate the `MATERIAL_DATE_FROMNOW` parameter described above)
+- [moment.js](http://momentjs.com/) (loaded only if you activate the `MATERIAL_DATE_FROMNOW` parameter described above)
 - [awesomplete](http://leaverou.github.io/awesomplete/)
 - [blazy](http://dinbror.dk/blazy/)
 
