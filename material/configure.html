@@ -56,9 +56,17 @@
                         <label for="enableRssPermalinks">Enable RSS Permalinks</label><br/>
                         <label for="enableRssPermalinks">
                             <input type="checkbox" name="enableRssPermalinks" id="enableRssPermalinks" {if="!empty($GLOBALS['config']['ENABLE_RSS_PERMALINKS'])"}checked{/if}/>
-                            Switches the RSS feed URLs between full URLs and shortlinks.
+                            Switch the RSS feed URLs between full URLs and shortlinks.
                         </label>
                         <div>Enabling it will show a permalink in the description, and the feed item will be linked to the absolute URL. Disabling it swaps this behaviour around (permalink in title and link in description). RSS Permalinks are currently <b>{if="$GLOBALS['config']['ENABLE_RSS_PERMALINKS']"}enabled{else}disabled{/if}</b>.</div>
+                    </div>
+                    <div class="form-entry">
+                        <label for="hidePublicLinks">Hide public links</label><br/>
+                        <label for="hidePublicLinks">
+                            <input type="checkbox" name="hidePublicLinks" id="hidePublicLinks" {if="!empty($GLOBALS['config']['HIDE_PUBLIC_LINKS'])"}checked{/if}/>
+                            Do not show any link if the user is not logged in.
+                        </label>
+                        <div>Do NOT enable this if you want to make your Shaarli public.</div>
                     </div>
                     <div class="form-entry">
                         <label for="updateCheck">Update</label><br/>
