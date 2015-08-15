@@ -21,12 +21,11 @@ Versions suffixed by `-patch.x` include some bugfix so take those preferentially
 
 
 ## Installation
+### Shaarli 0.5.0 or above
 Download the `material` folder into the `tpl` directory of your Shaarli installation. It should be next to existing `.html` files.
 
-In your Shaarli installation, open the `options.php` file which is inside the `data` folder. If it doesn't exist, create it.
-If you created it, ensure the content of the file starts with `<?php` as it's a PHP file.
-
-At the bottom of the file, add the following line:
+In your Shaarli installation, open the `data/config.php` and change the `RAINTPL_TPL` parameter to `tpl/material/`.
+If you can find this parameter, paste the following line at the end of the file:
 
 ```php
 $GLOBALS['config']['RAINTPL_TPL'] = 'tpl/material/' ; // keep the trailing slash!
@@ -34,14 +33,16 @@ $GLOBALS['config']['RAINTPL_TPL'] = 'tpl/material/' ; // keep the trailing slash
 
 Access your Shaarli and enjoy your new Material theme.
 
+### Older versions
+The instructions are the same than for Shaarli 0.5.0 except that you need to paste the line in a file called `options.php` which you put in the `data` folder. Don't forget to add `<?php` at the beginning of the file.
+
 
 ## Additional configuration
-You can configure a few things using the `data/options.php` file of your Shaarli installation. If the file doesn't exist, just create it.
+You can configure a few things using the `data/config.php` file (or the `data/options.php` if you use an version older than 0.5.0) of your Shaarli installation. If the file doesn't exist, just create it.
 
-Here is an example of the whole file. It's available here as well: https://github.com/kalvn/Shaarli-Material/blob/master/material/options.example.php.txt
+Here is an example of what you can configure.
 
 ```php
-<?php
 // ### REQUIRED ###
 // Sets the active template directory (keep the trailing slash!).
 $GLOBALS['config']['RAINTPL_TPL'] = 'tpl/material/' ;
@@ -63,7 +64,10 @@ $GLOBALS['config']['MATERIAL_DATE_FROMNOW'] = false;
 // ex: 'DD/MM/YYYY'.
 // It's used to correctly convert dates to the 'from now' notation.
 $GLOBALS['config']['MATERIAL_DATE_PATTERN'] = 'DD/MM/YYYY HH:mm:ss';
-?>
+
+// ### OPTIONAL ###
+// Enables debug mode for dev only. Will load CSS and JS resources from src rather than dist.
+$GLOBALS['debug'] = false;
 ```
 
 
@@ -82,7 +86,7 @@ A read-only demo is available on my personal Shaarli : http://exystenz.com/links
 
 ------------------------------------------------------------------------------
 
-Shaarli Material was tested and validated on Shaarli 0.0.45beta.
+Shaarli Material was tested and validated on Shaarli 0.5.0.
 
 You can download Shaarli on the project page: http://sebsauvage.net/wiki/doku.php?id=php:shaarli
 

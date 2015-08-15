@@ -101,11 +101,11 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <hr class="darker"/>
-            <h2 class="mtm">Firefox Social API integration</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident dolorem possimus eligendi labore sint facilis officia, nostrum esse laborum, perferendis soluta beatae enim repudiandae quam! Atque quod beatae natus ullam..</p>
+            <h2 class="mtm" id="firefox-api-title">Firefox Social API integration</h2>
+            <p>Adds Shaarli to the <em>Share this page</em> button in Firefox.</p>
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <button type="button" class="firefoxsocial button-raised button-firefox" onclick="activateFirefoxSocial(this);">
+                    <button type="button" id="firefoxsocial" class="firefoxsocial button-raised button-firefox" >
                         Activate Now
                     </button>
                 </div>
@@ -134,6 +134,23 @@ function activateFirefoxSocial(node) {
     var activate = new CustomEvent("ActivateSocialFeature");
     node.dispatchEvent(activate);
 }
+
+$(document).ready(function(){
+    // Hack taken here: https://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
+    var isFirefox = typeof InstallTrigger !== 'undefined';
+    if(!isFirefox || window.location.protocol.indexOf('https') < 0){
+        $('#firefoxsocial').attr('disabled', 'disabled');
+        var message = $("<p></p>")
+            .addClass('highlight')
+            .html('You need to use Firefox over <strong>https</strong> to use this functionality.');
+        $('#firefox-api-title').after(message);
+    } else{
+        // Attach events to the Firefox Social button.
+        $('#firefoxsocial').on('click', function(){
+            activateFirefoxSocial(this);
+        });
+    }
+});
 </script>
 </body>
 </html>

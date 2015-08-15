@@ -8,6 +8,12 @@ material/lib/*
 # Removes node modules
 node_modules
 
+# Removes unminified files
+material/dist/styles.css
+material/dist/scripts.js
+material/dist/lib.css
+material/dist/lib.js
+
 # Saves bootstrap files.
 !material/lib/bootstrap
 material/lib/bootstrap/*

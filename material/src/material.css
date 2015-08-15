@@ -351,7 +351,7 @@ hr.darker{
 }
 .button-firefox:disabled{
     background-color: rgba(255, 255, 255, 0.12);
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(0, 0, 0, 0.3);
 }
 
 /* Forms */
@@ -499,4 +499,7 @@ label.active{
 .round-image-container img{
     margin-top: 6px;
     margin-left: 6px;
+}
+p.highlight{
+    color: #F44336;
 }

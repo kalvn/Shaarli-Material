@@ -25,7 +25,7 @@
                     
                     
                     <div class="col-sm-3">
-                        <input type="search" id="searchform_value" name="searchterm" value="" placeholder="Search something here..." />
+                        <input type="search" id="searchform_value" name="searchterm" value="{if="isset($search_type)"}{if="$search_type=='fulltext'"}{$search_crits}{elseif="$search_type=='tags'"}{loop="search_crits"}{$value|htmlspecialchars} {/loop}{else}{/if}{/if}" placeholder="Search something here..." />
                     </div>
                     <div class="col-sm-4">
                         <div class="row">

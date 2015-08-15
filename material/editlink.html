@@ -69,6 +69,27 @@
             },
             minChars: 1
         });
+
+        /**
+         * Remove already selected items from autocompletion list.
+         * HTML list is never updated, so removing a tag will add it back to awesomplete.
+         *
+         * FIXME: This a workaround waiting for awesomplete to handle this.
+         *  https://github.com/LeaVerou/awesomplete/issues/16749
+         */
+        var input = document.querySelector('#lf_tags');
+        input.addEventListener('input', function()
+        {
+            proposedTags = input.getAttribute('data-list').replace(/,/g, '').split(' ');
+            reg = /(\w+) /g;
+            while((match = reg.exec(input.value)) !== null) {
+                id = proposedTags.indexOf(match[1]);
+                if(id != -1 ) {
+                    proposedTags.splice(id, 1);
+                }
+            }
+            awesomplete.list = proposedTags;
+        });
     })(Awesomplete.$);
 </script>
 {/if}
