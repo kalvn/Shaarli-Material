@@ -5,6 +5,9 @@
 # Removes external libraries' files.
 material/lib/*
 
+# Removes node modules
+node_modules
+
 # Saves bootstrap files.
 !material/lib/bootstrap
 material/lib/bootstrap/*

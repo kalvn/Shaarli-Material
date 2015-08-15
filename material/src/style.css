@@ -230,6 +230,7 @@ a.link-title:hover{
 }
 .link-tag-list{
     overflow: hidden;
+    overflow-x: auto;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -320,7 +321,7 @@ a.link-url:hover{
     color: #999;
     font-size: 90%;
 }
-.from-bookrmarklet #footer{
+.from-bookmarklet #footer{
     margin-top: 10px;
 }
 
@@ -337,7 +338,7 @@ a.link-url:hover{
     margin-top: 50px;
     margin-bottom: 50px;
 }
-.from-bookrmarklet .page-edit{
+.from-bookmarklet .page-edit{
     margin-top: 10px;
     margin-bottom: 10px;
 }

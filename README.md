@@ -15,7 +15,9 @@ Older versions won't work, take a look at the [official project](https://github.
 
 
 ## Download
-To download this theme, [visit this page](https://github.com/kalvn/Shaarli-Material/releases) and choose the version matching the version of your Shaarli installation. Both use the same notation.
+To download this theme, [visit this page](https://github.com/kalvn/Shaarli-Material/releases) and choose the most recent version matching the version of your Shaarli installation. Both use the same notation.
+
+Versions suffixed by `-patch.x` include some bugfix so take those preferentially if they exist for the version that fits your Shaarli installation.
 
 
 ## Installation

@@ -16,13 +16,26 @@
 <meta name="msapplication-TileColor" content="#603cba">
 <meta name="msapplication-config" content="images/favicons/browserconfig.xml">
 <meta name="theme-color" content="#ffffff">
+
+{if="isset($GLOBALS['debug']) && $GLOBALS['debug'] === true"}
 <link type="text/css" rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
-<link type="text/css" rel="stylesheet" href="inc/reset.css" />
-<link type="text/css" rel="stylesheet" href="inc/material.css" />
-<link type="text/css" rel="stylesheet" href="inc/style.css" />
-{if="is_file('inc/user.css')"}<link type="text/css" rel="stylesheet" href="inc/user.css" />{/if}
+<link type="text/css" rel="stylesheet" href="src/reset.css" />
+<link type="text/css" rel="stylesheet" href="src/material.css" />
+<link type="text/css" rel="stylesheet" href="src/style.css" />
 <script src="lib/jquery/dist/jquery.min.js"></script>
 <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="src/main.js"></script>
+{else}
+<link type="text/css" rel="stylesheet" href="dist/lib.min.css" />
+<link type="text/css" rel="stylesheet" href="dist/styles.min.css" />
+<script src="dist/lib.min.js"></script>
+<script src="dist/scripts.min.js"></script>
+{/if}
+
+
+
+{if="is_file('src/user.css')"}<link type="text/css" rel="stylesheet" href="src/user.css" />{/if}
+
 {if="isset($GLOBALS['config']['MATERIAL_DATE_FROMNOW']) && ($GLOBALS['config']['MATERIAL_DATE_FROMNOW'] === true || $GLOBALS['config']['MATERIAL_DATE_FROMNOW'] === 'true')"}
     <script src="lib/moment/min/moment.min.js"></script>
 {/if}
@@ -33,4 +46,3 @@
         datePattern: '{if="isset($GLOBALS['config']['MATERIAL_DATE_PATTERN'])"}{$GLOBALS['config']['MATERIAL_DATE_PATTERN']}{/if}'
     }
 </script>
-<script src="inc/main.js"></script>

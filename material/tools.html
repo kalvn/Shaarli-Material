@@ -98,7 +98,42 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <hr class="darker"/>
+            <h2 class="mtm">Firefox Social API integration</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident dolorem possimus eligendi labore sint facilis officia, nostrum esse laborum, perferendis soluta beatae enim repudiandae quam! Atque quod beatae natus ullam..</p>
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <button type="button" class="firefoxsocial button-raised button-firefox" onclick="activateFirefoxSocial(this);">
+                        Activate Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {include="page.footer"}
+<script>
+function activateFirefoxSocial(node) {
+    var loc = location.href;
+    var baseURL = loc.substring(0, loc.lastIndexOf("/"));
+    // Keeping the data separated (ie. not in the DOM) so that it's maintainable and diffable.
+    var data = {
+        name: "{$shaarlititle}",
+        description: "The personal, minimalist, super-fast, no-database delicious clone.",
+        author: "Shaarli",
+        version: "1.0.0",
+        iconURL: baseURL + "/tpl/material/images/favicons/favicon-96x96.png",
+        icon32URL: baseURL + "/tpl/material/images/favicons/favicon-32x32.png",
+        icon64URL: baseURL + "/tpl/material/images/favicons/favicon-64x64.png",
+        shareURL: baseURL + "{noparse}?post=%{url}&title=%{title}&description=%{description}&source=firefoxsocialapi{/noparse}",
+        homepageURL: baseURL
+    };
+    node.setAttribute("data-service", JSON.stringify(data));
+    var activate = new CustomEvent("ActivateSocialFeature");
+    node.dispatchEvent(activate);
+}
+</script>
 </body>
 </html>

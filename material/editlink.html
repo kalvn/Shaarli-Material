@@ -9,7 +9,7 @@
 {if="$link.title==''"}onload="document.linkform.lf_title.focus();"
 {elseif="$link.description==''"}onload="document.linkform.lf_description.focus();"
 {else}onload="document.linkform.lf_tags.focus();"{/if}
-{if="!empty($_GET['source']) && $_GET['source']=='bookmarklet'"}class="from-bookrmarklet"{/if} >
+{if="!empty($_GET['source']) && $_GET['source']=='bookmarklet'"}class="from-bookmarklet"{/if} >
 {include="page.header"}
 <div id="editlinkform" class="container page-edit">
     <div class="row">
