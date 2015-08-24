@@ -3,47 +3,7 @@
 *.sublime-workspace
 
 # Removes external libraries' files.
-material/lib/*
+material/lib
 
 # Removes node modules
 node_modules
-
-# Removes unminified files
-material/dist/styles.css
-material/dist/scripts.js
-material/dist/lib.css
-material/dist/lib.js
-
-# Saves bootstrap files.
-!material/lib/bootstrap
-material/lib/bootstrap/*
-!material/lib/bootstrap/dist
-material/lib/bootstrap/dist/*
-!material/lib/bootstrap/dist/js
-!material/lib/bootstrap/dist/css
-material/lib/bootstrap/dist/js/*
-material/lib/bootstrap/dist/css/*
-!material/lib/bootstrap/dist/css/bootstrap.min.css
-!material/lib/bootstrap/dist/js/bootstrap.min.js
-
-# Saves moment files.
-!material/lib/moment
-material/lib/moment/*
-!material/lib/moment/min
-material/lib/moment/min/*
-!material/lib/moment/min/moment.min.js
-
-# Saves jquery files.
-!material/lib/jquery
-material/lib/jquery/*
-!material/lib/jquery/dist
-material/lib/jquery/dist/*
-!material/lib/jquery/dist/jquery.min.js
-
-# Saves awesomplete.
-!material/lib/awesomplete
-
-# Saves blazy.
-!material/lib/blazy
-material/lib/blazy/*
-!material/lib/blazy/blazy.min.js

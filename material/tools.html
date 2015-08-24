@@ -115,42 +115,44 @@
 </div>
 {include="page.footer"}
 <script>
-function activateFirefoxSocial(node) {
-    var loc = location.href;
-    var baseURL = loc.substring(0, loc.lastIndexOf("/"));
-    // Keeping the data separated (ie. not in the DOM) so that it's maintainable and diffable.
-    var data = {
-        name: "{$shaarlititle}",
-        description: "The personal, minimalist, super-fast, no-database delicious clone.",
-        author: "Shaarli",
-        version: "1.0.0",
-        iconURL: baseURL + "/tpl/material/images/favicons/favicon-96x96.png",
-        icon32URL: baseURL + "/tpl/material/images/favicons/favicon-32x32.png",
-        icon64URL: baseURL + "/tpl/material/images/favicons/favicon-64x64.png",
-        shareURL: baseURL + "{noparse}?post=%{url}&title=%{title}&description=%{description}&source=firefoxsocialapi{/noparse}",
-        homepageURL: baseURL
-    };
-    node.setAttribute("data-service", JSON.stringify(data));
-    var activate = new CustomEvent("ActivateSocialFeature");
-    node.dispatchEvent(activate);
-}
-
-$(document).ready(function(){
-    // Hack taken here: https://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
-    var isFirefox = typeof InstallTrigger !== 'undefined';
-    if(!isFirefox || window.location.protocol.indexOf('https') < 0){
-        $('#firefoxsocial').attr('disabled', 'disabled');
-        var message = $("<p></p>")
-            .addClass('highlight')
-            .html('You need to use Firefox over <strong>https</strong> to use this functionality.');
-        $('#firefox-api-title').after(message);
-    } else{
-        // Attach events to the Firefox Social button.
-        $('#firefoxsocial').on('click', function(){
-            activateFirefoxSocial(this);
-        });
+(function(){
+    function activateFirefoxSocial(node) {
+        var loc = location.href;
+        var baseURL = loc.substring(0, loc.lastIndexOf("/"));
+        // Keeping the data separated (ie. not in the DOM) so that it's maintainable and diffable.
+        var data = {
+            name: "{$shaarlititle}",
+            description: "The personal, minimalist, super-fast, no-database delicious clone.",
+            author: "Shaarli",
+            version: "1.0.0",
+            iconURL: baseURL + "/tpl/material/images/favicons/favicon-96x96.png",
+            icon32URL: baseURL + "/tpl/material/images/favicons/favicon-32x32.png",
+            icon64URL: baseURL + "/tpl/material/images/favicons/favicon-64x64.png",
+            shareURL: baseURL + "{noparse}?post=%{url}&title=%{title}&description=%{description}&source=firefoxsocialapi{/noparse}",
+            homepageURL: baseURL
+        };
+        node.setAttribute("data-service", JSON.stringify(data));
+        var activate = new CustomEvent("ActivateSocialFeature");
+        node.dispatchEvent(activate);
     }
-});
+
+    $(document).ready(function(){
+        // Hack taken from https://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
+        var isFirefox = typeof InstallTrigger !== 'undefined';
+        if(!isFirefox || window.location.protocol.indexOf('https') < 0){
+            $('#firefoxsocial').attr('disabled', 'disabled');
+            var message = $("<p></p>")
+                .addClass('highlight')
+                .html('You need to use Firefox over <strong>https</strong> to use this functionality.');
+            $('#firefox-api-title').after(message);
+        } else{
+            // Attach events to the Firefox Social button.
+            $('#firefoxsocial').on('click', function(){
+                activateFirefoxSocial(this);
+            });
+        }
+    });
+})();
 </script>
 </body>
 </html>

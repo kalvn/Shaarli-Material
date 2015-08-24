@@ -67,6 +67,7 @@ $GLOBALS['config']['MATERIAL_DATE_PATTERN'] = 'DD/MM/YYYY HH:mm:ss';
 
 // ### OPTIONAL ###
 // Enables debug mode for dev only. Will load CSS and JS resources from src rather than dist.
+// This requires to first download all libraries via bower. Check the *Develop and debug* section below.
 $GLOBALS['debug'] = false;
 ```
 
@@ -76,7 +77,7 @@ This theme uses a few Javascript libraries.
 
 - [jQuery](http://jquery.com/)
 - [Bootstrap](http://getbootstrap.com/)
-- [moment.js](http://momentjs.com/) (loaded only if you activate the `MATERIAL_DATE_FROMNOW` parameter described above)
+- [moment.js](http://momentjs.com/)
 - [awesomplete](http://leaverou.github.io/awesomplete/)
 - [blazy](http://dinbror.dk/blazy/)
 
@@ -84,9 +85,26 @@ This theme uses a few Javascript libraries.
 ## Demo
 A read-only demo is available on my personal Shaarli : http://exystenz.com/links
 
+
+## Develop and debug
+To tweak this theme, you'll need to install Javascript and CSS libraries. To do this, install bower and run this command from inside the `material` folder:
+
+```shell
+bower install
+```
+
+Then, to use these files instead of the compiled ones, change the parameter `debug` to true (check the section *Additional configuration* above).
+
+To finish, if you want to compile those files via Gulp, first adapt the `gulp.js` file to your needs. Then, install Gulp and nodejs if it's not done already and run the following command from the root folder:
+
+```shell
+npm install
+gulp
+```
+
 ------------------------------------------------------------------------------
 
-Shaarli Material was tested and validated on Shaarli 0.5.0.
+Shaarli Material was tested and validated on Shaarli 0.5.1.
 
 You can download Shaarli on the project page: http://sebsauvage.net/wiki/doku.php?id=php:shaarli
 
