@@ -182,6 +182,7 @@
     box-shadow: 0 -1px 0 #e5e5e5,0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);
     margin: 15px 0 15px 0;
     overflow: hidden;
+    border-radius: 2px;
 }
 .link-header{
     padding: 15px;
@@ -210,6 +211,9 @@ a.link-title:hover{
 .private a.link-title:before{
     content: url(../images/links/key_small.png);
     margin-right: 10px;
+}
+.private .link-inner{
+    border-left: 4px solid #B71C1C;
 }
 .link-date{
     font-size: 80%;

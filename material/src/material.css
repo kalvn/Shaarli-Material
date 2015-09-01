@@ -169,6 +169,7 @@ hr.darker{
     background: #fff;
     box-shadow: 0 -1px 0 #e5e5e5,0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);
     margin: 15px 0 15px 0;
+    border-radius: 2px;
 }
 .card-title{
     padding: 15px;
@@ -190,6 +191,7 @@ hr.darker{
     background: #fff;
     box-shadow: 0 -1px 0 #e5e5e5,0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);
     margin: 15px 0 15px 0;
+    border-radius: 2px;
 }
 .list > a{
     color: #333;
