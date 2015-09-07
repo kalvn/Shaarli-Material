@@ -4,6 +4,24 @@
     border: 1px solid #aaa;
     border-radius: 2px;
 }
+div.awesomplete > ul{
+    border: none;
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
+    border-radius: 0;
+}
+div.awesomplete > ul:before{
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
+}
+div.awesomplete > ul > li{
+    background-color: #fff;
+    padding: 5px 10px;
+}
+div.awesomplete > ul > li:hover{
+    background-color: #eee;
+}
+div.awesomplete li:hover mark{
+    background-color: #d7e800;
+}
 
 /* Nothing found */
 .nothing-found{
@@ -183,6 +201,9 @@
     margin: 15px 0 15px 0;
     overflow: hidden;
     border-radius: 2px;
+}
+.link-inner{
+    border-radius: 2px 0 0 2px;
 }
 .link-header{
     padding: 15px;
