@@ -37,8 +37,8 @@ Access your Shaarli and enjoy your new Material theme.
 The instructions are the same than for Shaarli 0.5.0 except that you need to paste the line in a file called `options.php` which you put in the `data` folder. Don't forget to add `<?php` at the beginning of the file.
 
 
-## Additional configuration
-You can configure a few things using the `data/config.php` file (or the `data/options.php` if you use an version older than 0.5.0) of your Shaarli installation. If the file doesn't exist, just create it.
+## Customization
+You can customize a few things using the `data/config.php` file (or the `data/options.php` if you use an version older than 0.5.0) of your Shaarli installation. If the file doesn't exist, just create it.
 
 Here is an example of what you can configure.
 
@@ -66,6 +66,16 @@ $GLOBALS['config']['MATERIAL_DATE_FROMNOW'] = false;
 $GLOBALS['config']['MATERIAL_DATE_PATTERN'] = 'DD/MM/YYYY HH:mm:ss';
 
 // ### OPTIONAL ###
+// Customizes the theme's colors.
+// I suggest picking colors from here : https://www.google.com/design/spec/style/color.html#color-color-palette with the shades 500, 600 and 700 for the 3 following settings, respectively.
+// MATERIAL_COLOR is mandatory and represents the main color (used for the toolbar or the buttons).
+$GLOBALS['config']['MATERIAL_COLOR'] = '#607D8B';
+// MATERIAL_COLOR_FOCUS is used for the hover and focus effects on buttons.
+$GLOBALS['config']['MATERIAL_COLOR_FOCUS'] = '#546E7A';
+// MATERIAL_COLOR_ACTIVE is used for the active effect on button (when they are clicked).
+$GLOBALS['config']['MATERIAL_COLOR_ACTIVE'] = '#455A64';
+
+// ### OPTIONAL ### WARNING: THIS MUST NOT BE SET TO true IN A PRODUCTION ENVIRONMENT
 // Enables debug mode for dev only. Will load CSS and JS resources from src rather than dist.
 // This requires to first download all libraries via bower. Check the *Develop and debug* section below.
 $GLOBALS['debug'] = false;
