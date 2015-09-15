@@ -12,7 +12,7 @@
         <div class="text-center">
             <img src="images/sad_star.png" alt="Nothing found" />
         </div>
-        <div class="nothing-found">Sorry... We found nothing{if="$search_type=='fulltext'"} for <strong>{$search_crits}</strong>{elseif="$search_type=='tags'"} for<strong>{loop="search_crits"} {$value|htmlspecialchars}{/loop}</strong>{else}{/if}.</div>
+        <div class="nothing-found">Sorry... We found nothing{if="$search_type=='fulltext'"} for <strong>{$search_crits}</strong>{elseif="$search_type=='tags'"} for<strong>{loop="search_crits"} {$value}{/loop}</strong>{else}{/if}.</div>
     {else}
         {if="$search_type=='fulltext'"}
             <div id="searchcriteria">{$result_count} results for <strong>{$search_crits}</strong></div>
@@ -21,7 +21,7 @@
             <div id="searchcriteria">{$result_count} results for tags <i>
             {loop="search_crits"}
                 <span class="link-tag-filter" title="Remove tag">
-                    <a href="?removetag={$value|htmlspecialchars}">{$value|htmlspecialchars}&nbsp;
+                    <a href="?removetag={$value}">{$value}&nbsp;
                         <span class="remove">&#x2715;</span>
                     </a>
                 </span>
@@ -36,7 +36,7 @@
                     <div class="link-header">
                         <div class="row">
                             <div class="col-sm-8">
-                                <a class="link-title" href="{$redirector}{$value.url|htmlspecialchars}">{$value.title|htmlspecialchars}</a>
+                                <a class="link-title" href="{$redirector}{$value.url}">{$value.title}</a>
                             </div>
                             <div class="col-sm-4">
                                 <div class="link-date">
@@ -46,7 +46,7 @@
                                         <span title="Short link here"><a href="?{$value.linkdate|smallHash}">Permalink</a></span>
                                     {/if}
                                     {if="$GLOBALS['config']['ARCHIVE_ORG']"}
-                                    <span class="link-archive"><span> - </span><a href="https://web.archive.org/web/{$value.url|htmlspecialchars}">archive</a></span>
+                                    <span class="link-archive"><span> - </span><a href="https://web.archive.org/web/{$value.url}">archive</a></span>
                                     {/if}
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                 {if="$value.tags"}
                                     <div class="link-tag-list">
                                     {loop="value.taglist"}
-                                        <span class="link-tag" title="Add tag"><a href="?addtag={$value|urlencode}">{$value|htmlspecialchars}</a></span> 
+                                        <span class="link-tag" title="Add tag"><a href="?addtag={$value|urlencode}">{$value}</a></span> 
                                     {/loop}
                                     </div>
                                 {/if}
@@ -78,7 +78,7 @@
                             {else}
                             <div class="col-sm-5 link-url-container">
                             {/if}
-                                <a href="{$value.url|htmlspecialchars}" class="link-url"><span title="Short link">{$value.url|htmlspecialchars}</span></a>
+                                <a href="{$value.url}" class="link-url"><span title="Short link">{$value.url}</span></a>
                             </div>
                             {if="isLoggedIn()"}
                             <div class="col-sm-2 link-actions">

@@ -8,14 +8,14 @@
 		<div class="col-md-6 col-md-offset-3">
 			<form method="POST" action="?do=upload" enctype="multipart/form-data" name="uploadform" id="uploadform" class="card">
 				<input type="hidden" name="token" value="{$token}">
-				<input type="hidden" name="MAX_FILE_SIZE" value="{$maxfilesize|htmlspecialchars}">
+				<input type="hidden" name="MAX_FILE_SIZE" value="{$maxfilesize}">
 				<div class="card-title">Import links</div>
 				<div class="card-body">
 					<p>Import Netscape HTML bookmarks (as exported from Firefox/Chrome/Opera/Delicious/Diigo...).</p>
 					<div class="form-entry">
 						<label for="filetoupload">File to upload</label>
 						<input type="file" id="filetoupload" name="filetoupload"/>
-						<div class="sublabel">(Max: {$maxfilesize|htmlspecialchars} bytes)</div>
+						<div class="sublabel">(Max: {$maxfilesize} bytes)</div>
 					</div>
 					<div class="form-entry">
 						<label for="private"><input type="checkbox" name="private" id="private">Import all links as private</label>

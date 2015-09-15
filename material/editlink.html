@@ -17,25 +17,25 @@
             <form method="POST" name="linkform" class="card">
                 <input type="hidden" name="lf_linkdate" value="{$link.linkdate}">
                 <input type="hidden" name="token" value="{$token}">
-                {if="$http_referer"}<input type="hidden" name="returnurl" value="{$http_referer|htmlspecialchars}">{/if}
+                {if="$http_referer"}<input type="hidden" name="returnurl" value="{$http_referer}">{/if}
 
                 <div class="card-title">{if="!$link_is_new"}Edit a link{else}Add a new link{/if}</div>
                 <div class="card-body">
                     <div class="form-entry">
                         <label for="lf_url">URL</label><br/>
-                        <input type="text" name="lf_url" id="lf_url" value="{$link.url|htmlspecialchars}" placeholder="Type a url...">
+                        <input type="text" name="lf_url" id="lf_url" value="{$link.url}" placeholder="Type a url...">
                     </div>
                     <div class="form-entry">
                         <label for="lf_title">Title</label><br/>
-                        <input type="text" name="lf_title" id="lf_title" value="{$link.title|htmlspecialchars}" placeholder="Title...">
+                        <input type="text" name="lf_title" id="lf_title" value="{$link.title}" placeholder="Title...">
                     </div>
                     <div class="form-entry">
                         <label for="lf_description">Description</label><br/>
-                        <textarea name="lf_description" id="lf_description" placeholder="Describe the link..." rows="4">{$link.description|htmlspecialchars}</textarea>
+                        <textarea name="lf_description" id="lf_description" placeholder="Describe the link..." rows="4">{$link.description}</textarea>
                     </div>
                     <div class="form-entry">
                         <label for="lf_tags">Tags</label><br/>
-                        <input type="text" id="lf_tags" name="lf_tags" id="lf_tags" value="{$link.tags|htmlspecialchars}" class="lf_input"
+                        <input type="text" id="lf_tags" name="lf_tags" id="lf_tags" value="{$link.tags}" class="lf_input"
                             data-list="{loop="$tags"}{$key}, {/loop}" data-multiple autocomplete="off" />
                     </div>
                     <div class="form-entry">

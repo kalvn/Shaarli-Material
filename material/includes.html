@@ -77,6 +77,13 @@
     div.awesomplete > ul > li[aria-selected=true]{
         background-color: {$GLOBALS['config']['MATERIAL_COLOR']};
     }
+    div.awesomplete > ul > li[aria-selected=true]:hover{
+        {if="isset($GLOBALS['config']['MATERIAL_COLOR_FOCUS'])"}
+        background-color: {$GLOBALS['config']['MATERIAL_COLOR_FOCUS']};
+        {else}
+        background-color: {$GLOBALS['config']['MATERIAL_COLOR']};
+        {/if}
+    }
 </style>
 {/if}
 {if="is_file('src/user.css')"}<link type="text/css" rel="stylesheet" href="src/user.css" />{/if}
