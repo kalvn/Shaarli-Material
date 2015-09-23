@@ -10,7 +10,7 @@ var CSS_SELECTOR = [
         ROOT + 'src/style.css'
     ];
 // CSS destination folder.
-var CSS_DIST = ROOT + 'dist';
+var CSS_OUTPUT = ROOT + 'build';
 // CSS libraries.
 var CSS_LIB = [
     ROOT + 'lib/bootstrap/dist/css/bootstrap.min.css'
@@ -21,9 +21,9 @@ var CSS_LIB_NO_UNCSS = [
 ]
 
 // JS files of the theme.
-var JS_SELECTOR = ROOT + 'src/*.js';
+var JS_SELECTOR = ROOT + 'src/*.js'
 // JS destination folder.
-var JS_DIST = ROOT + 'dist';
+var JS_OUTPUT = ROOT + 'build';
 // JS libraries.
 var JS_LIB = [
     ROOT + 'lib/jquery/dist/jquery.min.js',
@@ -49,7 +49,8 @@ var gulp = require("gulp"),
     uncss = require('gulp-uncss'),
     copy = require('gulp-copy'),
     replace = require('gulp-replace'),
-    addsrc = require('gulp-add-src');
+    addsrc = require('gulp-add-src'),
+    merge = require('merge-stream');
 
 var onError = function(err){
     console.log(err.toString());
@@ -59,11 +60,27 @@ var onError = function(err){
 /*************/
 /*** Tasks ***/
 /*************/
-gulp.task('css', function () {
-    return gulp.src(CSS_SELECTOR)
+gulp.task('js', function(){
+    return gulp.src(JS_LIB)
         .pipe(plumber({
             errorHandler: onError
         }))
+        .pipe(addsrc.append(JS_SELECTOR))
+        .pipe(concat('scripts.js'))
+        .pipe(uglify())
+        .pipe(rename('scripts.min.js'))
+        .pipe(gulp.dest(JS_OUTPUT));
+});
+
+gulp.task('css', function(){
+    return gulp.src(CSS_LIB)
+        .pipe(concat('lib.css'))
+        .pipe(replace(/\.\.\/fonts\//g, 'fonts/'))
+        .pipe(uncss({
+            html: [ROOT + '/*.html']
+        }))
+        .pipe(addsrc.append(CSS_LIB_NO_UNCSS))
+        .pipe(addsrc.append(CSS_SELECTOR))
         .pipe(concat('styles.css'))
         .pipe(autoprefixer({
             browsers: ['last 5 versions', 'ie >= 8'],
@@ -71,46 +88,15 @@ gulp.task('css', function () {
         }))
         .pipe(minifyCSS())
         .pipe(rename('styles.min.css'))
-        .pipe(gulp.dest(CSS_DIST));
+        .pipe(gulp.dest(CSS_OUTPUT));
 });
 
-gulp.task('js', function () {
-    return gulp.src(JS_SELECTOR)
-        .pipe(plumber({
-            errorHandler: onError
-        }))
-        .pipe(concat('scripts.js'))
-        .pipe(uglify())
-        .pipe(rename('scripts.min.js'))
-        .pipe(gulp.dest(JS_DIST));
-});
-
-gulp.task('libjs', function(){
-    return gulp.src(JS_LIB)
-        .pipe(concat('lib.js'))
-        .pipe(uglify())
-        .pipe(rename('lib.min.js'))
-        .pipe(gulp.dest(JS_DIST));;
-});
-gulp.task('libcss', function(){
-    return gulp.src(CSS_LIB)
-        .pipe(concat('lib.css'))
-        .pipe(replace(/\.\.\/fonts\//g, 'fonts/'))
-        .pipe(uncss({
-            html: [ROOT + '/*.html']
-        }))
-        .pipe(addsrc(CSS_LIB_NO_UNCSS))
-        .pipe(concat('lib.css'))
-        .pipe(minifyCSS())
-        .pipe(rename('lib.min.css'))
-        .pipe(gulp.dest(CSS_DIST));
-});
 gulp.task('static', function(){
     return gulp.src(BOOTSTRAP_FONTS)
         .pipe(plumber({
             errorHandler: onError
         }))
-        .pipe(copy(CSS_DIST + '/fonts/', {prefix: 5}));
+        .pipe(copy(CSS_OUTPUT + '/fonts/', {prefix: 5}));
 });
 
 
@@ -125,4 +111,4 @@ gulp.task('watch', function() {
 /************************/
 /*** Boot instruction ***/
 /************************/
-gulp.task('default', ['watch', 'css', 'js', 'libcss', 'libjs', 'static']);
+gulp.task('default', ['watch', 'css', 'js', 'static']);
