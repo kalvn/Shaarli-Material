@@ -6,7 +6,7 @@
 material/lib
 
 # Removes the user defined template.
-material/scripts.html
+material/extra.html
 
 # Removes node modules.
 node_modules
