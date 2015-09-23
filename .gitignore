@@ -5,5 +5,14 @@
 # Removes external libraries' files.
 material/lib
 
-# Removes node modules
+# Removes the user defined template.
+material/scripts.html
+
+# Removes node modules.
 node_modules
+
+# Removes the HTML version of README, in case I forget to remove it manually.
+README.html
+
+# Ignores SCSS as they are not ready yet.
+material/scss

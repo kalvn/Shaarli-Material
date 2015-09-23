@@ -36,53 +36,34 @@
 <script src="dist/scripts.min.js"></script>
 {/if}
 {if="isset($GLOBALS['config']['MATERIAL_COLOR'])"}
+{$materialColor=$GLOBALS['config']['MATERIAL_COLOR']}
+{$materialColorFocus=isset($GLOBALS['config']['MATERIAL_COLOR_FOCUS']) ? $GLOBALS['config']['MATERIAL_COLOR_FOCUS'] : $materialColor}
+{$materialColorActive=isset($GLOBALS['config']['MATERIAL_COLOR_ACTIVE']) ? $GLOBALS['config']['MATERIAL_COLOR_ACTIVE'] : $materialColor}
 <style type="text/css">
-    a{
-        color: {$GLOBALS['config']['MATERIAL_COLOR']};
+    a,
+    label.active{
+        color: {$materialColor};
     }
     input[type=text]:focus,
     input[type=search]:focus,
     input[type=number]:focus,
     input[type=password]:focus,
-    textarea:focus{
-        border-color: {$GLOBALS['config']['MATERIAL_COLOR']};
-    }
+    textarea:focus,
     select:focus{
-        border-color: {$GLOBALS['config']['MATERIAL_COLOR']};
+        border-color: {$materialColor};
     }
-    .button-primary{
-        background-color: {$GLOBALS['config']['MATERIAL_COLOR']};
+    .button-primary,
+    .header-main,
+    div.awesomplete > ul > li[aria-selected=true]{
+        background-color: {$materialColor};
     }
     .button-primary:hover,
-    .button-primary:focus{
-        {if="isset($GLOBALS['config']['MATERIAL_COLOR_FOCUS'])"}
-        background-color: {$GLOBALS['config']['MATERIAL_COLOR_FOCUS']};
-        {else}
-        background-color: {$GLOBALS['config']['MATERIAL_COLOR']};
-        {/if}
+    .button-primary:focus,
+    div.awesomplete > ul > li[aria-selected=true]:hover{
+        background-color: {$materialColorFocus};
     }
     .button-primary:active{
-        {if="isset($GLOBALS['config']['MATERIAL_COLOR_ACTIVE'])"}
-        background-color: {$GLOBALS['config']['MATERIAL_COLOR_ACTIVE']};
-        {else}
-        background-color: {$GLOBALS['config']['MATERIAL_COLOR']};
-        {/if}
-    }
-    label.active{
-        color: {$GLOBALS['config']['MATERIAL_COLOR']};
-    }
-    .header-main{
-        background-color: {$GLOBALS['config']['MATERIAL_COLOR']};
-    }
-    div.awesomplete > ul > li[aria-selected=true]{
-        background-color: {$GLOBALS['config']['MATERIAL_COLOR']};
-    }
-    div.awesomplete > ul > li[aria-selected=true]:hover{
-        {if="isset($GLOBALS['config']['MATERIAL_COLOR_FOCUS'])"}
-        background-color: {$GLOBALS['config']['MATERIAL_COLOR_FOCUS']};
-        {else}
-        background-color: {$GLOBALS['config']['MATERIAL_COLOR']};
-        {/if}
+        background-color: {$materialColorActive};
     }
 </style>
 {/if}
@@ -95,3 +76,6 @@ var shaarli = {
     datePattern: '{if="isset($GLOBALS['config']['MATERIAL_DATE_PATTERN'])"}{$GLOBALS['config']['MATERIAL_DATE_PATTERN']}{/if}'
 };
 </script>
+{if="file_exists('tpl/material/extra.html')"}
+{include="extra"}
+{/if}

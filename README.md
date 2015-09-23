@@ -81,6 +81,11 @@ $GLOBALS['config']['MATERIAL_COLOR_ACTIVE'] = '#455A64';
 $GLOBALS['debug'] = false;
 ```
 
+## Add custom resources
+If you want to add your custom scripts or styles (for example analytics script), you must create a new template named `extra.html` in the *material* folder.
+Then, anything you add in this file will be included at the end of the `<head>` tag.
+
+This file is NOT commited on the repository, which allows you to update the theme without overriding this file.
 
 ## Libraries used
 This theme uses a few Javascript libraries.
@@ -114,7 +119,7 @@ gulp
 
 ------------------------------------------------------------------------------
 
-Shaarli Material was tested and validated on Shaarli 0.5.3.
+Shaarli Material was tested and validated on Shaarli 0.5.4.
 
 You can download Shaarli on the project page: http://sebsauvage.net/wiki/doku.php?id=php:shaarli
 
