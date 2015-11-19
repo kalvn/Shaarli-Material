@@ -41,6 +41,25 @@
             </form>
             <div class="col-lg-2">
                 <div class="header-buttons">
+                    {if="isset($plugins_header.buttons_toolbar) ||isset($plugins_header.fields_toolbar)"}
+                        <div class="toolbar-button-container">
+                            <button type="button" class="icon-plugin popup-trigger" data-popup="popup-plugin" title="More"></button>
+                            <div id="popup-plugin" class="popup popup-plugin">
+                                <div class="popup-body">
+                                    {loop="$plugins_header.buttons_toolbar"}
+                                    <ul>
+                                        {$value}
+                                    </ul>
+                                    {/loop}
+                                    {loop="$plugins_header.fields_toolbar"}
+                                        <div class="popup-content-area">
+                                            {$value}
+                                        </div>
+                                    {/loop}
+                                </div>
+                            </div>
+                        </div>
+                    {/if}
                     {if="isLoggedIn()"}
                         <div class="toolbar-button-container">
                             <button type="button" class="icon-login popup-trigger" data-popup="popup-login" title="Logout"></button>
@@ -99,13 +118,12 @@
                                     <li><a href="?linksperpage=50">50 links</a></li>
                                     <li><a href="?linksperpage=100">100 links</a></li>
                                 </ul>
-                                <form method="GET" class="links-per-page">
+                                <form method="GET" class="popup-content-area">
                                     <input type="text" name="linksperpage" size="2" placeholder="Custom value..."/>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
@@ -118,4 +136,12 @@
     <form id="hidden-tag-form" class="hidden" method="GET" name="tagfilter">
         <input type="hidden" name="searchtags" id="tagfilter_value" value=""/>
     </form>
+
+    {if="!empty($plugin_errors) && isLoggedIn()"}
+        <ul class="errors">
+            {loop="plugin_errors"}
+                <li>{$value}</li>
+            {/loop}
+        </ul>
+    {/if}
 {/if}

@@ -2,7 +2,15 @@
     <div>
         <b><a href="https://github.com/shaarli/Shaarli">Shaarli</a></b> - The personal, minimalist, super-fast, no-database delicious clone by the <a href="https://github.com/shaarli/Shaarli">Shaarli</a> community - <a href="doc/index.html">Help</a> - Theme by <a href="https://github.com/kalvn">kalvn</a>
     </div>
+    <div>
+        {loop="$plugins_footer.text"}
+            {$value}
+        {/loop}
+    </div>
     {if="$newversion"}
         <div id="newversion"><span id="version_id">&#x25CF;</span> Shaarli {$newversion} is <a href="https://github.com/shaarli/Shaarli/releases">available</a>.</div>
     {/if}
 </div>
+{loop="$plugins_footer.js_files"}
+     <script src="{$value}#"></script>
+{/loop}

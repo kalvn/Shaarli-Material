@@ -38,6 +38,13 @@
                         <input type="text" id="lf_tags" name="lf_tags" id="lf_tags" value="{$link.tags}" class="lf_input"
                             data-list="{loop="$tags"}{$key}, {/loop}" data-multiple autocomplete="off" />
                     </div>
+                    {if="isset($edit_link_plugin)"}
+                    <div class="form-entry">
+                        {loop="$edit_link_plugin"}
+                             {$value}
+                        {/loop}
+                    </div>
+                    {/if}
                     <div class="form-entry">
                         <label for="lf_private">
                             <input type="checkbox" {if="($link_is_new && $GLOBALS['privateLinkByDefault']==true) || $link.private == true"}checked="checked"{/if} name="lf_private" id="lf_private"/>

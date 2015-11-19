@@ -5,6 +5,11 @@
 <body class="dark-toolbar">
 {include="page.header"}
 <div class="daily">
+    <div id="plugin_zone_start_picwall" class="plugin_zone">
+         {loop="$plugin_start_zone"}
+             {$value}
+         {/loop}
+    </div>
     <div class="dailyAbout">
       All links of one day<br>in a single page.<br>
       {if="$previousday"} <a href="?do=daily&amp;day={$previousday}"><b>&lt;</b>Previous day</a>{else}<b>&lt;</b>Previous day{/if}
@@ -18,6 +23,7 @@
     <div class="clear"></div>
 
     {if="$linksToDisplay"}
+        <div class="clearfix">
         {loop="cols"}
             {if="isset($value[0])"}
             <div id="daily_col{$counter+1}">
@@ -48,14 +54,25 @@
                             <div class="dailyEntryThumbnail">{$link.thumbnail}</div>
                         {/if}
                         <div class="dailyEntryDescription">{$link.formatedDescription}</div>
+                        <div class="dailyEntryFooter">
+                            {loop="$link.link_plugin"}
+                                {$value}
+                            {/loop}
+                        </div>
                     </div>
                 {/loop}
             </div>
             {/if}
         {/loop}
+        </div>
     {else}
          <div class="dailyNoEntry">No articles on this day.</div>
     {/if}
+    <div id="plugin_zone_end_picwall" class="plugin_zone">
+        {loop="$plugin_end_zone"}
+            {$value}
+        {/loop}
+    </div>
     <div id="closing"><img src="images/squiggle_closing.png" width="66" height="61" alt="-"></div>
 </div>
 {include="page.footer"}

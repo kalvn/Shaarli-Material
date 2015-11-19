@@ -66,6 +66,9 @@
 </style>
 {/if}
 {if="is_file('src/user.css')"}<link type="text/css" rel="stylesheet" href="src/user.css" />{/if}
+{loop="$plugins_includes.css_files"}
+<link type="text/css" rel="stylesheet" href="{$value}#"/>
+{/loop}
 
 <script>
 var shaarli = {

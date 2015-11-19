@@ -416,7 +416,7 @@ label.active{
 .popup input[type=text]{
     width: 100%;
 }
-.links-per-page{
+.popup .popup-content-area{
     padding: 10px;
 }
 .header-main .popup a{
@@ -434,7 +434,8 @@ label.active{
 .icon-private,
 .icon-private-active,
 .icon-filter,
-.icon-fold{
+.icon-fold,
+.icon-plugin{
     width: 20px;
     height: 20px;
     background-size: 20px;
@@ -460,6 +461,9 @@ label.active{
 }
 .icon-filter{
     background-image: url(../images/toolbar/filter.png);   
+}
+.icon-plugin{
+    background-image: url(../images/toolbar/dots.png);
 }
 .icon-unfold{
     background-image: url(../images/toolbar/chevron-down.png);

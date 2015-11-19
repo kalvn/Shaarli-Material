@@ -6,6 +6,10 @@
 {include="page.header"}
 
 <div id="linklist" class="container">
+    {loop="$plugin_start_zone"}
+         {$value}
+    {/loop}
+
     {include="linklist.paging"}
 
     {if="count($links)==0"}
@@ -45,9 +49,14 @@
                                     {else}
                                         <span title="Short link here"><a href="?{$value.linkdate|smallHash}">Permalink</a></span>
                                     {/if}
+                                    {loop="$value.link_plugin"}
+                                        <span> - {$value}</span>
+                                    {/loop}
+                                    {ignore}
                                     {if="$GLOBALS['config']['ARCHIVE_ORG']"}
                                     <span class="link-archive"><span> - </span><a href="https://web.archive.org/web/{$value.url}">archive</a></span>
                                     {/if}
+                                    {/ignore}
                                 </div>
                             </div>
                         </div>
@@ -108,6 +117,10 @@
     <div id="image-popup" class="image-popup"></div>
 
     {include="linklist.paging"}
+    
+    {loop="$plugin_end_zone"}
+        {$value}
+    {/loop}
 </div>
 
 {if="!empty($linkcount)"}

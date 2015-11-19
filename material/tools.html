@@ -78,6 +78,17 @@
             </div>
         </div>
     </div>
+    {if="isset($tools_plugin)"}
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <hr class="darker"/>
+            <h2 class="mtm">Plugin settings</h2>
+            {loop="$tools_plugin"}
+                {$value}
+            {/loop}
+        </div>
+    </div>
+    {/if}
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <hr class="darker"/>

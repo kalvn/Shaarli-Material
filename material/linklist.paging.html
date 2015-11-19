@@ -1,15 +1,19 @@
 {if="$page_max > 1"}
-<div class="paging">
-    
-        <div class="page-changer">
-            {if="$previous_page_url"}
-                <a href="{$previous_page_url}" class="paging-older" title="Older">&#x25C4;</a>
-            {/if}
-                <span class="paging-current">page {$page_current} / {$page_max} </span>
-            {if="$next_page_url"}
-                <a href="{$next_page_url}" class="paging-newer" title="Newer">&#x25BA;</a>
-            {/if}
-        </div>
-    
+<div class="paging clearfix">
+    <div class="plugin-actions col-md-6">
+        {loop="$action_plugin"}
+            {$value}
+        {/loop}
     </div>
+    <div class="page-changer col-md-6">
+        {if="$previous_page_url"}
+            <a href="{$previous_page_url}" class="paging-older" title="Older">&#x25C4;</a>
+        {/if}
+            <span class="paging-current">page {$page_current} / {$page_max} </span>
+        {if="$next_page_url"}
+            <a href="{$next_page_url}" class="paging-newer" title="Newer">&#x25BA;</a>
+        {/if}
+    </div>
+
+</div>
 {/if}

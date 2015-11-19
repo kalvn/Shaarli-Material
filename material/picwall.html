@@ -5,11 +5,21 @@
 </head>
 <body class="dark dark-toolbar">
 {include="page.header"}
-<div id="picwall_container text-center">
+<div id="plugin_zone_start_picwall" class="plugin_zone">
+    {loop="$plugin_start_zone"}
+        {$value}
+    {/loop}
+</div>
+<div id="picwall_container text-center" class="clearfix">
     {loop="linksToDisplay"}
     <div class="picwall-pictureframe">
 	    {$value.thumbnail}<a class="picwall-link" href="{$value.url}"><span class="info">{$value.title}</span></a>
     </div>
+    {/loop}
+</div>
+<div id="plugin_zone_end_picwall" class="plugin_zone">
+    {loop="$plugin_end_zone"}
+        {$value}
     {/loop}
 </div>
 <div class="clearfix"></div>
