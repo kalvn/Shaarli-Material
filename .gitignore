@@ -11,7 +11,7 @@ material/extra.html
 # Removes node modules.
 node_modules
 
-# Removes the HTML version of README, in case I forget to remove it manually.
+# Removes the HTML version of README.
 README.html
 
 # Ignores SCSS as they are not ready yet.

@@ -27,7 +27,7 @@ var JS_OUTPUT = ROOT + 'build';
 // JS libraries.
 var JS_LIB = [
     ROOT + 'lib/jquery/dist/jquery.min.js',
-    ROOT + 'lib/bootstrap/dist/js/bootstrap.min.js',
+    //ROOT + 'lib/bootstrap/dist/js/bootstrap.min.js',
     ROOT + 'lib/awesomplete/awesomplete.min.js',
     ROOT + 'lib/blazy/blazy.min.js',
     ROOT + 'lib/moment/min/moment.min.js'
