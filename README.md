@@ -25,7 +25,7 @@ Versions suffixed by `-patch.x` include some bugfix so take those preferentially
 Download the `material` folder into the `tpl` directory of your Shaarli installation. It should be next to existing `.html` files.
 
 In your Shaarli installation, open the `data/config.php` and change the `RAINTPL_TPL` parameter to `tpl/material/`.
-If you can find this parameter, paste the following line at the end of the file:
+If you can't find this parameter, paste the following line at the end of the file:
 
 ```php
 $GLOBALS['config']['RAINTPL_TPL'] = 'tpl/material/' ; // keep the trailing slash!
@@ -87,6 +87,11 @@ Then, anything you add in this file will be included at the end of the `<head>` 
 
 This file is NOT commited on the repository, which allows you to update the theme without overriding this file.
 
+## Plugins
+As from Shaarli 0.6.0, you can install plugins to enrich your experience.
+Most of them should work properly, although it's up to the plugin developer to ensure the code is as minimal as possible to integrates well in themes.
+I tested all themes available with Shaarli 0.6.0 and they all work well even though the display is a bit weird for some of them. I will keep monitoring the behavior of popular plugins in the future.
+
 ## Libraries used
 This theme uses a few Javascript libraries.
 
@@ -119,7 +124,7 @@ gulp
 
 ------------------------------------------------------------------------------
 
-Shaarli Material was tested and validated on Shaarli 0.5.4.
+Shaarli Material was tested and validated on Shaarli 0.6.0.
 
 You can download Shaarli on the project page: http://sebsauvage.net/wiki/doku.php?id=php:shaarli
 
