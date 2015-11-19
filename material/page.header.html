@@ -48,7 +48,7 @@
                                 <div class="popup-body">
                                     {loop="$plugins_header.buttons_toolbar"}
                                     <ul>
-                                        {$value}
+                                        <li>{$value}</li>
                                     </ul>
                                     {/loop}
                                     {loop="$plugins_header.fields_toolbar"}
@@ -138,7 +138,7 @@
     </form>
 
     {if="!empty($plugin_errors) && isLoggedIn()"}
-        <ul class="errors">
+        <ul class="errors container">
             {loop="plugin_errors"}
                 <li>{$value}</li>
             {/loop}
