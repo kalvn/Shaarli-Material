@@ -97,7 +97,7 @@
                                 {if="isLoggedIn()"}
                                 <form method="POST"><input type="hidden" name="lf_linkdate" value="{$value.linkdate}">
                                     <input type="hidden" name="token" value="{$token}"><input type="hidden" name="delete_link">
-                                    <button type="submit" alt="Delete" title="Delete" class="icon-delete" onClick="return confirmDeleteLink();">
+                                    <button type="submit" alt="Delete" title="Delete" class="icon-delete" onClick="return confirmDeleteLink();"></button>
                                 </form>
                                 <form method="GET"><input type="hidden" name="edit_link" value="{$value.linkdate}">
                                     <button type="submit" alt="Edit" title="Edit" class="icon-edit"></button>
