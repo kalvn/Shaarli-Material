@@ -40,7 +40,7 @@
                     <div class="link-header">
                         <div class="row">
                             <div class="col-sm-8">
-                                <a class="link-title" href="{$redirector}{$value.url}">{$value.title}</a>
+                                <a class="link-title" href="{$value.real_url}">{$value.title}</a>
                             </div>
                             <div class="col-sm-4">
                                 <div class="link-date">
@@ -53,9 +53,6 @@
                                         <span> - {$value}</span>
                                     {/loop}
                                     {ignore}
-                                    {if="$GLOBALS['config']['ARCHIVE_ORG']"}
-                                    <span class="link-archive"><span> - </span><a href="https://web.archive.org/web/{$value.url}">archive</a></span>
-                                    {/if}
                                     {/ignore}
                                 </div>
                             </div>
@@ -87,7 +84,7 @@
                             {else}
                             <div class="col-sm-5 link-url-container">
                             {/if}
-                                <a href="{$value.url}" class="link-url"><span title="Short link">{$value.url}</span></a>
+                                <a href="{$value.real_url}" class="link-url"><span title="Short link">{$value.real_url}</span></a>
                             </div>
                             {if="isLoggedIn()"}
                             <div class="col-sm-2 link-actions">

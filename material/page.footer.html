@@ -7,8 +7,13 @@
             {$value}
         {/loop}
     </div>
-    {if="$newversion"}
-        <div id="newversion"><span id="version_id">&#x25CF;</span> Shaarli {$newversion} is <a href="https://github.com/shaarli/Shaarli/releases">available</a>.</div>
+    {if="$newVersion"}
+        <div id="newversion"><span id="version_id">&#x25CF;</span> Shaarli {$newVersion} is <a href="https://github.com/shaarli/Shaarli/releases">available</a>.</div>
+    {/if}
+    {if="isset($versionError) && $versionError"}
+    <div id="newversion">
+        Error: {$versionError}
+    </div>
     {/if}
 </div>
 {loop="$plugins_footer.js_files"}
