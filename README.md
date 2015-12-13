@@ -124,7 +124,7 @@ gulp
 
 ------------------------------------------------------------------------------
 
-Shaarli Material was tested and validated on Shaarli 0.6.0.
+Shaarli Material was tested and validated on Shaarli 0.6.1.
 
 You can download Shaarli on the project page: http://sebsauvage.net/wiki/doku.php?id=php:shaarli
 

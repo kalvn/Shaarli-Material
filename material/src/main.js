@@ -107,4 +107,43 @@ $(document).ready(function(){
             }
         }
     });
+
+    // Material waves on buttons.
+    $('.ripple, .button, .button-raised')
+        .off('mousedown.tinymaterialripple')
+        .not('[disabled]')
+        .on('mousedown.tinymaterialripple', function(event){
+            var el = this;
+
+            var offsetX = (event.pageX - $(event.target).offset().left);
+            var offsetY = (event.pageY - $(event.target).offset().top);
+
+            // Compensate the offset shift when the click is done on an element within the element we want the ripple to be displayed on.
+            var getRealValues = function(element){
+                if(element == el || !element){
+                    return;
+                }
+
+                offsetX += element.offsetLeft;
+                offsetY += element.offsetTop;
+
+                getRealValues(element.offsetParent);
+            }
+            getRealValues(event.target);
+
+            var el = $(el);
+            var rippleDefaultDiameter = 20;
+            var $div = $('<div/>');
+
+            $div.addClass('ripple-effect');
+            $div.css({
+                top: offsetY - (rippleDefaultDiameter/2) + 'px',// - ($ripple.height() / 2),
+                left: offsetX - (rippleDefaultDiameter/2) + 'px',// - ($ripple.width() / 2),
+                background: el.data("ripple-color")
+            }).appendTo(el);
+
+            window.setTimeout(function() {
+                $div.remove();
+            }, 2000);
+        });
 });

@@ -134,6 +134,9 @@ div.awesomplete li[aria-selected=true]:hover mark{
     color: #fff;
     text-decoration: none;
 }
+.header-main a.header-brand:hover{
+    color: #eee;
+}
 .header-main .header-nav{
     height: 56px;
 }

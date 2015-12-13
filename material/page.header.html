@@ -5,20 +5,20 @@
         <div class="row">
             <div class="col-lg-2">
                 <a href="?" class="header-brand">{$shaarlititle}</a>
-                <a href="#" class="icon-rss icon-unfold pull-right hidden-lg" title="Show/hide menu"></a>
+                <a href="#" class="icon-rss icon-unfold pull-right hidden-lg ripple" title="Show/hide menu"></a>
             </div>
             <form method="GET" method="searchform" class="col-lg-8 header-middle">
                 <div class="row">
                     <div class="col-sm-5 header-nav">
                         <div class="row">
                             <div class="col-xs-4 text-center">
-                                <a href="?do=tagcloud" class="toolbar-link button-inverse">Tag cloud</a>
+                                <a href="?do=tagcloud" class="toolbar-link button-inverse ripple">Tag cloud</a>
                             </div>
                             <div class="col-xs-4 text-center">
-                                <a href="?do=picwall{$searchcrits}" class="toolbar-link button-inverse">Picture wall</a>
+                                <a href="?do=picwall{$searchcrits}" class="toolbar-link button-inverse ripple">Picture wall</a>
                             </div>
                             <div class="col-xs-4 text-center">
-                                <a href="?do=daily" class="toolbar-link button-inverse">Daily</a>
+                                <a href="?do=daily" class="toolbar-link button-inverse ripple">Daily</a>
                             </div>
                         </div>
                     </div>
@@ -30,10 +30,10 @@
                     <div class="col-sm-4">
                         <div class="row">
                             <div class="col-xs-6">
-                                <button type="submit" id="toolbar-button-search" class="button-raised toolbar-link">Search</button>
+                                <button type="submit" id="toolbar-button-search" class="button-raised toolbar-link ripple ripple-primary">Search</button>
                             </div>
                             <div class="col-xs-6">
-                                <button type="button" id="toolbar-button-filter" class="button-raised toolbar-link">Filter by tag</button>
+                                <button type="button" id="toolbar-button-filter" class="button-raised toolbar-link ripple ripple-primary">Filter by tag</button>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                 <div class="header-buttons">
                     {if="isset($plugins_header.buttons_toolbar) ||isset($plugins_header.fields_toolbar)"}
                         <div class="toolbar-button-container">
-                            <button type="button" class="icon-plugin popup-trigger" data-popup="popup-plugin" title="More"></button>
+                            <button type="button" class="icon-plugin popup-trigger ripple" data-popup="popup-plugin" title="More"></button>
                             <div id="popup-plugin" class="popup popup-plugin">
                                 <div class="popup-body">
                                     {loop="$plugins_header.buttons_toolbar"}
@@ -62,61 +62,61 @@
                     {/if}
                     {if="isLoggedIn()"}
                         <div class="toolbar-button-container">
-                            <button type="button" class="icon-login popup-trigger" data-popup="popup-login" title="Logout"></button>
+                            <button type="button" class="icon-login popup-trigger ripple" data-popup="popup-login" title="Logout"></button>
                             <div id="popup-login" class="popup popup-login">
                                 <div class="popup-title">Connection</div>
                                 <div class="popup-body">
                                     <ul>
-                                        <li><a href="?do=logout">Logout</a></li>
+                                        <li><a href="?do=logout" class="ripple">Logout</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <a href="?do=tools" class="icon-tools" title="Tools"></a>
+                        <a href="?do=tools" class="icon-tools ripple" title="Tools"></a>
                     {elseif="$GLOBALS['config']['OPEN_SHAARLI']"}
-                        <a href="?do=tools" class="icon-tools" title="Tools"></a>
+                        <a href="?do=tools" class="icon-tools ripple" title="Tools"></a>
                     {else}
                         <div class="toolbar-button-container">
-                            <button type="button" class="icon-login popup-trigger" data-popup="popup-login" title="Connection"></button>
+                            <button type="button" class="icon-login popup-trigger ripple" data-popup="popup-login" title="Connection"></button>
                             <div id="popup-login" class="popup popup-login">
                                 <div class="popup-title">Connection</div>
                                 <div class="popup-body">
                                     <ul>
-                                        <li><a href="?do=login">Login</a></li>
+                                        <li><a href="?do=login" class="ripple">Login</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     {/if}
                     {if="isLoggedIn()"}
-                    <a href="?privateonly" class="icon-private{if="$privateonly"}-active{/if}" title="{if="$privateonly"}Click to see all links{else}Click to see only private links{/if}"></a>
+                    <a href="?privateonly" class="icon-private{if="$privateonly"}-active{/if} ripple" title="{if="$privateonly"}Click to see all links{else}Click to see only private links{/if}"></a>
                     {/if}
 
                     {if="$GLOBALS['config']['SHOW_ATOM']"}
                         <div class="toolbar-button-container">
-                            <button type="button" class="icon-rss popup-trigger" data-popup="popup-rss" title="RSS Feeds"></button>
+                            <button type="button" class="icon-rss popup-trigger ripple" data-popup="popup-rss" title="RSS Feeds"></button>
                             <div id="popup-rss" class="popup popup-rss">
                                 <div class="popup-title">RSS feeds</div>
                                 <div class="popup-body">
                                     <ul>
-                                        <li><a href="{$feedurl}?do=rss{$searchcrits}">RSS Feed</a></li>
-                                        <li><a href="{$feedurl}?do=atom{$searchcrits}">ATOM Feed</a></li>
+                                        <li><a href="{$feedurl}?do=rss{$searchcrits}" class="ripple">RSS Feed</a></li>
+                                        <li><a href="{$feedurl}?do=atom{$searchcrits}" class="ripple">ATOM Feed</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     {else}
-                        <a href="{$feedurl}?do=rss{$searchcrits}" class="icon-rss" title="RSS Feed"></a>
+                        <a href="{$feedurl}?do=rss{$searchcrits}" class="icon-rss ripple" title="RSS Feed"></a>
                     {/if}
                     <div class="toolbar-button-container">
-                        <button type="button" class="icon-filter popup-trigger" data-popup="popup-filter" title="Change links per page"></button>
+                        <button type="button" class="icon-filter popup-trigger ripple" data-popup="popup-filter" title="Change links per page"></button>
                         <div id="popup-filter" class="popup popup-filter">
                             <div class="popup-title">Links per page</div>
                             <div class="popup-body">
                                 <ul>
-                                    <li><a href="?linksperpage=20">20 links</a></li>
-                                    <li><a href="?linksperpage=50">50 links</a></li>
-                                    <li><a href="?linksperpage=100">100 links</a></li>
+                                    <li><a href="?linksperpage=20" class="ripple">20 links</a></li>
+                                    <li><a href="?linksperpage=50" class="ripple">50 links</a></li>
+                                    <li><a href="?linksperpage=100" class="ripple">100 links</a></li>
                                 </ul>
                                 <form method="GET" class="popup-content-area">
                                     <input type="text" name="linksperpage" size="2" placeholder="Custom value..."/>
@@ -129,7 +129,7 @@
         </div>
     </div>
     {if="(isLoggedIn() || $GLOBALS['config']['OPEN_SHAARLI']) && !isset($_GET['edit_link']) && !isset($_GET['post']) && (!isset($_GET['do']) || !in_array($_GET['do'], array('addlink', 'changepasswd', 'configure', 'changetag', 'import', 'export')))"}
-        <a href="?do=addlink" class="add-link">
+        <a href="?do=addlink" class="add-link ripple">
             <div class="add-link-icon"></div>
         </a>
     {/if}
