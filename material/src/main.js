@@ -39,15 +39,27 @@ $(document).ready(function(){
 
     // Search overlay.
     $('#button-search').on('click', function(){
-        $('#search-overlay')
-            .show()
+        var overlay = $('#search-overlay');
+        overlay
+            .addClass('visible animate-fade-in')
             .find('#searchform_value')
             .focus()
             .select();
+
+        overlay
+            .find('.content-fullscreen')
+            .addClass('animate-from-top');
     });
     $('#search-overlay').on('click', function(event){
         if($(event.target).parents('#form-search').length === 0){
-            $(this).hide();
+            var overlay = $(this);
+            overlay
+                .removeClass('animate-fade-in')
+                .addClass('animate-fade-out');
+
+            setTimeout(function(){
+                overlay.removeClass('animate-fade-out visible');
+            }, 230);
         }
     });
 
