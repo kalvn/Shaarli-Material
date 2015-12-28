@@ -137,6 +137,24 @@
         <input type="hidden" name="searchtags" id="tagfilter_value" value=""/>
     </form>
 
+    <div id="search-overlay" style="position:fixed;background:rgba(0,0,0,.6);top:0;left:0;right:0;bottom:0;z-index:5;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="search" id="searchform_value" name="searchterm" value="{if="isset($search_type)"}{if="$search_type=='fulltext'"}{$search_crits}{elseif="$search_type=='tags'"}{loop="search_crits"}{$value} {/loop}{else}{/if}{/if}" placeholder="Search something here..." />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <button type="submit" id="toolbar-button-search" class="button-raised toolbar-link ripple ripple-primary">Search</button>
+                </div>
+                <div class="col-xs-6">
+                    <button type="button" id="toolbar-button-filter" class="button-raised toolbar-link ripple ripple-primary">Filter by tag</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {if="!empty($plugin_errors) && isLoggedIn()"}
         <ul class="errors container">
             {loop="plugin_errors"}
