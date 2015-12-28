@@ -203,6 +203,23 @@ $(document).ready(function(){
             });
         }
     };
-    
+
     initAutocomplete(jQuery);
+
+    // Sortable plugins in admin.
+    var plugins = $('.list-sortable').each(function(){
+        var sortable = Sortable.create(this, {
+            animation: 200,
+            draggable: '.list-item-sortable',
+            forceFallback: true,
+            onEnd: function(event){
+                var i = 0;
+                var list = $(event.target);
+                list.find('.list-item-sortable').each(function(){
+                    $(this).data('order', i).find('[type=hidden]').val(i);
+                    i++;
+                });
+            }
+        });
+    });
 });

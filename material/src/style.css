@@ -582,6 +582,21 @@ input.input-fullscreen:focus{
     width: 100%;
 }
 
+/* Sortable */
+.sortable-chosen{
+    background: #fff;
+}
+.sortable-ghost{
+    opacity: .5;
+    background: #C8EBFB;
+}
+.list-sortable li{
+    cursor: move;
+}
+.list-sortable li:hover{
+    background: inherit;
+}
+
 /* ANIMATIONS */
 .animate-fade-in{
     animation: fade-in .25s ease;
