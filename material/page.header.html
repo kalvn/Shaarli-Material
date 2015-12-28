@@ -3,43 +3,27 @@
 {else}
     <div class="header-main container-fluid">
         <div class="row">
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <a href="?" class="header-brand">{$shaarlititle}</a>
                 <a href="#" class="icon-rss icon-unfold pull-right hidden-lg ripple" title="Show/hide menu"></a>
             </div>
-            <form method="GET" method="searchform" class="col-lg-8 header-middle">
-                <div class="row">
-                    <div class="col-sm-5 header-nav">
-                        <div class="row">
-                            <div class="col-xs-4 text-center">
-                                <a href="?do=tagcloud" class="toolbar-link button-inverse ripple">Tag cloud</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="?do=picwall{$searchcrits}" class="toolbar-link button-inverse ripple">Picture wall</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="?do=daily" class="toolbar-link button-inverse ripple">Daily</a>
-                            </div>
-                        </div>
+            <div class="col-lg-6 header-middle">
+                <div class="header-nav">
+                    <div class="col-xs-6 col-sm-3 text-center">
+                        <a href="?do=tagcloud" class="toolbar-link button-inverse ripple">Tag cloud</a>
                     </div>
-                    
-                    
-                    <div class="col-sm-3">
-                        <input type="search" id="searchform_value" name="searchterm" value="{if="isset($search_type)"}{if="$search_type=='fulltext'"}{$search_crits}{elseif="$search_type=='tags'"}{loop="search_crits"}{$value} {/loop}{else}{/if}{/if}" placeholder="Search something here..." />
+                    <div class="col-xs-6 col-sm-3 text-center">
+                        <a href="?do=picwall{$searchcrits}" class="toolbar-link button-inverse ripple">Picture wall</a>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <button type="submit" id="toolbar-button-search" class="button-raised toolbar-link ripple ripple-primary">Search</button>
-                            </div>
-                            <div class="col-xs-6">
-                                <button type="button" id="toolbar-button-filter" class="button-raised toolbar-link ripple ripple-primary">Filter by tag</button>
-                            </div>
-                        </div>
+                    <div class="col-xs-6 col-sm-3 text-center">
+                        <a href="?do=daily" class="toolbar-link button-inverse ripple">Daily</a>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 text-center">
+                        <button class="toolbar-link button-inverse ripple" id="button-search">Search</a>
                     </div>
                 </div>
-            </form>
-            <div class="col-lg-2">
+            </div>
+            <div class="col-lg-3">
                 <div class="header-buttons">
                     {if="isset($plugins_header.buttons_toolbar) ||isset($plugins_header.fields_toolbar)"}
                         <div class="toolbar-button-container">
@@ -136,6 +120,25 @@
     <form id="hidden-tag-form" class="hidden" method="GET" name="tagfilter">
         <input type="hidden" name="searchtags" id="tagfilter_value" value=""/>
     </form>
+
+    <div id="search-overlay" class="fullscreen">
+        <div class="content-fullscreen">
+            <div class="container">
+                <div class="mbl row">
+                    <form method="GET" method="searchform" id="form-search" class="col-md-8 col-md-offset-2">
+                        <input type="search" id="searchform_value" class="input-fullscreen" name="searchterm" 
+                            value="{if="isset($search_type)"}{if="$search_type=='fulltext'"}{$search_crits}{elseif="$search_type=='tags'"}{loop="search_crits"}{$value} {/loop}{else}{/if}{/if}" 
+                            placeholder="Search something here..." autocomplete="off" class="awesomplete" data-multiple data-minChars="1"
+                            data-list="{loop="$tags"}{$key}, {/loop}" />    
+                        <div class="mtl">
+                            <button type="submit" id="button-search" class="pull-right button-raised button-primary ripple">Search</button>
+                            <button type="button" id="button-filter" class="pull-right button-raised ripple ripple-primary">Filter by tag</button>    
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     {if="!empty($plugin_errors) && isLoggedIn()"}
         <ul class="errors container">

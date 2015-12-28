@@ -123,16 +123,13 @@ div.awesomplete li[aria-selected=true]:hover mark{
     color: #fff;
     text-decoration: none;
 }
-.header-main > div > div{
-    display: block;
-    line-height: 56px;
-    height: 56px;
-}
 .header-main a.header-brand{
     font-weight: 200;
     font-size: 20px;
     color: #fff;
     text-decoration: none;
+    line-height: 56px;
+    height: 56px;
 }
 .header-main a.header-brand:hover{
     color: #eee;
@@ -546,4 +543,80 @@ div.dailyNoEntry {
     font-size: 20px;
     padding: 10px;
     line-height: 20px;
+}
+
+/* Search overlay */
+.fullscreen{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .75);
+    z-index: 200;
+}
+.fullscreen.visible{
+    display: block;
+}
+.content-fullscreen{
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+}
+input.input-fullscreen{
+    font-size: 150%;
+    font-weight: 200;
+    border: none;
+    background: #fff;
+    padding: 10px;
+    margin: 0;
+}
+input.input-fullscreen:focus{
+    border-bottom: none;
+    margin: 0;
+}
+.button-fullscreen{
+    display: block;
+    width: 100%;
+}
+
+/* ANIMATIONS */
+.animate-fade-in{
+    animation: fade-in .25s ease;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+.animate-fade-out{
+    animation: fade-out .25s ease;
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
+.animate-from-top{
+    animation: from-top .25s ease;
+}
+@keyframes from-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

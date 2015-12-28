@@ -37,9 +37,34 @@ $(document).ready(function(){
         $('.header-main').toggleClass('unfold');
     });
 
+    // Search overlay.
+    $('#button-search').on('click', function(){
+        var overlay = $('#search-overlay');
+        overlay
+            .addClass('visible animate-fade-in')
+            .find('#searchform_value')
+            .focus()
+            .select();
+
+        overlay
+            .find('.content-fullscreen')
+            .addClass('animate-from-top');
+    });
+    $('#search-overlay').on('click', function(event){
+        if($(event.target).parents('#form-search').length === 0 && event.target.nodeName.toLowerCase() !== 'form'){
+            var overlay = $(this);
+            overlay.removeClass('animate-fade-in')
+                .addClass('animate-fade-out');
+
+            setTimeout(function(){
+                overlay.removeClass('animate-fade-out visible');
+            }, 230);
+        }
+    });
+
     // Search field for tags.
-    $('#toolbar-button-filter').on('click', function(){
-        var val = $('#searchform_value').val();
+    $('#button-filter').on('click', function(){
+        var val = $('#searchform_value').val().trim();
         $('#tagfilter_value').val(val);
         $('#hidden-tag-form').submit();
 
@@ -59,13 +84,6 @@ $(document).ready(function(){
             $(this).html(newDate);
         });
     }
-
-    // Hide empty thumbnails.
-    /*$('.thumb').each(function(){
-        if($(this).html().trim() === ''){
-            $(this).remove();
-        }
-    });*/
 
     // QR Code.
     $('.icon-qrcode').on('click', function(){
@@ -146,4 +164,45 @@ $(document).ready(function(){
                 $div.remove();
             }, 2000);
         });
+
+    // Autocomplete.
+    var initAutocomplete = function($){
+        if($('input[data-multiple]').length > 0){
+            $('input[data-multiple]').each(function(){
+                awesomplete = new Awesomplete(this, {
+                    filter: function(text, input) {
+                        return Awesomplete.FILTER_CONTAINS(text, input.match(/[^ ]*$/)[0]);
+                    },
+                    replace: function(text) {
+                        var before = this.input.value.match(/^.+ \s*|/)[0];
+                        this.input.value = before + text + " ";
+                    },
+                    minChars: 1
+                });
+            });
+            
+
+            /**
+             * Remove already selected items from autocompletion list.
+             * HTML list is never updated, so removing a tag will add it back to awesomplete.
+             *
+             * FIXME: This a workaround waiting for awesomplete to handle this.
+             *  https://github.com/LeaVerou/awesomplete/issues/16749
+             */
+            var input = jQuery('#lf_tags');
+            input.on('input', function(){
+                proposedTags = input.data('list').replace(/,/g, '').split(' ');
+                reg = /(\w+) /g;
+                while((match = reg.exec(input.val())) !== null) {
+                    id = proposedTags.indexOf(match[1]);
+                    if(id != -1 ) {
+                        proposedTags.splice(id, 1);
+                    }
+                }
+                awesomplete.list = proposedTags;
+            });
+        }
+    };
+    
+    initAutocomplete(jQuery);
 });
