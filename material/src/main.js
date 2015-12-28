@@ -51,10 +51,9 @@ $(document).ready(function(){
             .addClass('animate-from-top');
     });
     $('#search-overlay').on('click', function(event){
-        if($(event.target).parents('#form-search').length === 0){
+        if($(event.target).parents('#form-search').length === 0 && event.target.nodeName.toLowerCase() !== 'form'){
             var overlay = $(this);
-            overlay
-                .removeClass('animate-fade-in')
+            overlay.removeClass('animate-fade-in')
                 .addClass('animate-fade-out');
 
             setTimeout(function(){
@@ -64,7 +63,7 @@ $(document).ready(function(){
     });
 
     // Search field for tags.
-    $('#toolbar-button-filter').on('click', function(){
+    $('#button-filter').on('click', function(){
         var val = $('#searchform_value').val().trim();
         $('#tagfilter_value').val(val);
         $('#hidden-tag-form').submit();
@@ -85,13 +84,6 @@ $(document).ready(function(){
             $(this).html(newDate);
         });
     }
-
-    // Hide empty thumbnails.
-    /*$('.thumb').each(function(){
-        if($(this).html().trim() === ''){
-            $(this).remove();
-        }
-    });*/
 
     // QR Code.
     $('.icon-qrcode').on('click', function(){
