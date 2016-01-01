@@ -90,7 +90,7 @@ This file is NOT commited on the repository, which allows you to update the them
 ## Plugins
 As from Shaarli 0.6.0, you can install plugins to enrich your experience.
 Most of them should work properly, although it's up to the plugin developer to ensure the code is as minimal as possible to integrates well in themes.
-I tested all themes available with Shaarli 0.6.0 and they all work well even though the display is a bit weird for some of them. I will keep monitoring the behavior of popular plugins in the future.
+I tested all plugins available with Shaarli 0.6.0 and they all work well even though the display is a bit weird for some of them. I will keep monitoring the behavior of popular plugins in the future.
 
 ## Libraries used
 This theme uses a few Javascript libraries.

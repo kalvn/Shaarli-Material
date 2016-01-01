@@ -179,6 +179,10 @@ $(document).ready(function(){
                     },
                     minChars: 1
                 });
+
+                $(this).on('click', function(){
+                    awesomplete.close();
+                });
             });
             
 
