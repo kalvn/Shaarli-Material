@@ -544,6 +544,31 @@ div.dailyNoEntry {
     padding: 10px;
     line-height: 20px;
 }
+.list-plugin-item{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.list-plugin-item .list-plugin-item-content {
+    flex: 1;
+}
+input[type=checkbox].list-plugin-item-checkbox{
+    display: block;
+    margin-right: 15px;
+}
+.list-plugin-item-key{
+    font-size: 120%;
+    font-weight: 200;
+}
+.list-plugin-item-description{
+    color: #666;
+    font-size: 90%;
+}
+.plugin-param-key{
+    line-height: 33px;
+}
 
 /* Search overlay */
 .fullscreen{
@@ -590,11 +615,29 @@ input.input-fullscreen:focus{
     opacity: .5;
     background: #C8EBFB;
 }
-.list-sortable li{
-    cursor: move;
-}
 .list-sortable li:hover{
     background: inherit;
+}
+.handle{
+    position: relative;
+    display: block;
+    width: 25px;
+    height: 16px;
+    cursor: move;
+}
+.handle div{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #999;
+}
+.handle div + div{
+    top: 7px;
+}
+.handle div + div + div{
+    top: inherit;
+    bottom: 0;
 }
 
 /* ANIMATIONS */

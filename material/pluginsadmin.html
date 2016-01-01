@@ -10,6 +10,9 @@
                 <p>You need to enable Javascript to change plugin loading order.</p>
             </noscript>
 
+            <h1>Plugin administration</h1>
+            <p>Drag and drop your plugin to change the order in which they'll be called. Uncheck enabled plugin to disable them and vice-versa.</p>
+
             <form action="?do=save_pluginadmin" method="POST">
                 <section class="card">
                     <div class="card-title">Enabled plugins</div>
@@ -18,13 +21,20 @@
                         <p>No plugin enabled.</p>
                     </div>
                     {else}
-                    <ul id="list-plugin-enabled" class="list-sortable">
+                    <ul id="list-plugin-enabled" class="list-sortable list-plugin">
                         {loop="$enabled_plugins"}
-                        <li class="list-item list-item-sortable" data-line="{$key}" data-order="{$counter}">
-                            <input type="checkbox" name="{$key}" checked>
+                        <li class="list-item list-item-sortable list-plugin-item" data-line="{$key}" data-order="{$counter}">
+                            <input type="checkbox" class="list-plugin-item-checkbox" name="{$key}" checked>
                             <input type="hidden" name="order_{$key}" value="{$counter}">
-                            <strong>{$key}</strong>
-                            {$value.description}
+                            <div class="list-plugin-item-content">
+                                <h3 class="list-plugin-item-key">{$key}</h3>
+                                <div class="list-plugin-item-description">{$value.description}</div>
+                            </div>
+                            <div class="handle">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
                         </li>
                         {/loop}
                     </ul>
@@ -38,12 +48,14 @@
                         <p>No plugin disabled.</p>
                     </div>
                     {else}
-                    <ul>
+                    <ul class="list-plugin">
                         {loop="$disabled_plugins"}
-                        <li class="list-item" data-line="{$key}" data-order="{$counter}">
-                            <input type="checkbox" name="{$key}">
-                            <strong>{$key}</strong>
-                            {$value.description}
+                        <li class="list-item list-item-sortable list-plugin-item" data-line="{$key}" data-order="{$counter}">
+                            <input type="checkbox" class="list-plugin-item-checkbox" name="{$key}">
+                            <div class="list-plugin-item-content">
+                                <h3 class="list-plugin-item-key">{$key}</h3>
+                                <div class="list-plugin-item-description">{$value.description}</div>
+                            </div>
                         </li>
                         {/loop}
                     </ul>
@@ -72,7 +84,7 @@
                                 <h2>{$key}</h2>
                                 {loop="$value.parameters"}
                                 <div class="row">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-4 plugin-param-key">
                                         {$key}
                                     </div>
                                     <div class="col-sm-8">

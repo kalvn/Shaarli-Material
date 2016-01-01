@@ -211,6 +211,7 @@ $(document).ready(function(){
         var sortable = Sortable.create(this, {
             animation: 200,
             draggable: '.list-item-sortable',
+            handle: '.handle',
             forceFallback: true,
             onEnd: function(event){
                 var i = 0;
