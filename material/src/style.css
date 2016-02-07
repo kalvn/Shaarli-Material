@@ -124,6 +124,8 @@ div.awesomplete li[aria-selected=true]:hover mark{
     text-decoration: none;
 }
 .header-main a.header-brand{
+    display: inline-block;
+    padding: 0 15px;
     font-weight: 200;
     font-size: 20px;
     color: #fff;
@@ -132,7 +134,7 @@ div.awesomplete li[aria-selected=true]:hover mark{
     height: 56px;
 }
 .header-main a.header-brand:hover{
-    color: #eee;
+    background-color: rgba(255,255,255,.15);
 }
 .header-main .header-nav{
     height: 56px;

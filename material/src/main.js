@@ -52,7 +52,12 @@ $(document).ready(function(){
     });
     $('#search-overlay').on('click', function(event){
         if($(event.target).parents('#form-search').length === 0 && event.target.nodeName.toLowerCase() !== 'form'){
-            var overlay = $(this);
+            animations.fadeOut($(this));
+        }
+    });
+    $(document).on('keydown', function(event){
+        if(event.keyCode === 27){
+            var overlay = $('#search-overlay');
             overlay.removeClass('animate-fade-in')
                 .addClass('animate-fade-out');
 
@@ -205,6 +210,20 @@ $(document).ready(function(){
                 }
                 awesomplete.list = proposedTags;
             });
+        }
+    };
+
+    var animations = {
+        fadeIn: function(element){
+            element.addClass('visible animate-fade-in');
+        },
+        fadeOut: function(element){
+            element.removeClass('animate-fade-in')
+                .addClass('animate-fade-out');
+
+            setTimeout(function(){
+                element.removeClass('animate-fade-out visible');
+            }, 230);
         }
     };
     
