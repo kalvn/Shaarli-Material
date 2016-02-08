@@ -74,11 +74,6 @@ $GLOBALS['config']['MATERIAL_COLOR'] = '#607D8B';
 $GLOBALS['config']['MATERIAL_COLOR_FOCUS'] = '#546E7A';
 // MATERIAL_COLOR_ACTIVE is used for the active effect on button (when they are clicked).
 $GLOBALS['config']['MATERIAL_COLOR_ACTIVE'] = '#455A64';
-
-// ### OPTIONAL ### WARNING: THIS MUST NOT BE SET TO true IN A PRODUCTION ENVIRONMENT
-// Enables debug mode for dev only. Will load CSS and JS resources from src rather than dist.
-// This requires to first download all libraries via bower. Check the *Develop and debug* section below.
-$GLOBALS['debug'] = false;
 ```
 
 ## Add custom resources
@@ -100,6 +95,7 @@ This theme uses a few Javascript libraries.
 - [moment.js](http://momentjs.com/)
 - [awesomplete](http://leaverou.github.io/awesomplete/)
 - [blazy](http://dinbror.dk/blazy/)
+- [Sortable](http://rubaxa.github.io/Sortable/)
 
 
 ## Demo
@@ -113,9 +109,7 @@ To tweak this theme, you'll need to install Javascript and CSS libraries. To do 
 bower install
 ```
 
-Then, to use these files instead of the compiled ones, change the parameter `debug` to true (check the section *Additional configuration* above).
-
-To finish, if you want to compile those files via Gulp, first adapt the `gulp.js` file to your needs. Then, install Gulp and nodejs if it's not done already and run the following command from the root folder:
+Then, if you want to compile those files via Gulp, first adapt the `gulp.js` file to your needs. Then, install Gulp and nodejs if it's not done already and run the following command from the root folder:
 
 ```shell
 npm install
@@ -124,8 +118,8 @@ gulp
 
 ------------------------------------------------------------------------------
 
-Shaarli Material was tested and validated on Shaarli 0.6.1.
+Shaarli Material was tested and validated on Shaarli 0.6.3.
 
-You can download Shaarli on the project page: http://sebsauvage.net/wiki/doku.php?id=php:shaarli
+You can download Shaarli via the Github project page: https://github.com/shaarli/Shaarli
 
-Or via the Github project page: https://github.com/shaarli/Shaarli
+Original project page: http://sebsauvage.net/wiki/doku.php?id=php:shaarli
