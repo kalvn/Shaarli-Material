@@ -58,16 +58,11 @@ $(document).ready(function(){
     $(document).on('keydown', function(event){
         if(event.keyCode === 27){
             var overlay = $('#search-overlay');
-            overlay.removeClass('animate-fade-in')
-                .addClass('animate-fade-out');
-
-            setTimeout(function(){
-                overlay.removeClass('animate-fade-out visible');
-            }, 230);
+            animations.fadeOut(overlay);
         }
     });
 
-    // Search field for tags.
+    // Validation for tags search field.
     $('#button-filter').on('click', function(){
         var val = $('#searchform_value').val().trim();
         $('#tagfilter_value').val(val);
@@ -213,6 +208,8 @@ $(document).ready(function(){
         }
     };
 
+    initAutocomplete(jQuery);
+
     var animations = {
         fadeIn: function(element){
             element.addClass('visible animate-fade-in');
@@ -226,6 +223,22 @@ $(document).ready(function(){
             }, 230);
         }
     };
-    
-    initAutocomplete(jQuery);
+
+    // Sortable plugins in admin.
+    var plugins = $('.list-sortable').each(function(){
+        var sortable = Sortable.create(this, {
+            animation: 200,
+            draggable: '.list-item-sortable',
+            handle: '.handle',
+            forceFallback: true,
+            onEnd: function(event){
+                var i = 0;
+                var list = $(event.target);
+                list.find('.list-item-sortable').each(function(){
+                    $(this).data('order', i).find('[type=hidden]').val(i);
+                    i++;
+                });
+            }
+        });
+    });
 });

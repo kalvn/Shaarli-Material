@@ -48,9 +48,13 @@ body{
     background: #ececec;
     color: #333;
 }
+h1{
+    font-size: 25px;
+    margin: 10px 0 20px 0;
+}
 h2{
     font-size: 20px;
-    font-weight: 500px;
+    font-weight: 500;
     margin-bottom: 15px;
 }
 p{
@@ -201,8 +205,11 @@ hr.darker{
     color: #333;
     text-decoration: none;
 }
-.list-header{
+.list-header,
+h1.list-header{
+    font-size: inherit;
     padding: 15px;
+    margin: 0;
     font-weight: bold;
     text-transform: uppercase;
     border-bottom: 1px solid #eee;

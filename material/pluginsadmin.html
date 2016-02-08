@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>{include="includes"}</head>
+<body>
+{include="page.header"}
+<div id="pluginadmindiv" class="page-pluginadmin container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <noscript>
+                <p>You need to enable Javascript to change plugin loading order.</p>
+            </noscript>
+
+            <h1>Plugin administration</h1>
+            <p>Drag and drop your plugin to change the order in which they'll be called. Uncheck enabled plugin to disable them and vice-versa.</p>
+
+            <form action="?do=save_pluginadmin" method="POST">
+                <section class="card">
+                    <div class="card-title">Enabled plugins</div>
+                    {if="count($enabledPlugins)==0"}
+                    <div class="card-body">
+                        <p>No plugin enabled.</p>
+                    </div>
+                    {else}
+                    <ul id="list-plugin-enabled" class="list-sortable list-plugin">
+                        {loop="$enabledPlugins"}
+                        <li class="list-item list-item-sortable list-plugin-item" data-line="{$key}" data-order="{$counter}">
+                            <input type="checkbox" class="list-plugin-item-checkbox" name="{$key}" checked>
+                            <input type="hidden" name="order_{$key}" value="{$counter}">
+                            <div class="list-plugin-item-content">
+                                <h3 class="list-plugin-item-key">{$key}</h3>
+                                <div class="list-plugin-item-description">{$value.description}</div>
+                            </div>
+                            <div class="handle">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </li>
+                        {/loop}
+                    </ul>
+                    {/if}
+                </section>
+
+                <section class="card">
+                    <div class="card-title">Disabled plugins</div>
+                    {if="count($disabledPlugins)==0"}
+                    <div class="card-body">
+                        <p>No plugin disabled.</p>
+                    </div>
+                    {else}
+                    <ul class="list-plugin">
+                        {loop="$disabledPlugins"}
+                        <li class="list-item list-item-sortable list-plugin-item" data-line="{$key}" data-order="{$counter}">
+                            <input type="checkbox" class="list-plugin-item-checkbox" name="{$key}">
+                            <div class="list-plugin-item-content">
+                                <h3 class="list-plugin-item-key">{$key}</h3>
+                                <div class="list-plugin-item-description">{$value.description}</div>
+                            </div>
+                        </li>
+                        {/loop}
+                    </ul>
+                    {/if}
+                </section>
+
+                <div class="clearfix">
+                    <button type="submit" class="button-raised button-primary pull-right">Save plugins</button>
+                </div>
+            </form>
+            <hr class="darker">
+            <form action="?do=save_pluginadmin" method="POST">
+                <section class="card">
+                    <div class="card-title">Plugin parameters</div>
+                    <div class="card-body">
+                    {if="count($enabledPlugins)==0"}
+                        <p>No plugin enabled.</p>
+                    {else}
+                        {$count=0}
+                        {loop="$enabledPlugins"}
+                            {if="count($value.parameters) > 0"}
+                                {if="$count>0"}
+                                <hr>
+                                {/if}
+                                {$count=$count+1}
+                                <h2>{$key}</h2>
+                                {loop="$value.parameters"}
+                                <div class="row">
+                                    <div class="col-sm-4 plugin-param-key">
+                                        {$key}
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="{$key}" value="{$value}" id="{$key}">
+                                    </div>
+                                </div>
+                                {/loop}
+                            {/if}
+                        {/loop}
+                        {if="$count==0"}
+                        <p>No parameters found for enabled plugins.</p>
+                        {/if}
+                    {/if}
+                    </div>
+                    <div class="card-footer clearfix">
+                        <button type="submit" name="parameters_form" class="button-raised button-primary pull-right">Save plugin parameters</button>
+                    </div>
+                </section>
+            </form>
+        </div>
+    </div>
+</div>
+{include="page.footer"}
+</body>
+</html>

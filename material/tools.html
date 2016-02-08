@@ -8,6 +8,19 @@
         <div class="col-md-6 col-md-offset-3">
             <div class="list">
                 <h1 class="list-header">Settings</h1>
+                <a class="list-item ripple" href="?do=configure">
+                    <div class="row">
+                        <div class="col-sm-2 col-xs-3">
+                            <div class="round-image-container">
+                                <img src="images/tools/settings.png" alt="Configure" />
+                            </div>
+                        </div>
+                        <div class="col-sm-10 col-xs-9">
+                            <div class="list-item-title">Configure your Shaarli</div>
+                            <div class="list-item-subtitle">Change Title, timezone...</div>
+                        </div>
+                    </div>
+                </a>
                 {if="!$GLOBALS['config']['OPEN_SHAARLI']"}
                 <a class="list-item ripple" href="?do=changepasswd">
                     <div class="row">
@@ -23,16 +36,16 @@
                     </div>
                 </a>
                 {/if}
-                <a class="list-item ripple" href="?do=configure">
+                <a class="list-item ripple" href="?do=pluginadmin">
                     <div class="row">
                         <div class="col-sm-2 col-xs-3">
                             <div class="round-image-container">
-                                <img src="images/tools/settings.png" alt="Configure" />
+                                <img src="images/tools/plugin.png" alt="Plugin admin" />
                             </div>
                         </div>
                         <div class="col-sm-10 col-xs-9">
-                            <div class="list-item-title">Configure your Shaarli</div>
-                            <div class="list-item-subtitle">Change Title, timezone...</div>
+                            <div class="list-item-title">Plugin administration</div>
+                            <div class="list-item-subtitle">Enable, disable and configure your plugins</div>
                         </div>
                     </div>
                 </a>

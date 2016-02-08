@@ -16,23 +16,8 @@
 <meta name="msapplication-TileColor" content="#603cba">
 <meta name="msapplication-config" content="images/favicons/browserconfig.xml">
 <meta name="theme-color" content="#ffffff">
-
-{if="isset($GLOBALS['debug']) && $GLOBALS['debug'] === true"}
-<link type="text/css" rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
-<link type="text/css" rel="stylesheet" href="lib/awesomplete/awesomplete.css" />
-<link type="text/css" rel="stylesheet" href="src/reset.css" />
-<link type="text/css" rel="stylesheet" href="src/material.css" />
-<link type="text/css" rel="stylesheet" href="src/style.css" />
-<script src="lib/jquery/dist/jquery.min.js"></script>
-<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="tpl/material/lib/awesomplete/awesomplete.min.js#"></script>
-<script src="lib/blazy/blazy.min.js"></script>
-<script src="lib/moment/min/moment.min.js"></script>
-<script src="src/main.js"></script>
-{else}
 <link type="text/css" rel="stylesheet" href="build/styles.min.css" />
 <script src="build/scripts.min.js"></script>
-{/if}
 {if="isset($GLOBALS['config']['MATERIAL_COLOR'])"}
 {$materialColor=$GLOBALS['config']['MATERIAL_COLOR']}
 {$materialColorFocus=isset($GLOBALS['config']['MATERIAL_COLOR_FOCUS']) ? $GLOBALS['config']['MATERIAL_COLOR_FOCUS'] : $materialColor}
