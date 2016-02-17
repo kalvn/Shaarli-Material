@@ -273,8 +273,8 @@ a.link-title:hover{
 .link-description p:last-child{
     margin-bottom: 0;
 }
-.thumb img{
-    float: left;
+.thumb{
+    float: right;
     margin: 15px;
 }
 .link-tag-list{
