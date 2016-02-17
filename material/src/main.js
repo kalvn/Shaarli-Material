@@ -1,7 +1,3 @@
-function confirmDeleteLink() { 
-    return confirm("Are you sure you want to delete this link ?");
-}
-
 $(document).ready(function(){
     $('html').on('click', function(event){
         if($.inArray('popup-trigger', event.target.classList) > -1 || $(event.target).parents('.popup-trigger').length >= 1){
@@ -31,6 +27,66 @@ $(document).ready(function(){
             return false;
         }
     });
+
+    // Buttons.
+    $('[name=delete_link], .button-delete').on('click', function(){
+        var form = $(this).closest('form');
+        displayModal('Delete link', 'Are you sure you want to delete this link ?', 'confirm', function(isDeleted){
+            if(isDeleted){
+                // This input is required for the editlink form which change its behavior based on the name of the button.
+                form.append('<input type="hidden" name="delete_link">');
+                form.submit();
+            }
+        });
+        return false;
+    });
+    $('#button-delete').on('click', function(){
+        return confirm('Are you sure you want to delete this tag from all links ?');
+    });
+    $('.bookmarklet').on('click', function(){
+        displayModal('Information', 'Drag this link to your bookmarks toolbar, or right-click it and choose Bookmark This Link.', 'alert');
+        return false;
+    });
+
+    // Modals.
+    function displayModal(title, text, type, callback){
+        $('body').append('<div id="overlay-modal" class="overlay animate-fade-in"><div class="container"><div id="modal-container" class="col-md-6 col-md-offset-3"></div></div></div>');
+        var overlay = $('#modal-container');
+
+        var html = '<div class="modal animate-from-top"><div class="modal-title">' + title + '</div>';
+        if(text){
+            html += '<div class="modal-body">' + text + '</div>';
+        }
+        html += '<div class="modal-footer clearfix">';
+
+        switch(type){
+            case 'alert':
+                html += '<button class="button ripple pull-right modal-ok">Ok</button>';
+                break;
+            case 'confirm':
+                html += '<button class="button ripple button-primary pull-right modal-ok">Ok</button><button class="button ripple pull-right modal-cancel">Cancel</button>';
+                break;
+        }
+
+        overlay.html(html).closest('.overlay').show();
+
+        $('#overlay-modal').on('click', function(event){
+            var target = $(event.target);
+
+            if(target.hasClass('modal-ok')){
+                if(typeof callback === 'function'){
+                    callback(true);
+                }
+                $('#overlay-modal').hide().remove();
+            } else if(target.hasClass('modal-cancel') || target.hasClass('container') || target.attr('id') === 'modal-container' || target.attr('id') === 'overlay-modal'){
+                if(typeof callback === 'function'){
+                    callback(false);
+                }
+                $('#overlay-modal').hide().remove();
+            }
+        });
+        initRippleEffect();
+    }
 
     // Menu.
     $('.icon-unfold').on('click', function(){
@@ -127,43 +183,48 @@ $(document).ready(function(){
     });
 
     // Material waves on buttons.
-    $('.ripple, .button, .button-raised')
-        .off('mousedown.tinymaterialripple')
-        .not('[disabled]')
-        .on('mousedown.tinymaterialripple', function(event){
-            var el = this;
+    var initRippleEffect = function(){
+        $('.ripple, .button, .button-raised')
+            .off('mousedown.tinymaterialripple')
+            .not('[disabled]')
+            .on('mousedown.tinymaterialripple', function(event){
+                var el = this;
 
-            var offsetX = (event.pageX - $(event.target).offset().left);
-            var offsetY = (event.pageY - $(event.target).offset().top);
+                var offsetX = (event.pageX - $(event.target).offset().left);
+                var offsetY = (event.pageY - $(event.target).offset().top);
 
-            // Compensate the offset shift when the click is done on an element within the element we want the ripple to be displayed on.
-            var getRealValues = function(element){
-                if(element == el || !element){
-                    return;
+                // Compensate the offset shift when the click is done on an element within the element we want the ripple to be displayed on.
+                var getRealValues = function(element){
+                    if(element == el || !element){
+                        return;
+                    }
+
+                    offsetX += element.offsetLeft;
+                    offsetY += element.offsetTop;
+
+                    getRealValues(element.offsetParent);
                 }
+                getRealValues(event.target);
 
-                offsetX += element.offsetLeft;
-                offsetY += element.offsetTop;
+                var el = $(el);
+                var rippleDefaultDiameter = 20;
+                var $div = $('<div/>');
 
-                getRealValues(element.offsetParent);
-            }
-            getRealValues(event.target);
+                $div.addClass('ripple-effect');
+                $div.css({
+                    top: offsetY - (rippleDefaultDiameter/2) + 'px',// - ($ripple.height() / 2),
+                    left: offsetX - (rippleDefaultDiameter/2) + 'px',// - ($ripple.width() / 2),
+                    background: el.data("ripple-color")
+                }).appendTo(el);
 
-            var el = $(el);
-            var rippleDefaultDiameter = 20;
-            var $div = $('<div/>');
+                window.setTimeout(function() {
+                    $div.remove();
+                }, 2000);
+            });
+    };
 
-            $div.addClass('ripple-effect');
-            $div.css({
-                top: offsetY - (rippleDefaultDiameter/2) + 'px',// - ($ripple.height() / 2),
-                left: offsetX - (rippleDefaultDiameter/2) + 'px',// - ($ripple.width() / 2),
-                background: el.data("ripple-color")
-            }).appendTo(el);
-
-            window.setTimeout(function() {
-                $div.remove();
-            }, 2000);
-        });
+    initRippleEffect();
+    
 
     // Autocomplete.
     var initAutocomplete = function($){

@@ -4,6 +4,12 @@
     border: 1px solid #aaa;
     border-radius: 2px;
 }
+div.awesomplete{
+    display: block;
+}
+div.awesomplete > input{
+    display: inline-block;
+}
 div.awesomplete > ul{
     border: none;
     box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
@@ -646,6 +652,24 @@ input.input-fullscreen:focus{
 .handle div + div + div{
     top: inherit;
     bottom: 0;
+}
+
+.modal{
+    margin-top: 100px;
+    background: #fff;
+    box-shadow: 0 0 15px #999;
+}
+.modal-title{
+    padding: 20px 20px 10px 20px;
+    font-size: 22px;
+    font-weight: bold;
+}
+.modal-body{
+    padding: 10px 20px 10px 20px;
+    color: #666;
+}
+.modal-footer{
+    padding: 10px 20px 10px 20px;
 }
 
 /* ANIMATIONS */
