@@ -31,8 +31,8 @@ $(document).ready(function(){
     // Buttons.
     $('[name=delete_link], .button-delete').on('click', function(){
         var form = $(this).closest('form');
-        displayModal('Delete link', 'Are you sure you want to delete this link ?', 'confirm', function(isDeleted){
-            if(isDeleted){
+        displayModal('Delete link', 'Are you sure you want to delete this link ?', 'confirm', function(accepts){
+            if(accepts){
                 // This input is required for the editlink form which change its behavior based on the name of the button.
                 form.append('<input type="hidden" name="delete_link">');
                 form.submit();
@@ -41,7 +41,16 @@ $(document).ready(function(){
         return false;
     });
     $('#button-delete').on('click', function(){
-        return confirm('Are you sure you want to delete this tag from all links ?');
+        var tag = $('#fromtag').val();
+        var form = $(this).closest('form');
+
+        displayModal('Delete the tag "' + tag + '"', 'Are you sure you want to delete the tag <strong>' + tag + '</strong> from all links ?', 'confirm', function(accepts){
+            if(accepts){
+                form.append('<input type="hidden" name="deletetag">');
+                form.submit();
+            }
+        });
+        return false;
     });
     $('.bookmarklet').on('click', function(){
         displayModal('Information', 'Drag this link to your bookmarks toolbar, or right-click it and choose Bookmark This Link.', 'alert');
@@ -64,7 +73,7 @@ $(document).ready(function(){
                 html += '<button class="button ripple pull-right modal-ok">Ok</button>';
                 break;
             case 'confirm':
-                html += '<button class="button ripple button-primary pull-right modal-ok">Ok</button><button class="button ripple pull-right modal-cancel">Cancel</button>';
+                html += '<button class="button ripple button-alert pull-right modal-ok">Ok</button><button class="button ripple pull-right modal-cancel">Cancel</button>';
                 break;
         }
 
