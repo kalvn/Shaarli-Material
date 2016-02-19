@@ -4,7 +4,7 @@
   "description": "Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), the famous personal, minimalist, super-fast, no-database delicious clone.",
   "main": "gulpfile.js",
   "devDependencies": {
-    "gulp": "^3.8.11",
+    "gulp": "^3.9.1",
     "gulp-add-src": "^0.2.0",
     "gulp-autoprefixer": "^2.1.0",
     "gulp-concat": "^2.5.2",

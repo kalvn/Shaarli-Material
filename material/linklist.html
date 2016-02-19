@@ -61,7 +61,10 @@
                     <div class="link-content">
                         
                         <div>
-                            <div class="thumb">{$value.url|thumbnail}</div>
+                            {$thumb=thumbnail($value.url)}
+                            {if="$thumb"}
+                            <div class="thumb">{$thumb}</div>
+                            {/if}
                             {if="$value.description"}
                                 <div class="link-description">{$value.description}</div>
                             {/if}

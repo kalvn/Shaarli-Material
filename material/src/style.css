@@ -715,3 +715,13 @@ input.input-fullscreen:focus{
 .md_help{
     color: inherit !important;
 }
+
+@media (min-width: 768px){
+    .thumb{
+        float: left;
+    }
+
+    .thumb + .link-description{
+        padding-left: 150px;
+    }
+}
