@@ -27,7 +27,7 @@
                             <input type="checkbox" class="list-plugin-item-checkbox" name="{$key}" checked>
                             <input type="hidden" name="order_{$key}" value="{$counter}">
                             <div class="list-plugin-item-content">
-                                <h3 class="list-plugin-item-key">{$key}</h3>
+                                <h3 class="list-plugin-item-key">{function="str_replace('_', ' ', $key)"}</h3>
                                 <div class="list-plugin-item-description">{$value.description}</div>
                             </div>
                             <div class="handle">
@@ -53,7 +53,7 @@
                         <li class="list-item list-item-sortable list-plugin-item" data-line="{$key}" data-order="{$counter}">
                             <input type="checkbox" class="list-plugin-item-checkbox" name="{$key}">
                             <div class="list-plugin-item-content">
-                                <h3 class="list-plugin-item-key">{$key}</h3>
+                                <h3 class="list-plugin-item-key">{function="str_replace('_', ' ', $key)"}</h3>
                                 <div class="list-plugin-item-description">{$value.description}</div>
                             </div>
                         </li>
