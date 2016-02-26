@@ -1,0 +1,12 @@
+/* Footer */
+#footer{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    color: $color-subtitle;
+    @include font-caption();
+
+    .from-bookmarklet &{
+        margin-top: 10px;
+    }
+}

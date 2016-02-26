@@ -1,0 +1,16 @@
+.modal{
+    margin-top: 100px;
+    background: #fff;
+    @extend .shadow-5;
+}
+.modal-title{
+    padding: 20px 20px 10px 20px;
+    @include font-title();
+}
+.modal-body{
+    padding: 10px 20px 10px 20px;
+    color: #666;
+}
+.modal-footer{
+    padding: 10px 20px 10px 20px;
+}

@@ -1,0 +1,49 @@
+/* Pager */
+// .page-changer{
+//     @include font-body2();
+//     padding: 10px;
+//     text-align: right;
+//     line-height: 20px;
+
+//     a{
+//         color: #999;
+
+//         &:hover,
+//         &:focus{
+//             text-decoration: none;
+//             color: #666;
+//         }
+
+//         &:active{
+//             text-decoration: none;
+//             color: #333;
+//         }
+//     }
+// }
+
+// .paging-current{
+//     color: #999;
+// }
+
+.paging{
+    a{
+        display: inline-block;
+        padding: 0 $space-s;
+
+        line-height: 3rem;
+        color: $color-subtitle;
+        font-size: 2em;
+
+        &:hover{
+            color: $color-text;
+        }
+    }
+
+    .paging-current{
+        display: inline-block;
+        
+        line-height: 3rem;
+        color: $color-subtitle;
+        font-size: 1.2em;
+    }
+}

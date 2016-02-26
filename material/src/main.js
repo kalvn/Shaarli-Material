@@ -1,198 +1,232 @@
-$(document).ready(function(){
-    $('html').on('click', function(event){
-        if($.inArray('popup-trigger', event.target.classList) > -1 || $(event.target).parents('.popup-trigger').length >= 1){
-            // Nothing to do.
-        } else{
-            $('.popup').hide();
+(function(undefined){
+    var isAnimationSupported;   // Cache for checkAnimationSupport();
+    var animationEventName = 'animationend';
+
+    var init = function(){
+        checkAnimationSupport();
+
+        initPopups();
+        initMenu();
+        initButtons();
+        initSearch();
+        initDatesFormat();
+        initQrCode();
+        initMaterialForms();
+        initMaterialRippleEffect();
+        initAutocomplete(jQuery);
+        initBlazy();
+        initAnimations();
+        initOverlay();
+
+        if(shaarli.isAuth){
+            initTimezoneChooser();
+            initSortable();
+            initFirefoxSocial();
         }
-    });
+    };
 
-    $('.popup-trigger').on('click', function(){
-        var $popup = $('#' + $(this).data('popup'));
+    /**
+     * Changes the way timezone dropdowns are built compared to default Shaarli.
+     * The check on values is done to avoid runing too much useless code when the timechooser is not present (which is the case 99% of the time).
+     */
+    var initTimezoneChooser = function(){
+        // Allows to customize the timezone chooser.
+        var currentContinent = $('#continent').val();
+        var currentCity = $('#city').val();
 
-        if($popup.is(':visible')){
-            $popup.fadeOut(400);
-        } else{
-            $('.popup').hide();
-            $popup.fadeIn(400, function(){
-                // Removed the focus because it opens the keyboard on mobile device and it's not very nice.
-                // $(this).find('input[type=text]').first().focus();
+        if(currentContinent && currentCity){
+            var optionsContinent = $('#continent').html();
+            var optionsCity = $('#city').html();
+            var selectContinent = '<select name="continent" id="continent" onchange="onChangecontinent();">';
+            var selectCity = '<select name="city" id="city">';
+
+            $('#timezone-toremove').remove();
+
+            $('#timezone-continent').html(selectContinent + optionsContinent + '</select>');
+            $('#timezone-city').html(selectCity + optionsCity + '</select>');
+        }
+    };
+
+    var initMenu = function(){
+        $('.icon-unfold').on('click', function(){
+            $('.header-main').toggleClass('unfold');
+        });
+    };
+
+    var initPopups = function(){
+        $('html').on('click', function(event){
+            if($.inArray('popup-trigger', event.target.classList) > -1 || $(event.target).parents('.popup-trigger').length >= 1){
+                // Nothing to do.
+            } else{
+                //$('.popup').hide();
+                hidePopups();
+            }
+        });
+
+        $('.popup-trigger').on('click', function(){
+            hidePopups();
+            
+            var $popup = $('#' + $(this).data('popup'));
+
+            if($popup.is(':visible')){
+                //$popup.fadeOut(400);
+                animations.fadeOut($popup);
+            } else{
+                //$('.popup').hide();
+                //$popup.fadeIn(400);
+                
+                //animations.fadeIn($popup);
+                animations.slideFromTop($popup);
+            }
+        });
+
+        $('.popup').on('click', function(event){
+            if(event.target.tagName !== 'A'){
+                event.preventDefault();
+                return false;
+            }
+        });
+    };
+
+    var initButtons = function(){
+        $('[name=delete_link], .button-delete').on('click', function(event){
+            event.preventDefault();
+
+            var form = $(this).closest('form');
+            displayModal('Delete link', 'Are you sure you want to delete this link ?', 'confirm', function(accepts){
+                if(accepts){
+                    // This input is required for the editlink form which change its behavior based on the name of the button.
+                    form.append('<input type="hidden" name="delete_link">');
+                    form.submit();
+                }
+            });
+            return false;
+        });
+        $('#button-delete').on('click', function(event){
+            event.preventDefault();
+
+            var tag = $('#fromtag').val();
+            var form = $(this).closest('form');
+
+            displayModal('Delete the tag "' + tag + '"', 'Are you sure you want to delete the tag <strong>' + tag + '</strong> from all links ?', 'confirm', function(accepts){
+                if(accepts){
+                    form.append('<input type="hidden" name="deletetag">');
+                    form.submit();
+                }
+            });
+            return false;
+        });
+        $('.bookmarklet').on('click', function(event){
+            event.preventDefault();
+            displayModal('Information', 'Drag this link to your bookmarks toolbar, or right-click it and choose Bookmark This Link.', 'alert');
+            return false;
+        });
+    };
+
+    var initSearch = function(){
+        $('#button-search').on('click', function(){
+            var overlayElement = $('#search-overlay');
+            animations.fadeIn(overlayElement);
+            overlayElement
+                .find('#searchform_value')
+                .focus()
+                .select();
+
+            animations.slideFromTop(overlayElement.find('.content-fullscreen'));
+        });
+        $('#search-overlay').on('click', function(event){
+            if($(event.target).parents('#form-search').length === 0 && event.target.nodeName.toLowerCase() !== 'form'){
+                animations.fadeOut($(this));
+            }
+        });
+        $(document).on('keydown', function(event){
+            if(event.keyCode === 27){
+                var overlayElement = $('#search-overlay');
+                animations.fadeOut(overlayElement);
+            }
+        });
+
+        // Validation for tags search field.
+        $('#button-filter').on('click', function(){
+            var val = $('#searchform_value').val().trim();
+            $('#tagfilter_value').val(val);
+            $('#hidden-tag-form').submit();
+
+            return false;
+        });
+    };
+
+    var initDatesFormat = function(){
+        // Change date format for recent entries.
+        if(shaarli.fromNow && (shaarli.fromNow === 'true' || shaarli.fromNow === '1')){
+            $('.link-actual-date').each(function(index){
+                var pattern = shaarli.datePattern;
+                var newDate = '';
+                if(pattern){
+                    newDate = moment($(this).html(), pattern).fromNow();
+                } else{
+                    newDate = moment(new Date($(this).html())).fromNow();
+                }
+                $(this).html(newDate);
             });
         }
-    });
+    };
 
-    $('.popup').on('click', function(event){
-        if(event.target.tagName !== 'A'){
+    var initQrCode = function(){
+        $('.icon-qrcode').on('click', function(event){
             event.preventDefault();
+
+            var url = $(this).attr('href');
+            // var $imagePopup = $('#image-popup').first();
+            // var $overlay = $('#overlay').first();
+            // if(url && $imagePopup && $overlay){
+            //     $imagePopup.html('<img src="' + url + '" alt="QR Code" />').fadeIn();
+            //     $overlay.fadeIn();
+            // }
+
+            overlay.addListener('qrcode', function(event){
+                overlay.hide();
+            });
+            overlay.addContent('qrcode', '<img src="' + url + '" alt="QR Code" />');
+            overlay.show();
+
+            // Disable original click event.
             return false;
-        }
-    });
 
-    // Buttons.
-    $('[name=delete_link], .button-delete').on('click', function(){
-        var form = $(this).closest('form');
-        displayModal('Delete link', 'Are you sure you want to delete this link ?', 'confirm', function(accepts){
-            if(accepts){
-                // This input is required for the editlink form which change its behavior based on the name of the button.
-                form.append('<input type="hidden" name="delete_link">');
-                form.submit();
-            }
+
+
         });
-        return false;
-    });
-    $('#button-delete').on('click', function(){
-        var tag = $('#fromtag').val();
-        var form = $(this).closest('form');
+        // $('#overlay,#image-popup').on('click', function(){
+        //     $('#image-popup').fadeOut();
+        //     $('#overlay').fadeOut();
+        // });
+    };
 
-        displayModal('Delete the tag "' + tag + '"', 'Are you sure you want to delete the tag <strong>' + tag + '</strong> from all links ?', 'confirm', function(accepts){
-            if(accepts){
-                form.append('<input type="hidden" name="deletetag">');
-                form.submit();
-            }
-        });
-        return false;
-    });
-    $('.bookmarklet').on('click', function(){
-        displayModal('Information', 'Drag this link to your bookmarks toolbar, or right-click it and choose Bookmark This Link.', 'alert');
-        return false;
-    });
+    var initMaterialForms = function(){
+        $('input[type=text],input[type=search],input[type=password],textarea').on('focus', function(){
+            var $input = $(this);
+            var id = $input.attr('id');
 
-    // Modals.
-    function displayModal(title, text, type, callback){
-        $('body').append('<div id="overlay-modal" class="overlay animate-fade-in"><div class="container"><div id="modal-container" class="col-md-6 col-md-offset-3"></div></div></div>');
-        var overlay = $('#modal-container');
-
-        var html = '<div class="modal animate-from-top"><div class="modal-title">' + title + '</div>';
-        if(text){
-            html += '<div class="modal-body">' + text + '</div>';
-        }
-        html += '<div class="modal-footer clearfix">';
-
-        switch(type){
-            case 'alert':
-                html += '<button class="button ripple pull-right modal-ok">Ok</button>';
-                break;
-            case 'confirm':
-                html += '<button class="button ripple button-alert pull-right modal-ok">Ok</button><button class="button ripple pull-right modal-cancel">Cancel</button>';
-                break;
-        }
-
-        overlay.html(html).closest('.overlay').show();
-
-        $('#overlay-modal').on('click', function(event){
-            var target = $(event.target);
-
-            if(target.hasClass('modal-ok')){
-                if(typeof callback === 'function'){
-                    callback(true);
+            if(typeof id === 'string' && id !== ''){
+                var $label = $('label[for=' + id + ']');
+                if($label.length > 0){
+                    $label.addClass('active');
                 }
-                $('#overlay-modal').hide().remove();
-            } else if(target.hasClass('modal-cancel') || target.hasClass('container') || target.attr('id') === 'modal-container' || target.attr('id') === 'overlay-modal'){
-                if(typeof callback === 'function'){
-                    callback(false);
+            }
+        }).on('blur', function(){
+            var $input = $(this);
+            var id = $input.attr('id');
+
+            if(typeof id === 'string' && id !== ''){
+                var $label = $('label[for=' + id + ']');
+                if($label.length > 0){
+                    $label.removeClass('active');
                 }
-                $('#overlay-modal').hide().remove();
             }
         });
-        initRippleEffect();
-    }
+    };
 
-    // Menu.
-    $('.icon-unfold').on('click', function(){
-        $('.header-main').toggleClass('unfold');
-    });
-
-    // Search overlay.
-    $('#button-search').on('click', function(){
-        var overlay = $('#search-overlay');
-        overlay
-            .addClass('visible animate-fade-in')
-            .find('#searchform_value')
-            .focus()
-            .select();
-
-        overlay
-            .find('.content-fullscreen')
-            .addClass('animate-from-top');
-    });
-    $('#search-overlay').on('click', function(event){
-        if($(event.target).parents('#form-search').length === 0 && event.target.nodeName.toLowerCase() !== 'form'){
-            animations.fadeOut($(this));
-        }
-    });
-    $(document).on('keydown', function(event){
-        if(event.keyCode === 27){
-            var overlay = $('#search-overlay');
-            animations.fadeOut(overlay);
-        }
-    });
-
-    // Validation for tags search field.
-    $('#button-filter').on('click', function(){
-        var val = $('#searchform_value').val().trim();
-        $('#tagfilter_value').val(val);
-        $('#hidden-tag-form').submit();
-
-        return false;
-    });
-
-    // Change date format for recent entries.
-    if(shaarli.fromNow && (shaarli.fromNow === 'true' || shaarli.fromNow === '1')){
-        $('.link-actual-date').each(function(index){
-            var pattern = shaarli.datePattern;
-            var newDate = '';
-            if(pattern){
-                newDate = moment($(this).html(), pattern).fromNow();
-            } else{
-                newDate = moment(new Date($(this).html())).fromNow();
-            }
-            $(this).html(newDate);
-        });
-    }
-
-    // QR Code.
-    $('.icon-qrcode').on('click', function(){
-        var url = $(this).attr('href');
-        var $imagePopup = $('#image-popup').first();
-        var $overlay = $('#overlay').first();
-        if(url && $imagePopup && $overlay){
-            $imagePopup.html('<img src="' + url + '" alt="QR Code" />').fadeIn();
-            $overlay.fadeIn();
-        }
-
-        // Disable original click event.
-        return false;
-    });
-    $('#overlay,#image-popup').on('click', function(){
-        $('#image-popup').fadeOut();
-        $('#overlay').fadeOut();
-    });
-
-    // Material forms.
-    $('input[type=text],input[type=search],input[type=password],textarea').on('focus', function(){
-        var $input = $(this);
-        var id = $input.attr('id');
-
-        if(typeof id === 'string' && id !== ''){
-            var $label = $('label[for=' + id + ']');
-            if($label.length > 0){
-                $label.addClass('active');
-            }
-        }
-    }).on('blur', function(){
-        var $input = $(this);
-        var id = $input.attr('id');
-
-        if(typeof id === 'string' && id !== ''){
-            var $label = $('label[for=' + id + ']');
-            if($label.length > 0){
-                $label.removeClass('active');
-            }
-        }
-    });
-
-    // Material waves on buttons.
-    var initRippleEffect = function(){
+    var initMaterialRippleEffect = function(){
         $('.ripple, .button, .button-raised')
             .off('mousedown.tinymaterialripple')
             .not('[disabled]')
@@ -232,10 +266,6 @@ $(document).ready(function(){
             });
     };
 
-    initRippleEffect();
-    
-
-    // Autocomplete.
     var initAutocomplete = function($){
         if($('input[data-multiple]').length > 0){
             $('input[data-multiple]').each(function(){
@@ -278,37 +308,296 @@ $(document).ready(function(){
         }
     };
 
-    initAutocomplete(jQuery);
+    var initSortable = function(){
+        // Sortable plugins in admin.
+        $('.list-sortable').each(function(){
+            var sortable = Sortable.create(this, {
+                animation: 200,
+                draggable: '.list-item-sortable',
+                handle: '.list-sortable-handle',
+                forceFallback: true,
+                onEnd: function(event){
+                    var i = 0;
+                    var list = $(event.target);
+                    list.find('.list-item-sortable').each(function(){
+                        $(this).data('order', i).find('[type=hidden]').val(i);
+                        i++;
+                    });
+                }
+            });
+        });
+    };
 
-    var animations = {
-        fadeIn: function(element){
-            element.addClass('visible animate-fade-in');
-        },
-        fadeOut: function(element){
-            element.removeClass('animate-fade-in')
-                .addClass('animate-fade-out');
+    var initBlazy = function(){
+        var bLazy = new Blazy();
+    };
 
-            setTimeout(function(){
-                element.removeClass('animate-fade-out visible');
-            }, 230);
+    var initFirefoxSocial = function(){
+        function activateFirefoxSocial(node) {
+            var loc = location.href;
+            var baseURL = loc.substring(0, loc.lastIndexOf("/"));
+            // Keeping the data separated (ie. not in the DOM) so that it's maintainable and diffable.
+            var data = {
+                name: "{$shaarlititle}",
+                description: "The personal, minimalist, super-fast, no-database delicious clone.",
+                author: "Shaarli",
+                version: "1.0.0",
+                iconURL: baseURL + "/tpl/material/images/favicons/favicon-96x96.png",
+                icon32URL: baseURL + "/tpl/material/images/favicons/favicon-32x32.png",
+                icon64URL: baseURL + "/tpl/material/images/favicons/favicon-64x64.png",
+                shareURL: baseURL + "{noparse}?post=%{url}&title=%{title}&description=%{description}&source=firefoxsocialapi{/noparse}",
+                homepageURL: baseURL
+            };
+            node.setAttribute("data-service", JSON.stringify(data));
+            var activate = new CustomEvent("ActivateSocialFeature");
+            node.dispatchEvent(activate);
+        }
+
+        // Hack taken from https://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
+        var isFirefox = typeof InstallTrigger !== 'undefined';
+        if(!isFirefox || window.location.protocol.indexOf('https') < 0){
+            $('#firefoxsocial').attr('disabled', 'disabled');
+            var message = $("<p></p>")
+                .addClass('highlight')
+                .html('You need to use Firefox over <strong>https</strong> to use this functionality.');
+            $('#firefox-api-title').after(message);
+        } else{
+            // Attach events to the Firefox Social button.
+            $('#firefoxsocial').on('click', function(){
+                activateFirefoxSocial(this);
+            });
         }
     };
 
-    // Sortable plugins in admin.
-    var plugins = $('.list-sortable').each(function(){
-        var sortable = Sortable.create(this, {
-            animation: 200,
-            draggable: '.list-item-sortable',
-            handle: '.handle',
-            forceFallback: true,
-            onEnd: function(event){
-                var i = 0;
-                var list = $(event.target);
-                list.find('.list-item-sortable').each(function(){
-                    $(this).data('order', i).find('[type=hidden]').val(i);
-                    i++;
+    var initAnimations = function(){
+        // $(window).on(animationEventName, function(event) { 
+        //     console.log('animation end');
+
+        //     var target = $(event.target);
+
+        //     // Case by case processing for animations that require it.
+        //     if(target.hasClass('animate-fade-out')){
+        //         target.addClass('hidden');
+        //     }
+
+        //     // Removes all animation classes.
+        //     target.removeClass(function(index, classes){
+        //         return (classes.match(/animate-\S+/g) || []).join(' ');
+        //     });
+        // });
+    };
+
+    var initOverlay = function(){
+        overlay.get().on('click', function(event){
+            if(event.target.id === 'overlay'){
+                overlay.hide();
+            }
+
+            overlay.triggerEvent(event);
+        });
+    };
+
+    /*----------------*/
+
+    var animations = {
+        animation: function(animationName, element, callbackBegin, callbackEnd){
+            if(isAnimationSupported){
+                element.on(animationEventName + '.' + animationName, function(){
+                    // Removes this listener and animation classes.
+                    $(this).off(animationEventName + '.' + animationName)
+                        .removeClass(function(index, classes){
+                            return (classes.match(/animate-\S+/g) || []).join(' ');
+                        });
+
+                    // Calls the specified callback if it exists.
+                    if(typeof callbackEnd === 'function'){
+                        callbackEnd();
+                    }
                 });
+
+                element.addClass('animate-' + animationName);
+                if(typeof callbackBegin === 'function'){
+                    callbackBegin();
+                }
+            } else{
+                if(typeof callbackBegin === 'function'){
+                    callbackBegin();
+                }
+                if(typeof callbackEnd === 'function'){
+                    callbackEnd();
+                }
+            }
+        },
+        fadeIn: function(element, callbackBegin, callbackEnd){
+
+            var realCallbackBegin = function(){
+                element.removeClass('hidden');
+                if(typeof callbackBegin === 'function'){
+                    callbackBegin();
+                }
+            }
+
+            this.animation('fade-in', element, realCallbackBegin, callbackEnd);
+
+            // if(isAnimationSupported){
+            //     element.addClass('animate-fade-in').removeClass('hidden');
+            // } else{
+            //     element.removeClass('hidden');
+            // }
+        },
+        fadeOut: function(element, callbackBegin, callbackEnd){
+
+            var realCallbackEnd = function(){
+                element.addClass('hidden');
+                if(typeof callbackEnd === 'function'){
+                    callbackEnd();
+                }
+            }
+
+            this.animation('fade-out', element, callbackBegin, realCallbackEnd);
+
+            // if(isAnimationSupported){
+            //     element.addClass('animate-fade-out');
+            // } else{
+            //     element.addClass('hidden');
+            // }
+        },
+        slideFromTop: function(element, callbackBegin, callbackEnd){
+            var realCallbackBegin = function(){
+                element.removeClass('hidden');
+                if(typeof callbackBegin === 'function'){
+                    callbackBegin();
+                }
+            }
+
+            this.animation('slide-from-top', element, realCallbackBegin, callbackEnd);
+        },
+        slideFromRight: function(element, callbackBegin, callbackEnd){
+            var realCallbackBegin = function(){
+                element.removeClass('hidden');
+                if(typeof callbackBegin === 'function'){
+                    callbackBegin();
+                }
+            }
+
+            this.animation('slide-from-right', element, realCallbackBegin, callbackEnd);
+        }
+    };
+
+    /**
+     * Taken from: https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Animations/Detecting_CSS_animation_support
+     */
+    var checkAnimationSupport = function(){
+        if(typeof isAnimationSupported !== 'undefined'){
+            return isAnimationSupported;
+        }
+
+        var animation = false,
+            animationstring = 'animation',
+            keyframeprefix = '',
+            domPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
+            pfx  = '',
+            elm = document.createElement('div');
+
+        if( elm.style.animationName !== undefined ) { animation = true; }    
+
+        if( animation === false ) {
+            for( var i = 0; i < domPrefixes.length; i++ ) {
+                if( elm.style[ domPrefixes[i] + 'AnimationName' ] !== undefined ) {
+                    pfx = domPrefixes[ i ];
+                    animationstring = pfx + 'Animation';
+                    keyframeprefix = '-' + pfx.toLowerCase() + '-';
+                    animation = true;
+                    break;
+                }
+            }
+        }
+
+        animationEventName = animationstring + 'end';
+        isAnimationSupported = animation;
+        return animation;
+    };
+
+    var displayModal = function(title, text, type, callback){
+        var html = '<div class="container"><div id="modal-container" class="col-md-6 col-md-offset-3"><div class="modal animate-slide-from-top"><div class="modal-title">' + title + '</div>';
+        if(text){
+            html += '<div class="modal-body">' + text + '</div>';
+        }
+        html += '<div class="modal-footer clearfix">';
+
+        switch(type){
+            case 'alert':
+                html += '<button class="button ripple pull-right modal-ok">Ok</button>';
+                break;
+            case 'confirm':
+                html += '<button class="button ripple button-alert pull-right modal-ok">Ok</button><button class="button ripple pull-right modal-cancel">Cancel</button>';
+                break;
+        }
+
+        html += '</div></div>';
+
+        overlay.addContent('modal', html);
+        overlay.show();
+        overlay.addListener('modal', function(event){
+            var target = $(event.target);
+
+            if(target.hasClass('modal-ok')){
+                if(typeof callback === 'function'){
+                    callback(true);
+                }
+                overlay.hide();
+            } else if(target.hasClass('modal-cancel') || target.hasClass('container') || target.attr('id') === 'modal-container' || target.attr('id') === 'overlay-modal'){
+                if(typeof callback === 'function'){
+                    callback(false);
+                }
+                overlay.hide();
             }
         });
+
+        initMaterialRippleEffect();
+    };
+
+    var hidePopups = function(){
+        $('.popup:visible').each(function(){
+            animations.fadeOut($(this));
+        });
+    };
+
+    var overlay = {
+        listeners: {},
+        element: undefined,
+        get: function(){
+            if(!this.element){
+                this.element = $('#overlay').eq(0);
+            }
+            return this.element;
+        },
+        show: function(){
+            animations.fadeIn(this.get());
+        },
+        hide: function(){
+            animations.fadeOut(this.get());
+        },
+        addContent: function(id, html){
+            if(this.get().find('#overlay-content-' + id).length === 0){
+                this.get().html('<div id="overlay-content-' + id + '">' + html + '</div>');
+            } else{
+                this.get().find('#overlay-content-' + id).html(html);
+            }
+        },
+        addListener: function(id, callback){
+            this.listeners[id] = callback;
+        },
+        triggerEvent: function(event){
+            for(listener in this.listeners){
+                if(typeof this.listeners[listener] === 'function'){
+                    this.listeners[listener](event);
+                }
+            }
+        }
+    };
+
+    $(document).ready(function(){
+        init();
     });
-});
+})();

@@ -23,33 +23,56 @@
 {$materialColorFocus=isset($GLOBALS['config']['MATERIAL_COLOR_FOCUS']) ? $GLOBALS['config']['MATERIAL_COLOR_FOCUS'] : $materialColor}
 {$materialColorActive=isset($GLOBALS['config']['MATERIAL_COLOR_ACTIVE']) ? $GLOBALS['config']['MATERIAL_COLOR_ACTIVE'] : $materialColor}
 <style type="text/css">
-    a,
-    label.active{
-        color: {$materialColor};
-    }
-    input[type=text]:focus,
-    input[type=search]:focus,
-    input[type=number]:focus,
-    input[type=password]:focus,
-    textarea:focus,
-    select:focus{
-        border-color: {$materialColor};
-    }
+    div.awesomplete > ul > li[aria-selected=true],
     .button-primary,
-    .header-main,
-    div.awesomplete > ul > li[aria-selected=true]{
+    [type="radio"]:checked + label:after,
+    [type="radio"].with-gap:checked + label:after,
+    [type=checkbox].filled-in:checked + label:after,
+    .switch label input[type=checkbox]:checked + .lever:after,
+    .header-main {
         background-color: {$materialColor};
     }
-    .button-primary:hover,
-    .button-primary:focus,
-    div.awesomplete > ul > li[aria-selected=true]:hover{
+    .button-primary:hover, .button-primary:focus{
         background-color: {$materialColorFocus};
     }
     .button-primary:active{
         background-color: {$materialColorActive};
     }
-    .ripple-primary .ripple-effect {
-        background: {$materialColor};
+
+    a,
+    label.active {
+        color: {$materialColor}; 
+    }
+
+    a:hover, a:focus {
+        color: {$materialColorFocus}; 
+    }
+
+    a:active {
+        color: {$materialColorActive}; 
+    }
+
+    input[type=text]:focus,
+    input[type=search]:focus,
+    input[type=number]:focus,
+    input[type=password]:focus,
+    textarea:focus {
+        border-color: {$materialColor};
+        box-shadow: 0 1px 0 {$materialColor};
+        outline: none; 
+    }
+    input.input-big:focus{
+        box-shadow: none;
+    }
+
+    select:focus,
+    [type="radio"]:checked + label:after,
+    [type="radio"].with-gap:checked + label:before,
+    [type="radio"].with-gap:checked + label:after,
+    [type="checkbox"]:checked + label:before,
+    [type="checkbox"] :indeterminate + label:before,
+    [type=checkbox].filled-in:checked + label:after {
+        border-color: {$materialColor};
     }
 </style>
 {/if}
@@ -62,7 +85,8 @@
 var shaarli = {
     source: '{$source}',
     fromNow: '{if="isset($GLOBALS['config']['MATERIAL_DATE_FROMNOW'])"}{$GLOBALS['config']['MATERIAL_DATE_FROMNOW']}{/if}',
-    datePattern: '{if="isset($GLOBALS['config']['MATERIAL_DATE_PATTERN'])"}{$GLOBALS['config']['MATERIAL_DATE_PATTERN']}{/if}'
+    datePattern: '{if="isset($GLOBALS['config']['MATERIAL_DATE_PATTERN'])"}{$GLOBALS['config']['MATERIAL_DATE_PATTERN']}{/if}',
+    isAuth: {if="isLoggedIn()"}true{else}false{/if}
 };
 </script>
 {if="file_exists('tpl/material/extra.html')"}

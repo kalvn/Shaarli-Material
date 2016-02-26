@@ -46,10 +46,8 @@
                     </div>
                     {/if}
                     <div class="form-entry">
-                        <label for="lf_private">
-                            <input type="checkbox" {if="($link_is_new && $GLOBALS['privateLinkByDefault']==true) || $link.private == true"}checked="checked"{/if} name="lf_private" id="lf_private"/>
-                            Private
-                        </label>
+                        <input type="checkbox" class="filled-in" {if="($link_is_new && $GLOBALS['privateLinkByDefault']==true) || $link.private == true"}checked="checked"{/if} name="lf_private" id="lf_private"/>
+                        <label for="lf_private">Private</label>
                     </div>
                 </div>
                 <div class="card-footer">

@@ -1,0 +1,56 @@
+/* Awesomplete */
+.awesomplete ul{
+    z-index: 400;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+}
+div.awesomplete{
+    display: block;
+}
+div.awesomplete > input{
+    display: inline-block;
+}
+div.awesomplete > ul{
+    border: none;
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
+    border-radius: 0;
+}
+div.awesomplete > ul:before{
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
+}
+div.awesomplete > ul > li{
+    background-color: #fff;
+    padding: 5px 10px;
+}
+div.awesomplete > ul > li:hover{
+    background-color: #eee;
+}
+div.awesomplete li:hover mark{
+    background-color: #d7e800;
+}
+div.awesomplete > ul > li[aria-selected=true]{
+    background-color: $color-primary;
+    color: #fff;
+}
+div.awesomplete > ul > li[aria-selected=true]:hover{
+    // background-color: #1E88E5;
+    background-color: darken($color-primary, 10%);
+}
+div.awesomplete li[aria-selected=true]:hover mark{
+    background: #3c6b00;
+    color: inherit;
+}
+
+/* Markdown */
+.md_help{
+    color: inherit !important;
+}
+
+/* Sortable */
+.sortable-chosen{
+    background: #fff;
+}
+.sortable-ghost{
+    opacity: .5;
+    background: #C8EBFB;
+}

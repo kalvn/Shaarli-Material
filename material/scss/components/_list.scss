@@ -1,0 +1,197 @@
+
+// .list > a{
+//     color: #333;
+//     text-decoration: none;
+// }
+// .list > a:hover{
+//     color: #333;
+//     text-decoration: none;
+// }
+// .list-header,
+// h1.list-header{
+//     margin: 0;
+//     padding: 15px;
+//     font-weight: bold;
+//     font-size: inherit;
+//     text-transform: uppercase;
+//     border-bottom: 1px solid #eee;
+// }
+// .list-item{
+//     display: block;
+//     padding: 15px;
+//     border-bottom: 1px solid #eee;
+//     background-color: #fff;
+// }
+// .list-item:last-child{
+//     border-bottom: none;
+// }
+// .list-item:hover{
+//     background-color: #eee;
+//     z-index: 10;
+// }
+// .list-item:active{
+//     background-color: #eee;
+//     box-shadow: none;
+// }
+// .list-item-title{
+//     @include font-title();
+// }
+// .list-item-subtitle{
+//     color: #999;
+//     margin-top: 5px;
+// }
+
+// lists : export, tools
+
+
+/* Generic classes */
+.list-label{
+    @include font-subheading();
+}
+.list-sublabel{
+    margin-top: $space-t;
+    @include font-caption();
+    color: $color-subtitle;
+}
+
+.list-item{
+    display: block;
+    padding: $space-m;
+}
+
+/* List clickable */
+.list-action{
+    .list-item{
+        display: block;
+        cursor: pointer;
+        color: $color-text;
+
+        border-top: 1px solid $color-gray-light;
+
+        .card-header + &:first-child{
+            border-top: 0;
+        }
+
+        &:last-child{
+            border-bottom: 1px solid $color-gray-light;
+        }
+
+        &:hover,
+        &:focus{
+            background-color: $color-gray-hover;
+            text-decoration: none;
+        }
+
+        .list-item-label{
+            @extend .list-label;
+        }
+
+        .list-item-sublabel{
+            @extend .list-sublabel;
+        }
+    }
+}
+
+.list-action.list-big{
+    .list-item-label{
+        font-size: 1.4em;
+    }
+
+    .list-item-sublabel{
+        margin-top: $space-t;
+        font-weight: 400;
+        font-size: 1em;
+        color: $color-subtitle;
+    }
+}
+
+/* List with a side content on the right (ex: a list of settings with checkboxes on the right) */
+.list-side-right{
+    .list-item{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: $space-l $space-m;
+
+        border-top: 1px solid $color-gray-light;
+
+        &:last-child{
+            border-bottom: 1px solid $color-gray-light;
+        }
+    }
+
+    .list-item-label{
+        @extend .list-label;
+    }
+
+    .list-item-sublabel{
+        @extend .list-sublabel;
+        margin-top: $space-t;
+    }
+}
+
+
+.list-sortable{
+    
+    .list-item{
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        .list-item-content{
+            flex: 1;
+        }
+    }
+
+    .list-sortable-handle{
+        padding: $space-s;
+        cursor: move;
+        font-size: 2em;
+        color: $color-subtitle;
+    }
+
+    .list-item-label{
+        @extend .list-label;
+    }
+
+    .list-item-sublabel{
+        @extend .list-sublabel;
+        margin-top: $space-t;
+    }
+    
+}
+
+.list-checkable{
+    input[type=checkbox]{
+        display: block;
+        margin-right: $space-m;
+    }
+}
+
+
+// .list-plugin-item .list-plugin-item-content {
+//     flex: 1;
+// }
+// input[type=checkbox].list-plugin-item-checkbox{
+//    display: block;
+//     margin-right: 15px;
+// }
+// .list-plugin-item-key{
+//     @include font-title();
+//     font-weight: 200;
+// }
+// .list-plugin-item-description{
+//     color: #666;
+//     @include font-body();
+// }
+// .plugin-param-key{
+//     line-height: 33px;
+// }
+// .list-sortable li:hover{
+//      background: inherit;
+// }
+

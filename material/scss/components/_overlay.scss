@@ -1,0 +1,35 @@
+/* Search overlay */
+.fullscreen{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .75);
+    z-index: 200;
+}
+.fullscreen.visible{
+    display: block;
+}
+.content-fullscreen{
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+}
+
+.button-fullscreen{
+    display: block;
+    width: 100%;
+}
+
+/* Generic overlay */
+.overlay{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .75);
+    z-index: 200;
+}

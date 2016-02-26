@@ -1,0 +1,39 @@
+.popup{
+    position: absolute;
+    top: 48px;
+    right: 0px;
+    min-width: 150px;
+    color: #333;
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    line-height: 1.5;
+    cursor: default;
+    z-index: 50;
+}
+.popup-title{
+    font-weight: bold;
+    background-color: #eee;
+    padding: 10px;
+}
+.popup-body{
+    padding: 10px 0 10px 0;
+}
+.popup ul{
+    list-style: none;
+}
+.popup ul li{
+    cursor: pointer;
+}
+.popup ul li a{
+    display: block;
+    padding: 5px 10px;
+}
+.popup ul li a:hover{
+    background-color: #eee;
+}
+.popup input[type=text]{
+    width: 100%;
+}
+.popup .popup-content-area{
+    padding: 10px;
+}

@@ -1,0 +1,107 @@
+// Typography.
+$font-stack: 'Roboto', sans-serif;
+$font-size: 14px;
+@mixin font-display4(){
+    font-size: 8em;
+    font-weight: 200;
+}
+@mixin font-display3(){
+    font-size: 4em;
+    font-weight: 400;
+}
+@mixin font-display2(){
+    font-size: 3.2em;
+    font-weight: 400;
+}
+@mixin font-display1(){
+    font-size: 2.4em;
+    font-weight: 400;
+}
+@mixin font-brand(){
+    font-size: 1.5em;
+    font-weight: 300;
+}
+@mixin font-headline(){
+    font-size: 1.7em;
+    font-weight: 400;
+}
+@mixin font-title(){
+    font-size: 1.4em;
+    font-weight: 400;
+}
+@mixin font-subheading(){
+    font-size: 1.15em;
+    font-weight: 400;
+}
+@mixin font-body2(){
+    font-size: 1em;
+    font-weight: 500;
+}
+@mixin font-body(){
+    font-size: 1em;
+    font-weight: 400;
+}
+@mixin font-caption(){
+    font-size: 0.85em;
+    font-weight: 400;
+}
+@mixin font-button(){
+    font-size: 1em;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+@mixin truncate-ellipsis(){
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+// Colors.
+$color-text: #333;
+$color-primary: #2196F3;//2196F3
+$color-secondary: #F44336;
+$color-alert: #F44336;
+$color-firefox: #ea9c21;
+$color-subtitle: #999;
+$color-gray-light: #ddd;
+$color-gray-hover: #eee;
+
+$color-transparent: rgba(255, 255, 255, 0);
+$color-form-active: $color-primary;
+$color-button-hover: rgba(153, 153, 153, .2);
+/*$color-button-raised: rgba(0, 0, 0, .06);*/
+$color-button-raised: #E0E0E0;
+$color-button-disabled: rgba(0, 0, 0, .26);
+$color-button-raised-disabled: rgba(0, 0, 0, .12);
+$color-button-raised-disabled-text: rgba(0, 0, 0, .26);
+// Radio Buttons
+$radio-label-color: $color-text;
+$radio-fill-color: $color-form-active !default;
+$radio-empty-color: #5a5a5a !default;
+$color-radio-disabled: #9E9E9E;
+// Checkboxes
+$color-checkbox-disabled: $color-radio-disabled;
+// Switches
+$color-switch-disabled: $color-radio-disabled;
+$switch-bg-color: $color-form-active !default;
+$switch-checked-lever-bg: desaturate(lighten($color-form-active, 25%), 50%) !default;
+$switch-unchecked-bg: #F1F1F1 !default;
+$switch-unchecked-lever-bg: #818181 !default;
+
+
+// Distances.
+$space-t: 5px;
+$space-s: 10px;
+$space-m: 15px;
+$space-l: 20px;
+$space-xl: 40px;
+
+
+// Radius.
+$radius-s: 2px;
+
+
+// Animations speed.
+$animation-speed: .25s;

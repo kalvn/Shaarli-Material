@@ -34,11 +34,8 @@
                         <input type="text" name="title" id="title" size="30"/>
                     </div>
                     <div class="form-entry">
-                        <label for="updateCheck">Update</label><br/>
-                        <label for="updateCheck">
-                            <input type="checkbox" name="updateCheck" id="updateCheck" checked="checked">
-                            Notify me when a new release is ready
-                        </label>
+                        <input type="checkbox" class="filled-in" name="updateCheck" id="updateCheck" checked="checked">
+                        <label for="updateCheck">Notify me when a new release is ready</label>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -49,22 +46,6 @@
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function(){
-        // Allows to customize the timezone chooser.
-        var currentContinent = $('#continent').val();
-        var currentCity = $('#city').val();
-        var optionsContinent = $('#continent').html();
-        var optionsCity = $('#city').html();
-        var selectContinent = '<select name="continent" id="continent" onchange="onChangecontinent();">';
-        var selectCity = '<select name="city" id="city">';
-
-        $('#timezone-toremove').remove();
-
-        $('#timezone-continent').html(selectContinent + optionsContinent + '</select>');
-        $('#timezone-city').html(selectCity + optionsCity + '</select>');
-    });
-</script>
 {include="page.footer"}
 </body>
 </html>

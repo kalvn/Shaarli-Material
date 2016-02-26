@@ -1,0 +1,18 @@
+.mdi {
+    display: inline-block;
+    font: normal normal normal 24px/1 "Material";
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+}
+.mdi-arrow-left:before {
+    content: "\f14a";
+}
+.mdi-arrow-right:before {
+  content: "\f14f";
+}
+.mdi-menu:before {
+  content: "\f44e";
+}

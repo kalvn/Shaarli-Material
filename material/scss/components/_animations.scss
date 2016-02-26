@@ -1,0 +1,62 @@
+/**
+ * ANIMATIONS
+ * To perform animations, add the desired class to the desired element.
+ * To perform the animation again, you'll need to first remove the class through Javascript.
+ * Otherwise, the animations object in Javascript makes it more easy.
+ */
+
+/* Fade in */
+.animate-fade-in{
+    animation: fade-in $animation-speed ease;
+}
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+/* Fade out */
+.animate-fade-out{
+    animation: fade-out $animation-speed ease;
+}
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+/* From top */
+.animate-slide-from-top{
+    animation: slide-from-top $animation-speed ease;
+}
+@keyframes slide-from-top {
+    0% {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* From right */
+.animate-slide-from-right{
+    animation: slide-from-right $animation-speed ease;
+}
+@keyframes slide-from-right {
+    0% {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

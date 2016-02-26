@@ -1,0 +1,356 @@
+/* Page specific */
+.page-login{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.page-add{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.page-edit{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.from-bookmarklet .page-edit{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.page-tools{
+    margin-bottom: 50px;
+}
+
+/* Link list */
+.link-outer{
+    @extend .card;
+    overflow: hidden;
+}
+.link-inner{
+    border-radius: 2px 0 0 2px;
+}
+.link-header{
+    @extend .card-header;
+    text-transform: none;
+}
+.link-content{
+    overflow: hidden;
+}
+.link-footer{
+    padding: 15px;
+    border-top: 1px solid #eee;
+    background-color: #f2f2f2;
+}
+a.link-title{
+    display: block;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+a.link-title:hover{
+    color: #999;
+}
+.private a.link-title{
+    color: #B71C1C;
+}
+.private a.link-title:before{
+    content: url(../images/links/key_small.png);
+    margin-right: 10px;
+}
+.private .link-inner{
+    border-left: 4px solid #B71C1C;
+}
+.link-date{
+    @include font-caption();
+}
+.link-date{
+    float: right;
+}
+.link-date a,
+.link-date .link-archive{
+    color: #bbb;
+}
+.link-description{
+    padding: 15px;
+}
+.link-description p:first-child{
+    margin-top: 0;
+}
+.link-description p:last-child{
+    margin-bottom: 0;
+}
+.thumb img{
+    float: right;
+    margin: 15px;
+}
+.link-tag-list{
+    overflow: hidden;
+    overflow-x: auto;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.link-tag{
+    display: inline-block;
+}
+.link-tag a{
+    display: block;
+    color: #888;
+    text-decoration: none;
+    padding: 3px 10px;
+    background-color: #ddd;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+}
+.link-tag a:hover{
+    background-color: #ccc;
+}
+
+.link-tag-filter{
+    color: #888;
+    text-decoration: none;
+    background-color: #ddd;
+    border-radius: 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+}
+.link-tag-filter a{
+    color: #888;
+    text-decoration: none;
+    padding: 3px 0 3px 10px;
+    display: inline-block;
+}
+.link-tag-link{
+    padding: 3px 10px;
+}
+.link-tag-filter:hover{
+    background-color: #ccc;
+}
+.link-tag-filter .remove{
+    font-style: normal;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 0 5px;
+    padding-bottom: 1px;
+}
+.link-url-container{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 24px;
+    text-align: right;
+}
+a.link-url{
+    color: #999;
+    text-decoration: none;
+    @include font-caption();
+}
+a.link-url:hover{
+    color: #333;
+}
+.link-actions{
+    height: 24px;
+    text-align: right;
+}
+.link-actions > *{
+    display: block;
+    float: right;
+    width: 24px;
+    right: 24px;
+    margin-left: 5px;
+}
+.link-actions form > *{
+    display: block;
+}
+
+.link-counter{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #999;
+}
+
+/* Picture wall */
+.picwall-pictureframe{
+    float: left;
+    position: relative;
+    overflow: hidden;
+    width: 120px;
+    height: 90px;
+    text-align: center;
+}
+.picwall-link{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #666;
+    background-color: rgba(100, 100, 100, .7);
+    color: #fff;
+    @include font-caption();
+}
+.picwall-pictureframe:hover .picwall-link{
+    display: block;
+    text-decoration: none;
+}
+.picwall-link:hover{
+    color: #fff;
+}
+
+/* Daily */
+div.daily {
+    font-family: Georgia, 'DejaVu Serif', Norasi, serif;
+    background-color: #E6D6BE;
+    /* Background paper texture by BashCorpo:
+       http://www.bashcorpo.dk/textures.php
+       http://bashcorpo.deviantart.com/art/Grungy-paper-texture-v-5-22966998  */
+    background-image: url("../images/Paper_texture_v5_by_bashcorpo_w1000.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+    border-bottom: 2px solid black;
+    margin-top: -15px;
+}
+
+#daily_col1 {
+    float: left;
+    position: relative;
+    width: 33%;
+    padding-left: 1%;
+}
+
+#daily_col2 {
+    float: left;
+    position: relative;
+    width: 33%;
+}
+
+#daily_col3 {
+    float: left;
+    position: relative;
+    width: 33%;
+}
+
+div.dailyAbout {
+    float: left;
+    border: 1px solid black;
+    font-size: 8pt;
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+}
+
+div.dailyAbout a {
+    color: #890500;
+}
+
+div.dailyAbout img {
+    position: relative;
+    top: 3px;
+    margin-right: 4px;
+    width: 14px;
+    height: 14px;
+}
+
+div.dailyTitle {
+    font-weight: bold;
+    font-size: 44pt;
+    text-align: center;
+    padding: 10px 20px 0px 20px;
+}
+
+div.dailyDate {
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+    padding: 0px 20px 30px 20px;
+}
+
+/* Individual entries in "Daily": */
+div.dailyEntry {
+    margin: 5px 10px 2px 5px;
+    font-size: 11pt;
+    border-top: 1px solid #555;
+}
+
+div.dailyEntry a {
+    text-decoration: none;
+    color: #890500;
+}
+
+div.dailyEntryTags {
+    font-size: 7.75pt;
+}
+
+div.dailyEntryTitle {
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+div.dailyEntryLinkdate {
+    font-size: 8pt;
+}
+
+div.dailyEntryThumbnail {
+    width: 100%;
+    text-align: center;
+    background-color: rgb(128, 128, 128);
+    background: url(../images/50pc_transparent.png);
+    padding: 4px 0px 2px 0px;
+}
+
+div.dailyEntryDescription {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    text-align: justify;
+    overflow: auto;
+}
+
+div.dailyNoEntry {
+    text-align: center;
+    padding: 40px 0px 90px 0px;
+}
+
+.daily #closing {
+    clear: both;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+/* Plugins */
+.plugin-actions{
+    @include font-title();
+    padding: 10px;
+    line-height: 20px;
+}
+
+
+/* Errors */
+.errors{
+    color: #f44336;
+}
+
+/* QRCode */
+#overlay-content-qrcode{
+    z-index: 600;
+    position: fixed;
+    top: 20%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+@media (min-width: 768px){
+    .thumb{
+        float: left;
+    }
+
+    .thumb + .link-description{
+        padding-left: 150px;
+    }
+}
+
+/* Plugin administration */
+.plugin-param-key{
+    line-height: 33px;
+}

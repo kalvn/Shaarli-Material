@@ -1,0 +1,26 @@
+.card{
+    background: #fff;
+    box-shadow: 0 -1px 0 #e5e5e5,0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);
+    margin: 15px 0 15px 0;
+    border-radius: 2px;
+}
+
+.card-title,/* DEPRECATED use header instead */
+.card-header,
+h1.card-header{
+    margin: 0;
+    padding: 15px;
+    border-bottom: 1px solid $color-gray-light;
+    @include font-button();
+    text-transform: uppercase;
+}
+
+.card-body{
+    padding: $space-m;
+}
+
+.card-footer{
+    padding: 15px;
+    border-top: 1px solid #eee;
+    background-color: #f2f2f2;
+}

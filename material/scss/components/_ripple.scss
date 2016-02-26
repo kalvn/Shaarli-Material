@@ -1,0 +1,63 @@
+.ripple .ripple-effect,.ripple-effect {
+    background: #fff
+}
+@keyframes ripple-animation {
+    from {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: .25;
+        visibility: visible
+    }
+
+    to {
+        -webkit-transform: scale(50);
+        transform: scale(50);
+        opacity: 0;
+        visibility: visible
+    }
+}
+@keyframes ripple-animation-intense {
+    from {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: .5;
+        visibility: visible
+    }
+
+    to {
+        -webkit-transform: scale(50);
+        transform: scale(50);
+        opacity: 0;
+        visibility: visible
+    }
+}
+
+.ripple, .button, .button-raised{
+    position: relative;
+    overflow: hidden;
+    /* Fixes the bug in Chrome that makes the ripple effect overflowing the container when it's rounded BUT unfortunately it hides box shadows.  */
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+}
+.ripple-effect {
+    visibility: hidden;
+    position: absolute;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    pointer-events: none;
+    -webkit-animation: ripple-animation-intense 2s;
+    animation: ripple-animation-intense 2s;
+}
+
+.ripple-effect.stop-animation {
+    -webkit-animation: none!important;
+    animation: none!important
+}
+
+.ripple-primary .ripple-effect {
+    background: #2196F3;
+}

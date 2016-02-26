@@ -6,88 +6,90 @@
 <div id="toolsdiv" class="page-tools container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <div class="list">
-                <h1 class="list-header">Settings</h1>
-                <a class="list-item ripple" href="?do=configure">
-                    <div class="row">
-                        <div class="col-sm-2 col-xs-3">
-                            <div class="round-image-container">
-                                <img src="images/tools/settings.png" alt="Configure" />
+            <div class="card">
+                <h1 class="card-header">Settings</h1>
+                <div class="list-action list-big">
+                    <a class="list-item ripple" href="?do=configure">
+                        <div class="row">
+                            <div class="col-sm-2 col-xs-3">
+                                <div class="round-image-container">
+                                    <img src="images/tools/settings.png" alt="Configure" />
+                                </div>
+                            </div>
+                            <div class="col-sm-10 col-xs-9">
+                                <div class="list-item-label">Configure your Shaarli</div>
+                                <div class="list-item-sublabel">Change Title, timezone...</div>
                             </div>
                         </div>
-                        <div class="col-sm-10 col-xs-9">
-                            <div class="list-item-title">Configure your Shaarli</div>
-                            <div class="list-item-subtitle">Change Title, timezone...</div>
-                        </div>
-                    </div>
-                </a>
-                {if="!$GLOBALS['config']['OPEN_SHAARLI']"}
-                <a class="list-item ripple" href="?do=changepasswd">
-                    <div class="row">
-                        <div class="col-sm-2 col-xs-3">
-                            <div class="round-image-container">
-                                <img src="images/tools/lock_active.png" alt="Change password" />
+                    </a>
+                    {if="!$GLOBALS['config']['OPEN_SHAARLI']"}
+                    <a class="list-item ripple" href="?do=changepasswd">
+                        <div class="row">
+                            <div class="col-sm-2 col-xs-3">
+                                <div class="round-image-container">
+                                    <img src="images/tools/lock_active.png" alt="Change password" />
+                                </div>
+                            </div>
+                            <div class="col-sm-10 col-xs-9">
+                                <div class="list-item-label">Change password</div>
+                                <div class="list-item-sublabel">Change your password</div>
                             </div>
                         </div>
-                        <div class="col-sm-10 col-xs-9">
-                            <div class="list-item-title">Change password</div>
-                            <div class="list-item-subtitle">Change your password</div>
-                        </div>
-                    </div>
-                </a>
-                {/if}
-                <a class="list-item ripple" href="?do=pluginadmin">
-                    <div class="row">
-                        <div class="col-sm-2 col-xs-3">
-                            <div class="round-image-container">
-                                <img src="images/tools/plugin.png" alt="Plugin admin" />
+                    </a>
+                    {/if}
+                    <a class="list-item ripple" href="?do=pluginadmin">
+                        <div class="row">
+                            <div class="col-sm-2 col-xs-3">
+                                <div class="round-image-container">
+                                    <img src="images/tools/plugin.png" alt="Plugin admin" />
+                                </div>
+                            </div>
+                            <div class="col-sm-10 col-xs-9">
+                                <div class="list-item-label">Plugin administration</div>
+                                <div class="list-item-sublabel">Enable, disable and configure your plugins</div>
                             </div>
                         </div>
-                        <div class="col-sm-10 col-xs-9">
-                            <div class="list-item-title">Plugin administration</div>
-                            <div class="list-item-subtitle">Enable, disable and configure your plugins</div>
-                        </div>
-                    </div>
-                </a>
-                <a class="list-item ripple" href="?do=changetag">
-                    <div class="row">
-                        <div class="col-sm-2 col-xs-3">
-                            <div class="round-image-container">
-                                <img src="images/tools/tag-text-outline.png" alt="Manage tags" />
+                    </a>
+                    <a class="list-item ripple" href="?do=changetag">
+                        <div class="row">
+                            <div class="col-sm-2 col-xs-3">
+                                <div class="round-image-container">
+                                    <img src="images/tools/tag-text-outline.png" alt="Manage tags" />
+                                </div>
+                            </div>
+                            <div class="col-sm-10 col-xs-9">
+                                <div class="list-item-label">Tags</div>
+                                <div class="list-item-sublabel">Rename or delete a tag in all links</div>
                             </div>
                         </div>
-                        <div class="col-sm-10 col-xs-9">
-                            <div class="list-item-title">Tags</div>
-                            <div class="list-item-subtitle">Rename or delete a tag in all links</div>
-                        </div>
-                    </div>
-                </a>
-                <a class="list-item ripple" href="?do=import">
-                    <div class="row">
-                        <div class="col-sm-2 col-xs-3">
-                            <div class="round-image-container">
-                                <img src="images/tools/import.png" alt="Import" />
+                    </a>
+                    <a class="list-item ripple" href="?do=import">
+                        <div class="row">
+                            <div class="col-sm-2 col-xs-3">
+                                <div class="round-image-container">
+                                    <img src="images/tools/import.png" alt="Import" />
+                                </div>
+                            </div>
+                            <div class="col-sm-10 col-xs-9">
+                                <div class="list-item-label">Import</div>
+                                <div class="list-item-sublabel">Import Netscape html bookmarks (as exported from Firefox, Chrome, Opera, delicious...)</div>
                             </div>
                         </div>
-                        <div class="col-sm-10 col-xs-9">
-                            <div class="list-item-title">Import</div>
-                            <div class="list-item-subtitle">Import Netscape html bookmarks (as exported from Firefox, Chrome, Opera, delicious...)</div>
-                        </div>
-                    </div>
-                </a>
-                <a class="list-item ripple" href="?do=export">
-                    <div class="row">
-                        <div class="col-sm-2 col-xs-3">
-                            <div class="round-image-container">
-                                <img src="images/tools/export.png" alt="Export" />
+                    </a>
+                    <a class="list-item ripple" href="?do=export">
+                        <div class="row">
+                            <div class="col-sm-2 col-xs-3">
+                                <div class="round-image-container">
+                                    <img src="images/tools/export.png" alt="Export" />
+                                </div>
+                            </div>
+                            <div class="col-sm-10 col-xs-9">
+                                <div class="list-item-label">Export</div>
+                                <div class="list-item-sublabel">Export Netscape html bookmarks (which can be imported in Firefox, Chrome, Opera, delicious...)</div>
                             </div>
                         </div>
-                        <div class="col-sm-10 col-xs-9">
-                            <div class="list-item-title">Export</div>
-                            <div class="list-item-subtitle">Export Netscape html bookmarks (which can be imported in Firefox, Chrome, Opera, delicious...)</div>
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -138,45 +140,5 @@
     </div>
 </div>
 {include="page.footer"}
-<script>
-(function(){
-    function activateFirefoxSocial(node) {
-        var loc = location.href;
-        var baseURL = loc.substring(0, loc.lastIndexOf("/"));
-        // Keeping the data separated (ie. not in the DOM) so that it's maintainable and diffable.
-        var data = {
-            name: "{$shaarlititle}",
-            description: "The personal, minimalist, super-fast, no-database delicious clone.",
-            author: "Shaarli",
-            version: "1.0.0",
-            iconURL: baseURL + "/tpl/material/images/favicons/favicon-96x96.png",
-            icon32URL: baseURL + "/tpl/material/images/favicons/favicon-32x32.png",
-            icon64URL: baseURL + "/tpl/material/images/favicons/favicon-64x64.png",
-            shareURL: baseURL + "{noparse}?post=%{url}&title=%{title}&description=%{description}&source=firefoxsocialapi{/noparse}",
-            homepageURL: baseURL
-        };
-        node.setAttribute("data-service", JSON.stringify(data));
-        var activate = new CustomEvent("ActivateSocialFeature");
-        node.dispatchEvent(activate);
-    }
-
-    $(document).ready(function(){
-        // Hack taken from https://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
-        var isFirefox = typeof InstallTrigger !== 'undefined';
-        if(!isFirefox || window.location.protocol.indexOf('https') < 0){
-            $('#firefoxsocial').attr('disabled', 'disabled');
-            var message = $("<p></p>")
-                .addClass('highlight')
-                .html('You need to use Firefox over <strong>https</strong> to use this functionality.');
-            $('#firefox-api-title').after(message);
-        } else{
-            // Attach events to the Firefox Social button.
-            $('#firefoxsocial').on('click', function(){
-                activateFirefoxSocial(this);
-            });
-        }
-    });
-})();
-</script>
 </body>
 </html>

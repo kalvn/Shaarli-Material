@@ -1,48 +1,9 @@
-/*****************/
-/*** Variables ***/
-/*****************/
-var ROOT = 'material/';
-
-// CSS files containing the theme style.
-var CSS_SELECTOR = [
-        ROOT + 'src/reset.css',
-        ROOT + 'src/material.css',
-        ROOT + 'src/style.css'
-    ];
-// CSS destination folder.
-var CSS_OUTPUT = ROOT + 'build';
-// CSS libraries.
-var CSS_LIB = [
-    ROOT + 'lib/bootstrap/dist/css/bootstrap.min.css'
-];
-// CSS libraries that need not to be uncss-ed, i.e. libs that may concern dynamically added HTML code.
-var CSS_LIB_NO_UNCSS = [
-    ROOT + 'lib/awesomplete/awesomplete.css'
-]
-
-// JS files of the theme.
-var JS_SELECTOR = ROOT + 'src/*.js'
-// JS destination folder.
-var JS_OUTPUT = ROOT + 'build';
-// JS libraries.
-var JS_LIB = [
-    ROOT + 'lib/jquery/dist/jquery.min.js',
-    //ROOT + 'lib/bootstrap/dist/js/bootstrap.min.js',
-    ROOT + 'lib/awesomplete/awesomplete.min.js',
-    ROOT + 'lib/blazy/blazy.min.js',
-    ROOT + 'lib/moment/min/moment.min.js',
-    ROOT + 'lib/Sortable/Sortable.min.js'
-];
-
-// Other stuff.
-var BOOTSTRAP_FONTS = ROOT + 'lib/bootstrap/dist/fonts/*';
-
 /********************/
 /*** Requirements ***/
 /********************/
 var gulp = require("gulp"),
     concat    = require('gulp-concat'),
-    minifyCSS = require('gulp-minify-css'),
+    minifyCSS = require('gulp-cssnano'),
     rename    = require('gulp-rename'),
     autoprefixer  = require('gulp-autoprefixer'),
     plumber = require('gulp-plumber'),
@@ -51,12 +12,38 @@ var gulp = require("gulp"),
     copy = require('gulp-copy'),
     replace = require('gulp-replace'),
     addsrc = require('gulp-add-src'),
-    merge = require('merge-stream');
+    merge = require('merge-stream'),
+    sass = require('gulp-sass');
 
 var onError = function(err){
-    console.log(err.toString());
+    console.log('ERROR: ' + err.toString());
     this.emit('end');
 };
+
+/*****************/
+/*** Variables ***/
+/*****************/
+var ROOT = 'material/';
+var BUILD_FOLDER = ROOT + 'build';
+
+var SCSS_SELECTOR = ROOT + 'scss/**/*.scss';
+var CSS_LIB = [
+    ROOT + 'lib/bootstrap/dist/css/bootstrap.min.css'
+];
+var CSS_LIB_NO_UNCSS = [
+    ROOT + 'lib/awesomplete/awesomplete.css'
+];
+
+var JS_SELECTOR = ROOT + 'src/*.js'
+var JS_LIB = [
+    ROOT + 'lib/jquery/dist/jquery.min.js',
+    ROOT + 'lib/awesomplete/awesomplete.min.js',
+    ROOT + 'lib/blazy/blazy.min.js',
+    ROOT + 'lib/moment/min/moment.min.js',
+    ROOT + 'lib/Sortable/Sortable.min.js'
+];
+
+var BOOTSTRAP_FONTS = ROOT + 'lib/bootstrap/dist/fonts/*';
 
 /*************/
 /*** Tasks ***/
@@ -70,10 +57,20 @@ gulp.task('js', function(){
         .pipe(concat('scripts.js'))
         .pipe(uglify())
         .pipe(rename('scripts.min.js'))
-        .pipe(gulp.dest(JS_OUTPUT));
+        .pipe(gulp.dest(BUILD_FOLDER));
 });
 
-gulp.task('css', function(){
+gulp.task('sass', function(){
+    return gulp.src(ROOT + 'scss/styles.scss')
+        .pipe(plumber({
+            errorHandler: onError
+        }))
+        .pipe(sass())
+        .pipe(concat('sass.css'))
+        .pipe(gulp.dest(BUILD_FOLDER));
+});
+
+gulp.task('csslib', function(){
     return gulp.src(CSS_LIB)
         .pipe(concat('lib.css'))
         .pipe(replace(/\.\.\/fonts\//g, 'fonts/'))
@@ -81,7 +78,16 @@ gulp.task('css', function(){
             html: [ROOT + '/*.html']
         }))
         .pipe(addsrc.append(CSS_LIB_NO_UNCSS))
-        .pipe(addsrc.append(CSS_SELECTOR))
+        .pipe(concat('lib.css'))
+        .pipe(gulp.dest(BUILD_FOLDER));
+});
+
+// Merge css from sass and lib.
+gulp.task('css', ['sass', 'csslib'], function(){
+    return gulp.src([BUILD_FOLDER + '/lib.css', BUILD_FOLDER + '/sass.css'])
+        .pipe(plumber({
+            errorHandler: onError
+        }))
         .pipe(concat('styles.css'))
         .pipe(autoprefixer({
             browsers: ['last 5 versions', 'ie >= 8'],
@@ -89,7 +95,7 @@ gulp.task('css', function(){
         }))
         .pipe(minifyCSS())
         .pipe(rename('styles.min.css'))
-        .pipe(gulp.dest(CSS_OUTPUT));
+        .pipe(gulp.dest(BUILD_FOLDER));
 });
 
 gulp.task('static', function(){
@@ -97,7 +103,7 @@ gulp.task('static', function(){
         .pipe(plumber({
             errorHandler: onError
         }))
-        .pipe(copy(CSS_OUTPUT + '/fonts/', {prefix: 5}));
+        .pipe(copy(BUILD_FOLDER + '/fonts/', {prefix: 5}));
 });
 
 
@@ -106,7 +112,7 @@ gulp.task('static', function(){
 /*****************/
 gulp.task('watch', function() {
     gulp.watch(JS_SELECTOR, ['js']);
-    gulp.watch(CSS_SELECTOR, ['css']);
+    gulp.watch(SCSS_SELECTOR, ['css']);
 });
 
 /************************/

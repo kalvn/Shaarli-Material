@@ -21,20 +21,17 @@
                         <p>No plugin enabled.</p>
                     </div>
                     {else}
-                    <ul id="list-plugin-enabled" class="list-sortable list-plugin">
+                    <ul id="list-plugin-enabled" class="list-sortable list-checkable">
                         {loop="$enabledPlugins"}
-                        <li class="list-item list-item-sortable list-plugin-item" data-line="{$key}" data-order="{$counter}">
-                            <input type="checkbox" class="list-plugin-item-checkbox" name="{$key}" checked>
+                        <li class="list-item list-item-sortable" data-line="{$key}" data-order="{$counter}">
+                            <input type="checkbox" class="filled-in" name="{$key}" id="checkbox-{$key}" checked>
+                            <label for="checkbox-{$key}"></label>
                             <input type="hidden" name="order_{$key}" value="{$counter}">
-                            <div class="list-plugin-item-content">
-                                <h3 class="list-plugin-item-key">{$key}</h3>
-                                <div class="list-plugin-item-description">{$value.description}</div>
+                            <div class="list-item-content">
+                                <h3 class="list-item-label">{function="str_replace('_', ' ', $key)"}</h3>
+                                <div class="list-item-sublabel">{$value.description}</div>
                             </div>
-                            <div class="handle">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
+                            <div class="list-sortable-handle mdi mdi-menu"></div>
                         </li>
                         {/loop}
                     </ul>
@@ -48,13 +45,14 @@
                         <p>No plugin disabled.</p>
                     </div>
                     {else}
-                    <ul class="list-plugin">
+                    <ul class="list-sortable list-checkable">
                         {loop="$disabledPlugins"}
-                        <li class="list-item list-item-sortable list-plugin-item" data-line="{$key}" data-order="{$counter}">
-                            <input type="checkbox" class="list-plugin-item-checkbox" name="{$key}">
-                            <div class="list-plugin-item-content">
-                                <h3 class="list-plugin-item-key">{$key}</h3>
-                                <div class="list-plugin-item-description">{$value.description}</div>
+                        <li class="list-item list-item-sortable" data-line="{$key}" data-order="{$counter}">
+                            <input type="checkbox" class="filled-in" id="checkbox-{$key}" name="{$key}">
+                            <label for="checkbox-{$key}"></label>
+                            <div class="list-item-content">
+                                <h3 class="list-item-label">{function="str_replace('_', ' ', $key)"}</h3>
+                                <div class="list-item-sublabel">{$value.description}</div>
                             </div>
                         </li>
                         {/loop}
@@ -81,11 +79,11 @@
                                 <hr>
                                 {/if}
                                 {$count=$count+1}
-                                <h2>{$key}</h2>
+                                <h2>{function="str_replace('_', ' ', $key)"}</h2>
                                 {loop="$value.parameters"}
                                 <div class="row">
                                     <div class="col-sm-4 plugin-param-key">
-                                        {$key}
+                                        <label for="{$key}">{function="str_replace('_', ' ', $key)"}</label>
                                     </div>
                                     <div class="col-sm-8">
                                         <input type="text" name="{$key}" value="{$value}" id="{$key}">

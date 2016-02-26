@@ -1,0 +1,47 @@
+*, 
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+html{
+    background: #ececec;
+    font-size: 100%;
+}
+
+body{
+    font-family: $font-stack;
+    font-size: $font-size;
+    background: #ececec;
+    color: $color-text;
+}
+h1{
+    @include font-headline();
+    margin: 10px 0 20px 0;
+}
+h2{
+    @include font-subheading();
+    margin-bottom: 15px;
+}
+p{
+    margin-bottom: 15px;
+    @include font-body();
+}
+a{
+    color: $color-primary;
+
+    &:hover,
+    &:focus{
+        color: darken($color-primary, 5%);
+    }
+
+    &:active{
+        color: darken($color-primary, 10%)
+    }
+}
+em{
+    font-style: italic;
+}
+strong{
+    font-weight: bold;
+}

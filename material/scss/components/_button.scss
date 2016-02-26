@@ -1,0 +1,202 @@
+$button-padding: 8px 16px;
+$button-height: 36px;
+
+@mixin button-color($color){
+    color: #fff;
+    background-color: $color;
+
+    &:hover,
+    &:focus{
+        background-color: darken($color, 5%);
+        color: #fff;
+    }
+    &:active{
+        background-color: darken($color, 10%);
+        color: #fff;
+    }
+    &:active:focus{
+        color: #fff;
+    }
+}
+
+/* Button reset. */
+.button-base{
+    @extend .nowrap;
+
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    height: $button-height;
+    padding: $button-padding;
+
+    border: none;
+    border-radius: $radius-s;
+    outline: 0;
+
+    background-color: $color-transparent;
+
+    @include font-button();
+    color: $color-text;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+
+    cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &:active:focus{
+        outline: 0;
+        border: none;
+        text-decoration: none;
+        color: $color-text;
+    }
+
+    &[disabled]{
+        pointer-events: none;
+    }
+
+    &::-moz-focus-inner { 
+        border: 0;
+        padding: 0;
+    }
+
+    &.pull-right{
+        margin-left: 10px;
+    }
+}
+
+.button{
+    @extend .button-base;
+
+    &:hover,
+    &:focus{
+        background-color: $color-button-hover;
+        box-shadow: none;
+
+        color: $color-text;
+    }
+
+    &:active{
+        box-shadow: none;
+    }
+
+    &[disabled]{
+        &,
+        &:hover,
+        &:focus,
+        &:active{
+            color: $color-button-disabled;
+            background-color: $color-transparent;
+        }
+    }
+}
+
+.button-raised{
+    @extend .button-base;
+    @extend .shadow-button;
+
+    background-color: $color-button-raised;
+
+    &:hover,
+    &:focus{
+        @extend .shadow-button-hover;
+
+        color: $color-text;
+    }
+
+    &:active{
+        box-shadow: none;
+    }
+
+    &[disabled]{
+        &,
+        &:hover,
+        &:focus,
+        &:active{
+            @extend .shadow-btn;
+
+            color: $color-button-raised-disabled-text;
+            background-color: $color-button-raised-disabled;
+        }
+    }
+}
+
+.button-inverse{
+    @extend .button-base;
+
+    color: #fff;
+    background-color: $color-transparent;
+
+    &:hover,
+    &:focus{
+        background-color: rgba(204, 204, 204, 0.15);
+        color: #fff;
+    }
+
+    &:active,
+    &:active:focus{
+        background-color: rgba(204, 204, 204, 0.25);
+        color: #fff;
+    }
+
+    &[disabled]{
+        background-color: rgba(255, 255, 255, 0);
+        color: rgba(255, 255, 255, 0.30);
+    }
+}
+
+/* Color variations. */
+.button-primary{
+    @include button-color($color-primary);
+}
+.button-alert{
+    @include button-color($color-alert);
+}
+.button-firefox{
+    @include button-color($color-firefox);
+}
+
+/* Floating action button */
+.button-floating{
+    @extend .shadow-button-floating;
+
+    position: fixed;
+    display: block;
+    width: 56px;
+    height: 56px;
+    bottom: 5%;
+    right: 5%;
+
+    background-color: $color-secondary;
+    
+    border-radius: 50%;
+    transition: box-shadow 150ms cubic-bezier(0,0,.2,1);
+
+    z-index: 100;
+
+    &:hover{
+        @extend .shadow-button-floating-hover;
+    }
+
+    &:active{
+        box-shadow: none;
+    }
+
+    & i{
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        top: 16px;
+        left: 16px;
+
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 24px;
+    }
+
+    & i.icon-add-link{
+        background-image: url(../images/toolbar/add.png);
+    }
+}

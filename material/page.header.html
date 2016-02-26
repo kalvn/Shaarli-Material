@@ -28,7 +28,7 @@
                     {if="isset($plugins_header.buttons_toolbar) ||isset($plugins_header.fields_toolbar)"}
                         <div class="toolbar-button-container">
                             <button type="button" class="icon-plugin popup-trigger ripple" data-popup="popup-plugin" title="More"></button>
-                            <div id="popup-plugin" class="popup popup-plugin">
+                            <div id="popup-plugin" class="popup popup-plugin hidden">
                                 <div class="popup-body">
                                     {loop="$plugins_header.buttons_toolbar"}
                                     <ul>
@@ -47,7 +47,7 @@
                     {if="isLoggedIn()"}
                         <div class="toolbar-button-container">
                             <button type="button" class="icon-login popup-trigger ripple" data-popup="popup-login" title="Logout"></button>
-                            <div id="popup-login" class="popup popup-login">
+                            <div id="popup-login" class="popup popup-login hidden">
                                 <div class="popup-title">Connection</div>
                                 <div class="popup-body">
                                     <ul>
@@ -62,7 +62,7 @@
                     {else}
                         <div class="toolbar-button-container">
                             <button type="button" class="icon-login popup-trigger ripple" data-popup="popup-login" title="Connection"></button>
-                            <div id="popup-login" class="popup popup-login">
+                            <div id="popup-login" class="popup popup-login hidden">
                                 <div class="popup-title">Connection</div>
                                 <div class="popup-body">
                                     <ul>
@@ -79,7 +79,7 @@
                     {if="$GLOBALS['config']['SHOW_ATOM']"}
                         <div class="toolbar-button-container">
                             <button type="button" class="icon-rss popup-trigger ripple" data-popup="popup-rss" title="RSS Feeds"></button>
-                            <div id="popup-rss" class="popup popup-rss">
+                            <div id="popup-rss" class="popup popup-rss hidden">
                                 <div class="popup-title">RSS feeds</div>
                                 <div class="popup-body">
                                     <ul>
@@ -94,7 +94,7 @@
                     {/if}
                     <div class="toolbar-button-container">
                         <button type="button" class="icon-filter popup-trigger ripple" data-popup="popup-filter" title="Change links per page"></button>
-                        <div id="popup-filter" class="popup popup-filter">
+                        <div id="popup-filter" class="popup popup-filter hidden">
                             <div class="popup-title">Links per page</div>
                             <div class="popup-body">
                                 <ul>
@@ -113,20 +113,20 @@
         </div>
     </div>
     {if="(isLoggedIn() || $GLOBALS['config']['OPEN_SHAARLI']) && !isset($_GET['edit_link']) && !isset($_GET['post']) && (!isset($_GET['do']) || !in_array($_GET['do'], array('addlink', 'changepasswd', 'configure', 'changetag', 'import', 'export')))"}
-        <a href="?do=addlink" class="add-link ripple">
-            <div class="add-link-icon"></div>
+        <a href="?do=addlink" class="button-floating ripple">
+            <i class="icon-add-link"></i>
         </a>
     {/if}
     <form id="hidden-tag-form" class="hidden" method="GET" name="tagfilter">
         <input type="hidden" name="searchtags" id="tagfilter_value" value=""/>
     </form>
 
-    <div id="search-overlay" class="fullscreen">
+    <div id="search-overlay" class="fullscreen hidden">
         <div class="content-fullscreen">
             <div class="container">
                 <div class="mbl row">
                     <form method="GET" id="form-search" class="col-md-8 col-md-offset-2">
-                        <input type="search" id="searchform_value" class="input-fullscreen awesomplete" name="searchterm" 
+                        <input type="search" id="searchform_value" class="input-big awesomplete" name="searchterm" 
                             value="{if="isset($search_type)"}{if="$search_type=='fulltext'"}{$search_crits}{elseif="$search_type=='tags'"}{loop="search_crits"}{$value} {/loop}{else}{/if}{/if}" 
                             placeholder="Search something here..." autocomplete="off" data-multiple data-minChars="1"
                             data-list="{loop="$tags"}{$key}, {/loop}" />    
@@ -139,6 +139,8 @@
             </div>
         </div>
     </div>
+
+    <div id="overlay" class="overlay hidden"></div>
 
     {if="!empty($plugin_errors) && isLoggedIn()"}
         <ul class="errors container">
