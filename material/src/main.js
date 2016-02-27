@@ -15,7 +15,6 @@
         initMaterialRippleEffect();
         initAutocomplete(jQuery);
         initBlazy();
-        initAnimations();
         initOverlay();
 
         if(shaarli.isAuth){
@@ -177,12 +176,6 @@
             event.preventDefault();
 
             var url = $(this).attr('href');
-            // var $imagePopup = $('#image-popup').first();
-            // var $overlay = $('#overlay').first();
-            // if(url && $imagePopup && $overlay){
-            //     $imagePopup.html('<img src="' + url + '" alt="QR Code" />').fadeIn();
-            //     $overlay.fadeIn();
-            // }
 
             overlay.addListener('qrcode', function(event){
                 overlay.hide();
@@ -192,14 +185,7 @@
 
             // Disable original click event.
             return false;
-
-
-
         });
-        // $('#overlay,#image-popup').on('click', function(){
-        //     $('#image-popup').fadeOut();
-        //     $('#overlay').fadeOut();
-        // });
     };
 
     var initMaterialForms = function(){
@@ -369,24 +355,6 @@
         }
     };
 
-    var initAnimations = function(){
-        // $(window).on(animationEventName, function(event) { 
-        //     console.log('animation end');
-
-        //     var target = $(event.target);
-
-        //     // Case by case processing for animations that require it.
-        //     if(target.hasClass('animate-fade-out')){
-        //         target.addClass('hidden');
-        //     }
-
-        //     // Removes all animation classes.
-        //     target.removeClass(function(index, classes){
-        //         return (classes.match(/animate-\S+/g) || []).join(' ');
-        //     });
-        // });
-    };
-
     var initOverlay = function(){
         overlay.get().on('click', function(event){
             if(event.target.id === 'overlay'){
@@ -438,12 +406,6 @@
             }
 
             this.animation('fade-in', element, realCallbackBegin, callbackEnd);
-
-            // if(isAnimationSupported){
-            //     element.addClass('animate-fade-in').removeClass('hidden');
-            // } else{
-            //     element.removeClass('hidden');
-            // }
         },
         fadeOut: function(element, callbackBegin, callbackEnd){
 
@@ -455,12 +417,6 @@
             }
 
             this.animation('fade-out', element, callbackBegin, realCallbackEnd);
-
-            // if(isAnimationSupported){
-            //     element.addClass('animate-fade-out');
-            // } else{
-            //     element.addClass('hidden');
-            // }
         },
         slideFromTop: function(element, callbackBegin, callbackEnd){
             var realCallbackBegin = function(){

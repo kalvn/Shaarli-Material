@@ -5,23 +5,5 @@
         <div class="paging-current col-xs-8 text-center">page {$page_current} / {$page_max}</div>
         <div class="col-xs-2 text-right">{if="$next_page_url"}<a href="{$next_page_url}" class="paging-newer" title="Newer"><i class="mdi mdi-arrow-right"></i></a>{/if}</div>
     </div>
-
-    <!-- <div class="row">
-        <div class="plugin-actions col-md-6">
-            {loop="$action_plugin"}
-                {$value}
-            {/loop}
-        </div>
-        <div class="page-changer col-md-6">
-            {if="$previous_page_url"}
-                <a href="{$previous_page_url}" class="paging-older" title="Older">&#x25C4;</a>
-            {/if}
-                <span class="paging-current">page {$page_current} / {$page_max} </span>
-            {if="$next_page_url"}
-                <a href="{$next_page_url}" class="paging-newer" title="Newer">&#x25BA;</a>
-            {/if}
-        </div>
-    </div> -->
-
 </div>
 {/if}
