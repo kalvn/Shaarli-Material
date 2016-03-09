@@ -15,13 +15,13 @@
 <link rel="shortcut icon" href="images/favicons/favicon.ico">
 <meta name="msapplication-TileColor" content="#603cba">
 <meta name="msapplication-config" content="images/favicons/browserconfig.xml">
-<meta name="theme-color" content="#ffffff">
 <link type="text/css" rel="stylesheet" href="build/styles.min.css" />
 <script src="build/scripts.min.js"></script>
 {if="isset($GLOBALS['config']['MATERIAL_COLOR'])"}
 {$materialColor=$GLOBALS['config']['MATERIAL_COLOR']}
 {$materialColorFocus=isset($GLOBALS['config']['MATERIAL_COLOR_FOCUS']) ? $GLOBALS['config']['MATERIAL_COLOR_FOCUS'] : $materialColor}
 {$materialColorActive=isset($GLOBALS['config']['MATERIAL_COLOR_ACTIVE']) ? $GLOBALS['config']['MATERIAL_COLOR_ACTIVE'] : $materialColor}
+<meta name="theme-color" content="{$materialColor}">
 <style type="text/css">
     div.awesomplete > ul > li[aria-selected=true],
     .button-primary,
@@ -75,6 +75,8 @@
         border-color: {$materialColor};
     }
 </style>
+{else}
+<meta name="theme-color" content="#2196f3">
 {/if}
 {if="is_file('src/user.css')"}<link type="text/css" rel="stylesheet" href="src/user.css" />{/if}
 {loop="$plugins_includes.css_files"}
