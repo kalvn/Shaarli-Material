@@ -16,21 +16,25 @@
         <div class="text-center">
             <img src="images/sad_star.png" alt="Nothing found" />
         </div>
-        <div class="nothing-found">Sorry... We found nothing{if="$search_type=='fulltext'"} for <strong>{$search_crits}</strong>{elseif="$search_type=='tags'"} for<strong>{loop="search_crits"} {$value}{/loop}</strong>{else}{/if}.</div>
+        <div class="nothing-found">Sorry... We found nothing{if="isset($search_type)"}{if="$search_type=='fulltext'"} for <strong>{$search_crits}</strong>{elseif="$search_type=='tags'"} for<strong>{loop="search_crits"} {$value}{/loop}</strong>{else}{/if}{/if}.</div>
     {else}
-        {if="$search_type=='fulltext'"}
-            <div id="searchcriteria">{$result_count} results for <strong>{$search_crits}</strong></div>
-        {/if}
-        {if="$search_type=='tags'"}
-            <div id="searchcriteria">{$result_count} results for tags <i>
-            {loop="search_crits"}
-                <span class="link-tag-filter" title="Remove tag">
-                    <a href="?removetag={$value}">{$value}&nbsp;
-                        <span class="remove">&#x2715;</span>
-                    </a>
-                </span>
-            {/loop}</i></div>
-        {/if}
+        {if="isset($search_type)"}
+			{if="$search_type=='fulltext'"}
+				<div id="searchcriteria">{$result_count} results for <strong>{$search_crits}</strong></div>
+			{/if}
+		{/if}
+        {if="isset($search_type)"}
+			{if="$search_type=='tags'"}
+				<div id="searchcriteria">{$result_count} results for tags <i>
+				{loop="search_crits"}
+					<span class="link-tag-filter" title="Remove tag">
+						<a href="?removetag={$value}">{$value}&nbsp;
+							<span class="remove">&#x2715;</span>
+						</a>
+					</span>
+				{/loop}</i></div>
+			{/if}
+		{/if}
     {/if}
 
     <div class="links-list">
