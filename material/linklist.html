@@ -16,21 +16,22 @@
         <div class="text-center">
             <img src="images/sad_star.png" alt="Nothing found" />
         </div>
-        <div class="nothing-found">Sorry... We found nothing{if="$search_type=='fulltext'"} for <strong>{$search_crits}</strong>{elseif="$search_type=='tags'"} for<strong>{loop="search_crits"} {$value}{/loop}</strong>{else}{/if}.</div>
-    {else}
-        {if="$search_type=='fulltext'"}
-            <div id="searchcriteria">{$result_count} results for <strong>{$search_crits}</strong></div>
-        {/if}
-        {if="$search_type=='tags'"}
-            <div id="searchcriteria">{$result_count} results for tags <i>
-            {loop="search_crits"}
+        <div class="nothing-found">Sorry... We found nothing{if="!empty($search_term)"} for <strong>{$search_term}</strong>{/if}{if="!empty($search_term)"}{$exploded_tags=explode(' ', $search_tags)} tagged <strong>{loop="$exploded_tags"} {$value}{/loop}</strong>{/if}.</div>
+    {elseif="!empty($search_term) or !empty($search_tags)"}
+        <div id="searchcriteria">
+            {$result_count} results
+            {if="!empty($search_term)"} for <strong>{$search_term}</strong>{/if}
+            {if="!empty($search_tags)"}{$exploded_tags=explode(' ', $search_tags)} tagged <i>
+            {loop="$exploded_tags"}
                 <span class="link-tag-filter" title="Remove tag">
                     <a href="?removetag={$value}">{$value}&nbsp;
                         <span class="remove">&#x2715;</span>
                     </a>
                 </span>
-            {/loop}</i></div>
-        {/if}
+            {/loop}
+            </i>
+            {/if}
+        </div>
     {/if}
 
     <div class="links-list">
