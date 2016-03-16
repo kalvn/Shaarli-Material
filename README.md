@@ -3,9 +3,9 @@ Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), t
 
 
 ## Screenshots
-![Shaarli Material Screenshot Home](https://raw.githubusercontent.com/kalvn/Shaarli-Material/master/material/screenshots/home.png)
+![Shaarli Material Screenshot Home](https://raw.githubusercontent.com/kalvn/Shaarli-Material/master/screenshots/showcase.png)
 
-[More screenshots](https://github.com/kalvn/Shaarli-Material/tree/master/material/screenshots).
+[More screenshots](https://github.com/kalvn/Shaarli-Material/tree/master/screenshots).
 
 
 ## Requirements
@@ -118,7 +118,7 @@ gulp
 
 ------------------------------------------------------------------------------
 
-Shaarli Material was tested and validated on Shaarli 0.6.3.
+Shaarli Material was tested and validated on Shaarli 0.6.5.
 
 You can download Shaarli via the Github project page: https://github.com/shaarli/Shaarli
 
