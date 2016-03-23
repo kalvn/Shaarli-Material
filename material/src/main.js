@@ -324,14 +324,14 @@
             var baseURL = loc.substring(0, loc.lastIndexOf("/"));
             // Keeping the data separated (ie. not in the DOM) so that it's maintainable and diffable.
             var data = {
-                name: "{$shaarlititle}",
+                name: document.title,
                 description: "The personal, minimalist, super-fast, no-database delicious clone.",
                 author: "Shaarli",
                 version: "1.0.0",
                 iconURL: baseURL + "/tpl/material/images/favicons/favicon-96x96.png",
                 icon32URL: baseURL + "/tpl/material/images/favicons/favicon-32x32.png",
                 icon64URL: baseURL + "/tpl/material/images/favicons/favicon-64x64.png",
-                shareURL: baseURL + "{noparse}?post=%{url}&title=%{title}&description=%{description}&source=firefoxsocialapi{/noparse}",
+                shareURL: baseURL + "?post=%{url}&title=%{title}&description=%{description}&source=firefoxsocialapi",
                 homepageURL: baseURL
             };
             node.setAttribute("data-service", JSON.stringify(data));
