@@ -53,6 +53,11 @@ $GLOBALS['config']['RAINTPL_TPL'] = 'tpl/material/' ;
 $GLOBALS['config']['MATERIAL_PHP_DATE_PATTERN'] = '%d/%m/%Y %H:%M:%S';
 
 // ### OPTIONAL ###
+// Removes the QR code control of the theme.
+// To completely get rid of QR Codes, you of course need to disable the qrcode plugin as well.
+$GLOBALS['config']['MATERIAL_NO_QRCODE'] = true;
+
+// ### OPTIONAL ###
 // If set to true, enables dates to be displayed with the 'from now' notation.
 // ex: 2 days ago.
 // Set it to false to disable this.

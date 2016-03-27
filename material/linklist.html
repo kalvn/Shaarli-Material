@@ -1,4 +1,5 @@
 {$dateFormat=isset($GLOBALS['config']['MATERIAL_PHP_DATE_PATTERN'])?$GLOBALS['config']['MATERIAL_PHP_DATE_PATTERN']:'%c'}
+{$qrCodeDisabled=isset($GLOBALS['config']['MATERIAL_NO_QRCODE']) ? $GLOBALS['config']['MATERIAL_NO_QRCODE'] : false}
 <!DOCTYPE html>
 <html>
 <head>{include="includes"}</head>
@@ -51,7 +52,7 @@
                                         <span title="Short link here"><a href="?{$value.linkdate|smallHash}">Permalink</a></span>
                                     {/if}
                                     {loop="$value.link_plugin"}
-                                        <span> - {$value}</span>
+                                        <span class="link-plugin">{$value}</span>
                                     {/loop}
                                     {ignore}
                                     {/ignore}
@@ -86,27 +87,37 @@
                             {if="isLoggedIn()"}
                             <div class="col-sm-4 link-url-container">
                             {else}
-                            <div class="col-sm-5 link-url-container">
+                                {if="$qrCodeDisabled"}
+                                    <div class="col-sm-6 link-url-container">
+                                {else}
+                                    <div class="col-sm-5 link-url-container">
+                                {/if}
                             {/if}
                                 <a href="{$value.real_url}" class="link-url"><span title="Short link">{$value.real_url}</span></a>
                             </div>
                             {if="isLoggedIn()"}
                             <div class="col-sm-2 link-actions">
                             {else}
-                            <div class="col-sm-1 link-actions">
-                            {/if}
-                                {if="isLoggedIn()"}
-                                <form method="POST"><input type="hidden" name="lf_linkdate" value="{$value.linkdate}">
-                                    <input type="hidden" name="token" value="{$token}"><input type="hidden" name="delete_link">
-                                    <button type="submit" alt="Delete" title="Delete" class="icon-delete button-delete"></button>
-                                </form>
-                                <form method="GET"><input type="hidden" name="edit_link" value="{$value.linkdate}">
-                                    <button type="submit" alt="Edit" title="Edit" class="icon-edit"></button>
-                                </form>
+                                {if="!$qrCodeDisabled"}
+                                    <div class="col-sm-1 link-actions">
                                 {/if}
-                                <a href="http://qrfree.kaywa.com/?l=1&amp;s=8&amp;d={$scripturl|urlencode}%3F{$value.linkdate|smallHash}" 
-                                    class="icon-qrcode" data-permalink="{$scripturl}?{$value.linkdate|smallHash}" title="{function="strftime($dateFormat, $value.timestamp)"}"></a>
+                            {/if}
+                            {if="isLoggedIn()"}
+                            <form method="POST"><input type="hidden" name="lf_linkdate" value="{$value.linkdate}">
+                                <input type="hidden" name="token" value="{$token}"><input type="hidden" name="delete_link">
+                                <button type="submit" alt="Delete" title="Delete" class="icon-delete button-delete"></button>
+                            </form>
+                            <form method="GET"><input type="hidden" name="edit_link" value="{$value.linkdate}">
+                                <button type="submit" alt="Edit" title="Edit" class="icon-edit"></button>
+                            </form>
+                            {/if}
+                            {if="!$qrCodeDisabled"}
+                            <a href="http://qrfree.kaywa.com/?l=1&amp;s=8&amp;d={$scripturl|urlencode}%3F{$value.linkdate|smallHash}" 
+                                class="icon-qrcode" data-permalink="{$scripturl}?{$value.linkdate|smallHash}" title="{function="strftime($dateFormat, $value.timestamp)"}"></a>
+                            {/if}
+                            {if="isLoggedIn() || !$qrCodeDisabled"}
                             </div>
+                            {/if}
                         </div>
                     </div>
                 </div>

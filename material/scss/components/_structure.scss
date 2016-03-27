@@ -159,6 +159,19 @@ a.link-url:hover{
 .link-actions form > *{
     display: block;
 }
+/* Plugins in links */
+.link-plugin{
+    &:not(:last-child){
+        margin-right: 5px;
+    }
+
+    &:nth-child(2){
+        &:before{
+            content: "-";
+            margin: 0 5px;
+        }
+    }
+}
 
 .link-counter{
     margin-top: 20px;
