@@ -175,7 +175,6 @@
         // Removes the onclick attribute to override the Shaarli default qrcode button's behavior.
         $('.icon-qrcode, .qrcode').removeAttr('onclick').on('click', function(event){
             event.preventDefault();
-            var element = $(this);
 
             var url = $(this).attr('href');
 

@@ -45,32 +45,12 @@
                         </div>
                     {/if}
                     {if="isLoggedIn()"}
-                        <div class="toolbar-button-container">
-                            <button type="button" class="icon-login popup-trigger ripple" data-popup="popup-login" title="Logout"></button>
-                            <div id="popup-login" class="popup popup-login hidden">
-                                <div class="popup-title">Connection</div>
-                                <div class="popup-body">
-                                    <ul>
-                                        <li><a href="?do=logout" class="ripple">Logout</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="?do=logout" class="icon-logout popup-trigger ripple" title="Logout"></a>
                         <a href="?do=tools" class="icon-tools ripple" title="Tools"></a>
                     {elseif="$GLOBALS['config']['OPEN_SHAARLI']"}
                         <a href="?do=tools" class="icon-tools ripple" title="Tools"></a>
                     {else}
-                        <div class="toolbar-button-container">
-                            <button type="button" class="icon-login popup-trigger ripple" data-popup="popup-login" title="Connection"></button>
-                            <div id="popup-login" class="popup popup-login hidden">
-                                <div class="popup-title">Connection</div>
-                                <div class="popup-body">
-                                    <ul>
-                                        <li><a href="?do=login" class="ripple">Login</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="?do=login" class="icon-login popup-trigger ripple" title="Login"></a>
                     {/if}
                     {if="isLoggedIn()"}
                     <a href="?privateonly" class="icon-private{if="$privateonly"}-active{/if} ripple" title="{if="$privateonly"}Click to see all links{else}Click to see only private links{/if}"></a>

@@ -14,7 +14,8 @@
 .icon-private-active,
 .icon-filter,
 .icon-fold,
-.icon-plugin{
+.icon-plugin,
+.icon-logout{
     width: 30px;
     height: 30px;
     background-size: 20px;
@@ -23,19 +24,17 @@
     margin-top: 15px;
     margin-left: 7px;
     border-radius: 50%;
-}
-.icon-login:hover, .icon-login:focus, 
-.icon-tools:hover, .icon-tools:focus,
-.icon-rss:hover, .icon-rss:focus,
-.icon-private:hover, .icon-private:focus,
-.icon-private-active:hover, .icon-private-active:focus,
-.icon-filter:hover, .icon-filter:focus,
-.icon-fold:hover, .icon-fold:focus,
-.icon-plugin:hover, .icon-plugin:focus{
-    background-color: rgba(255, 255, 255, .2);
+
+    &:focus,
+    &:hover{
+        background-color: rgba(255, 255, 255, .2);
+    }
 }
 .icon-login{
     background-image: url(../images/toolbar/login.png);
+}
+.icon-logout{
+    background-image: url(../images/toolbar/logout.png);
 }
 .icon-tools{
     background-image: url(../images/toolbar/tools.png);

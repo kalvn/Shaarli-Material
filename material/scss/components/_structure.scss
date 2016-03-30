@@ -162,13 +162,13 @@ a.link-url:hover{
 /* Plugins in links */
 .link-plugin{
     &:not(:last-child){
-        margin-right: 5px;
+        margin-right: $space-t;
     }
 
     &:nth-child(2){
         &:before{
             content: "-";
-            margin: 0 5px;
+            margin: 0 $space-t;
         }
     }
 }
