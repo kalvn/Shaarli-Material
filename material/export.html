@@ -6,23 +6,61 @@
 <div id="toolsdiv" class="container page-export">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <div class="card">
+            <form class="card" method="get">
+                <input type="hidden" name="do" value="export">
                 <h1 class="card-header">Export my links</h1>
-                <div class="list-action">
-                    <a href="?do=export&amp;selection=all" class="list-item ripple">
-                        <div class="list-item-label">Export all</div>
-                        <div class="list-item-sublabel">Export all links</div>
-                    </a>
-                    <a href="?do=export&amp;selection=public" class="list-item ripple">
-                        <div class="list-item-label">Export public</div>
-                        <div class="list-item-sublabel">Export public links only</div>
-                    </a>
-                    <a href="?do=export&amp;selection=private" class="list-item ripple">
-                        <div class="list-item-label">Export private</div>
-                        <div class="list-item-sublabel">Export private links only</div>
-                    </a>
+                <div class="list-side-right">
+                    <div class="list-body">
+                        <div class="list-item no-border">
+                            <div class="list-item-content">
+                                <div class="list-item-label">Prepend note permalinks with this Shaarli instance's URL</div>
+                                <div class="list-item-sublabel">Useful to import bookmarks in a web browser</div>
+                            </div>
+                            <div class="list-item-side">
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox" name="prepend_note_url" id="prepend_note_url"/>
+                                        <span class="lever"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-item ">
+                            <label class="list-item-content" for="selection-all">
+                                <div class="list-item-label">Export all</div>
+                                <div class="list-item-sublabel">Export all links</div>
+                            </label>
+                            <div class="list-item-side">
+                                <input name="selection" class="with-gap" type="radio" value="all" id="selection-all" checked />
+                                <label for="selection-all"></label>
+                            </div>
+                        </div>
+                        <div class="list-item no-border">
+                            <label class="list-item-content" for="selection-public">
+                                <div class="list-item-label">Export public</div>
+                                <div class="list-item-sublabel">Export public links only</div>
+                            </label>
+                            <div class="list-item-side">
+                                <input name="selection" class="with-gap" type="radio" value="public" id="selection-public" />
+                                <label for="selection-public"></label>
+                            </div>
+                        </div>
+                        <div class="list-item no-border">
+                            <label class="list-item-content" for="selection-private">
+                                <div class="list-item-label">Export private</div>
+                                <div class="list-item-sublabel">Export private links only</div>
+                            </label>
+                            <div class="list-item-side">
+                                <input name="selection" class="with-gap" type="radio" value="private" id="selection-private" />
+                                <label for="selection-private"></label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <div class="card-footer clearfix">
+                    <button type="submit" class="button-raised button-primary pull-right">Export</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

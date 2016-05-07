@@ -1,6 +1,7 @@
 /* Generic classes */
 .list-label{
     @include font-subheading();
+    color: $color-text;
 }
 .list-sublabel{
     margin-top: $space-t;
@@ -11,6 +12,10 @@
 .list-item{
     display: block;
     padding: $space-m;
+}
+
+label.list-item-content{
+    margin: 0;
 }
 
 /* List clickable */
