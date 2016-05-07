@@ -67,11 +67,12 @@ $color-firefox: #ea9c21;
 $color-subtitle: #999;
 $color-gray-light: #ddd;
 $color-gray-hover: #eee;
+$color-gray-active: #ddd;
 
 $color-transparent: rgba(255, 255, 255, 0);
 $color-form-active: $color-primary;
 $color-button-hover: rgba(153, 153, 153, .2);
-/*$color-button-raised: rgba(0, 0, 0, .06);*/
+$color-button-active: rgba(100, 100, 100, .2);
 $color-button-raised: #E0E0E0;
 $color-button-disabled: rgba(0, 0, 0, .26);
 $color-button-raised-disabled: rgba(0, 0, 0, .12);

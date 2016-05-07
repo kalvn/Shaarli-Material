@@ -8,6 +8,7 @@
 .card-title,/* DEPRECATED use header instead */
 .card-header,
 h1.card-header{
+    position: relative;
     margin: 0;
     padding: 15px;
     border-bottom: 1px solid $color-gray-light;

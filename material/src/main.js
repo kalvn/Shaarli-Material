@@ -120,6 +120,14 @@
             displayModal('Information', 'Drag this link to your bookmarks toolbar, or right-click it and choose Bookmark This Link.', 'alert');
             return false;
         });
+
+        $('.button-expand').on('click', function(event){
+            toggleExpand($(this));
+        }).each(function(){
+            if(parseInt(localStorage.getItem('expand'))){
+                toggleExpand($(this));
+            }
+        });
     };
 
     var initSearch = function(){
@@ -518,6 +526,13 @@
         $('.popup:visible').each(function(){
             animations.fadeOut($(this));
         });
+    };
+
+    var toggleExpand = function(element){
+        var isExpanded = element.closest('.card').toggleClass('is-expanded').hasClass('is-expanded') ? 1 : 0;
+        $('#editlinkform-row').toggleClass('row').find('#editlinkform-col').toggleClass('col-md-6 col-md-offset-3');
+
+        localStorage.setItem('expand', isExpanded);
     };
 
     var overlay = {

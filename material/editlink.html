@@ -10,14 +10,17 @@
 {if="!empty($_GET['source']) && $_GET['source']=='bookmarklet'"}class="from-bookmarklet"{/if} >
 {include="page.header"}
 <div id="editlinkform" class="container page-edit">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+    <div class="row" id="editlinkform-row">
+        <div class="col-md-6 col-md-offset-3" id="editlinkform-col">
             <form method="POST" name="linkform" class="card">
                 <input type="hidden" name="lf_linkdate" value="{$link.linkdate}">
                 <input type="hidden" name="token" value="{$token}">
                 {if="$http_referer"}<input type="hidden" name="returnurl" value="{$http_referer}">{/if}
 
-                <div class="card-title">{if="!$link_is_new"}Edit a link{else}Add a new link{/if}</div>
+                <div class="card-header">
+                    {if="!$link_is_new"}Edit a link{else}Add a new link{/if}
+                    <button type="button" class="button-expand button-header visible-md visible-lg" title="Expand / reduce width"></button>
+                </div>
                 <div class="card-body">
                     <div class="form-entry">
                         <label for="lf_url">URL</label><br/>

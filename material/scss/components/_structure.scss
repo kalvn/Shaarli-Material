@@ -19,6 +19,32 @@
     margin-bottom: 50px;
 }
 
+/* Edit link */
+.button-header{
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    top: 7px;
+    right: 7px;
+    background: center center no-repeat;
+
+    &:hover,
+    &:focus{
+        background-color: $color-button-hover;
+    }
+
+    &:active{
+        background-color: $color-button-active;
+    }
+}
+.button-expand{
+    background-image: url(../images/arrow-expand.png);
+
+    .is-expanded &{
+        background-image: url(../images/arrow-compress.png);
+    }
+}
+
 /* Link list */
 .link-outer{
     @extend .card;
