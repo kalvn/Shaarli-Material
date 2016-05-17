@@ -1,5 +1,5 @@
 # Shaarli Material Theme
-Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), the famous personal, minimalist, super-fast, no-database delicious clone.
+Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), the famous personal, minimalist, super-fast, database free, bookmarking service.
 
 
 ## Screenshots
