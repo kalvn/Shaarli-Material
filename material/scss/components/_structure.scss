@@ -67,12 +67,15 @@
 }
 a.link-title{
     display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: #333;
     text-decoration: none;
     font-weight: bold;
-}
-a.link-title:hover{
-    color: #999;
+    
+    &:hover{
+        color: #999;
+    }
 }
 .private a.link-title{
     color: #B71C1C;
