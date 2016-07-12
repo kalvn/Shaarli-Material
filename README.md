@@ -38,47 +38,38 @@ The instructions are the same than for Shaarli 0.5.0 except that you need to pas
 
 
 ## Customization
-You can customize a few things using the `data/config.php` file (or the `data/options.php` if you use an version older than 0.5.0) of your Shaarli installation. If the file doesn't exist, just create it.
+You can customize a few things using the `data/config.json.php` file of your Shaarli installation. If the file doesn't exist, just create it. Be careful to respect the JSON format notation (end lines with a comma except for the last item, just before the closing curly brace), otherwise you'll get errors.
 
-Here is an example of what you can configure.
+Here are parameters you can set.
 
-```php
-// ### REQUIRED ###
-// Sets the active template directory (keep the trailing slash!).
-$GLOBALS['config']['RAINTPL_TPL'] = 'tpl/material/' ;
+- **resource.raintpl_tpl**: REQUIRED: Sets the active template directory (keep the trailing slash!).
+- **config.MATERIAL_PHP_DATE_PATTERN**: OPTIONAL: Customizes the date format. Check this to know what to write: https://php.net/manual/function.strftime.php (ex: `"%d/%m/%Y"` will output for example '30/05/2015').
+- **config.MATERIAL_NO_QRCODE**: OPTIONAL: Removes the QR code control of the theme. To completely get rid of QR Codes, you of course need to disable the qrcode plugin as well.
+- **config.MATERIAL_DATE_FROMNOW**: OPTIONAL: If set to true, enables dates to be displayed with the 'from now' notation. ex: 2 days ago. Set it to false to disable this.
+- **config.MATERIAL_DATE_PATTERN**: OPTIONAL (but REQUIRED if MATERIAL_DATE_FROMNOW is enabled): This date pattern MUST match the MATERIAL_PHP_DATE_PATTERN option but doesn't use the same notation. Check this for more information about the notation: http://momentjs.com/docs/#/parsing/string-format/ ex: 'DD/MM/YYYY'. It's used to correctly convert dates to the 'from now' notation.
+- **config.MATERIAL_COLOR**: OPTIONAL: Customizes the theme's colors. I suggest picking colors from here : https://www.google.com/design/spec/style/color.html#color-color-palette with the shades 500, 600 and 700 for the 3 following settings, respectively. MATERIAL_COLOR is mandatory and represents the main color (used for the toolbar or the buttons).
+- **config.MATERIAL_COLOR_FOCUS**: OPTIONAL: Used for the hover and focus effects on buttons.
+- **config.MATERIAL_COLOR_ACTIVE**: OPTIONAL: Used for the active effect on button (when they are clicked).
 
-// ### OPTIONAL ###
-// Customizes the date format. Check this to know what to write: https://php.net/manual/function.strftime.php
-// ex: '%d/%m/%Y' will output for example '30/05/2015'.
-$GLOBALS['config']['MATERIAL_PHP_DATE_PATTERN'] = '%d/%m/%Y %H:%M:%S';
 
-// ### OPTIONAL ###
-// Removes the QR code control of the theme.
-// To completely get rid of QR Codes, you of course need to disable the qrcode plugin as well.
-$GLOBALS['config']['MATERIAL_NO_QRCODE'] = true;
+Here is an example of what you can configure (in real life, there will be other parameters in the file, just add those to the different categories):
 
-// ### OPTIONAL ###
-// If set to true, enables dates to be displayed with the 'from now' notation.
-// ex: 2 days ago.
-// Set it to false to disable this.
-$GLOBALS['config']['MATERIAL_DATE_FROMNOW'] = false;
-
-// ### OPTIONAL ### (but REQUIRED if MATERIAL_DATE_FROMNOW is enabled)
-// This date pattern MUST match the MATERIAL_PHP_DATE_PATTERN option but doesn't use the same notation.
-// Check this for more information about the notation: http://momentjs.com/docs/#/parsing/string-format/
-// ex: 'DD/MM/YYYY'.
-// It's used to correctly convert dates to the 'from now' notation.
-$GLOBALS['config']['MATERIAL_DATE_PATTERN'] = 'DD/MM/YYYY HH:mm:ss';
-
-// ### OPTIONAL ###
-// Customizes the theme's colors.
-// I suggest picking colors from here : https://www.google.com/design/spec/style/color.html#color-color-palette with the shades 500, 600 and 700 for the 3 following settings, respectively.
-// MATERIAL_COLOR is mandatory and represents the main color (used for the toolbar or the buttons).
-$GLOBALS['config']['MATERIAL_COLOR'] = '#607D8B';
-// MATERIAL_COLOR_FOCUS is used for the hover and focus effects on buttons.
-$GLOBALS['config']['MATERIAL_COLOR_FOCUS'] = '#546E7A';
-// MATERIAL_COLOR_ACTIVE is used for the active effect on button (when they are clicked).
-$GLOBALS['config']['MATERIAL_COLOR_ACTIVE'] = '#455A64';
+```json
+{
+    "resource": {
+        "raintpl_tpl": "tpl\/material\/"
+    },
+    
+    "config": {
+        "MATERIAL_PHP_DATE_PATTERN": "%d\/%m\/%Y %H:%M:%S",
+        "MATERIAL_NO_QRCODE": true,
+        "MATERIAL_DATE_FROMNOW": true,
+        "MATERIAL_DATE_PATTERN": "DD/MM/YYYY HH:mm:ss",
+        "MATERIAL_COLOR": "#607D8B",
+        "MATERIAL_COLOR_FOCUS": "#546E7A",
+        "MATERIAL_COLOR_ACTIVE": "#455A64"
+    }
+}
 ```
 
 ## Add custom resources
@@ -123,7 +114,7 @@ gulp
 
 ------------------------------------------------------------------------------
 
-Shaarli Material was tested and validated on Shaarli 0.6.5.
+Shaarli Material was tested and validated on Shaarli 0.7.0.
 
 You can download Shaarli via the Github project page: https://github.com/shaarli/Shaarli
 

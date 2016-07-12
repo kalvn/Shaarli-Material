@@ -59,3 +59,26 @@ p.highlight{
     color: #999;
     margin-bottom: 100px;
 }
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.pull-left{
+    float: left!important;
+}
+.pull-right {
+    float: right!important;
+}
+
+.hidden {
+    display: none!important;
+}

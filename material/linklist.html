@@ -1,5 +1,5 @@
-{$dateFormat=isset($GLOBALS['config']['MATERIAL_PHP_DATE_PATTERN'])?$GLOBALS['config']['MATERIAL_PHP_DATE_PATTERN']:'%c'}
-{$qrCodeDisabled=isset($GLOBALS['config']['MATERIAL_NO_QRCODE']) ? $GLOBALS['config']['MATERIAL_NO_QRCODE'] : false}
+<!--{$dateFormat = $conf->get('config.MATERIAL_PHP_DATE_PATTERN') ? $conf->get('config.MATERIAL_PHP_DATE_PATTERN') : '%c'}
+{$qrCodeDisabled = $conf->get('MATERIAL_NO_QRCODE') ? $conf->get('MATERIAL_NO_QRCODE') : false}-->
 <!DOCTYPE html>
 <html>
 <head>{include="includes"}</head>
@@ -46,7 +46,7 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="link-date">
-                                    {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
+                                    {if="!$hide_timestamps || isLoggedIn()"}
                                         <span title="Permalink - {function="strftime($dateFormat, $value.timestamp)"}"><a href="?{$value.linkdate|smallHash}" class="link-actual-date">{function="strftime($dateFormat, $value.timestamp)"}</a></span>
                                     {else}
                                         <span title="Short link here"><a href="?{$value.linkdate|smallHash}">Permalink</a></span>

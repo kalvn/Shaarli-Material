@@ -47,7 +47,7 @@
                     </div>
                     {/if}
                     <div class="form-entry">
-                        <input type="checkbox" class="filled-in" {if="($link_is_new && $GLOBALS['privateLinkByDefault']==true) || $link.private == true"}checked="checked"{/if} name="lf_private" id="lf_private"/>
+                        <input type="checkbox" class="filled-in" {if="($link_is_new && $default_private_links) || $link.private == true"}checked="checked"{/if} name="lf_private" id="lf_private"/>
                         <label for="lf_private">Private</label>
                     </div>
                 </div>

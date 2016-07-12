@@ -7,6 +7,7 @@
 html{
     background: #ececec;
     font-size: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 body{
@@ -17,14 +18,14 @@ body{
 }
 h1{
     @include font-headline();
-    margin: 10px 0 20px 0;
+    margin: $space-s 0 $space-l 0;
 }
 h2{
     @include font-subheading();
-    margin-bottom: 15px;
+    margin-bottom: $space-m;
 }
 p{
-    margin-bottom: 15px;
+    margin-bottom: $space-m;
     @include font-body();
 }
 a{
@@ -44,4 +45,29 @@ em{
 }
 strong{
     font-weight: bold;
+}
+small {
+    font-size: 80%;
+}
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+dl {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+dt {
+    font-weight: 700;
+}
+
+@-ms-viewport {
+    width: device-width;
 }

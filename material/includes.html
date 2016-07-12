@@ -16,10 +16,10 @@
 <meta name="msapplication-TileColor" content="#603cba">
 <meta name="msapplication-config" content="images/favicons/browserconfig.xml">
 <link type="text/css" rel="stylesheet" href="build/styles.min.css" />
-{if="isset($GLOBALS['config']['MATERIAL_COLOR'])"}
-{$materialColor=$GLOBALS['config']['MATERIAL_COLOR']}
-{$materialColorFocus=isset($GLOBALS['config']['MATERIAL_COLOR_FOCUS']) ? $GLOBALS['config']['MATERIAL_COLOR_FOCUS'] : $materialColor}
-{$materialColorActive=isset($GLOBALS['config']['MATERIAL_COLOR_ACTIVE']) ? $GLOBALS['config']['MATERIAL_COLOR_ACTIVE'] : $materialColor}
+{if="$conf->get('config.MATERIAL_COLOR')"}
+{$materialColor=$conf->get('config.MATERIAL_COLOR')}
+{$materialColorFocus=$conf->get('config.MATERIAL_COLOR_FOCUS') ? $conf->get('config.MATERIAL_COLOR_FOCUS') : $materialColor}
+{$materialColorActive=$conf->get('config.MATERIAL_COLOR_ACTIVE') ? $conf->get('config.MATERIAL_COLOR_ACTIVE') : $materialColor}
 <meta name="theme-color" content="{$materialColor}">
 <style type="text/css">
     div.awesomplete > ul > li[aria-selected=true],
@@ -85,8 +85,12 @@
 <script>
 var shaarli = {
     source: '{$source}',
-    fromNow: '{if="isset($GLOBALS['config']['MATERIAL_DATE_FROMNOW'])"}{$GLOBALS['config']['MATERIAL_DATE_FROMNOW']}{/if}',
-    datePattern: '{if="isset($GLOBALS['config']['MATERIAL_DATE_PATTERN'])"}{$GLOBALS['config']['MATERIAL_DATE_PATTERN']}{/if}',
+    fromNow: {if="$conf->get('config.MATERIAL_DATE_FROMNOW')"}
+        {$conf->get('config.MATERIAL_DATE_FROMNOW')}
+    {else}
+        0
+    {/if},
+    datePattern: '{$conf->get('config.MATERIAL_DATE_PATTERN')}',
     isAuth: {if="isLoggedIn()"}true{else}false{/if}
 };
 </script>

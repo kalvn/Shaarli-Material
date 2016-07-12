@@ -51,7 +51,7 @@
                             <div class="list-item-side">
                                 <div class="switch">
                                     <label>
-                                        <input type="checkbox" name="disablesessionprotection" id="disablesessionprotection" {if="!empty($GLOBALS['disablesessionprotection'])"}checked{/if}/>
+                                        <input type="checkbox" name="disablesessionprotection" id="disablesessionprotection" {if="$conf->get('security.session_protection_disabled')"}checked{/if}/>
                                         <span class="lever"></span>
                                     </label>
                                 </div>
@@ -65,7 +65,7 @@
                             <div class="list-item-side">
                                 <div class="switch">
                                     <label>
-                                        <input type="checkbox" name="privateLinkByDefault" id="privateLinkByDefault" {if="!empty($GLOBALS['privateLinkByDefault'])"}checked{/if}/>
+                                        <input type="checkbox" name="privateLinkByDefault" id="privateLinkByDefault" {if="$private_links_default"}checked{/if}/>
                                         <span class="lever"></span>
                                     </label>
                                 </div>
@@ -80,7 +80,7 @@
                             <div class="list-item-side">
                                 <div class="switch">
                                     <label>
-                                        <input type="checkbox" name="enableRssPermalinks" id="enableRssPermalinks" {if="!empty($GLOBALS['config']['ENABLE_RSS_PERMALINKS'])"}checked{/if}/>
+                                        <input type="checkbox" name="enableRssPermalinks" id="enableRssPermalinks" {if="$enable_rss_permalinks"}checked{/if}/>
                                         <span class="lever"></span>
                                     </label>
                                 </div>
@@ -95,7 +95,7 @@
                             <div class="list-item-side">
                                 <div class="switch">
                                     <label>
-                                        <input type="checkbox" name="hidePublicLinks" id="hidePublicLinks" {if="!empty($GLOBALS['config']['HIDE_PUBLIC_LINKS'])"}checked{/if}/>
+                                        <input type="checkbox" name="hidePublicLinks" id="hidePublicLinks" {if="$hide_public_links"}checked{/if}/>
                                         <span class="lever"></span>
                                     </label>
                                 </div>
@@ -109,7 +109,7 @@
                             <div class="list-item-side">
                                 <div class="switch">
                                     <label>
-                                        <input type="checkbox" name="updateCheck" id="updateCheck" {if="!empty($GLOBALS['config']['ENABLE_UPDATECHECK'])"}checked{/if}/>
+                                        <input type="checkbox" name="updateCheck" id="updateCheck" {if="$enable_update_check"}checked{/if}/>
                                         <span class="lever"></span>
                                     </label>
                                 </div>
