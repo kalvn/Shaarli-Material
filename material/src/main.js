@@ -165,7 +165,7 @@
 
     var initDatesFormat = function(){
         // Change date format for recent entries.
-        if(shaarli.fromNow && (shaarli.fromNow === 'true' || shaarli.fromNow === '1')){
+        if(shaarli.fromNow && (shaarli.fromNow === 'true' || shaarli.fromNow === '1' || shaarli.fromNow === 1)){
             $('.link-actual-date').each(function(index){
                 var pattern = shaarli.datePattern;
                 var newDate = '';
