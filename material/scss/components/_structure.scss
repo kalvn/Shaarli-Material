@@ -71,7 +71,7 @@ a.link-title{
     text-overflow: ellipsis;
     color: #333;
     text-decoration: none;
-    font-weight: bold;
+    font-size: 1.15rem;
     
     &:hover{
         color: #999;
@@ -127,6 +127,7 @@ a.link-title{
     background-color: #ddd;
     border-radius: 20px;
     border: 1px solid #ccc;
+    font-size: .8rem;
 }
 .link-tag a:hover{
     background-color: #ccc;
