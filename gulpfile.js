@@ -40,7 +40,8 @@ var JS_LIB = [
     ROOT + 'lib/awesomplete/awesomplete.min.js',
     ROOT + 'lib/blazy/blazy.min.js',
     ROOT + 'lib/moment/min/moment.min.js',
-    ROOT + 'lib/Sortable/Sortable.min.js'
+    ROOT + 'lib/Sortable/Sortable.min.js',
+    ROOT + 'lib/mousetrap/mousetrap.min.js'
 ];
 
 var BOOTSTRAP_FONTS = ROOT + 'lib/bootstrap/dist/fonts/*';

@@ -21,6 +21,7 @@
             initTimezoneChooser();
             initSortable();
             initFirefoxSocial();
+            initShortcuts();
         }
     };
 
@@ -371,6 +372,47 @@
             }
 
             overlay.triggerEvent(event);
+        });
+    };
+
+    var initShortcuts = function(){
+        var loc = location.href;
+        var baseURL = loc.substring(0, loc.lastIndexOf("/"));
+
+        // Go to frontpage
+        // h = home
+        Mousetrap.bind('ctrl+h', function(){
+            window.open(baseURL, "_self");
+        });
+
+        // Go to tags overview
+        // c = configuration
+        Mousetrap.bind('ctrl+c', function(){
+            window.open(baseURL + "?do=tools", "_self");
+        });
+
+        // Go to tags overview
+        // t = tags
+        Mousetrap.bind('ctrl+t', function(){
+            window.open(baseURL + "?do=tagcloud", "_self");
+        });
+
+        // Go to tags overview
+        // p = picwall
+        Mousetrap.bind('ctrl+p', function(){
+            window.open(baseURL + "?do=picwall", "_self");
+        });
+
+        // Go to tags overview
+        // d = daily
+        Mousetrap.bind('ctrl+d', function(){
+            window.open(baseURL + "?do=daily", "_self");
+        });
+
+        // Create new bookmark
+        // n = new
+        Mousetrap.bind('ctrl+n', function () {
+            window.open(baseURL + "?do=addlink", "_self");
         });
     };
 
