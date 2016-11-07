@@ -115,7 +115,7 @@ $button-height: 36px;
         &:hover,
         &:focus,
         &:active{
-            @extend .shadow-btn;
+            @extend .shadow-button;
 
             color: $color-button-raised-disabled-text;
             background-color: $color-button-raised-disabled;
