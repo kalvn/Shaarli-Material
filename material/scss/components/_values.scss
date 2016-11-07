@@ -1,6 +1,6 @@
 // Typography.
 $font-stack: 'Roboto', sans-serif;
-$font-size: 18px;
+$font-size: 16px;
 
 @mixin font-display4(){
     font-size: 8rem;
@@ -19,7 +19,7 @@ $font-size: 18px;
     font-weight: 400;
 }
 @mixin font-brand(){
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 300;
 }
 @mixin font-headline(){
@@ -31,7 +31,7 @@ $font-size: 18px;
     font-weight: 400;
 }
 @mixin font-subheading(){
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 400;
 }
 @mixin font-body2(){
@@ -47,8 +47,8 @@ $font-size: 18px;
     font-weight: 400;
 }
 @mixin font-button(){
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: .95rem;
+    font-weight: 400;
     text-transform: uppercase;
 }
 
