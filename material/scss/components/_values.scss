@@ -1,52 +1,53 @@
 // Typography.
 $font-stack: 'Roboto', sans-serif;
-$font-size: 14px;
+$font-size: 17px;
+
 @mixin font-display4(){
-    font-size: 8em;
+    font-size: 8rem;
     font-weight: 200;
 }
 @mixin font-display3(){
-    font-size: 4em;
+    font-size: 4rem;
     font-weight: 400;
 }
 @mixin font-display2(){
-    font-size: 3.2em;
+    font-size: 3.2rem;
     font-weight: 400;
 }
 @mixin font-display1(){
-    font-size: 2.4em;
+    font-size: 2.4rem;
     font-weight: 400;
 }
 @mixin font-brand(){
-    font-size: 1.5em;
+    font-size: 1.5rem;
     font-weight: 300;
 }
 @mixin font-headline(){
-    font-size: 1.7em;
+    font-size: 1.7rem;
     font-weight: 400;
 }
 @mixin font-title(){
-    font-size: 1.4em;
+    font-size: 1.4rem;
     font-weight: 400;
 }
 @mixin font-subheading(){
-    font-size: 1.15em;
+    font-size: 1.15rem;
     font-weight: 400;
 }
 @mixin font-body2(){
-    font-size: 1em;
+    font-size: 1rem;
     font-weight: 500;
 }
 @mixin font-body(){
-    font-size: 1em;
+    font-size: 1rem;
     font-weight: 400;
 }
 @mixin font-caption(){
-    font-size: 0.85em;
+    font-size: 0.85rem;
     font-weight: 400;
 }
 @mixin font-button(){
-    font-size: 1em;
+    font-size: 1rem;
     font-weight: 500;
     text-transform: uppercase;
 }
@@ -60,7 +61,7 @@ $font-size: 14px;
 
 // Colors.
 $color-text: #333;
-$color-primary: #2196F3;//2196F3
+$color-primary: #2196F3; //2196F3
 $color-secondary: #F44336;
 $color-alert: #F44336;
 $color-firefox: #ea9c21;

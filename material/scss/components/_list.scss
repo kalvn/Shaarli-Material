@@ -53,13 +53,13 @@ label.list-item-content{
 
 .list-action.list-big{
     .list-item-label{
-        font-size: 1.4em;
+        font-size: 1.4rem;
     }
 
     .list-item-sublabel{
         margin-top: $space-t;
         font-weight: 400;
-        font-size: 1em;
+        font-size: 1rem;
         color: $color-subtitle;
     }
 }
@@ -109,7 +109,7 @@ label.list-item-content{
     .list-sortable-handle{
         padding: $space-s;
         cursor: move;
-        font-size: 2em;
+        font-size: 2rem;
         color: $color-subtitle;
     }
 
