@@ -95,7 +95,7 @@ This theme uses a few Javascript libraries.
 
 
 ## Demo
-A read-only demo is available on my personal Shaarli : http://exystenz.com/links
+A read-only demo is available on my personal Shaarli : [https://links.kalvn.net](https://links.kalvn.net)
 
 
 ## Develop and debug

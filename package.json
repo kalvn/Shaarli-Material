@@ -1,6 +1,6 @@
 {
   "name": "shaarlimaterial",
-  "version": "0.0.45",
+  "version": "0.7.0",
   "description": "Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), the famous personal, minimalist, super-fast, no-database delicious clone.",
   "main": "gulpfile.js",
   "devDependencies": {
