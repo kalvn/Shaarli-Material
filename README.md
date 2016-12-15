@@ -37,6 +37,18 @@ Access your Shaarli and enjoy your new Material theme.
 The instructions are the same than for Shaarli 0.5.0 except that you need to paste the line in a file called `options.php` which you put in the `data` folder. Don't forget to add `<?php` at the beginning of the file.
 
 
+## Keyboard Shortcuts
+
+This theme supports some keyboard shortcuts to quickly switch to other pages without having to click buttons.
+
+* `Ctrl + H` = Jump to Homepage
+* `Ctrl + N` = Create new Bookmark
+* `Ctrl + T` = Jump to the Tags overview
+* `Ctrl + P` = Jump to the Picwall
+* `Ctrl + D` = Jump to the Daily page
+* `Ctrl + C` = Jump to the Configration overview
+
+
 ## Customization
 You can customize a few things using the `data/config.json.php` file of your Shaarli installation. If the file doesn't exist, just create it. Be careful to respect the JSON format notation (end lines with a comma except for the last item, just before the closing curly brace), otherwise you'll get errors.
 
