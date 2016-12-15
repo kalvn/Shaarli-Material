@@ -105,7 +105,7 @@ gulp
 
 ------------------------------------------------------------------------------
 
-Shaarli Material was tested and validated on Shaarli 0.8.1.
+Shaarli Material was tested and validated on Shaarli 0.8.2.
 
 You can download Shaarli via the Github project page: https://github.com/shaarli/Shaarli
 
