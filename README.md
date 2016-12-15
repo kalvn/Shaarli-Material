@@ -8,33 +8,24 @@ Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), t
 [More screenshots](https://github.com/kalvn/Shaarli-Material/tree/master/screenshots).
 
 
-## Requirements
-You need to have Shaarli **0.0.44beta** installed or above. You can try with version 0.0.43beta but there might be some issues with PHP variable I use and that don't exist in `index.php`.
-
-Older versions won't work, take a look at the [official project](https://github.com/shaarli/Shaarli) to download or upgrade.
-
-
 ## Download
 To download this theme, [visit this page](https://github.com/kalvn/Shaarli-Material/releases) and choose the most recent version matching the version of your Shaarli installation. Both use the same notation.
 
 Versions suffixed by `-patch.x` include some bugfix so take those preferentially if they exist for the version that fits your Shaarli installation.
 
+If you install an older version, please read the README.md file you'll find in the root folder rather than this one.
+
 
 ## Installation
-### Shaarli 0.5.0 or above
+### Your Shaarli is up to date
 Download the `material` folder into the `tpl` directory of your Shaarli installation. It should be next to existing `.html` files.
 
-In your Shaarli installation, open the `data/config.php` and change the `RAINTPL_TPL` parameter to `tpl/material/`.
-If you can't find this parameter, paste the following line at the end of the file:
-
-```php
-$GLOBALS['config']['RAINTPL_TPL'] = 'tpl/material/' ; // keep the trailing slash!
-```
+In your Shaarli installation, open the `data/config.json.php` and change the `raintpl_tpl` parameter from `tpl\/` to `tpl\/material\/`.
 
 Access your Shaarli and enjoy your new Material theme.
 
-### Older versions
-The instructions are the same than for Shaarli 0.5.0 except that you need to paste the line in a file called `options.php` which you put in the `data` folder. Don't forget to add `<?php` at the beginning of the file.
+### You use an older version
+Please refer to the README file within the root folder of the version you downloaded.
 
 
 ## Customization
@@ -114,7 +105,7 @@ gulp
 
 ------------------------------------------------------------------------------
 
-Shaarli Material was tested and validated on Shaarli 0.7.0.
+Shaarli Material was tested and validated on Shaarli 0.8.1.
 
 You can download Shaarli via the Github project page: https://github.com/shaarli/Shaarli
 

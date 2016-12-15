@@ -36,8 +36,8 @@
     {/if}
 
     <div class="links-list">
-        {loop="links"}
-            <div id="{$value.linkdate|smallHash}" class="link-outer{if="$value.class"} {$value.class}{/if}">
+        {loop="$links"}
+            <div id="{$value.shorturl}" class="link-outer{if="$value.class"} {$value.class}{/if}">
                 <div class="link-inner">
                     <div class="link-header">
                         <div class="row">
@@ -47,9 +47,9 @@
                             <div class="col-sm-4">
                                 <div class="link-date">
                                     {if="!$hide_timestamps || isLoggedIn()"}
-                                        <span title="Permalink - {function="strftime($dateFormat, $value.timestamp)"}"><a href="?{$value.linkdate|smallHash}" class="link-actual-date">{function="strftime($dateFormat, $value.timestamp)"}</a></span>
+                                        <span title="Permalink - {function="strftime($dateFormat, $value.timestamp)"}"><a href="?{$value.shorturl}" class="link-actual-date">{function="strftime($dateFormat, $value.timestamp)"}</a></span>
                                     {else}
-                                        <span title="Short link here"><a href="?{$value.linkdate|smallHash}">Permalink</a></span>
+                                        <span title="Short link here"><a href="?{$value.shorturl}">Permalink</a></span>
                                     {/if}
                                     {loop="$value.link_plugin"}
                                         <span class="link-plugin">{$value}</span>
@@ -78,7 +78,7 @@
                             <div class="col-sm-6">
                                 {if="$value.tags"}
                                     <div class="link-tag-list">
-                                    {loop="value.taglist"}
+                                    {loop="$value.taglist"}
                                         <span class="link-tag" title="Add tag"><a href="?addtag={$value|urlencode}">{$value}</a></span>
                                     {/loop}
                                     </div>
@@ -103,17 +103,17 @@
                                 {/if}
                             {/if}
                             {if="isLoggedIn()"}
-                            <form method="POST"><input type="hidden" name="lf_linkdate" value="{$value.linkdate}">
+                            <form method="POST"><input type="hidden" name="lf_linkdate" value="{$value.id}">
                                 <input type="hidden" name="token" value="{$token}"><input type="hidden" name="delete_link">
                                 <button type="submit" alt="Delete" title="Delete" class="icon-delete button-delete"></button>
                             </form>
-                            <form method="GET"><input type="hidden" name="edit_link" value="{$value.linkdate}">
+                            <form method="GET"><input type="hidden" name="edit_link" value="{$value.id}">
                                 <button type="submit" alt="Edit" title="Edit" class="icon-edit"></button>
                             </form>
                             {/if}
                             {if="!$qrCodeDisabled"}
-                            <a href="http://qrfree.kaywa.com/?l=1&amp;s=8&amp;d={$scripturl|urlencode}%3F{$value.linkdate|smallHash}" 
-                                class="icon-qrcode" data-permalink="{$scripturl}?{$value.linkdate|smallHash}" title="{function="strftime($dateFormat, $value.timestamp)"}"></a>
+                            <a href="http://qrfree.kaywa.com/?l=1&amp;s=8&amp;d={$scripturl|urlencode}%3F{$value.shorturl}" 
+                                class="icon-qrcode" data-permalink="{$scripturl}?{$value.shorturl}" title="{function="strftime($dateFormat, $value.timestamp)"}"></a>
                             {/if}
                             {if="isLoggedIn() || !$qrCodeDisabled"}
                             </div>

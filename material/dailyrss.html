@@ -5,7 +5,7 @@
     <link>{$absurl}</link>
     <pubDate>{$rssdate}</pubDate>
     <description><![CDATA[
-        {loop="links"}
+        {loop="$links"}
             <h3><a href="{$value.url}">{$value.title}</a></h3>
             <small>{if="!$hide_timestamps"}{function="strftime($dateFormat, $value.timestamp)"} - {/if}{if="$value.tags"}{$value.tags}{/if}<br>
             {$value.url}</small><br>

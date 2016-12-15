@@ -7,7 +7,14 @@
     </div>
     <div>
         {loop="$action_plugin"}
-            {$value}
+            <div class="paging_privatelinks">
+                <a
+                    {loop="$value.attr"}
+                        {$key}="{$value}"
+                    {/loop}>
+                    {$value.html}
+                </a>
+            </div>
         {/loop}
     </div>
 </div>

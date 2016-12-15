@@ -10,8 +10,11 @@
         {/loop}
     </div>
     <div id="cloudtag">
-        {loop="tags"}
-        <span class="count">{$value.count}</span><a href="?searchtags={$key|urlencode}" style="font-size:{$value.size}em;">{$key}</a>
+        {loop="$tags"}
+            <span class="count">{$value.count}</span><a href="?searchtags={$key|urlencode}" style="font-size:{$value.size}em;">{$key}</a>
+            {loop="$value.tag_plugin"}
+                {$value}
+            {/loop}
         {/loop}
     </div>
     <div id="plugin_zone_end_tagcloud" class="plugin_zone">

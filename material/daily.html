@@ -23,25 +23,25 @@
 
     {if="$linksToDisplay"}
         <div class="clearfix">
-        {loop="cols"}
+        {loop="$cols"}
             {if="isset($value[0])"}
             <div id="daily_col{$counter+1}">
-                {loop="value"}
+                {loop="$value"}
                     {$link=$value}
                     <div class="dailyEntry">
                         <div class="dailyEntryPermalink">
-                            <a href="?{$link.linkdate|smallHash}">
+                            <a href="?{$value.shorturl}">
                                 <img src="images/squiggle2.png" width="25" height="26" title="permalink" alt="permalink">
                             </a>
                         </div>
                         {if="!$hide_timestamps || isLoggedIn()"}
                             <div class="dailyEntryLinkdate">
-                                <a href="?{$link.linkdate|smallHash}">{function="strftime('%H:%M', $link.timestamp)"}</a>
+                                <a href="?{$value.shorturl}">{function="strftime('%H:%M', $link.timestamp)"}</a>
                             </div>
                         {/if}
                         {if="$link.tags"}
                             <div class="dailyEntryTags">
-                                {loop="link.taglist"}
+                                {loop="$link.taglist"}
                                     {$value} -
                                 {/loop}
                             </div>

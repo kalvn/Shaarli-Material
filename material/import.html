@@ -6,7 +6,7 @@
 <div id="uploaddiv" class="container page-import">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
-			<form method="POST" action="?do=upload" enctype="multipart/form-data" name="uploadform" id="uploadform" class="card">
+			<form method="POST" action="?do=import" enctype="multipart/form-data" name="uploadform" id="uploadform" class="card">
 				<input type="hidden" name="token" value="{$token}">
 				<input type="hidden" name="MAX_FILE_SIZE" value="{$maxfilesize}">
 				<div class="card-title">Import links</div>
@@ -18,14 +18,53 @@
 						<div class="sublabel">(Max: {$maxfilesize} bytes)</div>
 					</div>
 					<div class="form-entry">
-						<input type="checkbox" class="filled-in" name="private" id="private">
-						<label for="private">Import all links as private</label>
-					</div>
-					<div class="form-entry">
 						<input type="checkbox" class="filled-in" name="overwrite" id="overwrite">
 						<label for="overwrite">Overwrite existing links</label>
 					</div>
 				</div>
+
+				<div class="list-side-right">
+                    <div class="list-body">
+						<div class="list-item">
+                            <label class="list-item-content" for="privacy-default">
+                                <div class="list-item-label">Default</div>
+                                <div class="list-item-sublabel">Use values from the imported file, default to public</div>
+                            </label>
+                            <div class="list-item-side">
+                                <input name="privacy" class="with-gap" type="radio" value="default" id="privacy-default" checked />
+                                <label for="privacy-default"></label>
+                            </div>
+                        </div>
+                        <div class="list-item no-border">
+                            <label class="list-item-content" for="privacy-private">
+                                <div class="list-item-label">Private</div>
+                                <div class="list-item-sublabel">Import all bookmarks as private</div>
+                            </label>
+                            <div class="list-item-side">
+                                <input name="privacy" class="with-gap" type="radio" value="private" id="privacy-private" />
+                                <label for="privacy-private"></label>
+                            </div>
+                        </div>
+                        <div class="list-item no-border">
+                            <label class="list-item-content" for="privacy-public">
+                                <div class="list-item-label">Public</div>
+                                <div class="list-item-sublabel">Import all bookmarks as public</div>
+                            </label>
+                            <div class="list-item-side">
+                                <input name="privacy" class="with-gap" type="radio" value="public" id="privacy-public" />
+                                <label for="privacy-public"></label>
+                            </div>
+                        </div>
+
+                        <div class="list-item">
+                            <div class="form-entry">
+		                        <label for="default-tags">Add default tags</label>
+		                        <input type="text" name="default_tags" id="default-tags" placeholder="Separate tags with comma...">
+		                    </div>
+                        </div>
+                    </div>
+                </div>
+
 				<div class="card-footer">
 					<button type="submit" name="import_file" class="button-raised button-primary pull-right">Import</button>
 					<div class="clearfix"></div>

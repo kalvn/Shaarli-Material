@@ -17,7 +17,7 @@
     </author>
     <id>{$index_url}</id>
     <generator>Shaarli</generator>
-    {loop="links"}
+    {loop="$links"}
         <entry>
             <title>{$value.title}</title>
             {if="$usepermalinks"}
@@ -29,9 +29,7 @@
             {if="$show_dates"}
                 <updated>{$value.iso_date}</updated>
             {/if}
-            <content type="html" xml:lang="{$language}">
-            <![CDATA[{$value.description}]]>
-            </content>
+            <content type="html" xml:lang="{$language}"><![CDATA[{$value.description}]]></content>
             {loop="$value.taglist"}
                 <category scheme="{$index_url}?searchtags=" term="{$value|strtolower}" label="{$value}" />
             {/loop}

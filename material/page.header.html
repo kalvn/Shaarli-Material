@@ -32,13 +32,28 @@
                                 <div class="popup-body">
                                     {loop="$plugins_header.buttons_toolbar"}
                                     <ul>
-                                        <li>{$value}</li>
+                                        <li>
+                                            <a
+                                                {loop="$value.attr"}
+                                                    {$key}="{$value}"
+                                                {/loop}>
+                                                {$value.html}
+                                            </a>
+                                        </li>
                                     </ul>
                                     {/loop}
                                     {loop="$plugins_header.fields_toolbar"}
-                                        <div class="popup-content-area">
-                                            {$value}
-                                        </div>
+                                        <form class="popup-content-area" 
+                                            {loop="$value.attr"}
+                                                {$key}="{$value}"
+                                            {/loop} >
+                                            {loop="$value.inputs"}
+                                                <input
+                                                    {loop="$value"}
+                                                        {$key}="{$value}"
+                                                    {/loop}>
+                                            {/loop}
+                                        </form>
                                     {/loop}
                                 </div>
                             </div>
@@ -103,7 +118,7 @@
 
     {if="!empty($plugin_errors) && isLoggedIn()"}
         <ul class="errors container">
-            {loop="plugin_errors"}
+            {loop="$plugin_errors"}
                 <li>{$value}</li>
             {/loop}
         </ul>
@@ -116,7 +131,7 @@
             <div class="mbl row">
                 <form method="GET" id="form-search" class="col-md-8 col-md-offset-2">
                     <input type="search" id="searchform_value" class="input-big awesomplete" name="searchterm" 
-                        value="{if="isset($search_type)"}{if="$search_type=='fulltext'"}{$search_crits}{elseif="$search_type=='tags'"}{loop="search_crits"}{$value} {/loop}{else}{/if}{/if}" 
+                        value="{if="isset($search_type)"}{if="$search_type=='fulltext'"}{$search_crits}{elseif="$search_type=='tags'"}{loop="$search_crits"}{$value} {/loop}{else}{/if}{/if}" 
                         placeholder="Search something here..." autocomplete="off" data-multiple data-minChars="1"
                         data-list="{loop="$tags"}{$key}, {/loop}" />    
                     <div class="mtl">
