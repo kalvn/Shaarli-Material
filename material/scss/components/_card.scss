@@ -12,7 +12,7 @@ h1.card-header{
     margin: 0;
     padding: 15px;
     border-bottom: 1px solid $color-gray-light;
-    @include font-button();
+    @include font-body2();
     text-transform: uppercase;
 }
 
