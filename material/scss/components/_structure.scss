@@ -209,6 +209,26 @@ a.link-url:hover{
     color: #999;
 }
 
+.favorite-tag{
+    display: block;
+    float: left;
+    padding: $space-s;
+    margin-right: $space-s;
+    background-color: rgba(0, 0, 0, .05);
+    color: $color-subtitle;
+
+    &:hover,
+    &:focus{
+        background-color: rgba(0, 0, 0, .1);
+        color: inherit;
+        text-decoration: none;
+    }
+
+    &:active{
+        background-color: rgba(0, 0, 0, .2);
+    }
+}
+
 /* Picture wall */
 .picwall-pictureframe{
     float: left;
