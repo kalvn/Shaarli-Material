@@ -83,10 +83,10 @@
                                 {loop="$value.parameters"}
                                 <div class="row">
                                     <div class="col-sm-4 plugin-param-key">
-                                        <label for="{$key}">{function="str_replace('_', ' ', $key)"}</label>
+                                        <label for="{$key}" title="{$value.desc}">{function="str_replace('_', ' ', $key)"}</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input type="text" name="{$key}" value="{$value}" id="{$key}">
+                                        <input type="text" name="{$key}" value="{$value.value}" id="{$key}" placeholder="{$value.desc}">
                                     </div>
                                 </div>
                                 {/loop}
