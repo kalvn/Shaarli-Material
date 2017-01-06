@@ -88,15 +88,28 @@
     };
 
     var initButtons = function(){
-        $('[name=delete_link], .button-delete').on('click', function(event){
+        // Delete button in the link list.
+        $('.button-delete').on('click', function(event){
             event.preventDefault();
 
             var form = $(this).closest('form');
+            
             displayModal('Delete link', 'Are you sure you want to delete this link ?', 'confirm', function(accepts){
                 if(accepts){
-                    // This input is required for the editlink form which change its behavior based on the name of the button.
-                    form.append('<input type="hidden" name="delete_link">');
                     form.submit();
+                }
+            });
+            return false;
+        });
+        // Delete button when editing an existing link.
+        $('[name=delete_link]').on('click', function(event){
+            event.preventDefault();
+
+            var url = $(this).attr('href');
+
+            displayModal('Delete link', 'Are you sure you want to delete this link ?', 'confirm', function(accepts){
+                if(accepts){
+                    window.location.href = url;
                 }
             });
             return false;
