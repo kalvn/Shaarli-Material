@@ -21,6 +21,16 @@
                         <div class="sublabel">(default value is: ?)</div>
                     </div>
                     <div class="form-entry">
+                        <label for="theme">Theme</label>
+                        <select name="theme" id="theme">
+                        {loop="$theme_available"}
+                            <option value="{$value}" {if="$value===$theme"}selected{/if}>
+                                {$value|ucfirst}
+                            </option>
+                        {/loop}
+                        </select>
+                    </div>
+                    <div class="form-entry">
                         <label for="continent">Timezone</label>
                         <div id="timezone-toremove">{$timezone_form}</div>
                         <div class="row">
