@@ -18,11 +18,11 @@ If you install an older version, please read the README.md file you'll find in t
 
 ## Installation
 ### Your Shaarli is up to date
-Download the `material` folder into the `tpl` directory of your Shaarli installation. It should be next to existing `.html` files.
+Download the `material` folder into the `tpl` directory of your Shaarli installation next to the `default` folder.
 
-In your Shaarli installation, open the `data/config.json.php` and change the `raintpl_tpl` parameter from `tpl\/` to `tpl\/material\/`.
+Access your Shaarli and finish the setup process. Then, go into menu **Tools > Configure your Shaarli** and change the setting **Theme** to **Material**.
 
-Access your Shaarli and enjoy your new Material theme.
+You can now enjoy your new Material theme.
 
 ### You use an older version
 Please refer to the README file within the root folder of the version you downloaded.
@@ -70,7 +70,7 @@ Then, anything you add in this file will be included at the end of the `<head>` 
 This file is NOT commited on the repository, which allows you to update the theme without overriding this file.
 
 ## Plugins
-As from Shaarli 0.6.0, you can install plugins to enrich your experience.
+As from Shaarli v0.6.0, you can install plugins to enrich your experience.
 Most of them should work properly, although it's up to the plugin developer to ensure the code is as minimal as possible to integrates well in themes.
 I tested all plugins available with Shaarli 0.6.0 and they all work well even though the display is a bit weird for some of them. I will keep monitoring the behavior of popular plugins in the future.
 
@@ -105,7 +105,7 @@ gulp
 
 ------------------------------------------------------------------------------
 
-Shaarli Material was tested and validated on Shaarli 0.8.2.
+Shaarli Material was tested and validated on Shaarli 0.8.3.
 
 You can download Shaarli via the Github project page: https://github.com/shaarli/Shaarli
 
