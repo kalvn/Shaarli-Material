@@ -16,6 +16,10 @@ Versions suffixed by `-patch.x` include some bugfix so take those preferentially
 If you install an older version, please read the README.md file you'll find in the root folder rather than this one.
 
 
+## Compatibility
+Shaarli Material was tested and validated on *Shaarli 0.8.3*.
+
+
 ## Installation
 ### Your Shaarli is up to date
 Download the `material` folder into the `tpl` directory of your Shaarli installation next to the `default` folder.
@@ -104,8 +108,6 @@ gulp
 ```
 
 ------------------------------------------------------------------------------
-
-Shaarli Material was tested and validated on Shaarli 0.8.3.
 
 You can download Shaarli via the Github project page: https://github.com/shaarli/Shaarli
 
