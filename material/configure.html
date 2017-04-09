@@ -125,6 +125,31 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="list-item">
+                            <div class="list-item-content">
+                                <div class="list-item-label">{'Enable REST API'|t}</div>
+                                <div class="list-item-sublabel">{'Allow third party software to use Shaarli such as mobile application'|t}</div>
+                            </div>
+                            <div class="list-item-side">
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox" name="enableApi" id="enableApi" {if="$api_enabled"}checked{/if}/>
+                                        <span class="lever"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="list">
+                    <div class="list-item">
+                        <div class="form-entry">
+                            <label for="apiSecret">{'API secret'|t}</label>
+                            <input type="text" name="apiSecret" id="apiSecret" size="50" value="{$api_secret}" placeholder="Type a random string..." />
+                        </div>
                     </div>
                 </div>
 
