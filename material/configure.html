@@ -3,7 +3,6 @@
 <head>{include="includes"}</head>
 <body onload="document.configform.title.focus();">
 {include="page.header"}
-{$timezone_js}
 <div class="container page-configure">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -31,14 +30,29 @@
                         </select>
                     </div>
                     <div class="form-entry">
-                        <label for="continent">Timezone</label>
-                        <div id="timezone-toremove">{$timezone_form}</div>
+                        <label for="continent">{'Timezone'|t}</label>
                         <div class="row">
                             <div class="col-sm-6" id="timezone-continent">
-                                <select name="continent" id="continent" onchange="onChangecontinent();"></select>
+                                <select name="continent" id="continent">
+                                    {loop="$continents"}
+                                        {if="$key !== 'selected'"}
+                                            <option value="{$value}" {if="$continents.selected === $value"}selected{/if}>
+                                                {$value}
+                                            </option>
+                                        {/if}
+                                    {/loop}
+                                </select>
                             </div>
                             <div class="col-sm-6" id="timezone-city">
-                                <select name="city" id="city"></select>
+                                <select name="city" id="city">
+                                    {loop="$cities"}
+                                        {if="$key !== 'selected'"}
+                                            <option value="{$value.city}" {if="$cities.selected === $value.city"}selected{/if} data-continent="{$value.continent}">
+                                                {$value.city}
+                                            </option>
+                                        {/if}
+                                    {/loop}
+                                </select>
                             </div>
                         </div>
                     </div>

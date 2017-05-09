@@ -18,31 +18,8 @@
         initOverlay();
 
         if(shaarli.isAuth){
-            initTimezoneChooser();
             initSortable();
             initFirefoxSocial();
-        }
-    };
-
-    /**
-     * Changes the way timezone dropdowns are built compared to default Shaarli.
-     * The check on values is done to avoid runing too much useless code when the timechooser is not present (which is the case 99% of the time).
-     */
-    var initTimezoneChooser = function(){
-        // Allows to customize the timezone chooser.
-        var currentContinent = $('#continent').val();
-        var currentCity = $('#city').val();
-
-        if(currentContinent && currentCity){
-            var optionsContinent = $('#continent').html();
-            var optionsCity = $('#city').html();
-            var selectContinent = '<select name="continent" id="continent" onchange="onChangecontinent();">';
-            var selectCity = '<select name="city" id="city">';
-
-            $('#timezone-toremove').remove();
-
-            $('#timezone-continent').html(selectContinent + optionsContinent + '</select>');
-            $('#timezone-city').html(selectCity + optionsCity + '</select>');
         }
     };
 
