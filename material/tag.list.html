@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {include="includes"}
+</head>
+<body>
+{include="page.header"}
+
+{include="tag.sort"}
+
+<div class="container">
+    {$countTags=count($tags)}
+    <div class="light-heading">{'Tag list'|t} - {$countTags} {'tags'|t}</div>
+    <a href="?searchtags={$search_tags|urlencode}">{'List all links with those tags'|t}</a>
+    <form method="GET">
+        <input type="hidden" name="do" value="taglist">
+        <input type="text" name="searchtags" placeholder="{'Filter by tag'|t}"
+            {if="!empty($search_tags)"}
+            value="{$search_tags}"
+            {/if}
+            autocomplete="off" data-multiple data-autofirst data-minChars="1"
+            data-list="{loop="$tags"}{$key}, {/loop}"
+        >
+        <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+    </form>
+
+    <div id="plugin_zone_start_tagcloud" class="plugin_zone">
+        {loop="$plugin_start_zone"}
+            {$value}
+        {/loop}
+    </div>
+
+    <div id="taglist" class="list-side-right card">
+        {loop="tags"}
+            <div class="list-item">
+                <div class="list-item-content">
+                    <a href="?addtag={$key|urlencode}" title="{'Filter by tag'|t}" class="count">{$value}</a>
+                    <a href="?searchtags={$key|urlencode} {$search_tags|urlencode}" class="tag-link">{$key}</a>
+                    {loop="$value.tag_plugin"}
+                        {$value}
+                    {/loop}
+                </div>
+                <div class="list-item-side">
+                    {if="isLoggedIn()===true"}
+                        <a href="#" class="delete-tag" data-tag="{$key}"><i class="mdi mdi-delete"></i></a>
+                        <a href="?do=changetag&fromtag={$key|urlencode}" data-tag="{$key}" class="rename-tag">
+                            <i class="mdi mdi-pencil"></i>
+                        </a>
+                    {/if}
+                </div>
+            </div>
+        {/loop}
+    </div>
+
+    <div id="plugin_zone_end_tagcloud" class="plugin_zone">
+        {loop="$plugin_end_zone"}
+            {$value}
+        {/loop}
+    </div>
+</div>
+
+{if="isLoggedIn()===true"}
+  <input type="hidden" name="taglist" value="{loop="$tags"}{$key} {/loop}">
+{/if}
+
+{include="tag.sort"}
+
+{include="page.footer"}
+</body>
+</html>
+

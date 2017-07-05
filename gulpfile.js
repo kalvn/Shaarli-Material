@@ -55,7 +55,7 @@ gulp.task('js', function(){
         }))
         .pipe(addsrc.append(JS_SELECTOR))
         .pipe(concat('scripts.js'))
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(rename('scripts.min.js'))
         .pipe(gulp.dest(BUILD_FOLDER));
 });

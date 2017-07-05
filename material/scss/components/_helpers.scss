@@ -15,6 +15,10 @@
 hr.darker{
     border-top-color: #ccc;
 }
+hr.margin{
+    margin-left: $space-xl;
+    margin-right: $space-xl;
+}
 
 .mts{
     margin-top: 5px;
@@ -70,6 +74,22 @@ p.highlight{
 
 .text-center {
   text-align: center;
+}
+
+.text-success{
+    color: #4CAF50;
+}
+
+.text-error{
+    color: #F44336;
+}
+
+.text-feedback{
+    display: inline-block;
+    margin-left: $space-s;
+    margin-right: $space-s;
+    font-style: italic;
+    font-size: 90%;
 }
 
 .pull-left{

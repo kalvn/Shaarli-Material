@@ -8,11 +8,17 @@
     transform: translate(0, 0);
 }
 .mdi-arrow-left:before {
-    content: "\f14a";
+    content: "\F04D";
 }
 .mdi-arrow-right:before {
-  content: "\f14f";
+    content: "\F054";
 }
 .mdi-menu:before {
-  content: "\f44e";
+    content: "\F35C";
+}
+.mdi-pencil:before{
+    content: "\F3EB";
+}
+.mdi-delete:before {
+  content: "\F1C0";
 }
