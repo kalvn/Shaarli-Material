@@ -158,7 +158,7 @@
             event.preventDefault();
 
             var el = $(this);
-            var listItem = el.closest('.list-item');
+            var listItem = el.closest('.list-item-flex');
             var tag = el.data('tag');
             var token = $('#token').val();
 
@@ -168,7 +168,7 @@
 
             displayModal('Rename tag ' + tag, 'Please write the new name of this tag below.', 'prompt', function(accepts, newTag){
                 if(accepts){
-                    listItem.find('.list-item-content').append(feedback);
+                    listItem.find('.list-item-middle').append(feedback);
 
                     $.ajax({
                         url: '?do=changetag',
@@ -202,7 +202,8 @@
                     });
                 }
             }, {
-                buttonLabelOk: 'Rename'
+                buttonLabelOk: 'Rename',
+                value: tag
             });
         });
 
@@ -585,7 +586,7 @@
                 footer += '<button class="button ripple button-alert pull-right modal-ok">OK</button><button class="button ripple pull-right modal-cancel">Cancel</button>';
                 break;
             case 'prompt':
-                body += '<input type="text" class="input-new-tag" placeholder="Enter a new value..."/>';
+                body += '<input type="text" class="input-new-tag" placeholder="Enter a new value..." value="' + options.value + '"/>';
                 footer += '<button class="button ripple button-primary pull-right modal-ok">' + (options && options.buttonLabelOk ? options.buttonLabelOk : 'OK') + '</button><button class="button ripple pull-right modal-cancel">Cancel</button>';
                 break;
             default:

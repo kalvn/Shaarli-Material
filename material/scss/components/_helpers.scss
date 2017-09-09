@@ -4,10 +4,6 @@
     white-space: nowrap;
 }
 
-.hidden{
-    display: none;
-}
-
 .no-border{
     border: none !important;
 }
@@ -101,4 +97,10 @@ p.highlight{
 
 .hidden {
     display: none!important;
+}
+
+.is-highlighted-hover{
+    &:hover{
+        background-color: $color-gray-hover-light;
+    }
 }

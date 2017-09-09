@@ -30,22 +30,27 @@
         {/loop}
     </div>
 
-    <div id="taglist" class="list-side-right card">
+    <div id="taglist" class="card">
         {loop="tags"}
-            <div class="list-item">
-                <div class="list-item-content">
-                    <a href="?addtag={$key|urlencode}" title="{'Filter by tag'|t}" class="count">{$value}</a>
+            <div class="list-item-flex is-control-visible-hover is-highlighted-hover">
+                <div class="list-item-start list-item-text">
+                    {$value}
+                </div>
+                <div class="list-item-middle list-item-text">
                     <a href="?searchtags={$key|urlencode} {$search_tags|urlencode}" class="tag-link">{$key}</a>
                     {loop="$value.tag_plugin"}
                         {$value}
                     {/loop}
                 </div>
-                <div class="list-item-side">
+                <div class="list-item-end list-item-controls">
                     {if="isLoggedIn()===true"}
-                        <a href="#" class="delete-tag" data-tag="{$key}"><i class="mdi mdi-delete"></i></a>
-                        <a href="?do=changetag&fromtag={$key|urlencode}" data-tag="{$key}" class="rename-tag">
+                        <a href="?addtag={$key|urlencode}" title="{'Add tag'|t} {$key} {'to the filters'|t}" class="count list-item-control">
+                            <i class="mdi mdi-magnify-plus-outline"></i>
+                        </a>
+                        <a href="?do=changetag&fromtag={$key|urlencode}" title="{'Rename tag'|t} {$key}" data-tag="{$key}" class="rename-tag list-item-control">
                             <i class="mdi mdi-pencil"></i>
                         </a>
+                        <a href="#" class="delete-tag list-item-control" data-tag="{$key}" title="{'Delete tag'|t} {$key}"><i class="mdi mdi-delete"></i></a>
                     {/if}
                 </div>
             </div>
