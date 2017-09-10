@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {include="includes"}
+</head>
+<body>
+{include="page.header"}
+
+{include="tag.sort"}
+
+<div class="container">
+    {$countTags=count($tags)}
+
+    <div id="plugin_zone_start_tagcloud" class="plugin_zone">
+        {loop="$plugin_start_zone"}
+            {$value}
+        {/loop}
+    </div>
+
+    <div id="taglist" class="card">
+        <div class="card-header">
+            <div class="pull-right"><a href="?searchtags={$search_tags|urlencode}" title="{'List all links with those tags'|t}">{$countTags} {'tags'|t}</a></div>
+            {'Tag list'|t}
+        </div>
+        <form class="card-search" method="get">
+            <input type="hidden" name="do" value="taglist">
+            <input type="search" name="searchtags" placeholder="{'Filter by tag'|t}..."
+                {if="!empty($search_tags)"}
+                value="{$search_tags}"
+                {/if}
+                autocomplete="off" data-multiple data-autofirst data-minChars="1"
+                data-list="{loop="$tags"}{$key}, {/loop}"
+            >
+        </form>
+        {loop="tags"}
+            <div class="list-item-flex is-control-opaque-hover is-highlighted-hover">
+                <div class="list-item-start list-item-text">
+                    {$value}
+                </div>
+                <div class="list-item-middle list-item-text">
+                    <a href="?searchtags={$key|urlencode} {$search_tags|urlencode}" class="tag-link">{$key}</a>
+                    {loop="$value.tag_plugin"}
+                        {$value}
+                    {/loop}
+                </div>
+                <div class="list-item-end list-item-controls">
+                    <a href="?addtag={$key|urlencode}" title="{'Add tag'|t} {$key} {'to the filters'|t}" class="count list-item-control">
+                        <i class="mdi mdi-magnify-plus-outline"></i>
+                    </a>
+                    {if="isLoggedIn()===true"}
+                    <a href="?do=changetag&fromtag={$key|urlencode}" title="{'Rename tag'|t} {$key}" data-tag="{$key}" class="rename-tag list-item-control">
+                        <i class="mdi mdi-pencil"></i>
+                    </a>
+                    <a href="#" class="delete-tag list-item-control" data-tag="{$key}" title="{'Delete tag'|t} {$key}"><i class="mdi mdi-delete"></i></a>
+                    {/if}
+                </div>
+            </div>
+        {/loop}
+    </div>
+
+    <div id="plugin_zone_end_tagcloud" class="plugin_zone">
+        {loop="$plugin_end_zone"}
+            {$value}
+        {/loop}
+    </div>
+</div>
+
+{if="isLoggedIn()===true"}
+  <input type="hidden" name="taglist" value="{loop="$tags"}{$key} {/loop}">
+{/if}
+
+{include="page.footer"}
+</body>
+</html>
+

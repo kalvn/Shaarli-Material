@@ -1,4 +1,6 @@
 (function(undefined){
+    'use strict';
+
     var isAnimationSupported;   // Cache for checkAnimationSupport();
     var animationEventName = 'animationend';
 
@@ -97,7 +99,7 @@
             var tag = $('#fromtag').val();
             var form = $(this).closest('form');
 
-            displayModal('Delete the tag "' + tag + '"', 'Are you sure you want to delete the tag <strong>' + tag + '</strong> from all links ?', 'confirm', function(accepts){
+            displayModal('Delete the tag "' + tag + '"', 'Are you sure you want to delete the tag "' + tag + '" from all links ?', 'confirm', function(accepts){
                 if(accepts){
                     form.append('<input type="hidden" name="deletetag">');
                     form.submit();
@@ -116,6 +118,99 @@
         }).each(function(){
             if(parseInt(localStorage.getItem('expand'))){
                 toggleExpand($(this));
+            }
+        });
+
+        // Button to delete a tag.
+        $('.delete-tag').on('click', function(event){
+            event.preventDefault();
+
+            var el = $(this);
+            var tag = el.data('tag');
+            var token = $('#token').val();
+            
+            displayModal('Delete the tag "' + tag + '"', 'Are you sure you want to delete the tag "' + tag + '" from all links ?', 'confirm', function(accepts){
+                if(accepts){
+                    $.ajax({
+                        url: '?do=changetag',
+                        method: 'post',
+                        contentType: 'application/x-www-form-urlencoded',
+                        data: {
+                            deletetag: 1,
+                            fromtag: tag,
+                            token: token
+                        },
+                        success: function(){
+                            el.closest('.list-item').remove();
+                        },
+                        error: function(){
+                            displayModal('Error', 'Oops! something went wrong...', 'alert');
+                        },
+                        complete: function(){
+                            refreshToken();
+                        }
+                    });
+                }
+            });
+        });
+
+        $('.rename-tag').on('click', function(event){
+            event.preventDefault();
+
+            var el = $(this);
+            var listItem = el.closest('.list-item-flex');
+            var tag = el.data('tag');
+            var token = $('#token').val();
+
+            var feedback = $('<span/>')
+                .addClass('text-feedback')
+                .text('renaming...');
+
+            displayModal('Rename tag ' + tag, 'Please write the new name of this tag below.', 'prompt', function(accepts, newTag){
+                if(accepts){
+                    listItem.find('.list-item-middle').append(feedback);
+
+                    $.ajax({
+                        url: '?do=changetag',
+                        method: 'post',
+                        contentType: 'application/x-www-form-urlencoded',
+                        data: {
+                            fromtag: tag,
+                            totag: newTag,
+                            token: token,
+                            renametag: 'Rename tag'
+                        },
+                        success: function(){
+                            listItem.find('.tag-link').attr('href', '?searchtags=' + encodeURIComponent(newTag)).text(newTag);
+                            listItem.find('[data-tag]').data('tag', newTag);
+                            listItem.find('.count').attr('href', '?addtag=' + encodeURIComponent(newTag));
+                            listItem.find('.rename-tag').attr('href', '?do=changetag&fromtag=' + encodeURIComponent(newTag));
+
+                            feedback.addClass('text-success')
+                                .text('renamed successfully!');
+                        },
+                        error: function(){
+                            feedback.addClass('text-error')
+                                .text('something went wrong');
+                        },
+                        complete: function(){
+                            refreshToken();
+                            setTimeout(function(){
+                                feedback.remove();
+                            }, 5000);
+                        }
+                    });
+                }
+            }, {
+                buttonLabelOk: 'Rename',
+                value: tag
+            });
+        });
+
+        $('[data-href]').on('click', function(){
+            var url = $(this).data('href');
+            if(url){
+                document.location.href = url;
             }
         });
     };
@@ -212,7 +307,7 @@
     };
 
     var initMaterialRippleEffect = function(){
-        $('.ripple, .button, .button-raised')
+        $('.ripple, .button, .button-raised, .button-inverse')
             .off('mousedown.tinymaterialripple')
             .not('[disabled]')
             .on('mousedown.tinymaterialripple', function(event){
@@ -253,6 +348,8 @@
 
     var initAutocomplete = function($){
         if($('input[data-multiple]').length > 0){
+            var awesomplete;
+
             $('input[data-multiple]').each(function(){
                 awesomplete = new Awesomplete(this, {
                     filter: function(text, input) {
@@ -473,32 +570,47 @@
         return animation;
     };
 
-    var displayModal = function(title, text, type, callback){
-        var html = '<div class="container"><div id="modal-container" class="col-md-6 col-md-offset-3"><div class="modal animate-slide-from-top"><div class="modal-title">' + title + '</div>';
+    var displayModal = function(title, text, type, callback, options){
+        var html = '<div class="container"><div id="modal-container" class="col-md-6 col-md-offset-3"><div class="modal animate-slide-from-top"><div class="modal-title">' + escapeHtml(title) + '</div>';
+        var body = '';
+        var footer = '';
         if(text){
-            html += '<div class="modal-body">' + text + '</div>';
+            body += '<p>' + escapeHtml(text) + '</p>';
         }
-        html += '<div class="modal-footer clearfix">';
 
         switch(type){
             case 'alert':
-                html += '<button class="button ripple pull-right modal-ok">Ok</button>';
+                footer += '<button class="button ripple pull-right modal-ok">OK</button>';
                 break;
             case 'confirm':
-                html += '<button class="button ripple button-alert pull-right modal-ok">Ok</button><button class="button ripple pull-right modal-cancel">Cancel</button>';
+                footer += '<button class="button ripple button-alert pull-right modal-ok">OK</button><button class="button ripple pull-right modal-cancel">Cancel</button>';
                 break;
+            case 'prompt':
+                body += '<input type="text" class="input-new-tag" placeholder="Enter a new value..." value="' + options.value + '"/>';
+                footer += '<button class="button ripple button-primary pull-right modal-ok">' + (options && options.buttonLabelOk ? options.buttonLabelOk : 'OK') + '</button><button class="button ripple pull-right modal-cancel">Cancel</button>';
+                break;
+            default:
+                console.log('Modal type must be alert, confirm or prompt. ' + type + ' isn\'t recognized.');
+                return;
         }
 
-        html += '</div></div>';
+        html += '<div class="modal-body">' + body + '</div>'
+        html += '<div class="modal-footer clearfix">' + footer + '</div></div>';
 
         overlay.addContent('modal', html);
         overlay.show();
+
+        if(type === 'prompt'){
+            $('.input-new-tag').focus();
+        }
+
         overlay.addListener('modal', function(event){
             var target = $(event.target);
 
             if(target.hasClass('modal-ok')){
                 if(typeof callback === 'function'){
-                    callback(true);
+                    var userInput = $('#modal-container input.input-new-tag').val();
+                    callback(true, userInput);
                 }
                 overlay.hide();
             } else if(target.hasClass('modal-cancel') || target.hasClass('container') || target.attr('id') === 'modal-container' || target.attr('id') === 'overlay-modal'){
@@ -523,6 +635,28 @@
         $('#editlinkform-row').toggleClass('row').find('#editlinkform-col').toggleClass('col-md-6 col-md-offset-3');
 
         localStorage.setItem('expand', isExpanded);
+    };
+
+    var escapeHtml = function(html){
+        return $('<div/>').text(html).html();
+    };
+
+    // Refresh the CSRF token and pass it to the callback.
+    var refreshToken = function(callback){
+        $.ajax({
+            url: '?do=token',
+            method: 'get',
+            success: function(token){
+                $('#token').val(token);
+
+                if(typeof callback === 'function'){
+                    callback(token);
+                }
+            },
+            error: function(){
+                console.error('Failed to refresh token.');
+            }
+        });
     };
 
     var overlay = {
@@ -551,7 +685,7 @@
             this.listeners[id] = callback;
         },
         triggerEvent: function(event){
-            for(listener in this.listeners){
+            for(var listener in this.listeners){
                 if(typeof this.listeners[listener] === 'function'){
                     this.listeners[listener](event);
                 }

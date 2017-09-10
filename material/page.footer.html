@@ -18,6 +18,8 @@
         Error: {$versionError}
     </div>
     {/if}
+
+    <input type="hidden" name="token" value="{$token}" id="token" />
 </div>
 <script src="build/scripts.min.js"></script>
 {loop="$plugins_footer.js_files"}

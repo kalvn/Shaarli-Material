@@ -4,16 +4,16 @@
     white-space: nowrap;
 }
 
-.hidden{
-    display: none;
-}
-
 .no-border{
     border: none !important;
 }
 
 hr.darker{
     border-top-color: #ccc;
+}
+hr.margin{
+    margin-left: $space-xl;
+    margin-right: $space-xl;
 }
 
 .mts{
@@ -72,6 +72,22 @@ p.highlight{
   text-align: center;
 }
 
+.text-success{
+    color: #4CAF50;
+}
+
+.text-error{
+    color: #F44336;
+}
+
+.text-feedback{
+    display: inline-block;
+    margin-left: $space-s;
+    margin-right: $space-s;
+    font-style: italic;
+    font-size: 90%;
+}
+
 .pull-left{
     float: left!important;
 }
@@ -81,4 +97,10 @@ p.highlight{
 
 .hidden {
     display: none!important;
+}
+
+.is-highlighted-hover{
+    &:hover{
+        background-color: $color-gray-hover-light;
+    }
 }

@@ -394,7 +394,15 @@ div.dailyNoEntry {
 
 /* Errors */
 .errors{
-    color: #f44336;
+    color: #fff;
+    background-color: #F44336;
+    padding: $space-m 0;
+    margin-top: -$space-m;
+    margin-bottom: $space-m;
+
+    ul{
+        margin-bottom: 0;
+    }
 }
 
 /* QRCode */

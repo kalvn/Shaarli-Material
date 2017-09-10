@@ -16,7 +16,7 @@
 
                     <div class="form-entry">
                         <label for="fromtag">Modify this tag&#8230;</label>
-                        <input type="text" name="fromtag" id="fromtag" list="tagsList" autocomplete="off" class="awesomplete" data-minChars="1"/>
+                        <input type="text" name="fromtag" id="fromtag" value="{$fromtag}" list="tagsList" autocomplete="off" class="awesomplete" data-minChars="1"/>
                         <datalist id="tagsList">
                             {loop="$tags"}<option>{$key}</option>{/loop}
                         </datalist>
