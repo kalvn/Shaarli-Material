@@ -44,14 +44,14 @@
                     {/loop}
                 </div>
                 <div class="list-item-end list-item-controls">
+                    <a href="?addtag={$key|urlencode}" title="{'Add tag'|t} {$key} {'to the filters'|t}" class="count list-item-control">
+                        <i class="mdi mdi-magnify-plus-outline"></i>
+                    </a>
                     {if="isLoggedIn()===true"}
-                        <a href="?addtag={$key|urlencode}" title="{'Add tag'|t} {$key} {'to the filters'|t}" class="count list-item-control">
-                            <i class="mdi mdi-magnify-plus-outline"></i>
-                        </a>
-                        <a href="?do=changetag&fromtag={$key|urlencode}" title="{'Rename tag'|t} {$key}" data-tag="{$key}" class="rename-tag list-item-control">
-                            <i class="mdi mdi-pencil"></i>
-                        </a>
-                        <a href="#" class="delete-tag list-item-control" data-tag="{$key}" title="{'Delete tag'|t} {$key}"><i class="mdi mdi-delete"></i></a>
+                    <a href="?do=changetag&fromtag={$key|urlencode}" title="{'Rename tag'|t} {$key}" data-tag="{$key}" class="rename-tag list-item-control">
+                        <i class="mdi mdi-pencil"></i>
+                    </a>
+                    <a href="#" class="delete-tag list-item-control" data-tag="{$key}" title="{'Delete tag'|t} {$key}"><i class="mdi mdi-delete"></i></a>
                     {/if}
                 </div>
             </div>
