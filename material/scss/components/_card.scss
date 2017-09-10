@@ -16,6 +16,14 @@ h1.card-header{
     text-transform: uppercase;
 }
 
+.card-subheader{
+    text-transform: initial;
+    font-size: 90%;
+    font-weight: normal;
+    font-style: italic;
+    color: $color-subtitle;
+}
+
 .card-body{
     padding: $space-m;
 }

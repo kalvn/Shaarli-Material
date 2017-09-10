@@ -22,6 +22,7 @@
 
                 <div class="card-header">
                     {if="!$link_is_new"}Edit a link{else}Add a new link{/if}
+                    {if="!$link_is_new"}<span class="card-subheader"> - {'created on'|t} {$link.created|format_date}</span>{/if}
                     <button type="button" class="button-expand button-header visible-md visible-lg" title="Expand / reduce width"></button>
                 </div>
                 <div class="card-body">
