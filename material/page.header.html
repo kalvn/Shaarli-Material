@@ -117,11 +117,13 @@
     </form>
 
     {if="!empty($plugin_errors) && isLoggedIn()"}
-        <ul class="errors container">
-            {loop="$plugin_errors"}
-                <li>{$value}</li>
-            {/loop}
-        </ul>
+        <div class="errors">
+            <ul class="container">
+                {loop="$plugin_errors"}
+                    <li>{$value}</li>
+                {/loop}
+            </ul>
+        </div>
     {/if}
 {/if}
 
