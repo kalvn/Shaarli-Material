@@ -96,6 +96,8 @@
     color: #fff;
     max-height: 56px;
 
+    z-index: 10;
+
     a {
         color: #fff;
         text-decoration: none;
@@ -175,4 +177,28 @@
 
 .toolbar-button-container{
     position: relative;
+}
+
+/* Subheader */
+.subheader{
+    width: 100%;
+    background-color: $color-primary-second;
+    
+    @extend .shadow-1;
+
+    margin-top: -15px;
+    margin-bottom: 15px;
+
+    color: #fff;
+
+    padding: $space-s;
+
+    z-index: 5;
+
+    .button,
+    .button-inverse{
+        display: block;
+        float: left;
+        color: #fff;
+    }
 }

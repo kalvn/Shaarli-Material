@@ -307,7 +307,7 @@
     };
 
     var initMaterialRippleEffect = function(){
-        $('.ripple, .button, .button-raised')
+        $('.ripple, .button, .button-raised, .button-inverse')
             .off('mousedown.tinymaterialripple')
             .not('[disabled]')
             .on('mousedown.tinymaterialripple', function(event){
@@ -599,6 +599,11 @@
 
         overlay.addContent('modal', html);
         overlay.show();
+
+        if(type === 'prompt'){
+            $('.input-new-tag').focus();
+        }
+
         overlay.addListener('modal', function(event){
             var target = $(event.target);
 

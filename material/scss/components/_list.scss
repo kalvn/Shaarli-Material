@@ -47,9 +47,15 @@
     .is-control-visible-hover &{
         display: none;
     }
-
     .is-control-visible-hover:hover &{
         display: inherit;
+    }
+
+    .is-control-opaque-hover &{
+        opacity: .5;
+    }
+    .is-control-opaque-hover:hover &{
+        opacity: 1;
     }
 }
 

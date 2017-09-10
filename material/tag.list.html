@@ -10,19 +10,6 @@
 
 <div class="container">
     {$countTags=count($tags)}
-    <div class="light-heading">{'Tag list'|t} - {$countTags} {'tags'|t}</div>
-    <a href="?searchtags={$search_tags|urlencode}">{'List all links with those tags'|t}</a>
-    <form method="GET">
-        <input type="hidden" name="do" value="taglist">
-        <input type="text" name="searchtags" placeholder="{'Filter by tag'|t}"
-            {if="!empty($search_tags)"}
-            value="{$search_tags}"
-            {/if}
-            autocomplete="off" data-multiple data-autofirst data-minChars="1"
-            data-list="{loop="$tags"}{$key}, {/loop}"
-        >
-        <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
-    </form>
 
     <div id="plugin_zone_start_tagcloud" class="plugin_zone">
         {loop="$plugin_start_zone"}
@@ -31,8 +18,22 @@
     </div>
 
     <div id="taglist" class="card">
+        <div class="card-header">
+            <div class="pull-right"><a href="?searchtags={$search_tags|urlencode}" title="{'List all links with those tags'|t}">{$countTags} {'tags'|t}</a></div>
+            {'Tag list'|t}
+        </div>
+        <form class="card-search" method="get">
+            <input type="hidden" name="do" value="taglist">
+            <input type="search" name="searchtags" placeholder="{'Filter by tag'|t}..."
+                {if="!empty($search_tags)"}
+                value="{$search_tags}"
+                {/if}
+                autocomplete="off" data-multiple data-autofirst data-minChars="1"
+                data-list="{loop="$tags"}{$key}, {/loop}"
+            >
+        </form>
         {loop="tags"}
-            <div class="list-item-flex is-control-visible-hover is-highlighted-hover">
+            <div class="list-item-flex is-control-opaque-hover is-highlighted-hover">
                 <div class="list-item-start list-item-text">
                     {$value}
                 </div>
@@ -67,8 +68,6 @@
 {if="isLoggedIn()===true"}
   <input type="hidden" name="taglist" value="{loop="$tags"}{$key} {/loop}">
 {/if}
-
-{include="tag.sort"}
 
 {include="page.footer"}
 </body>
