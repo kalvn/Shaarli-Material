@@ -437,12 +437,8 @@
 
         // Hack taken from https://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
         var isFirefox = typeof InstallTrigger !== 'undefined';
-        if(!isFirefox || window.location.protocol.indexOf('https') < 0){
+        if(!isFirefox){
             $('#firefoxsocial').attr('disabled', 'disabled');
-            var message = $("<p></p>")
-                .addClass('highlight')
-                .html('You need to use Firefox over <strong>https</strong> to use this functionality.');
-            $('#firefox-api-title').after(message);
         } else{
             // Attach events to the Firefox Social button.
             $('#firefoxsocial').on('click', function(){

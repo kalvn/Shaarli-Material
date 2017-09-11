@@ -13,12 +13,12 @@
                         <div class="row">
                             <div class="col-sm-2 col-xs-3">
                                 <div class="round-image-container">
-                                    <img src="images/tools/settings.png" alt="Configure" />
+                                    <i class="mdi mdi-settings" title="Configure your Shaarli"></i>
                                 </div>
                             </div>
                             <div class="col-sm-10 col-xs-9">
-                                <div class="list-item-label">Configure your Shaarli</div>
-                                <div class="list-item-sublabel">Change Title, timezone...</div>
+                                <div class="list-item-label">{'Configure your Shaarli'|t}</div>
+                                <div class="list-item-sublabel">{'Change Title, timezone...'|t}</div>
                             </div>
                         </div>
                     </a>
@@ -27,12 +27,12 @@
                         <div class="row">
                             <div class="col-sm-2 col-xs-3">
                                 <div class="round-image-container">
-                                    <img src="images/tools/lock_active.png" alt="Change password" />
+                                    <i class="mdi mdi-lock" title="{'Change password'|t}"></i>
                                 </div>
                             </div>
                             <div class="col-sm-10 col-xs-9">
-                                <div class="list-item-label">Change password</div>
-                                <div class="list-item-sublabel">Change your password</div>
+                                <div class="list-item-label">{'Change password'|t}</div>
+                                <div class="list-item-sublabel">{'Change your password'|t}</div>
                             </div>
                         </div>
                     </a>
@@ -41,7 +41,7 @@
                         <div class="row">
                             <div class="col-sm-2 col-xs-3">
                                 <div class="round-image-container">
-                                    <img src="images/tools/plugin.png" alt="Plugin admin" />
+                                    <i class="mdi mdi-puzzle" title="{'Plugin administration'|t}"></i>
                                 </div>
                             </div>
                             <div class="col-sm-10 col-xs-9">
@@ -54,12 +54,12 @@
                         <div class="row">
                             <div class="col-sm-2 col-xs-3">
                                 <div class="round-image-container">
-                                    <img src="images/tools/tag-text-outline.png" alt="Manage tags" />
+                                    <i class="mdi mdi-tag-multiple" title="{'Tags'|t}"></i>
                                 </div>
                             </div>
                             <div class="col-sm-10 col-xs-9">
-                                <div class="list-item-label">Tags</div>
-                                <div class="list-item-sublabel">Rename or delete a tag in all links</div>
+                                <div class="list-item-label">{'Tags'|t}</div>
+                                <div class="list-item-sublabel">{'Rename or delete a tag in all links'|t}</div>
                             </div>
                         </div>
                     </a>
@@ -67,12 +67,12 @@
                         <div class="row">
                             <div class="col-sm-2 col-xs-3">
                                 <div class="round-image-container">
-                                    <img src="images/tools/import.png" alt="Import" />
+                                    <i class="mdi mdi-file-import" title="{'Import'|t}"></i>
                                 </div>
                             </div>
                             <div class="col-sm-10 col-xs-9">
-                                <div class="list-item-label">Import</div>
-                                <div class="list-item-sublabel">Import Netscape html bookmarks (as exported from Firefox, Chrome, Opera, delicious...)</div>
+                                <div class="list-item-label">{'Import'|t}</div>
+                                <div class="list-item-sublabel">{'Import Netscape html bookmarks (as exported from Firefox, Chrome, Opera, delicious...)'|t}</div>
                             </div>
                         </div>
                     </a>
@@ -80,12 +80,12 @@
                         <div class="row">
                             <div class="col-sm-2 col-xs-3">
                                 <div class="round-image-container">
-                                    <img src="images/tools/export.png" alt="Export" />
+                                    <i class="mdi mdi-file-export" title="{'Export'|t}"></i>
                                 </div>
                             </div>
                             <div class="col-sm-10 col-xs-9">
-                                <div class="list-item-label">Export</div>
-                                <div class="list-item-sublabel">Export Netscape html bookmarks (which can be imported in Firefox, Chrome, Opera, delicious...)</div>
+                                <div class="list-item-label">{'Export'|t}</div>
+                                <div class="list-item-sublabel">{'Export Netscape html bookmarks (which can be imported in Firefox, Chrome, Opera, delicious...)'|t}</div>
                             </div>
                         </div>
                     </a>
@@ -113,12 +113,12 @@
             <div class="row">
                 <div class="col-xs-6 text-center">
                     <a class="bookmarklet" href="javascript:javascript:(function(){var%20url%20=%20location.href;var%20title%20=%20document.title%20||%20url;window.open('{$pageabsaddr}?post='%20+%20encodeURIComponent(url)+'&amp;title='%20+%20encodeURIComponent(title)+'&amp;description='%20+%20encodeURIComponent(document.getSelection())+'&amp;source=bookmarklet','_blank','menubar=no,height=650,width=600,toolbar=no,scrollbars=no,status=no,dialog=1');})();">
-                        <img src="images/tools/star-circle.png" alt="Favicon" /> +Shaare link
+                        <img src="images/tools/star-circle.png" alt="Favicon" /> Shaare link
                     </a>
                 </div>
                 <div class="col-xs-6 text-center">
                     <a class="bookmarklet" href="?private=1&post=">
-                        <img src="images/tools/star-circle.png" alt="Favicon" /> +Add Note
+                        <img src="images/tools/star-circle.png" alt="Favicon" /> Add Note
                     </a>
                 </div>
             </div>
@@ -129,13 +129,49 @@
             <hr class="darker"/>
             <h2 class="mtm" id="firefox-api-title">Firefox Social API integration</h2>
             <p>Adds Shaarli to the <em>Share this page</em> button in Firefox.</p>
+            {if="!$sslenabled"}
+            <p class="highlight">You need to use Firefox over <strong>https</strong> to use this functionality.</p>
+            {/if}
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <button type="button" id="firefoxsocial" class="firefoxsocial button-raised button-firefox" >
+                    <button type="button" id="firefoxsocial" class="firefoxsocial button-raised button-firefox" {if="!$sslenabled"}disabled{/if}>
                         Activate Now
                     </button>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <hr class="darker"/>
+            <h2 class="mtm" id="firefox-api-title">{'3rd party'|t}</h2>
+            <ul>
+                <li>
+                    <a href="https://addons.mozilla.org/fr/firefox/addon/shaarli/" title="Firefox {'Plugin'|t}" class="large-icon-button ripple">
+                        <i class="mdi mdi-firefox"></i>
+                        Firefox {'plugin'|t}
+                    </a>
+                </li>
+                <li>
+                    <a href="https://chrome.google.com/webstore/detail/shiny-shaarli/hajdfkmbdmadjmmpkkbbcnllepomekin" title="Chrome {'Plugin'|t}" class="large-icon-button ripple">
+                        <i class="mdi mdi-google-chrome"></i>
+                        Chrome {'plugin'|t}
+                    </a>
+                </li>
+                <li>
+                    <a href="https://play.google.com/store/apps/details?id=com.dimtion.shaarlier" title="Android" class="large-icon-button ripple">
+                        <i class="mdi mdi-android"></i>
+                        Android
+                    </a>
+                </li>
+                <li>
+                    <a href="https://itunes.apple.com/app/ShaarliOS/id1027441388" class="large-icon-button ripple">
+                        <i class="mdi mdi-apple-ios"></i>
+                        iOS
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 

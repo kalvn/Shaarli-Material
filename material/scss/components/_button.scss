@@ -200,3 +200,47 @@ $button-height: 36px;
         background-image: url(../images/toolbar/add.png);
     }
 }
+
+.large-icon-button{
+    
+    display: block;
+    float: left;
+    margin: 0 $space-m $space-m 0;
+    padding: $space-m;
+    color: $color-text;
+    width: 140px;
+    overflow: hidden;
+    font-size: 16px;
+    text-align: center;
+    border-radius: $radius-s;
+
+    &:hover,
+    &:focus{
+        text-decoration: none;
+        background-color: $color-gray-light;
+        color: $color-text;
+    }
+
+    &:active{
+        background-color: darken($color-gray-light, 5%);
+    }
+
+    i{
+        display: block;
+        margin: auto;
+        font-size: 70px;
+
+        &.mdi-firefox{
+            color: #e55b0a;
+        }
+        &.mdi-apple-ios{
+            color: #a6a8ab;
+        }
+        &.mdi-android{
+            color: #a4c739;
+        }
+        &.mdi-google-chrome{
+            color: #dd4f43;
+        }
+    }
+}

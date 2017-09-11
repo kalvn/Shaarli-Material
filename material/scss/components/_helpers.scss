@@ -43,10 +43,31 @@ hr.margin{
     height: 60px;
     border-radius: 50%;
     background-color: #ddd;
-}
-.round-image-container img{
-    margin-top: 6px;
-    margin-left: 6px;
+    text-align: center;
+
+    i{
+        font-size: 45px;
+        line-height: 60px;
+
+        &.mdi-settings{
+            color: #009688;
+        }
+        &.mdi-lock{
+            color: #DB4437;
+        }
+        &.mdi-puzzle{
+            color: #03A9F4;
+        }
+        &.mdi-tag-multiple{
+            color: #FF9800;
+        }
+        &.mdi-file-import{
+            color: #9C27B0;
+        }
+        &.mdi-file-export{
+            color: #795548;
+        }
+    }
 }
 p.highlight{
     color: #F44336;
