@@ -27,7 +27,9 @@
                 <div class="header-buttons">
                     {if="isset($plugins_header.buttons_toolbar) ||isset($plugins_header.fields_toolbar)"}
                         <div class="toolbar-button-container">
-                            <button type="button" class="icon-plugin popup-trigger ripple" data-popup="popup-plugin" title="More"></button>
+                            <button type="button" class="icon-header popup-trigger ripple" data-popup="popup-plugin" title="More">
+                                <i class="mdi mdi-dots-vertical"></i>
+                            </button>
                             <div id="popup-plugin" class="popup popup-plugin hidden">
                                 <div class="popup-body">
                                     {loop="$plugins_header.buttons_toolbar"}
@@ -60,20 +62,35 @@
                         </div>
                     {/if}
                     {if="isLoggedIn()"}
-                        <a href="?do=logout" class="icon-logout popup-trigger ripple" title="Logout"></a>
-                        <a href="?do=tools" class="icon-tools ripple" title="Tools"></a>
+                        <a href="?do=logout" class="icon-header popup-trigger ripple" title="Logout">
+                            <i class="mdi mdi-logout"></i>
+                        </a>
+                        <a href="?do=tools" class="icon-header ripple" title="Tools">
+                            <i class="mdi mdi-settings"></i>
+                        </a>
                     {elseif="$openshaarli"}
-                        <a href="?do=tools" class="icon-tools ripple" title="Tools"></a>
+                        <a href="?do=tools" class="icon-header ripple" title="Tools">
+                            <i class="mdi mdi-settings"></i>
+                        </a>
                     {else}
-                        <a href="?do=login" class="icon-login popup-trigger ripple" title="Login"></a>
+                        <a href="?do=login" class="icon-header popup-trigger ripple" title="Login">
+                            <i class="mdi mdi-account"></i>
+                        </a>
                     {/if}
                     {if="isLoggedIn()"}
-                    <a href="?privateonly" class="icon-private{if="$privateonly"}-active{/if} ripple" title="{if="$privateonly"}Click to see all links{else}Click to see only private links{/if}"></a>
+                    <a href="?untaggedonly" title="{'Filter untagged links'|t}" class="icon-header ripple {if="$untaggedonly"}filter-on{else}filter-off{/if}">
+                        <i class="mdi mdi-tag"></i>
+                    </a>
+                    <a href="?privateonly" class="icon-header {if="$privateonly"}filter-on{else}filter-off{/if} ripple" title="{if="$privateonly"}Click to see all links{else}Click to see only private links{/if}">
+                        <i class="mdi mdi-key"></i>
+                    </a>
                     {/if}
 
                     {if="$showatom"}
                         <div class="toolbar-button-container">
-                            <button type="button" class="icon-rss popup-trigger ripple" data-popup="popup-rss" title="RSS Feeds"></button>
+                            <button type="button" class="icon-header popup-trigger ripple" data-popup="popup-rss" title="RSS Feeds">
+                                <i class="mdi mdi-rss"></i>
+                            </button>
                             <div id="popup-rss" class="popup popup-rss hidden">
                                 <div class="popup-title">RSS feeds</div>
                                 <div class="popup-body">
@@ -88,7 +105,9 @@
                         <a href="{$feedurl}?do=rss{$searchcrits}" class="icon-rss ripple" title="RSS Feed"></a>
                     {/if}
                     <div class="toolbar-button-container">
-                        <button type="button" class="icon-filter popup-trigger ripple" data-popup="popup-filter" title="Change links per page"></button>
+                        <button type="button" class="popup-trigger icon-header ripple" data-popup="popup-filter" title="Change links per page">
+                            <i class="mdi mdi-filter"></i>
+                        </button>
                         <div id="popup-filter" class="popup popup-filter hidden">
                             <div class="popup-title">Links per page</div>
                             <div class="popup-body">

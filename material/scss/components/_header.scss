@@ -84,6 +84,26 @@
     cursor: zoom-in;
 }
 
+.icon-header{
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin-top: 15px;
+    margin-left: 7px;
+    border-radius: 50%;
+    font-size: 18px;
+
+    &:focus,
+    &:hover{
+        background-color: rgba(255, 255, 255, .2);
+    }
+
+    &.filter-on{
+        color: $color-alert;
+    }
+}
+
 
 
 .header-main{
