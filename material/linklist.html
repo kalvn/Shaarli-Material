@@ -42,7 +42,12 @@
                     <div class="link-header">
                         <div class="row">
                             <div class="col-sm-8">
-                                <a class="link-title" href="{$value.real_url}">{$value.title}</a>
+                                <a class="link-title" href="{$value.real_url}">
+                                    {if="strpos($value.url, $value.shorturl) !== false"}
+                                    <i class="mdi mdi-note"></i>
+                                    {/if}
+                                    {$value.title}
+                                </a>
                             </div>
                             <div class="col-sm-4">
                                 <div class="link-date">

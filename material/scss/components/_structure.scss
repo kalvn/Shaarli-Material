@@ -77,15 +77,12 @@ a.link-title{
         color: #999;
     }
 }
+.private{
+    background: url(../images/private-band.png) top left no-repeat #fff;
+}
 .private a.link-title{
+    margin-left: $space-l;
     color: #B71C1C;
-}
-.private a.link-title:before{
-    content: url(../images/links/key_small.png);
-    margin-right: 10px;
-}
-.private .link-inner{
-    border-left: 4px solid #B71C1C;
 }
 .link-date{
     @include font-caption();
