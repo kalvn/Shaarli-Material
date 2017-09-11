@@ -136,7 +136,8 @@ $button-height: 36px;
     }
 
     &:active,
-    &:active:focus{
+    &:active:focus,
+    &.active{
         background-color: rgba(204, 204, 204, 0.25);
         color: #fff;
     }
