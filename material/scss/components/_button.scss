@@ -169,6 +169,12 @@ $button-height: 36px;
     bottom: 5%;
     right: 5%;
 
+    text-align: center;
+    line-height: 56px;
+    font-size: 32px;
+    font-weight: 100;
+    color: #fff;
+
     background-color: $color-secondary;
     
     border-radius: 50%;
@@ -176,28 +182,14 @@ $button-height: 36px;
 
     z-index: 100;
 
-    &:hover{
+    &:hover,
+    &:focus{
         @extend .shadow-button-floating-hover;
+        color: #fff;
     }
 
     &:active{
         box-shadow: none;
-    }
-
-    & i{
-        position: absolute;
-        width: 24px;
-        height: 24px;
-        top: 16px;
-        left: 16px;
-
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: 24px;
-    }
-
-    & i.icon-add-link{
-        background-image: url(../images/toolbar/add.png);
     }
 }
 

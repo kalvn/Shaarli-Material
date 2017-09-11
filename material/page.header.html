@@ -128,7 +128,7 @@
     </div>
     {if="(isLoggedIn() || $openshaarli) && !isset($_GET['edit_link']) && !isset($_GET['post']) && (!isset($_GET['do']) || !in_array($_GET['do'], array('addlink', 'changepasswd', 'configure', 'changetag', 'import', 'export')))"}
         <a href="?do=addlink" class="button-floating ripple">
-            <i class="icon-add-link"></i>
+            <i class="icon-add-link mdi mdi-plus"></i>
         </a>
     {/if}
     <form id="hidden-tag-form" class="hidden" method="GET" name="tagfilter">
