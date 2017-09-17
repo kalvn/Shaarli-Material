@@ -48,7 +48,37 @@
 /* Link list */
 .link-outer{
     @extend .card;
+    position: relative;
     overflow: hidden;
+
+    .links-list.is-selectable &.is-selected{
+        outline: 4px solid orange;
+    }
+}
+// Used for batch mode (delete).
+.link-overlay{
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+    z-index: 10;
+
+    .links-list.is-selectable &:hover{
+        background-color: rgba(200, 200, 200, 0.5);
+    }
+
+    .links-list.is-selectable &{
+        display: block;
+        background-color: rgba(255, 255, 255, 0);
+    }
+
+    .links-list.is-selectable .is-selected &{
+        display: block;
+        background-color: rgba(255, 0, 0, .5);
+    }
 }
 .link-inner{
     border-radius: 2px 0 0 2px;

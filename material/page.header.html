@@ -104,6 +104,13 @@
                     {else}
                         <a href="{$feedurl}?do=rss{$searchcrits}" class="icon-rss ripple" title="RSS Feed"></a>
                     {/if}
+                    {if="isLoggedIn()"}
+                    <div class="toolbar-button-container">
+                        <button type="button" class="icon-header ripple batch-trigger" title="Select multiple links for deletion">
+                            <i class="mdi mdi-checkbox-marked-outline"></i>
+                        </button>
+                    </div>
+                    {/if}
                     <div class="toolbar-button-container">
                         <button type="button" class="popup-trigger icon-header ripple" data-popup="popup-filter" title="Change links per page">
                             <i class="mdi mdi-filter"></i>

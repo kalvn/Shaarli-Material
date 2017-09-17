@@ -3,6 +3,7 @@
 
     var isAnimationSupported;   // Cache for checkAnimationSupport();
     var animationEventName = 'animationend';
+    var isBatchModeEnabled = false;
 
     var init = function(){
         checkAnimationSupport();
@@ -212,6 +213,10 @@
             if(url){
                 document.location.href = url;
             }
+        });
+
+        $('.batch-trigger').on('click', function(){
+            toggleBatchMode($(this));
         });
     };
 
@@ -631,6 +636,28 @@
         $('#editlinkform-row').toggleClass('row').find('#editlinkform-col').toggleClass('col-md-6 col-md-offset-3');
 
         localStorage.setItem('expand', isExpanded);
+    };
+
+    var toggleBatchMode = function($button){
+        if(!isBatchModeEnabled){
+            isBatchModeEnabled = true;
+            $button.addClass('filter-on');
+
+            $('.links-list').addClass('is-selectable');
+
+            $('.link-outer').on('click.batch', function(event){
+                event.preventDefault();
+                event.stopPropagation();
+
+                $(this).toggleClass('is-selected');
+            });
+        } else{
+            isBatchModeEnabled = false;
+            $button.removeClass('filter-on');
+
+            $('.link-outer').off('click.batch');
+            $('.links-list').removeClass('is-selectable');
+        }
     };
 
     var escapeHtml = function(html){
