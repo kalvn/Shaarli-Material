@@ -125,3 +125,19 @@ p.highlight{
         background-color: $color-gray-hover-light;
     }
 }
+
+ul.is-bordered{
+    li{
+        padding: $space-t;
+        border: 1px solid $color-gray-light;
+        border-bottom: none;
+        background-color: $color-gray-hover;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+        &:last-child{
+            border-bottom: 1px solid $color-gray-light;
+        }
+    }
+}

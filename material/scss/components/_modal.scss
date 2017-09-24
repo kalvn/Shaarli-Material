@@ -1,5 +1,6 @@
 .modal{
-    margin-top: 100px;
+    margin-top: 10%;
+    margin-top: 10vh;
     background: #fff;
     @extend .shadow-5;
 }
@@ -9,6 +10,8 @@
 }
 .modal-body{
     padding: 10px 20px 10px 20px;
+    max-height: 55vh;
+    overflow: auto;
     color: #666;
 }
 .modal-footer{

@@ -5,7 +5,17 @@
     var animationEventName = 'animationend';
     var isBatchModeEnabled = false;
 
+    // Data model.
+    var model = {
+        selectedLinks: {}
+    };
+
+    // Cached elements.
+    var $toolbarButtonBatchTrigger = $('.batch-trigger');
+    var $batchDeleteActionBar = null;
+
     var init = function(){
+        pollyfills();
         checkAnimationSupport();
 
         initPopups();
@@ -23,6 +33,68 @@
         if(shaarli.isAuth){
             initSortable();
             initFirefoxSocial();
+        }
+    };
+
+    var pollyfills = function(){
+        Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
+            var a;
+            if (null == this) throw new TypeError('"this" is null or not defined');
+            var c = Object(this),
+                b = c.length >>> 0;
+            if (0 === b) return -1;
+            a = +e || 0;
+            Infinity === Math.abs(a) && (a = 0);
+            if (a >= b) return -1;
+            for (a = Math.max(0 <= a ? a : b - Math.abs(a), 0); a < b;) {
+                if (a in c && c[a] === d) return a;
+                a++
+            }
+            return -1
+        });
+
+        if (!Object.keys) {
+            Object.keys = (function() {
+                'use strict';
+                var hasOwnProperty = Object.prototype.hasOwnProperty,
+                    hasDontEnumBug = !({
+                        toString: null
+                    }).propertyIsEnumerable('toString'),
+                    dontEnums = [
+                        'toString',
+                        'toLocaleString',
+                        'valueOf',
+                        'hasOwnProperty',
+                        'isPrototypeOf',
+                        'propertyIsEnumerable',
+                        'constructor'
+                    ],
+                    dontEnumsLength = dontEnums.length;
+
+                return function(obj) {
+                    if (typeof obj !== 'function' && (typeof obj !== 'object' || obj === null)) {
+                        throw new TypeError('Object.keys called on non-object');
+                    }
+
+                    var result = [],
+                        prop, i;
+
+                    for (prop in obj) {
+                        if (hasOwnProperty.call(obj, prop)) {
+                            result.push(prop);
+                        }
+                    }
+
+                    if (hasDontEnumBug) {
+                        for (i = 0; i < dontEnumsLength; i++) {
+                            if (hasOwnProperty.call(obj, dontEnums[i])) {
+                                result.push(dontEnums[i]);
+                            }
+                        }
+                    }
+                    return result;
+                };
+            }());
         }
     };
 
@@ -215,8 +287,8 @@
             }
         });
 
-        $('.batch-trigger').on('click', function(){
-            toggleBatchMode($(this));
+        $toolbarButtonBatchTrigger.on('click', function(){
+            toggleBatchMode();
         });
     };
 
@@ -534,6 +606,26 @@
             }
 
             this.animation('slide-from-right', element, realCallbackBegin, callbackEnd);
+        },
+        hideSlideToBottom: function(element, callbackBegin, callbackEnd){
+            var realCallbackEnd = function(){
+                element.addClass('hidden');
+                if(typeof callbackEnd === 'function'){
+                    callbackEnd();
+                }
+            }
+
+            this.animation('hide-slide-to-bottom', element, callbackBegin, realCallbackEnd);
+        },
+        showSlideFromBottom: function(element, callbackBegin, callbackEnd){
+            var realCallbackBegin = function(){
+                element.removeClass('hidden');
+                if(typeof callbackBegin === 'function'){
+                    callbackBegin();
+                }
+            }
+
+            this.animation('show-slide-from-bottom', element, realCallbackBegin, callbackEnd);
         }
     };
 
@@ -571,20 +663,36 @@
         return animation;
     };
 
+    /**
+     * Displays modal.
+     * @param  {String}   title    Modal title.
+     * @param  {String}   text     Modal body.
+     * @param  {String}   type     Type of modal between alert, confirm and prompt.
+     * @param  {Function} callback Callback called when main modal button is pushed.
+     * @param  {Object}   options  Additional options:
+     *                             - noHtmlEscape {Boolean} Prevent HTML escape of title and body.
+     *                             - value {String} Value of input field when using type prompt.
+     *                             - buttonLabelOk {String} Label for OK button. Defaults to 'OK'.
+     * @return {Void}
+     */
     var displayModal = function(title, text, type, callback, options){
-        var html = '<div class="container"><div id="modal-container" class="col-md-6 col-md-offset-3"><div class="modal animate-slide-from-top"><div class="modal-title">' + escapeHtml(title) + '</div>';
+        options = options || {};
+        var title = options.noHtmlEscape ? title : escapeHtml(title);
+        var html = '<div class="container"><div id="modal-container" class="col-md-6 col-md-offset-3"><div class="modal animate-slide-from-top"><div class="modal-title">' + title + '</div>';
         var body = '';
         var footer = '';
+
         if(text){
-            body += '<p>' + escapeHtml(text) + '</p>';
+            var text = options.noHtmlEscape ? text : escapeHtml(text);
+            body += '<p>' + text + '</p>';
         }
 
         switch(type){
             case 'alert':
-                footer += '<button class="button ripple pull-right modal-ok">OK</button>';
+                footer += '<button class="button ripple pull-right modal-ok">' + (options && options.buttonLabelOk ? options.buttonLabelOk : 'OK') + '</button>';
                 break;
             case 'confirm':
-                footer += '<button class="button ripple button-alert pull-right modal-ok">OK</button><button class="button ripple pull-right modal-cancel">Cancel</button>';
+                footer += '<button class="button ripple button-alert pull-right modal-ok">' + (options && options.buttonLabelOk ? options.buttonLabelOk : 'OK') + '</button><button class="button ripple pull-right modal-cancel">Cancel</button>';
                 break;
             case 'prompt':
                 body += '<input type="text" class="input-new-tag" placeholder="Enter a new value..." value="' + options.value + '"/>';
@@ -625,6 +733,44 @@
         initMaterialRippleEffect();
     };
 
+    var displayActionBar = function(options){
+        if(typeof options !== 'object'){
+            console.log('displayActionBar expects an object as options.');
+            return;
+        }
+
+        var uid = guid();
+        var html = '<div id="' + uid + '" class="hidden actionbar ' + options.classes + '"><div class="container"><div class="row"><div class="actionbar-label">' + options.label + '</div><div class="actionbar-controls">';
+
+        if(options.displayCancel){
+            html += '<button type="button" class="button button-default" id="actionbar-cancel">Cancel</button>';
+        }
+
+        for(var i in options.controls){
+            var control = options.controls[i];
+            html += '<button type="button" class="' + control.classes + '" id="' + control.id + '">' + control.label + '</button>';
+        }
+
+        html += '</div></div></div></div>';
+
+        $('body').append(html);
+
+        var $actionbar = $('#' + uid).eq(0);
+
+        $('#actionbar-cancel').on('click', function(){
+            toggleBatchMode();
+        });
+
+        for(var i in options.controls){
+            var control = options.controls[i];
+            $('#' + control.id).on('click', control.callback);
+        }
+
+        animations.showSlideFromBottom($actionbar);
+
+        return $actionbar;
+    };
+
     var hidePopups = function(){
         $('.popup:visible').each(function(){
             animations.fadeOut($(this));
@@ -638,10 +784,14 @@
         localStorage.setItem('expand', isExpanded);
     };
 
-    var toggleBatchMode = function($button){
+    var toggleBatchMode = function(){
         if(!isBatchModeEnabled){
             isBatchModeEnabled = true;
-            $button.addClass('filter-on');
+            $toolbarButtonBatchTrigger.addClass('filter-on');
+
+            var refreshActionBarLabel = function(){
+                $batchDeleteActionBar.find('.actionbar-label').text(objectSize(model.selectedLinks) + ' links selected');
+            }
 
             $('.links-list').addClass('is-selectable');
 
@@ -649,20 +799,106 @@
                 event.preventDefault();
                 event.stopPropagation();
 
-                $(this).toggleClass('is-selected');
+                var $element = $(this);
+                var id = $element.attr('id');
+
+                if($element.hasClass('is-selected')){
+                    $element.removeClass('is-selected');
+                    delete model.selectedLinks[id];
+
+                    refreshActionBarLabel();
+                } else{
+                    $element.addClass('is-selected');
+                    model.selectedLinks[id] = {
+                        id: id,
+                        title: escapeHtml($element.find('.link-title').text())
+                    };
+
+                    refreshActionBarLabel();
+                }
+
+                console.log(JSON.stringify(model.selectedLinks));
             });
+
+            // Hide add button.
+            animations.hideSlideToBottom($('.button-floating'));
+
+            $batchDeleteActionBar = displayActionBar({
+                label: '',
+                classes: 'actionbar-delete-links',
+                displayCancel: true,
+                controls: [
+                    {
+                        id: 'delete-links-button',
+                        label: 'Delete',
+                        classes: 'button button-alert',
+                        callback: function(event){
+                            var linksIds = '';
+                            var linksTexts = '<ul class="is-bordered">';
+                            var linksIdTab = [];
+                            var length = objectSize(model.selectedLinks);
+
+                            for(var id in model.selectedLinks){
+                                linksIdTab.push(id);
+                                linksTexts += '<li>#<strong>' + id + '</strong>' + model.selectedLinks[id].title + '</li>';
+                            }
+
+                            linksTexts += '</ul>';
+                            linksIds = linksIdTab.join('+');
+                            var url = '?delete_link&lf_linkdate='+ linksIds +'&token='+ encodeURIComponent($('#token').val());
+
+                            displayModal('Are you sure to delete ' + length + ' links', 'The following links will be <strong>IRRETRIEVABLY</strong> deleted: ' + linksTexts, 'confirm', function(accepted){
+                                if(accepted){
+                                    window.location.href = url;
+                                }
+                            }, { 
+                                noHtmlEscape: true,
+                                buttonLabelOk: 'Delete ' + length + ' links'
+                            });
+                        }
+                    }
+                ]
+            });
+
+            refreshActionBarLabel();
         } else{
             isBatchModeEnabled = false;
-            $button.removeClass('filter-on');
+            $toolbarButtonBatchTrigger.removeClass('filter-on');
 
             $('.link-outer').off('click.batch');
             $('.links-list').removeClass('is-selectable');
+
+            // Hides acction bar.
+            animations.hideSlideToBottom($('.actionbar'), null, function(){
+                $('.actionbar').remove();
+            });
+
+            // Shows back the add button.
+            animations.showSlideFromBottom($('.button-floating'));
         }
     };
 
     var escapeHtml = function(html){
         return $('<div/>').text(html).html();
     };
+
+    var objectSize = function(obj){
+        if(typeof obj !== 'object'){
+            return 0;
+        }
+
+        return Object.keys(obj).length;
+    }
+
+    var guid = function() {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+        }
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+            s4() + '-' + s4() + s4() + s4();
+    }
 
     // Refresh the CSRF token and pass it to the callback.
     var refreshToken = function(callback){

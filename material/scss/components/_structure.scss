@@ -205,6 +205,11 @@ a.link-url:hover{
 .link-actions{
     height: 24px;
     text-align: right;
+
+    .is-selectable &{
+        // Actions are hidden when the list is in batch select mode.
+        display: none;
+    }
 }
 .link-actions > *{
     display: block;

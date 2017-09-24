@@ -60,3 +60,31 @@
         transform: translateX(0);
     }
 }
+
+.animate-hide-slide-to-bottom{
+    animation: hide-slide-to-bottom $animation-speed ease;
+}
+@keyframes hide-slide-to-bottom {
+    0% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(300px);
+    }
+}
+
+.animate-show-slide-from-bottom{
+    animation: show-slide-from-bottom $animation-speed ease;
+}
+@keyframes show-slide-from-bottom {
+    0% {
+        opacity: 0;
+        transform: translateY(300px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,27 @@
+.actionbar{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 50;
+
+    @extend .shadow-top-1;
+
+    .row{
+        padding: $space-m;
+    }
+}
+
+.actionbar-label{
+    float: left;
+    padding: 7px;
+}
+
+.actionbar-controls{
+    float: right;
+
+    button{
+        margin-left: $space-s;
+    }
+}
