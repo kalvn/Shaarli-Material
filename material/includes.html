@@ -18,64 +18,9 @@
 <meta name="msapplication-TileColor" content="#603cba">
 <meta name="msapplication-config" content="images/favicons/browserconfig.xml">
 <link type="text/css" rel="stylesheet" href="build/styles.min.css" />
-{if="$conf->get('config.MATERIAL_COLOR')"}
-{$materialColor=$conf->get('config.MATERIAL_COLOR')}
-{$materialColorFocus=$conf->get('config.MATERIAL_COLOR_FOCUS') ? $conf->get('config.MATERIAL_COLOR_FOCUS') : $materialColor}
-{$materialColorActive=$conf->get('config.MATERIAL_COLOR_ACTIVE') ? $conf->get('config.MATERIAL_COLOR_ACTIVE') : $materialColor}
-<meta name="theme-color" content="{$materialColor}">
-<style type="text/css">
-    div.awesomplete > ul > li[aria-selected=true],
-    .button-primary,
-    [type="radio"]:checked + label:after,
-    [type="radio"].with-gap:checked + label:after,
-    [type=checkbox].filled-in:checked + label:after,
-    .switch label input[type=checkbox]:checked + .lever:after,
-    .header-main {
-        background-color: {$materialColor};
-    }
-    .button-primary:hover, .button-primary:focus{
-        background-color: {$materialColorFocus};
-    }
-    .button-primary:active{
-        background-color: {$materialColorActive};
-    }
-
-    a,
-    label.active {
-        color: {$materialColor}; 
-    }
-
-    a:hover, a:focus {
-        color: {$materialColorFocus}; 
-    }
-
-    a:active {
-        color: {$materialColorActive}; 
-    }
-
-    input[type=text]:focus,
-    input[type=search]:focus,
-    input[type=number]:focus,
-    input[type=password]:focus,
-    textarea:focus {
-        border-color: {$materialColor};
-        box-shadow: 0 1px 0 {$materialColor};
-        outline: none; 
-    }
-    input.input-big:focus{
-        box-shadow: none;
-    }
-
-    select:focus,
-    [type="radio"]:checked + label:after,
-    [type="radio"].with-gap:checked + label:before,
-    [type="radio"].with-gap:checked + label:after,
-    [type="checkbox"]:checked + label:before,
-    [type="checkbox"] :indeterminate + label:before,
-    [type=checkbox].filled-in:checked + label:after {
-        border-color: {$materialColor};
-    }
-</style>
+{if="$conf->get('config.THEME_COLOR')"}
+{$themeColor=$conf->get('config.THEME_COLOR')}
+<meta name="theme-color" content="{$themeColor}">
 {else}
 <meta name="theme-color" content="#2196f3">
 {/if}

@@ -17,7 +17,7 @@ If you install an older version, please read the README.md file you'll find in t
 
 
 ## Compatibility
-Shaarli Material was tested and validated on *Shaarli 0.9.0*.
+Shaarli Material was tested and validated on *Shaarli 0.9.1*.
 
 
 ## Installation
@@ -33,6 +33,8 @@ Please refer to the README file within the root folder of the version you downlo
 
 
 ## Customization
+You can add your own CSS rules in file `data/user.css`. You'll find an example that shows how to change the whole theme color in `user.example.css`.
+
 You can customize a few things using the `data/config.json.php` file of your Shaarli installation. If the file doesn't exist, just create it. Be careful to respect the JSON format notation (end lines with a comma except for the last item, just before the closing curly brace), otherwise you'll get errors.
 
 Here are parameters you can set.
@@ -42,9 +44,7 @@ Here are parameters you can set.
 - **config.MATERIAL_NO_QRCODE**: OPTIONAL: Removes the QR code control of the theme. To completely get rid of QR Codes, you of course need to disable the qrcode plugin as well.
 - **config.MATERIAL_DATE_FROMNOW**: OPTIONAL: If set to true, enables dates to be displayed with the 'from now' notation. ex: 2 days ago. Set it to false to disable this.
 - **config.MATERIAL_DATE_PATTERN**: OPTIONAL (but REQUIRED if MATERIAL_DATE_FROMNOW is enabled): This date pattern MUST match the MATERIAL_PHP_DATE_PATTERN option but doesn't use the same notation. Check this for more information about the notation: http://momentjs.com/docs/#/parsing/string-format/ ex: 'DD/MM/YYYY'. It's used to correctly convert dates to the 'from now' notation.
-- **config.MATERIAL_COLOR**: OPTIONAL: Customizes the theme's colors. I suggest picking colors from here : https://www.google.com/design/spec/style/color.html#color-color-palette with the shades 500, 600 and 700 for the 3 following settings, respectively. MATERIAL_COLOR is mandatory and represents the main color (used for the toolbar or the buttons).
-- **config.MATERIAL_COLOR_FOCUS**: OPTIONAL: Used for the hover and focus effects on buttons.
-- **config.MATERIAL_COLOR_ACTIVE**: OPTIONAL: Used for the active effect on button (when they are clicked).
+- **config.MATERIAL_COLOR**: OPTIONAL: Customizes the theme's colors. It's used for example on Android for notification bar. It will generate `<meta name="theme-color" content="YOURCOLORHERE">`.
 
 
 Here is an example of what you can configure (in real life, there will be other parameters in the file, just add those to the different categories):
@@ -60,9 +60,7 @@ Here is an example of what you can configure (in real life, there will be other 
         "MATERIAL_NO_QRCODE": true,
         "MATERIAL_DATE_FROMNOW": true,
         "MATERIAL_DATE_PATTERN": "DD/MM/YYYY HH:mm:ss",
-        "MATERIAL_COLOR": "#607D8B",
-        "MATERIAL_COLOR_FOCUS": "#546E7A",
-        "MATERIAL_COLOR_ACTIVE": "#455A64"
+        "MATERIAL_COLOR": "#607D8B"
     }
 }
 ```
