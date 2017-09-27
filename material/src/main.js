@@ -789,6 +789,18 @@
             isBatchModeEnabled = true;
             $toolbarButtonBatchTrigger.addClass('filter-on');
 
+            // Displays informative modal if it's the first time.
+            var batchModeModalKey = 'batchInformationViewed';
+            if(localStorage && !localStorage.getItem(batchModeModalKey)){
+                displayModal('Multiple link selection', 'You now enter batch link selection mode. You can select several links by clicking on them and select an action in the bottom bar.', 'alert', function(result){
+                    if(result){
+                        localStorage.setItem(batchModeModalKey, true);
+                    }
+                }, {
+                    buttonLabelOk: 'Understood!'
+                });
+            }
+
             var refreshActionBarLabel = function(){
                 $batchDeleteActionBar.find('.actionbar-label').text(objectSize(model.selectedLinks) + ' links selected');
             }
@@ -847,7 +859,7 @@
                             linksIds = linksIdTab.join('+');
                             var url = '?delete_link&lf_linkdate='+ linksIds +'&token='+ encodeURIComponent($('#token').val());
 
-                            displayModal('Are you sure to delete ' + length + ' links', 'The following links will be <strong>IRRETRIEVABLY</strong> deleted: ' + linksTexts, 'confirm', function(accepted){
+                            displayModal('Are you sure to delete ' + length + ' links?', 'The following links will be <strong>IRRETRIEVABLY</strong> deleted: ' + linksTexts, 'confirm', function(accepted){
                                 if(accepted){
                                     window.location.href = url;
                                 }
