@@ -17,7 +17,7 @@ If you install an older version, please read the README.md file you'll find in t
 
 
 ## Compatibility
-Shaarli Material was tested and validated on *Shaarli 0.9.1*.
+Shaarli Material was tested and validated on *Shaarli 0.9.2*.
 
 
 ## Installation
