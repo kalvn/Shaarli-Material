@@ -21,7 +21,7 @@
 
     <input type="hidden" name="token" value="{$token}" id="token" />
 </div>
-<script src="build/scripts.min.js"></script>
+<script src="build/scripts.min.js?v={$version_hash}"></script>
 {loop="$plugins_footer.js_files"}
-     <script src="{$value}#"></script>
+     <script src="{$value}?v={$version_hash}#"></script>
 {/loop}

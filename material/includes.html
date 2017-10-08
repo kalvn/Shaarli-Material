@@ -17,16 +17,16 @@
 <link rel="search" type="application/opensearchdescription+xml" href="?do=opensearch#" title="Shaarli search - {$shaarlititle|htmlspecialchars}"/> 
 <meta name="msapplication-TileColor" content="#603cba">
 <meta name="msapplication-config" content="images/favicons/browserconfig.xml">
-<link type="text/css" rel="stylesheet" href="build/styles.min.css" />
+<link type="text/css" rel="stylesheet" href="build/styles.min.css?v={$version_hash}" />
 {if="$conf->get('config.THEME_COLOR')"}
 {$themeColor=$conf->get('config.THEME_COLOR')}
 <meta name="theme-color" content="{$themeColor}">
 {else}
 <meta name="theme-color" content="#2196f3">
 {/if}
-{if="is_file('data/user.css')"}<link type="text/css" rel="stylesheet" href="../../data/user.css" />{/if}
+{if="is_file('data/user.css')"}<link type="text/css" rel="stylesheet" href="data/user.css#" />{/if}
 {loop="$plugins_includes.css_files"}
-<link type="text/css" rel="stylesheet" href="{$value}#"/>
+<link type="text/css" rel="stylesheet" href="{$value}?v={$version_hash}#"/>
 {/loop}
 <script>
 var shaarli = {
