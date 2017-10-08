@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Modified [referrer policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy) to `cross-origin` instead of `origin-when-crossorigin`
 
+### Fixed
+- Links in footer
+
 
 ## [v0.9.1](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.9.1) - 2017-10-08
 ### Added
