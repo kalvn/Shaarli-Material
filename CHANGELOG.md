@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## v0.9.2
 ### Added
 - Unique version hash appended to JS and CSS files to avoid cache issue after an update
+- *Remember me* setting is taken into account
 
 ### Changed
 - Modified [referrer policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy) to `cross-origin` instead of `origin-when-crossorigin`
