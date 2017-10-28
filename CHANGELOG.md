@@ -5,7 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
-## v0.9.2
+## v0.9.3
+### Fixed
+- Now properly applies MATERIAL_COLOR variable
+
+
+## [v0.9.2](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.9.2) - 2017-10-23
 ### Added
 - Unique version hash appended to JS and CSS files to avoid cache issue after an update
 - *Remember me* setting is taken into account
