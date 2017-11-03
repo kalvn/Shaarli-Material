@@ -1,0 +1,133 @@
+.daily-grid[data-columns]:before{
+    content: '4 .column.size-1of4';
+
+    @media screen and (max-width: 1200px) {
+        content: '2 .column.size-1of2'
+    }
+
+    @media screen and (max-width: 768px) {
+        content: '1 .column.size-1of1'
+    }
+}
+
+.column {
+    float: left;
+    padding: 0 $space-m;
+}
+
+.size-1of4 { 
+    width: 25%;
+}
+.size-1of2 { 
+    width: 50%;
+}
+.size-1of1 { 
+    width: 100%;
+}
+
+.daily-header{
+    text-align: center;
+
+    h1{
+        font-family: 'Old Newspaper Types', serif;
+        font-size: 4rem;
+    }
+}
+
+.daily-header-subtitle{
+    color: #999;
+}
+
+.daily-title{
+    margin: $space-l 0 $space-xl 0;
+    text-align: center;
+    font-family: 'Old Newspaper Types', serif;
+    font-size: 1.6rem;
+}
+
+.daily-item{
+    position: relative;
+
+    &:hover .daily-item-plus{
+        display: block;
+    }
+
+    a{
+        color: auto;
+
+        &:hover{
+            text-decoration: none;
+        }
+    }
+}
+
+.daily-card{
+    @extend .shadow-1;
+    display: block;
+    margin-bottom: $space-l;
+    color: inherit;
+    border-radius: $radius-s;
+    outline: 3px solid transparent;
+    transition: all $animation-speed ease;
+
+    &:hover,
+    &:focus{
+        @extend .shadow-2;
+    }
+}
+
+.daily-item-header{
+    display: block;
+    background-color: #f8f9fa;
+    padding: $space-s;
+    color: #678;
+    border-radius: $radius-s $radius-s 0 0;
+    transition: background-color $animation-speed ease;
+
+    &:hover,
+    &:focus{
+        color: #678;
+        text-decoration: none;
+        background-color: darken(#f8f9fa, 3%);
+    }
+}
+
+.daily-item-image{
+    widows: 100%;
+    height: 100px;
+    background-size: cover;
+}
+
+.daily-item-body{
+    background-color: #fff;
+    padding: $space-m;
+}
+
+.daily-item-footer{
+    background-color: #f8f9fa;
+    padding: $space-s;
+    font-size: 80%;
+    color: #678;
+    border-top: solid 1px rgba(102,119,136,0.05);
+    border-radius: 0 0 $radius-s $radius-s;
+}
+
+.daily-item-footer-subtitle{
+    display: block;
+    float: left;
+    color: #ccc;
+
+    &:hover{
+        color: #678;
+
+        &:after{
+            @extend .mdi;
+            content: "\F337";
+            animation: slide-from-right $animation-speed ease;
+        }
+    }
+}
+
+.daily-item-tags{
+    text-align: right;
+}

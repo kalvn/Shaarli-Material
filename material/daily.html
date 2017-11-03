@@ -9,70 +9,86 @@
              {$value}
          {/loop}
     </div>
-    <div class="dailyAbout">
-      All links of one day<br>in a single page.<br>
-      {if="$previousday"} <a href="?do=daily&amp;day={$previousday}"><b>&lt;</b>Previous day</a>{else}<b>&lt;</b>Previous day{/if}
-      - 
-      {if="$nextday"}<a href="?do=daily&amp;day={$nextday}">Next day<b>&gt;</b></a>{else}Next day<b>&gt;</b>{/if}
-      <br><br>
-      <a href="?do=dailyrss" title="1 RSS entry per day"><img src="images/feed-icon-14x14.png#" alt="rss_feed">Daily RSS Feed</a>
-    </div>
-    <div class="dailyTitle"><img src="images/floral_left.png" width="51" height="50" class="nomobile" alt="floral_left"> The Daily Shaarli <img src="images/floral_right.png" width="51" height="50" class="nomobile" alt="floral_right"></div>
-    <div class="dailyDate"><span class="nomobile">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span> {function="strftime('%A %e %B %Y', $day)"} <span class="nomobile">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span></div>
-    <div class="clear"></div>
 
+    <div class="daily-header">
+        <h1>The Daily Shaarli</h1>
+        <p class="daily-header-subtitle">All links of one day in a single page</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    {if="$previousday"}
+                    <a href="?do=daily&amp;day={$previousday}" class="button">
+                        <i class="mdi mdi-arrow-left"></i> Previous day
+                    </a>
+                    {else}
+                    <i class="mdi mdi-arrow-left"></i> Previous day
+                    {/if}
+                </div>
+                <div class="col-xs-6"> 
+                    <a {if="$nextday"}href="?do=daily&amp;day={$nextday}"{else}href="#"{/if} class="button" {if="!$nextday"}disabled{/if}>
+                        Next day <i class="mdi mdi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <hr class="darker">
+        </div>
+    </div>
+
+    <h2 class="daily-title">{function="format_date($dayDate, false)"}</h2>
     {if="$linksToDisplay"}
-        <div class="clearfix">
-        {loop="$cols"}
-            {if="isset($value[0])"}
-            <div id="daily_col{$counter+1}">
-                {loop="$value"}
-                    {$link=$value}
-                    <div class="dailyEntry">
-                        <div class="dailyEntryPermalink">
-                            <a href="?{$value.shorturl}">
-                                <img src="images/squiggle2.png" width="25" height="26" title="permalink" alt="permalink">
-                            </a>
-                        </div>
+        <div class="daily-grid clearfix" data-columns>
+        {loop="$linksToDisplay"}
+        {$link=$value}
+            <div class="daily-item">
+                <div class="daily-card">
+                    <a href="{$link.real_url}" class="daily-item-header ripple ripple-primary">
+                        {$link.title}
+                    </a>
+                    {ignore}
+                    {$thumb=thumbnail($value.url)}
+                    {if="$thumb != false"}
+                        <!-- <div class="daily-item-image">
+                            {$thumb}
+                        </div> -->
+                    {/if}
+                    {/ignore}
+                    {if="$link.formatedDescription"}
+                    <div class="daily-item-body">
+                        {$link.formatedDescription}
+                    </div>
+                    {/if}
+                    <div class="daily-item-footer clearfix">
                         {if="!$hide_timestamps || isLoggedIn()"}
-                            <div class="dailyEntryLinkdate">
-                                <a href="?{$value.shorturl}">{function="strftime('%H:%M', $link.timestamp)"}</a>
-                            </div>
+                        <a href="?{$link.shorturl}" class="daily-item-footer-subtitle" title="Permalink">
+                            {function="strftime('%H:%M', $link.timestamp)"}
+                        </a>
                         {/if}
                         {if="$link.tags"}
-                            <div class="dailyEntryTags">
-                                {loop="$link.taglist"}
-                                    {$value} -
-                                {/loop}
-                            </div>
-                        {/if}
-                        <div class="dailyEntryTitle">
-                            <a href="{$link.real_url}">{$link.title}</a>
+                        <div class="daily-item-tags">
+                            {$tags=implode(', ', $link['taglist'])}
+                            {$tags}
                         </div>
-                        {if="$link.thumbnail"}
-                            <div class="dailyEntryThumbnail">{$link.thumbnail}</div>
                         {/if}
-                        <div class="dailyEntryDescription">{$link.formatedDescription}</div>
-                        <div class="dailyEntryFooter">
-                            {loop="$link.link_plugin"}
-                                {$value}
-                            {/loop}
+                        <div>
+                        {loop="$link.link_plugin"}
+                            {$value}
+                        {/loop}
                         </div>
                     </div>
-                {/loop}
+                </div>
             </div>
-            {/if}
         {/loop}
         </div>
     {else}
-         <div class="dailyNoEntry">No articles on this day.</div>
+        <div>No articles on this day.</div>
     {/if}
+
     <div id="plugin_zone_end_picwall" class="plugin_zone">
         {loop="$plugin_end_zone"}
             {$value}
         {/loop}
     </div>
-    <div id="closing"><img src="images/squiggle_closing.png" width="66" height="61" alt="-"></div>
 </div>
 {include="page.footer"}
 </body>

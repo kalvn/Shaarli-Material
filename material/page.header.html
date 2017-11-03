@@ -85,25 +85,23 @@
                         <i class="mdi mdi-key"></i>
                     </a>
                     {/if}
-
-                    {if="$showatom"}
-                        <div class="toolbar-button-container">
-                            <button type="button" class="icon-header popup-trigger ripple" data-popup="popup-rss" title="RSS Feeds">
-                                <i class="mdi mdi-rss"></i>
-                            </button>
-                            <div id="popup-rss" class="popup popup-rss hidden">
-                                <div class="popup-title">RSS feeds</div>
-                                <div class="popup-body">
-                                    <ul>
-                                        <li><a href="{$feedurl}?do=rss{$searchcrits}" class="ripple">RSS Feed</a></li>
-                                        <li><a href="{$feedurl}?do=atom{$searchcrits}" class="ripple">ATOM Feed</a></li>
-                                    </ul>
-                                </div>
+                    <div class="toolbar-button-container">
+                        <button type="button" class="icon-header popup-trigger ripple" data-popup="popup-rss" title="RSS Feeds">
+                            <i class="mdi mdi-rss"></i>
+                        </button>
+                        <div id="popup-rss" class="popup popup-rss hidden">
+                            <div class="popup-title">RSS feeds</div>
+                            <div class="popup-body">
+                                <ul>
+                                    <li><a href="{$feedurl}?do=rss{$searchcrits}" class="ripple">RSS Feed</a></li>
+                                    {if="$showatom"}
+                                    <li><a href="{$feedurl}?do=atom{$searchcrits}" class="ripple">ATOM Feed</a></li>
+                                    {/if}
+                                    <li><a href="{$feedurl}?do=dailyrss" class="ripple" title="1 RSS entry per day">Daily Feed</a></li>
+                                </ul>
                             </div>
                         </div>
-                    {else}
-                        <a href="{$feedurl}?do=rss{$searchcrits}" class="icon-rss ripple" title="RSS Feed"></a>
-                    {/if}
+                    </div>
                     {if="isLoggedIn()"}
                     <div class="toolbar-button-container">
                         <button type="button" class="icon-header ripple batch-trigger" title="Select multiple links for deletion">

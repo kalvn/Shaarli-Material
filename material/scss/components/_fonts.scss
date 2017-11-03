@@ -46,3 +46,12 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'Old Newspaper Types';
+    src: url('../static/fonts/oldnewspapertypes/oldnewspapertypes-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+        url('../static/fonts/oldnewspapertypes/oldnewspapertypes-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+        url('../static/fonts/oldnewspapertypes/oldnewspapertypes-webfont.ttf')  format('truetype'); /* Safari, Android, iOS */
+    font-weight: normal;
+    font-style: normal;
+}
