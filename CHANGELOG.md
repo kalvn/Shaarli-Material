@@ -5,7 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
-## v0.9.3
+## [v0.9.3](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.9.3) - 2018-01-08
+### Added
+- Supports Shaarli v0.9.3 with an important security fix
+- New design for The Daily Shaarli
+
 ### Fixed
 - Now properly applies MATERIAL_COLOR variable
 
