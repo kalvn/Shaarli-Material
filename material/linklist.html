@@ -140,7 +140,7 @@
 
 {if="!empty($linkcount)"}
 <div class="container text-center link-counter">
-    <em>{$linkcount} link{if="$privateLinkcount > 1"}s{/if}{if="!empty($privateLinkcount)"}, including {$privateLinkcount} private{/if}</em>
+    <em>{$linkcount} link{if="$linkcount > 1"}s{/if}{if="!empty($privateLinkcount)"}, including {$privateLinkcount} private{/if}</em>
 </div>
 {/if}
 
