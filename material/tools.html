@@ -7,13 +7,13 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="card">
-                <h1 class="card-header">Settings</h1>
+                <h1 class="card-header">{'Settings'|t}</h1>
                 <div class="list-action list-big">
                     <a class="list-item ripple" href="?do=configure">
                         <div class="row">
                             <div class="col-sm-2 col-xs-3">
                                 <div class="round-image-container">
-                                    <i class="mdi mdi-settings" title="Configure your Shaarli"></i>
+                                    <i class="mdi mdi-settings" title="{'Configure your Shaarli'|t}"></i>
                                 </div>
                             </div>
                             <div class="col-sm-10 col-xs-9">
@@ -45,8 +45,8 @@
                                 </div>
                             </div>
                             <div class="col-sm-10 col-xs-9">
-                                <div class="list-item-label">Plugin administration</div>
-                                <div class="list-item-sublabel">Enable, disable and configure your plugins</div>
+                                <div class="list-item-label">{'Plugin administration'|t}</div>
+                                <div class="list-item-sublabel">{'Enable, disable and configure plugins'|t}</div>
                             </div>
                         </div>
                     </a>
@@ -113,12 +113,12 @@
             <div class="row">
                 <div class="col-xs-6 text-center">
                     <a class="bookmarklet" href="javascript:javascript:(function(){var%20url%20=%20location.href;var%20title%20=%20document.title%20||%20url;window.open('{$pageabsaddr}?post='%20+%20encodeURIComponent(url)+'&amp;title='%20+%20encodeURIComponent(title)+'&amp;description='%20+%20encodeURIComponent(document.getSelection())+'&amp;source=bookmarklet','_blank','menubar=no,height=650,width=600,toolbar=no,scrollbars=no,status=no,dialog=1');})();">
-                        <img src="images/tools/star-circle.png" alt="Favicon" /> Shaare link
+                        <img src="images/tools/star-circle.png" alt="Favicon" /> {'Shaare link'|t}
                     </a>
                 </div>
                 <div class="col-xs-6 text-center">
                     <a class="bookmarklet" href="?private=1&post=">
-                        <img src="images/tools/star-circle.png" alt="Favicon" /> Add Note
+                        <img src="images/tools/star-circle.png" alt="Favicon" /> {'Add Note'|t}
                     </a>
                 </div>
             </div>
@@ -130,7 +130,7 @@
             <h2 class="mtm" id="firefox-api-title">Firefox Social API integration</h2>
             <p>Adds Shaarli to the <em>Share this page</em> button in Firefox.</p>
             {if="!$sslenabled"}
-            <p class="highlight">You need to use Firefox over <strong>https</strong> to use this functionality.</p>
+            <p class="highlight">{'You need to browse your Shaarli over <strong>HTTPS</strong> to use this functionality.'|t}</p>
             {/if}
             <div class="row">
                 <div class="col-xs-12 text-center">
