@@ -111,10 +111,10 @@
                             {if="isLoggedIn()"}
                             <form method="GET"><input type="hidden" name="lf_linkdate" value="{$value.id}">
                                 <input type="hidden" name="token" value="{$token}"><input type="hidden" name="delete_link">
-                                <button type="submit" alt="Delete" title="t('Delete')" class="icon-delete button-delete"></button>
+                                <button type="submit" alt="Delete" title="{'Remove tag'|t}" class="icon-delete button-delete"></button>
                             </form>
                             <form method="GET"><input type="hidden" name="edit_link" value="{$value.id}">
-                                <button type="submit" alt="Edit" title="t('Edit')" class="icon-edit"></button>
+                                <button type="submit" alt="Edit" title="{'Edit'|t}" class="icon-edit"></button>
                             </form>
                             {/if}
                             {if="!$qrCodeDisabled"}
