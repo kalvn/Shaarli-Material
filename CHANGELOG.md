@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [v0.9.5](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.9.5) - 2018-02-08
+### Changed
+- Optimizes bookmarklet popup size and enables scrollbars
+
+### Removed
+- Redirector setting as it was removed from Shaarli core
+
+### Fixed
+- Typo in the bottom link counter.
+
 
 ## [v0.9.3](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.9.3) - 2018-01-08
 ### Added
