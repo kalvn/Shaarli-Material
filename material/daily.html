@@ -11,22 +11,22 @@
     </div>
 
     <div class="daily-header">
-        <h1>The Daily Shaarli</h1>
-        <p class="daily-header-subtitle">All links of one day in a single page</p>
+        <h1>{'The Daily Shaarli'|t}</h1>
+        <p class="daily-header-subtitle">{'All links of one day in a single page.'|t}</p>
         <div class="container">
             <div class="row">
                 <div class="col-xs-6">
                     {if="$previousday"}
                     <a href="?do=daily&amp;day={$previousday}" class="button">
-                        <i class="mdi mdi-arrow-left"></i> Previous day
+                        <i class="mdi mdi-arrow-left"></i> {'Previous day'|t}
                     </a>
                     {else}
-                    <i class="mdi mdi-arrow-left"></i> Previous day
+                    <i class="mdi mdi-arrow-left"></i> {'Previous day'|t}
                     {/if}
                 </div>
                 <div class="col-xs-6"> 
                     <a {if="$nextday"}href="?do=daily&amp;day={$nextday}"{else}href="#"{/if} class="button" {if="!$nextday"}disabled{/if}>
-                        Next day <i class="mdi mdi-arrow-right"></i>
+                        {'Next day'|t} <i class="mdi mdi-arrow-right"></i>
                     </a>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                     {/if}
                     <div class="daily-item-footer clearfix">
                         {if="!$hide_timestamps || isLoggedIn()"}
-                        <a href="?{$link.shorturl}" class="daily-item-footer-subtitle" title="Permalink">
+                        <a href="?{$link.shorturl}" class="daily-item-footer-subtitle" title="{'Permalink'|t}">
                             {function="strftime('%H:%M', $link.timestamp)"}
                         </a>
                         {/if}

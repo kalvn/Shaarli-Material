@@ -20,10 +20,20 @@
                         <div class="sublabel">(default value is: ?)</div>
                     </div>
                     <div class="form-entry">
-                        <label for="theme">Theme</label>
+                        <label for="theme">{'Theme'|t}</label>
                         <select name="theme" id="theme">
                         {loop="$theme_available"}
                             <option value="{$value}" {if="$value===$theme"}selected{/if}>
+                                {$value|ucfirst}
+                            </option>
+                        {/loop}
+                        </select>
+                    </div>
+                    <div class="form-entry">
+                        <label for="language">{'Language'|t}</label>
+                        <select name="language" id="language">
+                        {loop="$languages"}
+                            <option value="{$key}" {if="$key===$language"}selected{/if}>
                                 {$value|ucfirst}
                             </option>
                         {/loop}
@@ -108,7 +118,7 @@
 
                         <div class="list-item">
                             <div class="list-item-content">
-                                <div class="list-item-label">Hide public links</div>
+                                <div class="list-item-label">{'Hide public links'|t}</div>
                                 <div class="list-item-sublabel">Will not show any link if the user is not logged in. Do NOT enable this if you want to make your Shaarli public.</div>
                             </div>
                             <div class="list-item-side">
@@ -123,7 +133,7 @@
 
                         <div class="list-item">
                             <div class="list-item-content">
-                                <div class="list-item-label">Notify me when a new release is ready</div>
+                                <div class="list-item-label">{'Notify me when a new release is ready'|t}</div>
                             </div>
                             <div class="list-item-side">
                                 <div class="switch">
@@ -163,7 +173,7 @@
                 </div>
 
                 <div class="card-footer">
-                    <button type="submit" name="Save" class="button-raised button-primary pull-right">Save config</button>
+                    <button type="submit" name="Save" class="button-raised button-primary pull-right">{'Save'|t} config</button>
                     <div class="clearfix"></div>
                 </div>
             </form>

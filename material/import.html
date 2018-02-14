@@ -28,7 +28,7 @@
 						<div class="list-item">
                             <label class="list-item-content" for="privacy-default">
                                 <div class="list-item-label">Default</div>
-                                <div class="list-item-sublabel">Use values from the imported file, default to public</div>
+                                <div class="list-item-sublabel">{'Use values from the imported file, default to public'|t}</div>
                             </label>
                             <div class="list-item-side">
                                 <input name="privacy" class="with-gap" type="radio" value="default" id="privacy-default" checked />
@@ -38,7 +38,7 @@
                         <div class="list-item no-border">
                             <label class="list-item-content" for="privacy-private">
                                 <div class="list-item-label">Private</div>
-                                <div class="list-item-sublabel">Import all bookmarks as private</div>
+                                <div class="list-item-sublabel">{'Import all bookmarks as private'|t}</div>
                             </label>
                             <div class="list-item-side">
                                 <input name="privacy" class="with-gap" type="radio" value="private" id="privacy-private" />
@@ -48,7 +48,7 @@
                         <div class="list-item no-border">
                             <label class="list-item-content" for="privacy-public">
                                 <div class="list-item-label">Public</div>
-                                <div class="list-item-sublabel">Import all bookmarks as public</div>
+                                <div class="list-item-sublabel">{'Import all bookmarks as public'|t}</div>
                             </label>
                             <div class="list-item-side">
                                 <input name="privacy" class="with-gap" type="radio" value="public" id="privacy-public" />
@@ -58,7 +58,7 @@
 
                         <div class="list-item">
                             <div class="form-entry">
-		                        <label for="default-tags">Add default tags</label>
+		                        <label for="default-tags">{'Add default tags'|t}</label>
 		                        <input type="text" name="default_tags" id="default-tags" placeholder="Separate tags with comma...">
 		                    </div>
                         </div>
@@ -66,7 +66,7 @@
                 </div>
 
 				<div class="card-footer">
-					<button type="submit" name="import_file" class="button-raised button-primary pull-right">Import</button>
+					<button type="submit" name="import_file" class="button-raised button-primary pull-right">{'Import'|t}</button>
 					<div class="clearfix"></div>
 				</div>
 			</form>
