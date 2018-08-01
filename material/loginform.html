@@ -2,7 +2,7 @@
 <html>
 <head>{include="includes"}</head>
 <body
-{if="ban_canLogin($conf)"}
+{if="$user_can_login"}
     {if="empty($username)"}
         onload="document.loginform.login.focus();"
     {else}
@@ -14,7 +14,7 @@
 <div id="headerform" class="page-login container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            {if="!ban_canLogin($conf)"}
+            {if="!$user_can_login"}
                 {'You have been banned after too many failed login attempts. Try again later.'|t}
             {else}
                 <form method="POST" name="loginform" class="card">
