@@ -10,16 +10,16 @@
             <div class="col-lg-6 header-middle">
                 <div class="header-nav">
                     <div class="col-xs-6 col-sm-3 text-center">
-                        <a href="?do=tagcloud" class="toolbar-link button-inverse ripple">Tag cloud</a>
+                        <a href="?do=tagcloud" class="toolbar-link button-inverse ripple">{'Tag cloud'|t}</a>
                     </div>
                     <div class="col-xs-6 col-sm-3 text-center">
-                        <a href="?do=picwall{$searchcrits}" class="toolbar-link button-inverse ripple">Picture wall</a>
+                        <a href="?do=picwall{$searchcrits}" class="toolbar-link button-inverse ripple">{'Picture wall'|t}</a>
                     </div>
                     <div class="col-xs-6 col-sm-3 text-center">
-                        <a href="?do=daily" class="toolbar-link button-inverse ripple">Daily</a>
+                        <a href="?do=daily" class="toolbar-link button-inverse ripple">{'Daily'|t}</a>
                     </div>
                     <div class="col-xs-6 col-sm-3 text-center">
-                        <button class="toolbar-link button-inverse ripple" id="button-search">Search</button>
+                        <button class="toolbar-link button-inverse ripple" id="button-search">{'Search'|t}</button>
                     </div>
                 </div>
             </div>
@@ -62,18 +62,18 @@
                         </div>
                     {/if}
                     {if="isLoggedIn()"}
-                        <a href="?do=logout" class="icon-header popup-trigger ripple" title="Logout">
+                        <a href="?do=logout" class="icon-header popup-trigger ripple" title="{'Logout'|t}">
                             <i class="mdi mdi-logout"></i>
                         </a>
-                        <a href="?do=tools" class="icon-header ripple" title="Tools">
+                        <a href="?do=tools" class="icon-header ripple" title="{'Tools'|t}">
                             <i class="mdi mdi-settings"></i>
                         </a>
                     {elseif="$openshaarli"}
-                        <a href="?do=tools" class="icon-header ripple" title="Tools">
+                        <a href="?do=tools" class="icon-header ripple" title="{'Tools'|t}">
                             <i class="mdi mdi-settings"></i>
                         </a>
                     {else}
-                        <a href="?do=login" class="icon-header popup-trigger ripple" title="Login">
+                        <a href="?do=login" class="icon-header popup-trigger ripple" title="{'Login'|t}">
                             <i class="mdi mdi-account"></i>
                         </a>
                     {/if}
@@ -86,14 +86,14 @@
                     </a>
                     {/if}
                     <div class="toolbar-button-container">
-                        <button type="button" class="icon-header popup-trigger ripple" data-popup="popup-rss" title="RSS Feeds">
+                        <button type="button" class="icon-header popup-trigger ripple" data-popup="popup-rss" title="{'RSS Feed'|t}">
                             <i class="mdi mdi-rss"></i>
                         </button>
                         <div id="popup-rss" class="popup popup-rss hidden">
-                            <div class="popup-title">RSS feeds</div>
+                            <div class="popup-title">{'RSS Feed'|t}</div>
                             <div class="popup-body">
                                 <ul>
-                                    <li><a href="{$feedurl}?do=rss{$searchcrits}" class="ripple">RSS Feed</a></li>
+                                    <li><a href="{$feedurl}?do=rss{$searchcrits}" class="ripple">{'RSS Feed'|t}</a></li>
                                     {if="$showatom"}
                                     <li><a href="{$feedurl}?do=atom{$searchcrits}" class="ripple">ATOM Feed</a></li>
                                     {/if}
@@ -114,7 +114,7 @@
                             <i class="mdi mdi-filter"></i>
                         </button>
                         <div id="popup-filter" class="popup popup-filter hidden">
-                            <div class="popup-title">Links per page</div>
+                            <div class="popup-title">{'Links per page'|t}</div>
                             <div class="popup-body">
                                 <ul>
                                     <li><a href="?linksperpage=20" class="ripple">20 links</a></li>
@@ -161,8 +161,8 @@
                         placeholder="Search something here..." autocomplete="off" data-multiple data-minChars="1"
                         data-list="{loop="$tags"}{$key}, {/loop}" />    
                     <div class="mtl">
-                        <button type="submit" id="button-search" class="pull-right button-raised button-primary ripple">Search</button>
-                        <button type="button" id="button-filter" class="pull-right button-raised ripple ripple-primary">Filter by tag</button>    
+                        <button type="submit" id="button-search" class="pull-right button-raised button-primary ripple">{'Search'|t}</button>
+                        <button type="button" id="button-filter" class="pull-right button-raised ripple ripple-primary">{'Filter by tag'|t}</button>    
                     </div>
                 </form>
             </div>

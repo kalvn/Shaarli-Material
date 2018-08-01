@@ -8,13 +8,13 @@
             <form method="POST" action="#" name="installform" id="installform" class="card">
                 <div class="card-title">Welcome to your Shaarli</div>
                 <div class="card-body">
-                    <p>It looks like it's the first time you run Shaarli. Please configure it.</p>
+                    <p>{'It looks like it\'s the first time you run Shaarli. Please configure it.'|t}</p>
                     <div class="form-entry">
-                        <label for="setlogin">Login</label>
+                        <label for="setlogin">{'Login'|t}</label>
                         <input type="text" name="setlogin" id="setlogin" size="30"/>
                     </div>
                     <div class="form-entry">
-                        <label for="setpassword">Password</label>
+                        <label for="setpassword">{'Password'|t}</label>
                         <input type="password" id="setpassword" name="setpassword" size="30"/>
                     </div>
                     <div class="form-entry">
@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-entry">
                         <input type="checkbox" class="filled-in" name="updateCheck" id="updateCheck" checked="checked">
-                        <label for="updateCheck">Notify me when a new release is ready</label>
+                        <label for="updateCheck">{'Notify me when a new release is ready'|t}</label>
                     </div>
                     <div class="form-entry">
                         <input type="checkbox" class="filled-in" name="enableApi" id="enableApi">
