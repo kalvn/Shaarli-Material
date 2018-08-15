@@ -17,3 +17,7 @@ node_modules
 
 # Removes the HTML version of README.
 README.html
+
+# Removes yarn error log
+yarn-error.log
+
