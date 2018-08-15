@@ -23,28 +23,29 @@ var onError = function(err){
 /*****************/
 /*** Variables ***/
 /*****************/
-var ROOT = 'material/';
+var ROOT = './';
 var BUILD_FOLDER = ROOT + 'build';
+var HTML_DIR = ROOT + 'material'
 
 var SCSS_SELECTOR = ROOT + 'scss/**/*.scss';
 var CSS_LIB = [
-    ROOT + 'lib/bootstrap/dist/css/bootstrap.min.css'
+    ROOT + 'node_modules/bootstrap/dist/css/bootstrap.min.css'
 ];
 var CSS_LIB_NO_UNCSS = [
-    ROOT + 'lib/awesomplete/awesomplete.css'
+    ROOT + 'node_modules/awesomplete/awesomplete.base.css'
 ];
 
 var JS_SELECTOR = ROOT + 'src/*.js'
 var JS_LIB = [
-    ROOT + 'lib/jquery/dist/jquery.min.js',
-    ROOT + 'lib/awesomplete/awesomplete.min.js',
-    ROOT + 'lib/blazy/blazy.min.js',
-    ROOT + 'lib/moment/min/moment.min.js',
-    ROOT + 'lib/Sortable/Sortable.min.js',
-    ROOT + 'lib/salvattore/dist/salvattore.min.js'
+    ROOT + 'node_modules/jquery/dist/jquery.min.js',
+    ROOT + 'node_modules/awesomplete/awesomplete.min.js',
+    ROOT + 'node_modules/blazy/blazy.min.js',
+    ROOT + 'node_modules/moment/min/moment.min.js',
+    ROOT + 'node_modules/sortable/ui.js',
+    ROOT + 'node_modules/salvattore/dist/salvattore.min.js'
 ];
 
-var BOOTSTRAP_FONTS = ROOT + 'lib/bootstrap/dist/fonts/*';
+var BOOTSTRAP_FONTS = ROOT + 'node_modules/bootstrap/fonts/*';
 
 /*************/
 /*** Tasks ***/
@@ -76,7 +77,7 @@ gulp.task('csslib', function(){
         .pipe(concat('lib.css'))
         .pipe(replace(/\.\.\/fonts\//g, 'fonts/'))
         .pipe(uncss({
-            html: [ROOT + '/*.html']
+            html: [HTML_DIR + '/*.html']
         }))
         .pipe(addsrc.append(CSS_LIB_NO_UNCSS))
         .pipe(concat('lib.css'))
