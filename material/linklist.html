@@ -17,12 +17,12 @@
         <div class="text-center">
             <img src="images/sad_star.png" alt="Nothing found" />
         </div>
-        <div class="nothing-found">Sorry... We found nothing{if="!empty($search_term)"} for <strong>{$search_term}</strong>{/if}{if="!empty($search_term)"}{$exploded_tags=explode(' ', $search_tags)} tagged <strong>{loop="$exploded_tags"} {$value}{/loop}</strong>{/if}.</div>
-    {elseif="!empty($search_term) or !empty($search_tags)"}
+        <div class="nothing-found">Sorry... We found nothing{if="!empty($search_term)"} for <strong>{$search_term}</strong>{/if}{if="!empty($search_tags)"}{$exploded_tags=explode(' ', $search_tags)} tagged <strong>{loop="$exploded_tags"} {$value}{/loop}</strong>{/if}.</div>
+    {elseif="!empty($search_term) or !empty($search_tags) or !empty($visibility) or $untaggedonly"}
         <div id="searchcriteria">
-            {$result_count} results
-            {if="!empty($search_term)"} for <strong>{$search_term}</strong>{/if}
-            {if="!empty($search_tags)"}{$exploded_tags=explode(' ', $search_tags)} tagged <i>
+            {function="sprintf(t('%s result', '%s results', $result_count), $result_count)"}
+            {if="!empty($search_term)"} {'for'|t} <strong>{$search_term}</strong>{/if}
+            {if="!empty($search_tags)"}{$exploded_tags=explode(' ', $search_tags)} {'tagged'|t} <i>
             {loop="$exploded_tags"}
                 <span class="link-tag-filter" title="{'Remove tag'|t}">
                     <a href="?removetag={$value}">{$value}&nbsp;
@@ -31,6 +31,17 @@
                 </span>
             {/loop}
             </i>
+            {/if}
+            {if="!empty($visibility)"}
+                {'with status'|t}
+                <span class="label label-private">
+                    {$visibility|t}
+                </span>
+            {/if}
+            {if="$untaggedonly"}
+                <span class="label label-private">
+                    {'without any tag'|t}
+                </span>
             {/if}
         </div>
     {/if}
@@ -124,8 +135,8 @@
                             </form>
                             {/if}
                             {if="!$qrCodeDisabled"}
-                            <a href="http://qrfree.kaywa.com/?l=1&amp;s=8&amp;d={$scripturl|urlencode}%3F{$value.shorturl}" 
-                                class="icon-qrcode" data-permalink="{$scripturl}?{$value.shorturl}" title="{function="strftime($dateFormat, $value.timestamp)"}"></a>
+                            <a href="http://qrfree.kaywa.com/?l=1&amp;s=8&amp;d={$value.real_url|urlencode}" 
+                                class="icon-qrcode" data-permalink="{$value.real_url|urlencode}" title="{function="strftime($dateFormat, $value.timestamp)"}"></a>
                             {/if}
                             {if="isLoggedIn() || !$qrCodeDisabled"}
                             </div>

@@ -61,7 +61,7 @@
                             </div>
                         </div>
                     {/if}
-                    {if="isLoggedIn()"}
+                    {if="$is_logged_in"}
                         <a href="?do=logout" class="icon-header popup-trigger ripple" title="{'Logout'|t}">
                             <i class="mdi mdi-logout"></i>
                         </a>
@@ -77,7 +77,7 @@
                             <i class="mdi mdi-account"></i>
                         </a>
                     {/if}
-                    {if="isLoggedIn()"}
+                    {if="$is_logged_in"}
                     <a href="?untaggedonly" title="{'Filter untagged links'|t}" class="icon-header ripple {if="$untaggedonly"}filter-on{else}filter-off{/if}">
                         <i class="mdi mdi-tag"></i>
                     </a>
@@ -102,7 +102,7 @@
                             </div>
                         </div>
                     </div>
-                    {if="isLoggedIn()"}
+                    {if="$is_logged_in"}
                     <div class="toolbar-button-container">
                         <button type="button" class="icon-header ripple batch-trigger" title="Select multiple links for deletion">
                             <i class="mdi mdi-checkbox-marked-outline"></i>
@@ -131,7 +131,7 @@
             </div>
         </div>
     </div>
-    {if="(isLoggedIn() || $openshaarli) && !isset($_GET['edit_link']) && !isset($_GET['post']) && (!isset($_GET['do']) || !in_array($_GET['do'], array('addlink', 'changepasswd', 'configure', 'changetag', 'import', 'export')))"}
+    {if="($is_logged_in || $openshaarli) && !isset($_GET['edit_link']) && !isset($_GET['post']) && (!isset($_GET['do']) || !in_array($_GET['do'], array('addlink', 'changepasswd', 'configure', 'changetag', 'import', 'export')))"}
         <a href="?do=addlink" class="button-floating ripple">
             <i class="icon-add-link mdi mdi-plus"></i>
         </a>
@@ -140,10 +140,20 @@
         <input type="hidden" name="searchtags" id="tagfilter_value" value=""/>
     </form>
 
-    {if="!empty($plugin_errors) && isLoggedIn()"}
+    {if="!empty($plugin_errors) && $is_logged_in"}
         <div class="errors">
             <ul class="container">
-                {loop="$plugin_errors"}
+                {loop="plugin_errors"}
+                    <li>{$value}</li>
+                {/loop}
+            </ul>
+        </div>
+    {/if}
+
+    {if="!empty($global_warnings) && $is_logged_in"}
+        <div class="warnings">
+            <ul class="container">
+                {loop="global_warnings"}
                     <li>{$value}</li>
                 {/loop}
             </ul>
