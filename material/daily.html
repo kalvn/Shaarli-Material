@@ -36,6 +36,13 @@
     </div>
 
     <h2 class="daily-title">{function="format_date($dayDate, false)"}</h2>
+
+    <div id="plugin_zone_about_daily" class="plugin_zone">
+    {loop="$daily_about_plugin"}
+        {$value}
+    {/loop}
+    </div>
+
     {if="$linksToDisplay"}
         <div class="daily-grid clearfix" data-columns>
         {loop="$linksToDisplay"}
@@ -45,14 +52,15 @@
                     <a href="{$link.real_url}" class="daily-item-header ripple ripple-primary">
                         {$link.title}
                     </a>
-                    {ignore}
-                    {$thumb=thumbnail($value.url)}
-                    {if="$thumb != false"}
-                        <!-- <div class="daily-item-image">
-                            {$thumb}
-                        </div> -->
+
+                    {if="$thumbnails_enabled && !empty($link.thumbnail)"}
+                        <div class="daily-item-image">
+                            <img data-src="{$link.thumbnail}#" class="b-lazy"
+                                src="#"
+                                alt="thumbnail" width="{$thumbnails_width}" height="{$thumbnails_height}" />
+                        </div>
                     {/if}
-                    {/ignore}
+
                     {if="$link.formatedDescription"}
                     <div class="daily-item-body">
                         {$link.formatedDescription}
