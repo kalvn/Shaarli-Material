@@ -206,6 +206,23 @@ a.link-url:hover{
     height: 24px;
     text-align: right;
 
+    a,
+    span {
+        color: #757575;
+        font-size: 18px;
+    }
+
+    a {
+        &.is-pinned {
+            color: $color-primary;
+        }
+
+        &:hover,
+        &:focus {
+            color: #000;
+        }
+    }
+
     .is-selectable &{
         // Actions are hidden when the list is in batch select mode.
         display: none;

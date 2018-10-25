@@ -144,11 +144,11 @@
         $('.button-delete').on('click', function(event){
             event.preventDefault();
 
-            var form = $(this).closest('form');
+            var url = $(this).attr('href');
             
             displayModal('Delete link', 'Are you sure you want to delete this link ?', 'confirm', function(accepts){
                 if(accepts){
-                    form.submit();
+                    window.location.href = url;
                 }
             });
             return false;
