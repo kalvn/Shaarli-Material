@@ -77,14 +77,6 @@
                             <i class="mdi mdi-account"></i>
                         </a>
                     {/if}
-                    {if="$is_logged_in"}
-                    <a href="?untaggedonly" title="{'Filter untagged links'|t}" class="icon-header ripple {if="$untaggedonly"}filter-on{else}filter-off{/if}">
-                        <i class="mdi mdi-tag"></i>
-                    </a>
-                    <a href="?privateonly" class="icon-header {if="$privateonly"}filter-on{else}filter-off{/if} ripple" title="{if="$privateonly"}Click to see all links{else}Click to see only private links{/if}">
-                        <i class="mdi mdi-key"></i>
-                    </a>
-                    {/if}
                     <div class="toolbar-button-container">
                         <button type="button" class="icon-header popup-trigger ripple" data-popup="popup-rss" title="{'RSS Feed'|t}">
                             <i class="mdi mdi-rss"></i>
@@ -110,13 +102,15 @@
                     </div>
                     {/if}
                     <div class="toolbar-button-container">
-                        <button type="button" class="popup-trigger icon-header ripple" data-popup="popup-filter" title="Change links per page">
+                        <button type="button" class="popup-trigger icon-header ripple" data-popup="popup-filter" title="{'Filters'|t}">
                             <i class="mdi mdi-filter"></i>
+                            {if="$visibility==='private' || $visibility==='public' || $untaggedonly"}<div class="red-dot"></div>{/if}
                         </button>
                         <div id="popup-filter" class="popup popup-filter hidden">
-                            <div class="popup-title">{'Links per page'|t}</div>
+                            <div class="popup-title">{'Filters'|t}<button class="popup-close"><i class="mdi mdi-close"></i></button></div>
                             <div class="popup-body">
-                                <ul>
+                                <h2>{'Links per page'|t}</h2>
+                                <ul class="filters-links-per-page">
                                     <li><a href="?linksperpage=20" class="ripple">20 links</a></li>
                                     <li><a href="?linksperpage=50" class="ripple">50 links</a></li>
                                     <li><a href="?linksperpage=100" class="ripple">100 links</a></li>
@@ -124,6 +118,53 @@
                                 <form method="GET" class="popup-content-area">
                                     <input type="text" name="linksperpage" size="2" placeholder="Custom value..."/>
                                 </form>
+
+                                <h2>{'Display'|t}</h2>
+                                <div class="list-side-right">
+                                    <div class="list-body">
+                                        {if="$is_logged_in"}
+                                        <div class="list-item">
+                                            <div class="list-item-content">
+                                                <div class="list-item-label">{'Only display private links'|t}</div>
+                                            </div>
+                                            <div class="list-item-side">
+                                                <div class="switch">
+                                                    <label data-url="?visibility=private">
+                                                        <input type="checkbox" name="input-visibility-private" id="input-visibility-private" {if="$visibility==='private'"}checked{/if}/>
+                                                        <span class="lever"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="list-item">
+                                            <div class="list-item-content">
+                                                <div class="list-item-label">{'Only display public links'|t}</div>
+                                            </div>
+                                            <div class="list-item-side">
+                                                <div class="switch">
+                                                    <label data-url="?visibility=public">
+                                                        <input type="checkbox" name="input-visibility-public" id="input-visibility-public" {if="$visibility==='public'"}checked{/if}/>
+                                                        <span class="lever"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/if}
+                                        <div class="list-item">
+                                            <div class="list-item-content">
+                                                <div class="list-item-label">{'Filter untagged links'|t}</div>
+                                            </div>
+                                            <div class="list-item-side">
+                                                <div class="switch">
+                                                    <label data-url="?untaggedonly">
+                                                        <input type="checkbox" name="input-untaggedonly" id="input-untaggedonly" {if="$untaggedonly"}checked{/if}/>
+                                                        <span class="lever"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

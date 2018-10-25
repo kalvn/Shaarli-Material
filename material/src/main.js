@@ -106,10 +106,11 @@
 
     var initPopups = function(){
         $('html').on('click', function(event){
-            if($.inArray('popup-trigger', event.target.classList) > -1 || $(event.target).parents('.popup-trigger').length >= 1){
+            // If the click occurs in a popup, in a child of a popup or in a popup trigger, nothing happens.
+            if($.inArray('popup-trigger', event.target.classList) > -1 || $(event.target).parents('.popup-trigger').length >= 1 ||
+                $.inArray('popup', event.target.classList) > -1 || $(event.target).parents('.popup').length >= 1){
                 // Nothing to do.
             } else{
-                //$('.popup').hide();
                 hidePopups();
             }
         });
@@ -120,22 +121,26 @@
             var $popup = $('#' + $(this).data('popup'));
 
             if($popup.is(':visible')){
-                //$popup.fadeOut(400);
                 animations.fadeOut($popup);
             } else{
-                //$('.popup').hide();
-                //$popup.fadeIn(400);
-                
-                //animations.fadeIn($popup);
                 animations.slideFromTop($popup);
             }
         });
 
-        $('.popup').on('click', function(event){
-            if(event.target.tagName !== 'A'){
-                event.preventDefault();
-                return false;
-            }
+        $('.popup-close').on('click', function () {
+            hidePopups();
+        });
+
+        // Closes filters popup when changing number of links per page
+        // because it feels more natural and gives user a feedback.
+        $('.filters-links-per-page a').on('click', function(event){
+            hidePopups();
+        });
+
+        $('.popup-filter .switch label').on('click', function () {
+            var url = $(this).data('url');
+
+            window.location.href = url;
         });
     };
 
