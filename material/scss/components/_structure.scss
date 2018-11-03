@@ -488,3 +488,20 @@ a.link-url:hover{
 .plugin-param-key{
     line-height: 33px;
 }
+
+/* Thumbnail page */
+.thumbnail-placeholder {
+    margin: auto;
+    margin-bottom: $space-s;
+    background-color: $color-gray-light;
+}
+.thumbnail-link-title {
+    margin-bottom: $space-m;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.progress-counter {
+    text-align: right;
+}

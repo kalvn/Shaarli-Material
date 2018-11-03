@@ -30,6 +30,8 @@
         initBlazy();
         initOverlay();
 
+        initPageThumbnails();
+
         if(shaarli.isAuth){
             initSortable();
             initFirefoxSocial();
@@ -538,6 +540,55 @@
             overlay.triggerEvent(event);
         });
     };
+
+    var initPageThumbnails = function () {
+        if ($('.page-thumbnails').length === 0) {
+            return;
+        }
+
+        var $thumbnailPlaceholder = $('.thumbnail-placeholder');
+        var $thumbnailTitle = $('.thumbnail-link-title');
+        var $progressCurrent = $('.progress-current');
+        var $progressBarActual = $('.progress-actual');
+
+        var i = 0;
+        var thumbnailsIdList = $('[name="ids"]').val().split(',');
+        var total = thumbnailsIdList.length;
+
+        var updateThumbnail = function (id) {
+            console.log('Updating thunmbnail #' + i + ' with id ' + id);
+            $.ajax({
+                url: '?do=ajax_thumb_update',
+                method: 'post',
+                dataType: 'json',
+                data: 'id=' + thumbnailsIdList[i],
+                success: function(response){
+                    i++;
+                    console.log('Response received: ' + JSON.stringify(response));
+                    $thumbnailTitle.html(response.title);
+                    if (response.thumbnail) {
+                        $thumbnailPlaceholder.html('<img title="Current thumbnail" src="' + response.thumbnail + '"/>');
+                    } else {
+                        $thumbnailPlaceholder.empty();
+                    }
+                    $progressCurrent.text(i);
+                    $progressBarActual.css('width', ((i * 100) / thumbnailsIdList.length) + '%');
+
+                    if (i < total) {
+                        updateThumbnail(thumbnailsIdList[i]);
+                    } else {
+                        $thumbnailTitle.html('Thumbnail update done!');
+                    }
+                },
+                error: function(xhr){
+                    console.error('Failed to update thumbnail.');
+                    displayModal('Error', 'An error occurred while downloading thumbnails. Return code: ' + xhr.status, 'alert');
+                }
+            });
+        };
+
+        updateThumbnail(thumbnailsIdList[i]);
+    }
 
     /*----------------*/
 
