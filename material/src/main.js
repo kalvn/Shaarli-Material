@@ -300,7 +300,7 @@
     };
 
     var initSearch = function(){
-        $('#button-search').on('click', function(){
+        var displaySearch = function () {
             var overlayElement = $('#search-overlay');
             animations.fadeIn(overlayElement);
             overlayElement
@@ -309,16 +309,23 @@
                 .select();
 
             animations.slideFromTop(overlayElement.find('.content-fullscreen'));
-        });
+        }
+
+        $('#button-search').on('click', displaySearch);
         $('#search-overlay').on('click', function(event){
             if($(event.target).parents('#form-search').length === 0 && event.target.nodeName.toLowerCase() !== 'form'){
                 animations.fadeOut($(this));
             }
         });
-        $(document).on('keydown', function(event){
-            if(event.keyCode === 27){
+        $(document).on('keyup', function(event){
+            var key = event.which || event.keyCode;
+            if(key === 27){
+                // Closes search field when key "ESC" is pressed.
                 var overlayElement = $('#search-overlay');
                 animations.fadeOut(overlayElement);
+            } else if (key === 83 && event.target.nodeName !== 'INPUT' && event.target.nodeName !== 'TEXTAREA' && event.target.nodeName !== 'SELECT') {
+                // Displays search field when key "S" is pressed.
+                displaySearch();
             }
         });
 

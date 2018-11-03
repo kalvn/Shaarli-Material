@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [v0.10.2](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.10.2) - ????-??-??
 ### Added
 - Supports Shaarli v0.10.2
+- Thumbnail update page
+- Keyboard shortcut "S" displays search overlay
 
 ## [v0.9.5](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.9.5) - 2018-02-08
 ### Changed
