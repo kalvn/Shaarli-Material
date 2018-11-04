@@ -95,7 +95,7 @@
                         
                         <div>
                             {if="$thumbnails_enabled && !empty($value.thumbnail)"}
-                            <div class="thumb" style="width:{$thumbnails_width}px;height:{$thumbnails_height}px;">
+                            <div class="thumb">
                                 <a href="{$value.real_url}">
                                   {ignore}RainTPL hack: put the 2 src on two different line to avoid path replace bug{/ignore}
                                   <img data-src="{$value.thumbnail}#" class="b-lazy"

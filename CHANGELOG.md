@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Thumbnail update page
 - Keyboard shortcut "S" displays search overlay
 
+### Fixed
+- Thumbnails on link list and daily pages
+- Daily previous link not disabled properly when on oldest day
+
 ## [v0.9.5](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.9.5) - 2018-02-08
 ### Changed
 - Optimizes bookmarklet popup size and enables scrollbars

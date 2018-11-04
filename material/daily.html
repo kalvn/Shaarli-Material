@@ -16,13 +16,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-6">
-                    {if="$previousday"}
-                    <a href="?do=daily&amp;day={$previousday}" class="button">
+                    <a {if="$previousday"}href="?do=daily&amp;day={$previousday}"{else}href="#"{/if} class="button" {if="!$previousday"}disabled{/if}>
                         <i class="mdi mdi-arrow-left"></i> {'Previous day'|t}
                     </a>
-                    {else}
-                    <i class="mdi mdi-arrow-left"></i> {'Previous day'|t}
-                    {/if}
                 </div>
                 <div class="col-xs-6"> 
                     <a {if="$nextday"}href="?do=daily&amp;day={$nextday}"{else}href="#"{/if} class="button" {if="!$nextday"}disabled{/if}>
@@ -54,10 +50,10 @@
                     </a>
 
                     {if="$thumbnails_enabled && !empty($link.thumbnail)"}
-                        <div class="daily-item-image">
-                            <img data-src="{$link.thumbnail}#" class="b-lazy"
+                        <div class="daily-item-image" style="background-image: url({$link.thumbnail})">
+                            <!-- <img data-src="{$link.thumbnail}#" class="b-lazy"
                                 src="#"
-                                alt="thumbnail" width="{$thumbnails_width}" height="{$thumbnails_height}" />
+                                alt="thumbnail" width="{$thumbnails_width}" height="{$thumbnails_height}" /> -->
                         </div>
                     {/if}
 

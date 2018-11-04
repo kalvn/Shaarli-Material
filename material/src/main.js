@@ -571,8 +571,7 @@
                 data: 'id=' + thumbnailsIdList[i],
                 success: function(response){
                     i++;
-                    console.log('Response received: ' + JSON.stringify(response));
-                    $thumbnailTitle.html(response.title);
+                    $thumbnailTitle.text(response.title);
                     if (response.thumbnail) {
                         $thumbnailPlaceholder.html('<img title="Current thumbnail" src="' + response.thumbnail + '"/>');
                     } else {
@@ -584,7 +583,7 @@
                     if (i < total) {
                         updateThumbnail(thumbnailsIdList[i]);
                     } else {
-                        $thumbnailTitle.html('Thumbnail update done!');
+                        $thumbnailTitle.text('Thumbnail update done!');
                     }
                 },
                 error: function(xhr){
