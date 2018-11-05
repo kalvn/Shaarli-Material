@@ -13,7 +13,11 @@
 <div id="picwall_container text-center" class="clearfix">
     {loop="$linksToDisplay"}
     <div class="picwall-pictureframe ripple">
-	    {$value.thumbnail}<a class="picwall-link" href="{$value.real_url}"><span class="info">{$value.title}</span></a>
+	{ignore}RainTPL hack: put the 2 src on two different line to avoid path replace bug{/ignore}
+        <img data-src="{$value.thumbnail}#" class="b-lazy"
+            src=""
+            alt="thumbnail" width="{$thumbnails_width}" height="{$thumbnails_height}" />
+        <a class="picwall-link" href="{$value.real_url}"><span class="info">{$value.title}</span></a>
 
         {loop="$value.picwall_plugin"}
             {$value}
