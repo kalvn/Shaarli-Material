@@ -134,7 +134,6 @@ a.link-title{
     margin-bottom: 0;
 }
 .thumb img{
-    float: right;
     margin: 15px;
 }
 .link-tag-list{
@@ -205,6 +204,23 @@ a.link-url:hover{
 .link-actions{
     height: 24px;
     text-align: right;
+
+    a,
+    span {
+        color: #757575;
+        font-size: 18px;
+    }
+
+    a {
+        &.is-pinned {
+            color: $color-primary;
+        }
+
+        &:hover,
+        &:focus {
+            color: #000;
+        }
+    }
 
     .is-selectable &{
         // Actions are hidden when the list is in batch select mode.
@@ -436,6 +452,16 @@ a.link-url:hover{
         margin-bottom: 0;
     }
 }
+.warnings {
+    background-color: #FF9800;
+    padding: $space-m 0;
+    margin-top: -$space-m;
+    margin-bottom: $space-m;
+
+    ul{
+        margin-bottom: 0;
+    }
+}
 
 /* QRCode */
 #overlay-content-qrcode{
@@ -460,4 +486,21 @@ a.link-url:hover{
 /* Plugin administration */
 .plugin-param-key{
     line-height: 33px;
+}
+
+/* Thumbnail page */
+.thumbnail-placeholder {
+    margin: auto;
+    margin-bottom: $space-s;
+    background-color: $color-gray-light;
+}
+.thumbnail-link-title {
+    margin-bottom: $space-m;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.progress-counter {
+    text-align: right;
 }

@@ -30,6 +30,8 @@
         initBlazy();
         initOverlay();
 
+        initPageThumbnails();
+
         if(shaarli.isAuth){
             initSortable();
             initFirefoxSocial();
@@ -106,10 +108,11 @@
 
     var initPopups = function(){
         $('html').on('click', function(event){
-            if($.inArray('popup-trigger', event.target.classList) > -1 || $(event.target).parents('.popup-trigger').length >= 1){
+            // If the click occurs in a popup, in a child of a popup or in a popup trigger, nothing happens.
+            if($.inArray('popup-trigger', event.target.classList) > -1 || $(event.target).parents('.popup-trigger').length >= 1 ||
+                $.inArray('popup', event.target.classList) > -1 || $(event.target).parents('.popup').length >= 1){
                 // Nothing to do.
             } else{
-                //$('.popup').hide();
                 hidePopups();
             }
         });
@@ -120,22 +123,26 @@
             var $popup = $('#' + $(this).data('popup'));
 
             if($popup.is(':visible')){
-                //$popup.fadeOut(400);
                 animations.fadeOut($popup);
             } else{
-                //$('.popup').hide();
-                //$popup.fadeIn(400);
-                
-                //animations.fadeIn($popup);
                 animations.slideFromTop($popup);
             }
         });
 
-        $('.popup').on('click', function(event){
-            if(event.target.tagName !== 'A'){
-                event.preventDefault();
-                return false;
-            }
+        $('.popup-close').on('click', function () {
+            hidePopups();
+        });
+
+        // Closes filters popup when changing number of links per page
+        // because it feels more natural and gives user a feedback.
+        $('.filters-links-per-page a').on('click', function(event){
+            hidePopups();
+        });
+
+        $('.popup-filter .switch label').on('click', function () {
+            var url = $(this).data('url');
+
+            window.location.href = url;
         });
     };
 
@@ -144,11 +151,11 @@
         $('.button-delete').on('click', function(event){
             event.preventDefault();
 
-            var form = $(this).closest('form');
+            var url = $(this).attr('href');
             
             displayModal('Delete link', 'Are you sure you want to delete this link ?', 'confirm', function(accepts){
                 if(accepts){
-                    form.submit();
+                    window.location.href = url;
                 }
             });
             return false;
@@ -293,7 +300,7 @@
     };
 
     var initSearch = function(){
-        $('#button-search').on('click', function(){
+        var displaySearch = function () {
             var overlayElement = $('#search-overlay');
             animations.fadeIn(overlayElement);
             overlayElement
@@ -302,16 +309,23 @@
                 .select();
 
             animations.slideFromTop(overlayElement.find('.content-fullscreen'));
-        });
+        }
+
+        $('#button-search').on('click', displaySearch);
         $('#search-overlay').on('click', function(event){
             if($(event.target).parents('#form-search').length === 0 && event.target.nodeName.toLowerCase() !== 'form'){
                 animations.fadeOut($(this));
             }
         });
-        $(document).on('keydown', function(event){
-            if(event.keyCode === 27){
+        $(document).on('keyup', function(event){
+            var key = event.which || event.keyCode;
+            if(key === 27){
+                // Closes search field when key "ESC" is pressed.
                 var overlayElement = $('#search-overlay');
                 animations.fadeOut(overlayElement);
+            } else if (key === 83 && event.target.nodeName !== 'INPUT' && event.target.nodeName !== 'TEXTAREA' && event.target.nodeName !== 'SELECT') {
+                // Displays search field when key "S" is pressed.
+                displaySearch();
             }
         });
 
@@ -533,6 +547,54 @@
             overlay.triggerEvent(event);
         });
     };
+
+    var initPageThumbnails = function () {
+        if ($('.page-thumbnails').length === 0) {
+            return;
+        }
+
+        var $thumbnailPlaceholder = $('.thumbnail-placeholder');
+        var $thumbnailTitle = $('.thumbnail-link-title');
+        var $progressCurrent = $('.progress-current');
+        var $progressBarActual = $('.progress-actual');
+
+        var i = 0;
+        var thumbnailsIdList = $('[name="ids"]').val().split(',');
+        var total = thumbnailsIdList.length;
+
+        var updateThumbnail = function (id) {
+            console.log('Updating thunmbnail #' + i + ' with id ' + id);
+            $.ajax({
+                url: '?do=ajax_thumb_update',
+                method: 'post',
+                dataType: 'json',
+                data: 'id=' + thumbnailsIdList[i],
+                success: function(response){
+                    i++;
+                    $thumbnailTitle.text(response.title);
+                    if (response.thumbnail) {
+                        $thumbnailPlaceholder.html('<img title="Current thumbnail" src="' + response.thumbnail + '"/>');
+                    } else {
+                        $thumbnailPlaceholder.empty();
+                    }
+                    $progressCurrent.text(i);
+                    $progressBarActual.css('width', ((i * 100) / thumbnailsIdList.length) + '%');
+
+                    if (i < total) {
+                        updateThumbnail(thumbnailsIdList[i]);
+                    } else {
+                        $thumbnailTitle.text('Thumbnail update done!');
+                    }
+                },
+                error: function(xhr){
+                    console.error('Failed to update thumbnail.');
+                    displayModal('Error', 'An error occurred while downloading thumbnails. Return code: ' + xhr.status, 'alert');
+                }
+            });
+        };
+
+        updateThumbnail(thumbnailsIdList[i]);
+    }
 
     /*----------------*/
 

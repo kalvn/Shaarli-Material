@@ -70,21 +70,9 @@
     background-position: center center;
     display: inline-block;
 }
-.icon-edit{
-    background-image: url(../images/links/edit.png);
-}
-.icon-delete{
-    background-image: url(../images/links/delete.png);
-}
-.icon-qrcode{
-    background-image: url(../images/links/qrcode.png);
-    cursor: -ms-zoom-in;
-    cursor: -moz-zoom-in;
-    cursor: -webkit-zoom-in; 
-    cursor: zoom-in;
-}
 
 .icon-header{
+    position: relative;
     width: 30px;
     height: 30px;
     line-height: 30px;
@@ -106,6 +94,15 @@
     }
 }
 
+.red-dot {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    top: 4px;
+    right: 4px;
+    border-radius: 50%;
+    background: $color-secondary;
+}
 
 
 .header-main{

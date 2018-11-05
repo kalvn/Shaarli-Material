@@ -17,12 +17,12 @@
         <div class="text-center">
             <img src="images/sad_star.png" alt="Nothing found" />
         </div>
-        <div class="nothing-found">Sorry... We found nothing{if="!empty($search_term)"} for <strong>{$search_term}</strong>{/if}{if="!empty($search_term)"}{$exploded_tags=explode(' ', $search_tags)} tagged <strong>{loop="$exploded_tags"} {$value}{/loop}</strong>{/if}.</div>
-    {elseif="!empty($search_term) or !empty($search_tags)"}
+        <div class="nothing-found">Sorry... We found nothing{if="!empty($search_term)"} for <strong>{$search_term}</strong>{/if}{if="!empty($search_tags)"}{$exploded_tags=explode(' ', $search_tags)} tagged <strong>{loop="$exploded_tags"} {$value}{/loop}</strong>{/if}.</div>
+    {elseif="!empty($search_term) or !empty($search_tags) or !empty($visibility) or $untaggedonly"}
         <div id="searchcriteria">
-            {$result_count} results
-            {if="!empty($search_term)"} for <strong>{$search_term}</strong>{/if}
-            {if="!empty($search_tags)"}{$exploded_tags=explode(' ', $search_tags)} tagged <i>
+            {function="sprintf(t('%s result', '%s results', $result_count), $result_count)"}
+            {if="!empty($search_term)"} {'for'|t} <strong>{$search_term}</strong>{/if}
+            {if="!empty($search_tags)"}{$exploded_tags=explode(' ', $search_tags)} {'tagged'|t} <i>
             {loop="$exploded_tags"}
                 <span class="link-tag-filter" title="{'Remove tag'|t}">
                     <a href="?removetag={$value}">{$value}&nbsp;
@@ -32,10 +32,35 @@
             {/loop}
             </i>
             {/if}
+            {if="!empty($visibility)"}
+                {'with status'|t}
+                <strong>
+                    {$visibility|t}
+                </strong>
+            {/if}
+            {if="$untaggedonly"}
+                <strong>
+                    {'without any tag'|t}
+                </strong>
+            {/if}
         </div>
     {/if}
 
     <div class="links-list">
+
+        {ignore}Set translation here, for performances{/ignore}
+        {$strPrivate=t('Private')}
+        {$strEdit=t('Edit')}
+        {$strDelete=t('Delete')}
+        {$strFold=t('Fold')}
+        {$strEdited=t('Edited: ')}
+        {$strPermalink=t('Permalink')}
+        {$strPermalinkLc=t('permalink')}
+        {$strAddTag=t('Add tag')}
+        {$strToggleSticky=t('Toggle sticky')}
+        {$strSticky=t('Sticky')}
+        {ignore}End of translations{/ignore}
+
         {loop="$links"}
             <div id="{$value.id}" class="link-outer{if="$value.class"} {$value.class}{/if}">
                 <div class="link-overlay"></div>
@@ -52,7 +77,7 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="link-date">
-                                    {if="!$hide_timestamps || isLoggedIn()"}
+                                    {if="!$hide_timestamps || $is_logged_in"}
                                         <span title="Permalink - {function="strftime($dateFormat, $value.timestamp)"}"><a href="?{$value.shorturl}" class="link-actual-date">{function="strftime($dateFormat, $value.timestamp)"}</a></span>
                                     {else}
                                         <span title="Short link here"><a href="?{$value.shorturl}">Permalink</a></span>
@@ -69,9 +94,15 @@
                     <div class="link-content">
                         
                         <div>
-                            {$thumb=thumbnail($value.url)}
-                            {if="$thumb"}
-                            <div class="thumb">{$thumb}</div>
+                            {if="$thumbnails_enabled && !empty($value.thumbnail)"}
+                            <div class="thumb">
+                                <a href="{$value.real_url}">
+                                  {ignore}RainTPL hack: put the 2 src on two different line to avoid path replace bug{/ignore}
+                                  <img data-src="{$value.thumbnail}#" class="b-lazy"
+                                    src="#"
+                                    alt="thumbnail" width="{$thumbnails_width}" height="{$thumbnails_height}" />
+                                  </a>
+                            </div>
                             {/if}
                             {if="$value.description"}
                                 <div class="link-description">{$value.description}</div>
@@ -90,38 +121,37 @@
                                     </div>
                                 {/if}
                             </div>
-                            {if="isLoggedIn()"}
-                            <div class="col-sm-4 link-url-container">
+                            {if="$is_logged_in"}
+                            <div class="col-sm-3 col-md-4 link-url-container">
                             {else}
-                                {if="$qrCodeDisabled"}
+                                {if="$qrCodeDisabled && (!isset($value.sticky) || !$value.sticky)"}
                                     <div class="col-sm-6 link-url-container">
                                 {else}
-                                    <div class="col-sm-5 link-url-container">
+                                    <div class="col-sm-4 col-lg-5 link-url-container">
                                 {/if}
                             {/if}
                                 <a href="{$value.real_url}" class="link-url"><span title="Short link">{$value.real_url}</span></a>
                             </div>
-                            {if="isLoggedIn()"}
-                            <div class="col-sm-2 link-actions">
+                            {if="$is_logged_in"}
+                            <div class="col-sm-3 col-md-2 link-actions">
                             {else}
-                                {if="!$qrCodeDisabled"}
-                                    <div class="col-sm-1 link-actions">
+                                {if="!$qrCodeDisabled || (isset($value.sticky) && $value.sticky)"}
+                                    <div class="col-sm-2 col-lg-1 link-actions">
                                 {/if}
                             {/if}
-                            {if="isLoggedIn()"}
-                            <form method="GET"><input type="hidden" name="lf_linkdate" value="{$value.id}">
-                                <input type="hidden" name="token" value="{$token}"><input type="hidden" name="delete_link">
-                                <button type="submit" alt="Delete" title="{'Remove tag'|t}" class="icon-delete button-delete"></button>
-                            </form>
-                            <form method="GET"><input type="hidden" name="edit_link" value="{$value.id}">
-                                <button type="submit" alt="Edit" title="{'Edit'|t}" class="icon-edit"></button>
-                            </form>
+                            {if="$is_logged_in"}
+                            <a href="?delete_link&amp;lf_linkdate={$value.id}&amp;token={$token}" title="{$strDelete}" class="button-delete"><i class="mdi mdi-delete"></i></a>
+                            <a href="?edit_link={$value.id}" title="{$strEdit}"><i class="mdi mdi-pencil"></i></a>
+                            <a href="?do=pin&amp;id={$value.id}&amp;token={$token}" title="{$strToggleSticky}" {if="isset($value.sticky) && $value.sticky"}class="is-pinned"{/if}><i class="mdi mdi-pin"></i></a>
+                            {else}
+                                {if="isset($value.sticky) && $value.sticky"}
+                                <span title="{$strSticky}"><i class="mdi mdi-pin"></i></span>
+                                {/if}
                             {/if}
                             {if="!$qrCodeDisabled"}
-                            <a href="http://qrfree.kaywa.com/?l=1&amp;s=8&amp;d={$scripturl|urlencode}%3F{$value.shorturl}" 
-                                class="icon-qrcode" data-permalink="{$scripturl}?{$value.shorturl}" title="{function="strftime($dateFormat, $value.timestamp)"}"></a>
+                            <a href="http://qrfree.kaywa.com/?l=1&amp;s=8&amp;d={$value.real_url|urlencode}" data-permalink="{$value.real_url|urlencode}" title="Show link QR Code" class="qrcode"><i class="mdi mdi-qrcode"></i></a>
                             {/if}
-                            {if="isLoggedIn() || !$qrCodeDisabled"}
+                            {if="$is_logged_in || !$qrCodeDisabled"}
                             </div>
                             {/if}
                         </div>

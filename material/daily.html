@@ -16,13 +16,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-6">
-                    {if="$previousday"}
-                    <a href="?do=daily&amp;day={$previousday}" class="button">
+                    <a {if="$previousday"}href="?do=daily&amp;day={$previousday}"{else}href="#"{/if} class="button" {if="!$previousday"}disabled{/if}>
                         <i class="mdi mdi-arrow-left"></i> {'Previous day'|t}
                     </a>
-                    {else}
-                    <i class="mdi mdi-arrow-left"></i> {'Previous day'|t}
-                    {/if}
                 </div>
                 <div class="col-xs-6"> 
                     <a {if="$nextday"}href="?do=daily&amp;day={$nextday}"{else}href="#"{/if} class="button" {if="!$nextday"}disabled{/if}>
@@ -36,6 +32,13 @@
     </div>
 
     <h2 class="daily-title">{function="format_date($dayDate, false)"}</h2>
+
+    <div id="plugin_zone_about_daily" class="plugin_zone">
+    {loop="$daily_about_plugin"}
+        {$value}
+    {/loop}
+    </div>
+
     {if="$linksToDisplay"}
         <div class="daily-grid clearfix" data-columns>
         {loop="$linksToDisplay"}
@@ -45,14 +48,15 @@
                     <a href="{$link.real_url}" class="daily-item-header ripple ripple-primary">
                         {$link.title}
                     </a>
-                    {ignore}
-                    {$thumb=thumbnail($value.url)}
-                    {if="$thumb != false"}
-                        <!-- <div class="daily-item-image">
-                            {$thumb}
-                        </div> -->
+
+                    {if="$thumbnails_enabled && !empty($link.thumbnail)"}
+                        <div class="daily-item-image" style="background-image: url({$link.thumbnail})">
+                            <!-- <img data-src="{$link.thumbnail}#" class="b-lazy"
+                                src="#"
+                                alt="thumbnail" width="{$thumbnails_width}" height="{$thumbnails_height}" /> -->
+                        </div>
                     {/if}
-                    {/ignore}
+
                     {if="$link.formatedDescription"}
                     <div class="daily-item-body">
                         {$link.formatedDescription}

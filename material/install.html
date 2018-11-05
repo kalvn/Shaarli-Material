@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <p>{'It looks like it\'s the first time you run Shaarli. Please configure it.'|t}</p>
                     <div class="form-entry">
-                        <label for="setlogin">{'Login'|t}</label>
+                        <label for="setlogin">{'Username'|t}</label>
                         <input type="text" name="setlogin" id="setlogin" size="30"/>
                     </div>
                     <div class="form-entry">
@@ -45,8 +45,8 @@
                         </div>
                     </div>
                     <div class="form-entry">
-                        <label for="title">Page title</label>
-                        <input type="text" name="title" id="title" size="30"/>
+                        <label for="title">{'Shaarli title'|t}</label>
+                        <input type="text" name="title" id="title" placeholder="{'My links'|t}"/>
                     </div>
                     <div class="form-entry">
                         <input type="checkbox" class="filled-in" name="updateCheck" id="updateCheck" checked="checked">
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" name="Save" class="button-raised button-primary pull-right">Save this configuration</button>
+                    <button type="submit" name="Save" class="button-raised button-primary pull-right">{'Install'|t}</button>
                     <div class="clearfix"></div>
                 </div>
             </form>

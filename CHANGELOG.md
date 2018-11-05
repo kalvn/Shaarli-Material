@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [v0.10.2](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.10.2) - ????-??-??
+### Added
+- Supports Shaarli v0.10.2
+- Thumbnail update page
+- Keyboard shortcut "S" displays search overlay
+
+### Fixed
+- Thumbnails on link list and daily pages
+- Daily previous link not disabled properly when on oldest day
+
 ## [v0.9.5](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.9.5) - 2018-02-08
 ### Changed
 - Optimizes bookmarklet popup size and enables scrollbars

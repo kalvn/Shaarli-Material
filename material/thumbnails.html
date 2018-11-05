@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>{include="includes"}</head>
+<body>
+{include="page.header"}
+<div class="page-thumbnails container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="card">
+                <h1 class="card-header">{'Thumbnails update'|t}</h1>
+                <div class="card-body">
+                    <div class="thumbnail-placeholder" style="width: {$thumbnails_width}px; height: {$thumbnails_height}px;">
+                        
+                    </div>
+                    <div class="thumbnail-link-title">
+                        Loading...
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-actual"></div>
+                    </div>
+                    <div class="progress-counter">
+                        <span class="progress-current">0</span> / <span class="progress-total">{$ids|count}</span>
+                    </div>
+
+                    <input type="hidden" name="ids" value="{function="implode($ids, ',')"}" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include="page.footer"}
+</body>
+</html>

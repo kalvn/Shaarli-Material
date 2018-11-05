@@ -8,16 +8,18 @@ Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), t
 [More screenshots](https://github.com/kalvn/Shaarli-Material/tree/master/screenshots).
 
 
+## Compatibility
+Shaarli Material follows the exact same versions numbers than Shaarli. It means that if you install Shaarli vX.Y.Z, you should use Shaarli Material vX.Y.Z.
+
+Shaarli Material was tested and validated with **Shaarli 0.10.2**.
+
+
 ## Download
 To download this theme, [visit this page](https://github.com/kalvn/Shaarli-Material/releases) and choose the most recent version matching the version of your Shaarli installation. Both use the same notation.
 
 Versions suffixed by `-patch.x` include some bugfix so take those preferentially if they exist for the version that fits your Shaarli installation.
 
 If you install an older version, please read the README.md file you'll find in the root folder rather than this one.
-
-
-## Compatibility
-Shaarli Material was tested and validated on *Shaarli 0.9.5*.
 
 
 ## Installation
