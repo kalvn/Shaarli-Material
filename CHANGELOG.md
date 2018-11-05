@@ -4,7 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [v0.10.2](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.10.2) - ????-??-??
+## vX.X.X
+### Fixed
+- HTML class added in the wrong place.
+- RainTPL escaping in linklist page.
+
+## [v0.10.2](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.10.2) - 2018-11-04
 ### Added
 - Supports Shaarli v0.10.2
 - Thumbnail update page
