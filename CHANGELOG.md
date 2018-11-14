@@ -4,10 +4,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## vX.X.X
+## v?.?.?
+Be careful, one important change comes with this release: the `build` folder is not anymore part of the code repository. So if you use to update the theme with `git pull`, you now need to do
+
+```bash
+$ git pull
+$ npm install
+$ gulp
+```
+
+This will install build tools and process files. I'll now attached built ready-to-use theme to each release, similarly to what is done for Shaarli.
+
+**Known issue:** the build process outputs scary errors due to new version of *uncss* not understanding properly some links containing RainTPL markup. This doesn't prevent it from working properly so you can ignore.
+
+### Changed
+- Processed JS and CSS files are not anymore in code repository.
+
+### Removed
+- Bower. Front-end dependencies are now also retrieved with NPM.
+
+
+## [v0.10.2-patch.2](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.10.2-patch.2) - 2018-11-06
 ### Fixed
 - HTML class added in the wrong place.
 - RainTPL escaping in linklist page.
+- Open Graph description containing html tags.
+
 
 ## [v0.10.2](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.10.2) - 2018-11-04
 ### Added
@@ -18,6 +40,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - Thumbnails on link list and daily pages
 - Daily previous link not disabled properly when on oldest day
+
 
 ## [v0.9.5](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.9.5) - 2018-02-08
 ### Changed
