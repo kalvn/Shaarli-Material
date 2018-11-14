@@ -6,8 +6,7 @@
 material/lib
 
 # Removes some useless build files.
-material/build/lib.css
-material/build/sass.css
+material/build
 
 # Removes the user defined template.
 material/extra.html
