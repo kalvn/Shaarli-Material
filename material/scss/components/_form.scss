@@ -215,7 +215,10 @@ label.active{
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
     position: absolute;
-    left: -9999px;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    cursor: pointer;
 }
 
 
