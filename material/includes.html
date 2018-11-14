@@ -5,18 +5,18 @@
 <meta name="referrer" content="same-origin">
 <link rel="alternate" type="application/rss+xml" href="{$feedurl}?do=rss{$searchcrits}#" title="RSS Feed" />
 <link rel="alternate" type="application/atom+xml" href="{$feedurl}?do=atom{$searchcrits}#" title="ATOM Feed" />
-<link rel="apple-touch-icon" sizes="57x57" href="images/favicons/apple-touch-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="images/favicons/apple-touch-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="images/favicons/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="images/favicons/apple-touch-icon-76x76.png">
-<link rel="icon" type="image/png" href="images/favicons/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="images/favicons/favicon-96x96.png" sizes="96x96">
-<link rel="icon" type="image/png" href="images/favicons/favicon-16x16.png" sizes="16x16">
-<link rel="manifest" href="images/favicons/manifest.json">
-<link rel="shortcut icon" href="images/favicons/favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="dist/img/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="dist/img/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="dist/img/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="dist/img/favicons/apple-touch-icon-76x76.png">
+<link rel="icon" type="image/png" href="dist/img/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="dist/img/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="dist/img/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="dist/img/favicons/manifest.json">
+<link rel="shortcut icon" href="dist/img/favicons/favicon.ico">
 <link rel="search" type="application/opensearchdescription+xml" href="?do=opensearch#" title="Shaarli search - {$shaarlititle}"/> 
 <meta name="msapplication-TileColor" content="#603cba">
-<meta name="msapplication-config" content="images/favicons/browserconfig.xml">
+<meta name="msapplication-config" content="dist/img/favicons/browserconfig.xml">
 {if="! empty($links) && count($links) === 1"}
   {$link=reset($links)}
   <meta property="og:title" content="{$link.title}" />
@@ -37,7 +37,7 @@
     <meta property="article:tag" content="{$value}" />
   {/loop}
 {/if}
-<link type="text/css" rel="stylesheet" href="build/styles.min.css?v={$version_hash}" />
+<link type="text/css" rel="stylesheet" href="dist/styles.min.css?v={$version_hash}" />
 {if="$conf->get('config.MATERIAL_COLOR')"}
 {$themeColor=$conf->get('config.MATERIAL_COLOR')}
 <meta name="theme-color" content="{$themeColor}">

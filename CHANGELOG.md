@@ -19,6 +19,7 @@ This will install build tools and process files. I'll now attached built ready-t
 
 ### Changed
 - Processed JS and CSS files are not anymore in code repository.
+- Reorganisation of directories in order to keep `/material` directory clean.
 
 ### Removed
 - Bower. Front-end dependencies are now also retrieved with NPM.
