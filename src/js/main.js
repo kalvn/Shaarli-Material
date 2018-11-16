@@ -221,7 +221,11 @@
                             token: token
                         },
                         success: function(){
-                            el.closest('.list-item').remove();
+                            var $toBeRemoved = el.closest('.list-item-flex');
+                            animations.compressHeight($toBeRemoved, null, function () {
+                                $toBeRemoved.remove();
+                            });
+                            
                         },
                         error: function(){
                             displayModal('Error', 'Oops! something went wrong...', 'alert');
@@ -628,7 +632,6 @@
             }
         },
         fadeIn: function(element, callbackBegin, callbackEnd){
-
             var realCallbackBegin = function(){
                 element.removeClass('hidden');
                 if(typeof callbackBegin === 'function'){
@@ -639,7 +642,6 @@
             this.animation('fade-in', element, realCallbackBegin, callbackEnd);
         },
         fadeOut: function(element, callbackBegin, callbackEnd){
-
             var realCallbackEnd = function(){
                 element.addClass('hidden');
                 if(typeof callbackEnd === 'function'){
@@ -688,6 +690,16 @@
             }
 
             this.animation('show-slide-from-bottom', element, realCallbackBegin, callbackEnd);
+        },
+        compressHeight: function (element, callbackBegin, callbackEnd) {
+            var realCallbackEnd = function(){
+                element.addClass('hidden');
+                if(typeof callbackEnd === 'function'){
+                    callbackEnd();
+                }
+            }
+
+            this.animation('compress-height-50', element, callbackBegin, realCallbackEnd);
         }
     };
 

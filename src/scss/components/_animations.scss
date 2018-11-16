@@ -88,3 +88,17 @@
         transform: translateY(0);
     }
 }
+.animate-compress-height-50 {
+    animation: compress-height-50 $animation-speed-long ease forwards;
+    overflow: hidden;
+}
+@keyframes compress-height-50 {
+    0% {
+        opacity: 1;
+        max-height: 50px;
+    }
+    100%{
+        opacity: 0;
+        max-height: 0;
+    }
+}
