@@ -31,6 +31,7 @@
                                 <i class="mdi mdi-dots-vertical"></i>
                             </button>
                             <div id="popup-plugin" class="popup popup-plugin hidden">
+                                <div class="popup-title">Plugins<button class="popup-close"><i class="mdi mdi-close"></i></button></div>
                                 <div class="popup-body">
                                     {loop="$plugins_header.buttons_toolbar"}
                                     <ul>
@@ -82,7 +83,7 @@
                             <i class="mdi mdi-rss"></i>
                         </button>
                         <div id="popup-rss" class="popup popup-rss hidden">
-                            <div class="popup-title">{'RSS Feed'|t}</div>
+                            <div class="popup-title">{'RSS Feed'|t}<button class="popup-close"><i class="mdi mdi-close"></i></button></div>
                             <div class="popup-body">
                                 <ul>
                                     <li><a href="{$feedurl}?do=rss{$searchcrits}" class="ripple">{'RSS Feed'|t}</a></li>
