@@ -21,15 +21,15 @@
   {$link=reset($links)}
   <meta property="og:title" content="{$link.title}" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="{$index_url}?{$link.shorturl}" />
+  <meta property="og:url" content="{if="!empty($index_url)"}{$index_url}{/if}?{$link.shorturl}" />
   {$ogDescription=isset($link.description_src) ? $link.description_src : $link.description}
   <meta property="og:description" content="{function="substr($ogDescription, 0, 300)"}" />
   {if="$link.thumbnail"}
-    <meta property="og:image" content="{$index_url}{$link.thumbnail}" />
+    <meta property="og:image" content="{if="!empty($index_url)"}{$index_url}{/if}{$link.thumbnail}" />
   {/if}
   {if="!$hide_timestamps || $is_logged_in"}
     <meta property="article:published_time" content="{$link.created->format(DateTime::ATOM)}" />
-    {if="$link.updated"}
+    {if="!empty($link.updated)"}
       <meta property="article:modified_time" content="{$link.updated->format(DateTime::ATOM)}" />
     {/if}
   {/if}
