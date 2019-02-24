@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  src: url('fonts/roboto/Roboto-Thin.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 200;
+  src: url('fonts/roboto/Roboto-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/roboto/Roboto-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url('fonts/roboto/Roboto-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url('fonts/roboto/Roboto-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/roboto/RobotoCondensed-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Material';
+    src: url('fonts/material-icons/materialdesignicons-webfont.eot'); /* IE9 Compat Modes */
+    src: url('fonts/material-icons/materialdesignicons-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('fonts/material-icons/materialdesignicons-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+        url('fonts/material-icons/materialdesignicons-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+        url('fonts/material-icons/materialdesignicons-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+        url('fonts/material-icons/materialdesignicons-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Old Newspaper Types';
+    src: url('fonts/oldnewspapertypes/oldnewspapertypes-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+        url('fonts/oldnewspapertypes/oldnewspapertypes-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+        url('fonts/oldnewspapertypes/oldnewspapertypes-webfont.ttf')  format('truetype'); /* Safari, Android, iOS */
+    font-weight: normal;
+    font-style: normal;
+}

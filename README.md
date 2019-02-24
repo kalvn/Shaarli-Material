@@ -87,6 +87,7 @@ This theme uses a few Javascript libraries.
 - [awesomplete](http://leaverou.github.io/awesomplete/)
 - [blazy](http://dinbror.dk/blazy/)
 - [Sortable](http://rubaxa.github.io/Sortable/)
+- [Salvattore](https://salvattore.js.org/)
 
 
 ## Demo
@@ -94,18 +95,21 @@ A read-only demo is available on my personal Shaarli : [https://links.kalvn.net]
 
 
 ## Develop and debug
-To tweak this theme, you'll need to install Javascript and CSS libraries. To do this, install bower and run this command from inside the `material` folder:
+To tweak this theme, you'll need to install dependencies and to build JavaScript and CSS libraries. To do this, install [Node.js and NPM](https://nodejs.org) and run this from the root folder:
 
-```shell
-bower install
+```bash
+$ npm install
+$ gulp
 ```
 
-Then, if you want to compile those files via Gulp, first adapt the `gulp.js` file to your needs. Then, install Gulp and nodejs if it's not done already and run the following command from the root folder:
 
-```shell
-npm install
-gulp
+## Build for production
+
+```bash
+$ npm install
+$ gulp build
 ```
+
 
 ------------------------------------------------------------------------------
 

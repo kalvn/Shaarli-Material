@@ -38,10 +38,10 @@
     }
 }
 .button-expand{
-    background-image: url(../images/arrow-expand.png);
+    background-image: url(img/arrow-expand.png);
 
     .is-expanded &{
-        background-image: url(../images/arrow-compress.png);
+        background-image: url(img/arrow-compress.png);
     }
 }
 
@@ -108,7 +108,7 @@ a.link-title{
     }
 }
 .private{
-    background: url(../images/private-band.png) top left no-repeat #fff;
+    background: url(img/private-band.png) top left no-repeat #fff;
 }
 .private a.link-title{
     margin-left: $space-l;

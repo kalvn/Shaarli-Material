@@ -16,7 +16,7 @@
 
     {if="count($links)==0"}
         <div class="text-center">
-            <img src="images/sad_star.png" alt="Nothing found" />
+            <img src="dist/img/sad_star.png" alt="Nothing found" />
         </div>
         <div class="nothing-found">Sorry... We found nothing{if="!empty($search_term)"} for <strong>{$search_term}</strong>{/if}{if="!empty($search_tags)"}{$exploded_tags=explode(' ', $search_tags)} tagged <strong>{loop="$exploded_tags"} {$value}{/loop}</strong>{/if}.</div>
     {elseif="!empty($search_term) or !empty($search_tags) or !empty($visibility) or $untaggedonly"}
