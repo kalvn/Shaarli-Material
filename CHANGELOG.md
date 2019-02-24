@@ -10,16 +10,18 @@ Be careful, one important change comes with this release: the `build` folder is 
 ```bash
 $ git pull
 $ npm install
-$ gulp
+$ gulp build
 ```
 
-This will install build tools and process files. I'll now attached built ready-to-use theme to each release, similarly to what is done for Shaarli.
+This will install build tools and process files. I'll now attach ready-to-use built theme to each release, similarly to what is done for Shaarli.
 
 **Known issue:** the build process outputs scary errors due to new version of *uncss* not understanding properly some links containing RainTPL markup. This doesn't prevent it from working properly so you can ignore.
 
 ### Changed
 - Processed JS and CSS files are not anymore in code repository.
 - Reorganisation of directories in order to keep `/material` directory clean.
+- Updated dependencies.
+- Updated Gulp to v4.
 
 ### Removed
 - Bower. Front-end dependencies are now also retrieved with NPM.

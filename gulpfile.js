@@ -14,6 +14,7 @@ var gulp = require("gulp"),
     sass = require('gulp-sass');
 var postcss = require('gulp-postcss');
 var uncss = require('postcss-uncss');
+var del = require('del');
 
 var onError = function(err){
     console.log('ERROR: ' + err.toString());
@@ -93,7 +94,7 @@ gulp.task('csslib', function(){
 });
 
 // Merge css from sass and lib.
-gulp.task('css', ['sass', 'csslib'], function(){
+gulp.task('css', gulp.series('sass', 'csslib', function(){
     return gulp.src([DIR_DIST + '/lib.css', DIR_DIST + '/sass.css'])
         .pipe(plumber({
             errorHandler: onError
@@ -106,7 +107,7 @@ gulp.task('css', ['sass', 'csslib'], function(){
         .pipe(minifyCSS())
         .pipe(rename('styles.min.css'))
         .pipe(gulp.dest(DIR_DIST));
-});
+}));
 
 gulp.task('assets', function () {
     return gulp.src(DIR_SRC + 'assets/**/*')
@@ -116,12 +117,19 @@ gulp.task('assets', function () {
         .pipe(gulp.dest(DIR_DIST));
 });
 
-gulp.task('static', ['assets'], function(){
+gulp.task('static', gulp.series('assets', function(){
     return gulp.src(BOOTSTRAP_FONTS)
         .pipe(plumber({
             errorHandler: onError
         }))
         .pipe(gulp.dest(DIR_DIST + 'fonts/'));
+}));
+
+gulp.task('clean', function(){
+    return del([
+        DIR_DIST + 'lib.css', 
+        DIR_DIST + 'sass.css'
+  ]);
 });
 
 
@@ -129,11 +137,12 @@ gulp.task('static', ['assets'], function(){
 /*** Watchlist ***/
 /*****************/
 gulp.task('watch', function() {
-    gulp.watch(JS_SELECTOR, ['js']);
-    gulp.watch(SCSS_SELECTOR, ['css']);
+    gulp.watch(JS_SELECTOR).on('change', gulp.series('js'));
+    gulp.watch(SCSS_SELECTOR).on('change', gulp.series('css'));
 });
 
 /************************/
 /*** Boot instruction ***/
 /************************/
-gulp.task('default', ['watch', 'css', 'js', 'static']);
+gulp.task('default', gulp.parallel('watch', 'css', 'js', 'static'));
+gulp.task('build', gulp.series(gulp.parallel('css', 'js', 'static'), 'clean'));

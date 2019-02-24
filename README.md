@@ -102,6 +102,15 @@ $ npm install
 $ gulp
 ```
 
+
+## Build for production
+
+```bash
+$ npm install
+$ gulp build
+```
+
+
 ------------------------------------------------------------------------------
 
 You can download Shaarli via the Github project page: https://github.com/shaarli/Shaarli
