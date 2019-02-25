@@ -52,7 +52,7 @@
     overflow: hidden;
 
     .links-list.is-selectable &.is-selected{
-        box-shadow: 0 0 4px 4px orange;
+        box-shadow: 0 0 4px 4px $color-batch-selection;
     }
 }
 // Used for batch mode (delete).
@@ -67,17 +67,17 @@
     z-index: 10;
 
     .links-list.is-selectable &:hover{
-        background-color: rgba(200, 200, 200, 0.5);
+        background-color: rgba($color-gray-300, 0.5);
     }
 
     .links-list.is-selectable &{
         display: block;
-        background-color: rgba(255, 255, 255, 0);
+        background-color: rgba(#fff, 0);
     }
 
     .links-list.is-selectable .is-selected &{
         display: block;
-        background-color: rgba(255, 0, 0, .5);
+        background-color: rgba($color-alert, .5);
     }
 }
 .link-inner{
@@ -99,13 +99,13 @@ a.link-title{
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: #333;
+    color: $color-text;
     text-decoration: none;
     font-weight: bold;
     line-height: 1em;
     
     &:hover{
-        color: #999;
+        color: $color-gray-500;
     }
 }
 .private{
@@ -116,35 +116,39 @@ a.link-title{
     color: #B71C1C;
 }
 a.link-url{
-    color: #b5c3cd;
+    color: $color-gray-400;
     text-decoration: none;
     line-height: 1em;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     @include font-sub();
-}
-a.link-url:hover{
-    color: #333;
+
+    &:hover,
+    &:focus {
+        color: $color-text;
+    }
 }
 .link-date{
-    @include font-caption();
-}
-.link-date{
+    @include font-sub();
+    color: $color-gray-400;
     float: right;
-}
-.link-date a,
-.link-date .link-archive{
-    color: #bbb;
+
+    a,
+    .link-archive {
+        color: $color-gray-400;
+    }
 }
 .link-description{
     padding: 5px 15px;
-}
-.link-description p:first-child{
-    margin-top: 0;
-}
-.link-description p:last-child{
-    margin-bottom: 0;
+
+    p:first-child{
+        margin-top: 0;
+    }
+
+    p:last-child{
+        margin-bottom: 0;
+    }
 }
 .thumb img{
     margin: 15px;
@@ -157,43 +161,46 @@ a.link-url:hover{
 }
 .link-tag{
     display: inline-block;
-}
-.link-tag a{
-    display: block;
-    color: #5e6b79;
-    text-decoration: none;
-    padding: 3px 10px;
-    background-color: #e0e6eb;
-    border-radius: 20px;
-    font-size: .7rem;
-}
-.link-tag a:hover{
-    background-color: #cdd5dd;
+
+    a{
+        display: block;
+        color: $color-gray-600;
+        text-decoration: none;
+        padding: 3px 10px;
+        background-color: $color-gray-200;
+        border-radius: 20px;
+        font-size: .7rem;
+
+        &:hover,
+        &:focus {
+            background-color: $color-gray-300;
+        }
+    }
 }
 
 .link-tag-filter{
-    color: #5e6b79;
+    color: $color-gray-600;
     text-decoration: none;
-    background-color: #e0e6eb;
+    background-color: $color-gray-200;
     border-radius: 20px;
     display: inline-block;
 }
 .link-tag-filter {
-    color: #5e6b79;
+    color: $color-gray-600;
     text-decoration: none;
     padding: 3px 3px 3px 10px;
     display: inline-block;
 
     &:hover,
     &:focus {
-        color: #5e6b79;
-        background-color: #cdd5dd;
+        color: $color-gray-600;
+        background-color: $color-gray-300;
         text-decoration: none;
     }
 
     &:active {
-        color: #5e6b79;
-        background-color: #b5c3cd;
+        color: $color-gray-600;
+        background-color: $color-gray-400;
         text-decoration: none;
     }
 
