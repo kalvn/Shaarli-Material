@@ -52,7 +52,7 @@
     overflow: hidden;
 
     .links-list.is-selectable &.is-selected{
-        outline: 4px solid orange;
+        box-shadow: 0 0 4px 4px orange;
     }
 }
 // Used for batch mode (delete).
@@ -85,15 +85,15 @@
 }
 .link-header{
     @extend .card-header;
+    border-bottom: none;
+    padding-bottom: 5px;
     text-transform: none;
 }
 .link-content{
     overflow: hidden;
 }
 .link-footer{
-    padding: 15px;
-    border-top: 1px solid #eee;
-    background-color: #f2f2f2;
+    padding: 10px 15px 15px 15px;
 }
 a.link-title{
     display: block;
@@ -102,6 +102,7 @@ a.link-title{
     color: #333;
     text-decoration: none;
     font-weight: bold;
+    line-height: 1em;
     
     &:hover{
         color: #999;
@@ -114,6 +115,18 @@ a.link-title{
     margin-left: $space-l;
     color: #B71C1C;
 }
+a.link-url{
+    color: #b5c3cd;
+    text-decoration: none;
+    line-height: 1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    @include font-sub();
+}
+a.link-url:hover{
+    color: #333;
+}
 .link-date{
     @include font-caption();
 }
@@ -125,7 +138,7 @@ a.link-title{
     color: #bbb;
 }
 .link-description{
-    padding: 15px;
+    padding: 5px 15px;
 }
 .link-description p:first-child{
     margin-top: 0;
@@ -147,61 +160,56 @@ a.link-title{
 }
 .link-tag a{
     display: block;
-    color: #888;
+    color: #5e6b79;
     text-decoration: none;
     padding: 3px 10px;
-    background-color: #ddd;
+    background-color: #e0e6eb;
     border-radius: 20px;
-    border: 1px solid #ccc;
-    font-size: .8rem;
+    font-size: .7rem;
 }
 .link-tag a:hover{
-    background-color: #ccc;
+    background-color: #cdd5dd;
 }
 
 .link-tag-filter{
-    color: #888;
+    color: #5e6b79;
     text-decoration: none;
-    background-color: #ddd;
+    background-color: #e0e6eb;
     border-radius: 20px;
     display: inline-block;
-    border: 1px solid #ccc;
 }
-.link-tag-filter a{
-    color: #888;
+.link-tag-filter {
+    color: #5e6b79;
     text-decoration: none;
-    padding: 3px 0 3px 10px;
+    padding: 3px 3px 3px 10px;
     display: inline-block;
-}
-.link-tag-link{
-    padding: 3px 10px;
-}
-.link-tag-filter:hover{
-    background-color: #ccc;
-}
-.link-tag-filter .remove{
-    font-style: normal;
-    background-color: #fff;
-    border-radius: 50%;
-    padding: 0 5px;
-    padding-bottom: 1px;
-}
-.link-url-container{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    line-height: 24px;
-    text-align: right;
-}
-a.link-url{
-    color: #999;
-    text-decoration: none;
-    @include font-caption();
-}
-a.link-url:hover{
-    color: #333;
+
+    &:hover,
+    &:focus {
+        color: #5e6b79;
+        background-color: #cdd5dd;
+        text-decoration: none;
+    }
+
+    &:active {
+        color: #5e6b79;
+        background-color: #b5c3cd;
+        text-decoration: none;
+    }
+
+    .remove {
+        font-style: normal;
+        background-color: #fff;
+        border-radius: 50%;
+        padding: 0 5px;
+        padding-bottom: 1px;
+    }
 }
 .link-actions{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
     height: 24px;
     text-align: right;
 
@@ -229,7 +237,6 @@ a.link-url:hover{
 }
 .link-actions > *{
     display: block;
-    float: right;
     width: 24px;
     right: 24px;
     margin-left: 5px;

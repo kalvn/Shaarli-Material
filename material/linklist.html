@@ -25,11 +25,9 @@
             {if="!empty($search_term)"} {'for'|t} <strong>{$search_term}</strong>{/if}
             {if="!empty($search_tags)"}{$exploded_tags=explode(' ', $search_tags)} {'tagged'|t} <i>
             {loop="$exploded_tags"}
-                <span class="link-tag-filter" title="{'Remove tag'|t}">
-                    <a href="?removetag={$value}">{$value}&nbsp;
-                        <span class="remove">&#x2715;</span>
-                    </a>
-                </span>
+                <a href="?removetag={$value}" class="link-tag-filter" title="{'Remove tag'|t}">{$value}&nbsp;
+                    <span class="remove">&#x2715;</span>
+                </a>
             {/loop}
             </i>
             {/if}
@@ -75,6 +73,7 @@
                                     {/if}
                                     {$value.title}
                                 </a>
+                                <a href="{$value.real_url}" class="link-url"><span title="Short link">{$value.real_url}</span></a>
                             </div>
                             <div class="col-sm-4">
                                 <div class="link-date">
@@ -93,7 +92,6 @@
                         </div>
                     </div>
                     <div class="link-content">
-                        
                         <div>
                             {if="$thumbnails_enabled && !empty($value.thumbnail)"}
                             <div class="thumb">
@@ -109,51 +107,28 @@
                                 <div class="link-description">{$value.description}</div>
                             {/if}
                         </div>
-                        
                     </div>
-                    <div class="link-footer">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                {if="$value.tags"}
-                                    <div class="link-tag-list">
-                                    {loop="$value.taglist"}
-                                        <span class="link-tag" title="Add tag"><a href="?addtag={$value|urlencode}">{$value}</a></span>
-                                    {/loop}
-                                    </div>
-                                {/if}
-                            </div>
-                            {if="$is_logged_in"}
-                            <div class="col-sm-3 col-md-4 link-url-container">
-                            {else}
-                                {if="$qrCodeDisabled && (!isset($value.sticky) || !$value.sticky)"}
-                                    <div class="col-sm-6 link-url-container">
-                                {else}
-                                    <div class="col-sm-4 col-lg-5 link-url-container">
-                                {/if}
-                            {/if}
-                                <a href="{$value.real_url}" class="link-url"><span title="Short link">{$value.real_url}</span></a>
-                            </div>
-                            {if="$is_logged_in"}
-                            <div class="col-sm-3 col-md-2 link-actions">
-                            {else}
-                                {if="!$qrCodeDisabled || (isset($value.sticky) && $value.sticky)"}
-                                    <div class="col-sm-2 col-lg-1 link-actions">
-                                {/if}
+                    <div class="link-footer is-flex">
+                        <div class="link-tag-list is-flex-grown">
+                        {if="$value.tags"}
+                            {loop="$value.taglist"}
+                                <span class="link-tag" title="Find links with the same tag"><a href="?addtag={$value|urlencode}">{$value}</a></span>
+                            {/loop}
+                        {/if}
+                        </div>
+                        
+                        <div class="link-actions is-flex-end">
+                            {if="!$qrCodeDisabled"}
+                                <a href="http://qrfree.kaywa.com/?l=1&amp;s=8&amp;d={$value.real_url|urlencode}" data-permalink="{$value.real_url|urlencode}" title="Show link QR Code" class="qrcode"><i class="mdi mdi-qrcode"></i></a>
                             {/if}
                             {if="$is_logged_in"}
-                            <a href="?delete_link&amp;lf_linkdate={$value.id}&amp;token={$token}" title="{$strDelete}" class="button-delete"><i class="mdi mdi-delete"></i></a>
-                            <a href="?edit_link={$value.id}" title="{$strEdit}"><i class="mdi mdi-pencil"></i></a>
-                            <a href="?do=pin&amp;id={$value.id}&amp;token={$token}" title="{$strToggleSticky}" {if="isset($value.sticky) && $value.sticky"}class="is-pinned"{/if}><i class="mdi mdi-pin"></i></a>
+                                <a href="?delete_link&amp;lf_linkdate={$value.id}&amp;token={$token}" title="{$strDelete}" class="button-delete"><i class="mdi mdi-delete"></i></a>
+                                <a href="?edit_link={$value.id}" title="{$strEdit}"><i class="mdi mdi-pencil"></i></a>
+                                <a href="?do=pin&amp;id={$value.id}&amp;token={$token}" title="{$strToggleSticky}" {if="isset($value.sticky) && $value.sticky"}class="is-pinned"{/if}><i class="mdi mdi-pin"></i></a>
                             {else}
                                 {if="isset($value.sticky) && $value.sticky"}
                                 <span title="{$strSticky}"><i class="mdi mdi-pin"></i></span>
                                 {/if}
-                            {/if}
-                            {if="!$qrCodeDisabled"}
-                            <a href="http://qrfree.kaywa.com/?l=1&amp;s=8&amp;d={$value.real_url|urlencode}" data-permalink="{$value.real_url|urlencode}" title="Show link QR Code" class="qrcode"><i class="mdi mdi-qrcode"></i></a>
-                            {/if}
-                            {if="$is_logged_in || !$qrCodeDisabled"}
-                            </div>
                             {/if}
                         </div>
                     </div>

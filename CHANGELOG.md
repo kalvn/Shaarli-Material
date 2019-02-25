@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## v?.?.?
+## v0.10.3 - not released yet
 Be careful, one important change comes with this release: the `build` folder is not anymore part of the code repository. So if you use to update the theme with `git pull`, you now need to do
 
 ```bash
@@ -22,6 +22,7 @@ This will install build tools and process files. I'll now attach ready-to-use bu
 - Reorganisation of directories in order to keep `/material` directory clean.
 - Updated dependencies.
 - Updated Gulp to v4.
+- Refreshed linklist page design.
 
 ### Removed
 - Bower. Front-end dependencies are now also retrieved with NPM.

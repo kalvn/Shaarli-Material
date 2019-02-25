@@ -5,7 +5,7 @@
 }
 
 html{
-    background: #ececec;
+    background: #f8f9fa;
     font-size: 100%;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
@@ -13,7 +13,7 @@ html{
 body{
     font-family: $font-stack;
     font-size: $font-size;
-    background: #ececec;
+    background: #f8f9fa;
     color: $color-text;
 }
 h1{
@@ -66,6 +66,36 @@ dl {
 
 dt {
     font-weight: 700;
+}
+
+pre,
+.link-description .markdown pre {
+    margin: 1em 0;
+    padding: 20px;
+    max-width: 100%;
+    border: 1px solid #ecf1f5;
+    color: #5f768f;
+    line-height: 1.2em;
+    background: #f4f7fa;
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+code,
+.link-description .markdown pre code {
+    padding: 0;
+    color: #5f768f;
+    font-size: .8em;
+    line-height: 1em;
+    font-weight: 400!important;
+    background: #f4f7fa;
+    border-radius: 3px;
+}
+
+code,
+.link-description .markdown :not(pre) code {
+    padding: 0 5px 2px;
+    box-shadow: none;
 }
 
 @-ms-viewport {
