@@ -35,7 +35,7 @@
 }
 
 .daily-header-subtitle{
-    color: #999;
+    color: $color-gray-600;
 }
 
 .daily-title{
@@ -78,17 +78,17 @@
 
 .daily-item-header{
     display: block;
-    background-color: #f8f9fa;
+    background-color: $color-gray-100;
     padding: $space-s;
-    color: #678;
+    color: $color-gray-700;
     border-radius: $radius-s $radius-s 0 0;
     transition: background-color $animation-speed ease;
 
     &:hover,
     &:focus{
-        color: #678;
+        color: $color-gray-700;
         text-decoration: none;
-        background-color: darken(#f8f9fa, 3%);
+        background-color: $color-gray-200;
     }
 }
 
@@ -105,11 +105,11 @@
 }
 
 .daily-item-footer{
-    background-color: #f8f9fa;
+    background-color: $color-gray-100;
     padding: $space-s;
     font-size: 80%;
-    color: #678;
-    border-top: solid 1px rgba(102,119,136,0.05);
+    color: $color-gray-700;
+    border-top: solid 1px rgba($color-gray-700, 0.05);
     border-radius: 0 0 $radius-s $radius-s;
 }
 
@@ -119,7 +119,7 @@
     color: #ccc;
 
     &:hover{
-        color: #678;
+        color: $color-gray-700;
 
         &:after{
             @extend .mdi;

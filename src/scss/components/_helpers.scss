@@ -9,7 +9,7 @@
 }
 
 hr.darker{
-    border-top-color: #ccc;
+    border-top-color: $color-gray-400;
 }
 hr.margin{
     margin-left: $space-xl;
@@ -42,7 +42,7 @@ hr.margin{
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #ddd;
+    background-color: $color-gray-200;
     text-align: center;
 
     i{
@@ -80,7 +80,7 @@ p.highlight{
 .nothing-found{
     text-align: center;
     @include font-display1();
-    color: #999;
+    color: $color-gray-600;
     margin-bottom: 100px;
 }
 

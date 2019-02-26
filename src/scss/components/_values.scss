@@ -64,18 +64,6 @@ $font-size: 16px;
 
 
 // Colors.
-$color-text: #333;
-$color-primary: #2196F3; //2196F3
-$color-primary-second: #1976D2; //1976D2
-$color-secondary: #F44336;
-$color-alert: #F44336;
-$color-firefox: #ea9c21;
-$color-subtitle: #999;
-$color-gray-light: #ddd;
-$color-gray-hover: #eee;
-$color-gray-hover-light: #f9f9f9;
-$color-gray-active: #ddd;
-
 $color-primary-50: #e3f2fd;
 $color-primary-100: #bbdefb;
 $color-primary-200: #90caf9;
@@ -89,11 +77,27 @@ $color-primary-900: #0d47a1;
 
 $color-gray-100: #f8f9fa;
 $color-gray-200: #e0e6eb;
-$color-gray-300: #cdd5dd;
-$color-gray-400: #b5c3cd;
-$color-gray-500: #8694a5;
-$color-gray-600: #5e6b79;
-$color-gray-700: #252d37;
+$color-gray-300: #d3dce4;
+$color-gray-400: #cad3da;
+$color-gray-500: #abbdcb;
+$color-gray-600: #8f9eaf;
+$color-gray-700: #6d7988;
+$color-gray-800: #414d5a;
+$color-gray-900: #252d37;
+
+$color-text: $color-gray-900;
+$color-primary: $color-primary-500;
+$color-primary-second: #1976D2; //1976D2
+$color-secondary: #F44336;
+$color-alert: #F44336;
+$color-firefox: #ea9c21;
+$color-subtitle: #999;
+$color-gray-light: #ddd;
+$color-gray-hover: #eee;
+$color-gray-hover-light: #f9f9f9;
+$color-gray-active: #ddd;
+
+
 
 $color-batch-selection: #ff9800;
 

@@ -1,7 +1,7 @@
 /* Awesomplete */
 .awesomplete ul{
     z-index: 400;
-    border: 1px solid #aaa;
+    border: 1px solid $color-gray-500;
     border-radius: 2px;
 }
 div.awesomplete{
@@ -23,10 +23,10 @@ div.awesomplete > ul > li{
     padding: 5px 10px;
 }
 div.awesomplete > ul > li:hover{
-    background-color: #eee;
+    background-color: $color-gray-200;
 }
 div.awesomplete li:hover mark{
-    background-color: #d7e800;
+    background-color: $color-gray-300;
 }
 div.awesomplete > ul > li[aria-selected=true]{
     background-color: $color-primary;
@@ -34,7 +34,7 @@ div.awesomplete > ul > li[aria-selected=true]{
 }
 div.awesomplete > ul > li[aria-selected=true]:hover{
     // background-color: #1E88E5;
-    background-color: darken($color-primary, 10%);
+    background-color: $color-primary-700;
 }
 div.awesomplete li[aria-selected=true]:hover mark{
     background: #3c6b00;

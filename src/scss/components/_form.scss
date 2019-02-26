@@ -50,6 +50,7 @@ input.input-big{
     margin: 0;
     padding: 10px;
     border: none;
+    border-radius: 4px;
 
     background: #fff;
 
@@ -67,17 +68,17 @@ input.input-big{
 select{
     width: 100%;
     padding: 6px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid $color-gray-400;
     outline: none;
-}
-select:focus{
-    border: 1px solid $color-primary;
-    outline: none;
-}
 
+    &:focus {
+        border: 1px solid $color-primary;
+        outline: none;
+    }
+}
 
 label{
-    color: #666;
+    color: $color-gray-700;
     font-weight: normal;
 }
 label.active{
@@ -87,7 +88,7 @@ label.active{
     @include font-caption();
     text-align: right;
     margin-top: $space-t;
-    color: #aaa;
+    color: $color-gray-500;
 }
 .form-section{
     margin-top: $space-l;
@@ -124,7 +125,6 @@ label.active{
             display: inline-block;
             height: 25px;
             line-height: 25px;
-            /*font-size: 14px;*/
             transition: all .28s ease;
 
             -webkit-user-select: none; /* webkit (safari, chrome) browsers */
@@ -232,7 +232,6 @@ label.active{
         display: inline-block;
         height: 20px;
         line-height: 20px;
-        /*font-size: 14px;*/
         color: $radio-label-color;
 
         -webkit-user-select: none; /* webkit (safari, chrome) browsers */

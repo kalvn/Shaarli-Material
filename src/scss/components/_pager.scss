@@ -7,16 +7,16 @@
         text-align: center;
         border-radius: 50%;
 
-        color: #8694a5;
+        color: $color-gray-600;
         font-size: 2rem;
 
         &:hover,
         &:focus {
-            background-color: #e0e6eb;
+            background-color: $color-gray-200;
         }
 
         &:active {
-            background-color: #cdd5dd;
+            background-color: $color-gray-400;
         }
     }
 
@@ -24,7 +24,7 @@
         display: inline-block;
         
         line-height: 3rem;
-        color: #8694a5;
+        color: $color-gray-600;
         font-size: 1rem;
     }
 }

@@ -5,7 +5,7 @@
 }
 
 html{
-    background: #f8f9fa;
+    background: $color-gray-100;
     font-size: 100%;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
@@ -13,7 +13,7 @@ html{
 body{
     font-family: $font-stack;
     font-size: $font-size;
-    background: #f8f9fa;
+    background: $color-gray-100;
     color: $color-text;
 }
 h1{
@@ -33,11 +33,11 @@ a{
 
     &:hover,
     &:focus{
-        color: darken($color-primary, 5%);
+        color: $color-primary-600;
     }
 
     &:active{
-        color: darken($color-primary, 10%)
+        color: $color-primary-700;
     }
 }
 em{
@@ -75,7 +75,7 @@ pre,
     padding: 20px;
     max-width: 100%;
     border: 1px solid $color-gray-200;
-    color: $color-gray-600;
+    color: $color-gray-800;
     line-height: 1.2em;
     background: $color-gray-100;
     border-radius: 5px;
@@ -86,7 +86,7 @@ code,
 .link-description .markdown pre code,
 .daily-item-body .markdown pre code {
     padding: 0;
-    color: $color-gray-600;
+    color: $color-gray-800;
     font-size: .8em;
     line-height: 1em;
     font-weight: 400!important;
