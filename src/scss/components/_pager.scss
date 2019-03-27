@@ -12,7 +12,7 @@
 
         &:hover,
         &:focus {
-            background-color: $color-gray-200;
+            background-color: $color-gray-300;
         }
 
         &:active {
@@ -24,7 +24,7 @@
         display: inline-block;
         
         line-height: 3rem;
-        color: $color-gray-600;
+        color: $color-gray-700;
         font-size: 1rem;
     }
 }
