@@ -101,6 +101,10 @@ code,
     box-shadow: none;
 }
 
+del {
+    text-decoration: line-through;
+}
+
 @-ms-viewport {
     width: device-width;
 }
