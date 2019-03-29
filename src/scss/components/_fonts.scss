@@ -2,36 +2,42 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 100;
+  font-display: swap;
   src: url('fonts/roboto/Roboto-Thin.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 200;
+  font-display: swap;
   src: url('fonts/roboto/Roboto-Light.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url('fonts/roboto/Roboto-Regular.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
+  font-display: swap;
   src: url('fonts/roboto/Roboto-Medium.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
   src: url('fonts/roboto/Roboto-Bold.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Roboto Condensed';
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url('fonts/roboto/RobotoCondensed-Regular.ttf') format('truetype');
 }
 
@@ -45,6 +51,7 @@
         url('fonts/material-icons/materialdesignicons-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
     font-weight: normal;
     font-style: normal;
+    font-display: block;
 }
 
 @font-face {
@@ -54,4 +61,6 @@
         url('fonts/oldnewspapertypes/oldnewspapertypes-webfont.ttf')  format('truetype'); /* Safari, Android, iOS */
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
+
 }
