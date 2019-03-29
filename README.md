@@ -11,7 +11,7 @@ Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), t
 ## Compatibility
 Shaarli Material follows the exact same versions numbers than Shaarli. It means that if you install Shaarli vX.Y.Z, you should use Shaarli Material vX.Y.Z.
 
-Shaarli Material was tested and validated with **Shaarli 0.10.2**.
+Shaarli Material was tested and validated with **Shaarli 0.10.3**.
 
 
 ## Download
