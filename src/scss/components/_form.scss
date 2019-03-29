@@ -101,6 +101,12 @@ label.active{
 .form-entry{
     margin-bottom: $space-m;
     width: 100%;
+
+    &:focus-within {
+        label {
+            color: $color-primary;
+        }
+    }
     
     &:last-child{
         margin-bottom: 0;

@@ -81,7 +81,7 @@
                                 {$count=$count+1}
                                 <h2>{function="str_replace('_', ' ', $key)"}</h2>
                                 {loop="$value.parameters"}
-                                <div class="row">
+                                <div class="row plugin-param">
                                     <div class="col-sm-4 plugin-param-key">
                                         <label for="{$key}" {if="isset($value.desc)"}title="{$value.desc}"{/if}>{function="str_replace('_', ' ', $key)"}</label>
                                     </div>

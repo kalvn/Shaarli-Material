@@ -124,6 +124,11 @@
 }
 
 /* Plugin administration */
+.plugin-param:focus-within {
+    .plugin-param-key label {
+        color: $color-primary;
+    }
+}
 .plugin-param-key{
     line-height: 33px;
 }
