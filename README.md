@@ -88,6 +88,7 @@ This theme uses a few Javascript libraries.
 - [blazy](http://dinbror.dk/blazy/)
 - [Sortable](http://rubaxa.github.io/Sortable/)
 - [Salvattore](https://salvattore.js.org/)
+- [Autosize](https://github.com/jackmoore/autosize/)
 
 
 ## Demo

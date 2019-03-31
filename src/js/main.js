@@ -34,6 +34,7 @@
         if(shaarli.isAuth){
             initSortable();
             initFirefoxSocial();
+            initTextareaAutosize();
         }
     };
 
@@ -478,6 +479,10 @@
                 }
             });
         });
+    };
+
+    var initTextareaAutosize = function () {
+        autosize($('#lf_description'));
     };
 
     var initBlazy = function(){

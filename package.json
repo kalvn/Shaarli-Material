@@ -4,6 +4,7 @@
   "description": "Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), the personal, minimalist, super-fast, database free, bookmarking service.",
   "main": "gulpfile.js",
   "dependencies": {
+    "autosize": "^4.0.2",
     "awesomplete": "^1.1.4",
     "blazy": ">=1.3.0",
     "bootstrap": "^3.4.1",
