@@ -149,3 +149,32 @@
 .progress-counter {
     text-align: right;
 }
+
+/* Search overlay */
+.search-overlay-actions {
+    position: absolute;
+    right: 20px;
+    top: 20%;
+
+    button {
+        padding: 8px;
+        border-radius: 50px;
+        font-size: 14px;
+        text-transform: lowercase;
+        box-shadow: none;
+
+        i {
+            vertical-align: middle;
+        }
+
+        @media (max-width: 767px){
+            width: 36px;
+            height: 36px;
+            text-align: center;
+            border-radius: 50%;
+        }
+    }
+}
+#button-filter i {
+    margin-right: 3px;
+}
