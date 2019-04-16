@@ -5,12 +5,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
-## v?.?.? - not released yet
+## [v0.10.4](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.10.4) - 2019-04-16
 ### Added
 - Support of `<del>` tag in Markdown.
 
+### Fixed
+- Unformatted date is now displayed instead of "Invalid date" in some cases when date format is not recognized.
+
 ### Changed
-- Slight refresh of the design.
+- Slight design refresh.
 - Improved search overlay usability.
 - Optimized fonts loading by making text readable while loading.
 

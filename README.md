@@ -11,7 +11,7 @@ Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), t
 ## Compatibility
 Shaarli Material follows the exact same versions numbers than Shaarli. It means that if you install Shaarli vX.Y.Z, you should use Shaarli Material vX.Y.Z.
 
-Shaarli Material was tested and validated with **Shaarli 0.10.3**.
+Shaarli Material was tested and validated with **Shaarli 0.10.4**.
 
 
 ## Download
@@ -23,14 +23,14 @@ If you install an older version, please read the README.md file you'll find in t
 
 
 ## Installation
-### Your Shaarli is up to date
+### If your Shaarli is up to date
 Download the `material` folder into the `tpl` directory of your Shaarli installation next to the `default` folder.
 
 Access your Shaarli and finish the setup process. Then, go into menu **Tools > Configure your Shaarli** and change the setting **Theme** to **Material**.
 
 You can now enjoy your new Material theme.
 
-### You use an older version
+### If you use an older version
 Please refer to the README file within the root folder of the version you downloaded.
 
 
