@@ -49,6 +49,7 @@ textarea{
 input.input-big{
     margin: 0;
     padding: 10px;
+    padding-right: 155px;
     border: none;
     border-radius: 4px;
 
@@ -61,6 +62,10 @@ input.input-big{
         border-bottom: none;
         box-shadow: none;
         margin: 0;
+    }
+
+    @media (max-width: 767px){
+        padding-right: 85px;
     }
 }
 
