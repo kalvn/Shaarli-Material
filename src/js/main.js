@@ -354,7 +354,10 @@
                 } else{
                     newDate = moment(new Date($(this).html())).fromNow();
                 }
-                $(this).html(newDate);
+
+                if (newDate !== 'Invalid date') {
+                    $(this).html(newDate);
+                }
             });
         }
     };
