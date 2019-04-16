@@ -45,7 +45,8 @@ var JS_LIB = [
     DIR_LIB + 'blazy/blazy.min.js',
     DIR_LIB + 'moment/min/moment.min.js',
     DIR_LIB + 'sortablejs/Sortable.min.js',
-    DIR_LIB + 'salvattore/dist/salvattore.min.js'
+    DIR_LIB + 'salvattore/dist/salvattore.min.js',
+    DIR_LIB + 'autosize/dist/autosize.js'
 ];
 
 var BOOTSTRAP_FONTS = DIR_LIB + 'bootstrap/dist/fonts/*';

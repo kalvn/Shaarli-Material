@@ -4,7 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## v0.10.3
+
+## v?.?.? - not released yet
+### Added
+- Support of `<del>` tag in Markdown.
+
+### Changed
+- Slight refresh of the design.
+- Improved search overlay usability.
+- Optimized fonts loading by making text readable while loading.
+
+
+## [v0.10.3](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.10.3) - 2019-03-29
 Be careful, one important change comes with this release: the `build` folder is not anymore part of the code repository. So if you use to update the theme with `git pull`, you now need to do
 
 ```bash
@@ -22,6 +33,7 @@ This will install build tools and process files. I'll now attach ready-to-use bu
 - Reorganisation of directories in order to keep `/material` directory clean.
 - Updated dependencies.
 - Updated Gulp to v4.
+- Refreshed linklist page design.
 
 ### Removed
 - Bower. Front-end dependencies are now also retrieved with NPM.

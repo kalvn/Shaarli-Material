@@ -6,7 +6,7 @@
 .list-sublabel{
     margin-top: $space-t;
     @include font-caption();
-    color: $color-subtitle;
+    color: $color-gray-600;
 }
 
 .list-item{
@@ -26,7 +26,7 @@
     align-items: center;
 
     .list-item-control{
-        color: $color-subtitle;
+        color: $color-gray-600;
         font-size: 20px;
         width: 35px;
         height: 35px;
@@ -36,11 +36,11 @@
 
         &:hover,
         &:focus{
-            background-color: #eee;
+            background-color: $color-gray-200;
         }
 
         &:active{
-            background-color: #ddd;
+            background-color: $color-gray-300;
         }
     }
 
@@ -64,14 +64,14 @@
     justify-content: space-between;
     align-items: center;
     background: #fff;
-    border-top: 1px solid $color-gray-light;
+    border-top: 1px solid $color-gray-300;
 
     .card-header + &:first-child{
         border-top: 0;
     }
 
     &:last-child{
-        border-bottom: 1px solid $color-gray-light;
+        border-bottom: 1px solid $color-gray-300;
     }
 
     .list-item-start{
@@ -98,19 +98,19 @@ label.list-item-content{
         cursor: pointer;
         color: $color-text;
 
-        border-top: 1px solid $color-gray-light;
+        border-top: 1px solid $color-gray-300;
 
         .card-header + &:first-child{
             border-top: 0;
         }
 
         &:last-child{
-            border-bottom: 1px solid $color-gray-light;
+            border-bottom: 1px solid $color-gray-300;
         }
 
         &:hover,
         &:focus{
-            background-color: $color-gray-hover;
+            background-color: $color-gray-200;
             text-decoration: none;
         }
 
@@ -133,7 +133,7 @@ label.list-item-content{
         margin-top: $space-t;
         font-weight: 400;
         font-size: 1rem;
-        color: $color-subtitle;
+        color: $color-gray-600;
     }
 }
 
@@ -146,10 +146,10 @@ label.list-item-content{
 
         padding: $space-l $space-m;
 
-        border-top: 1px solid $color-gray-light;
+        border-top: 1px solid $color-gray-300;
 
         &:last-child{
-            border-bottom: 1px solid $color-gray-light;
+            border-bottom: 1px solid $color-gray-300;
         }
     }
 
@@ -183,7 +183,7 @@ label.list-item-content{
         padding: $space-s;
         cursor: move;
         font-size: 2rem;
-        color: $color-subtitle;
+        color: $color-gray-600;
     }
 
     .list-item-label{

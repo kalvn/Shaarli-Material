@@ -3,7 +3,7 @@
     top: 48px;
     right: 0px;
     min-width: 220px;
-    color: #333;
+    color: $color-text;
     box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
     background: #fff;
     line-height: 1.5;
@@ -30,7 +30,7 @@
 }
 .popup-title{
     font-weight: bold;
-    background-color: #eee;
+    background-color: $color-gray-200;
     padding: 10px;
 }
 .popup-close {
@@ -72,7 +72,7 @@
     padding: 5px 10px;
 }
 .popup ul li a:hover{
-    background-color: #eee;
+    background-color: $color-gray-200;
 }
 .popup input[type=text]{
     width: 100%;

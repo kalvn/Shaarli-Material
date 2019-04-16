@@ -45,238 +45,6 @@
     }
 }
 
-/* Link list */
-.link-outer{
-    @extend .card;
-    position: relative;
-    overflow: hidden;
-
-    .links-list.is-selectable &.is-selected{
-        outline: 4px solid orange;
-    }
-}
-// Used for batch mode (delete).
-.link-overlay{
-    display: none;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    cursor: pointer;
-    z-index: 10;
-
-    .links-list.is-selectable &:hover{
-        background-color: rgba(200, 200, 200, 0.5);
-    }
-
-    .links-list.is-selectable &{
-        display: block;
-        background-color: rgba(255, 255, 255, 0);
-    }
-
-    .links-list.is-selectable .is-selected &{
-        display: block;
-        background-color: rgba(255, 0, 0, .5);
-    }
-}
-.link-inner{
-    border-radius: 2px 0 0 2px;
-}
-.link-header{
-    @extend .card-header;
-    text-transform: none;
-}
-.link-content{
-    overflow: hidden;
-}
-.link-footer{
-    padding: 15px;
-    border-top: 1px solid #eee;
-    background-color: #f2f2f2;
-}
-a.link-title{
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: #333;
-    text-decoration: none;
-    font-weight: bold;
-    
-    &:hover{
-        color: #999;
-    }
-}
-.private{
-    background: url(img/private-band.png) top left no-repeat #fff;
-}
-.private a.link-title{
-    margin-left: $space-l;
-    color: #B71C1C;
-}
-.link-date{
-    @include font-caption();
-}
-.link-date{
-    float: right;
-}
-.link-date a,
-.link-date .link-archive{
-    color: #bbb;
-}
-.link-description{
-    padding: 15px;
-}
-.link-description p:first-child{
-    margin-top: 0;
-}
-.link-description p:last-child{
-    margin-bottom: 0;
-}
-.thumb img{
-    margin: 15px;
-}
-.link-tag-list{
-    overflow: hidden;
-    overflow-x: auto;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-.link-tag{
-    display: inline-block;
-}
-.link-tag a{
-    display: block;
-    color: #888;
-    text-decoration: none;
-    padding: 3px 10px;
-    background-color: #ddd;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    font-size: .8rem;
-}
-.link-tag a:hover{
-    background-color: #ccc;
-}
-
-.link-tag-filter{
-    color: #888;
-    text-decoration: none;
-    background-color: #ddd;
-    border-radius: 20px;
-    display: inline-block;
-    border: 1px solid #ccc;
-}
-.link-tag-filter a{
-    color: #888;
-    text-decoration: none;
-    padding: 3px 0 3px 10px;
-    display: inline-block;
-}
-.link-tag-link{
-    padding: 3px 10px;
-}
-.link-tag-filter:hover{
-    background-color: #ccc;
-}
-.link-tag-filter .remove{
-    font-style: normal;
-    background-color: #fff;
-    border-radius: 50%;
-    padding: 0 5px;
-    padding-bottom: 1px;
-}
-.link-url-container{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    line-height: 24px;
-    text-align: right;
-}
-a.link-url{
-    color: #999;
-    text-decoration: none;
-    @include font-caption();
-}
-a.link-url:hover{
-    color: #333;
-}
-.link-actions{
-    height: 24px;
-    text-align: right;
-
-    a,
-    span {
-        color: #757575;
-        font-size: 18px;
-    }
-
-    a {
-        &.is-pinned {
-            color: $color-primary;
-        }
-
-        &:hover,
-        &:focus {
-            color: #000;
-        }
-    }
-
-    .is-selectable &{
-        // Actions are hidden when the list is in batch select mode.
-        display: none;
-    }
-}
-.link-actions > *{
-    display: block;
-    float: right;
-    width: 24px;
-    right: 24px;
-    margin-left: 5px;
-}
-.link-actions form > *{
-    display: block;
-}
-/* Plugins in links */
-.link-plugin{
-    &:not(:last-child){
-        margin-right: $space-t;
-    }
-
-    &:nth-child(2){
-        &:before{
-            content: "-";
-            margin: 0 $space-t;
-        }
-    }
-}
-
-.link-counter{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    color: #999;
-}
-
-.favorite-tag{
-    display: block;
-    float: left;
-    padding: $space-s;
-    margin-right: $space-s;
-    background-color: rgba(0, 0, 0, .05);
-    color: $color-subtitle;
-
-    &:hover,
-    &:focus{
-        background-color: rgba(0, 0, 0, .1);
-        color: inherit;
-        text-decoration: none;
-    }
-
-    &:active{
-        background-color: rgba(0, 0, 0, .2);
-    }
-}
-
 /* Picture wall */
 .picwall-pictureframe{
     float: left;
@@ -291,8 +59,8 @@ a.link-url:hover{
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #666;
-    background-color: rgba(100, 100, 100, .7);
+    background-color: $color-gray-700;
+    background-color: rgba($color-gray-700, .7);
     color: #fff;
     @include font-caption();
 }
@@ -356,6 +124,11 @@ a.link-url:hover{
 }
 
 /* Plugin administration */
+.plugin-param:focus-within {
+    .plugin-param-key label {
+        color: $color-primary;
+    }
+}
 .plugin-param-key{
     line-height: 33px;
 }
@@ -375,4 +148,33 @@ a.link-url:hover{
 }
 .progress-counter {
     text-align: right;
+}
+
+/* Search overlay */
+.search-overlay-actions {
+    position: absolute;
+    right: 20px;
+    top: 20%;
+
+    button {
+        padding: 8px;
+        border-radius: 50px;
+        font-size: 14px;
+        text-transform: lowercase;
+        box-shadow: none;
+
+        i {
+            vertical-align: middle;
+        }
+
+        @media (max-width: 767px){
+            width: 36px;
+            height: 36px;
+            text-align: center;
+            border-radius: 50%;
+        }
+    }
+}
+#button-filter i {
+    margin-right: 3px;
 }

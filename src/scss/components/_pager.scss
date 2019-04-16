@@ -1,14 +1,22 @@
 .paging{
     a{
         display: inline-block;
-        padding: 0 $space-s;
+        height: 45px;
+        width: 45px;
+        vertical-align: middle;
+        text-align: center;
+        border-radius: 50%;
 
-        line-height: 3rem;
-        color: $color-subtitle;
+        color: $color-gray-600;
         font-size: 2rem;
 
-        &:hover{
-            color: $color-text;
+        &:hover,
+        &:focus {
+            background-color: $color-gray-300;
+        }
+
+        &:active {
+            background-color: $color-gray-400;
         }
     }
 
@@ -16,7 +24,7 @@
         display: inline-block;
         
         line-height: 3rem;
-        color: $color-subtitle;
-        font-size: 1.2rem;
+        color: $color-gray-700;
+        font-size: 1rem;
     }
 }

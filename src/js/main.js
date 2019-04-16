@@ -24,7 +24,6 @@
         initSearch();
         initDatesFormat();
         initQrCode();
-        initMaterialForms();
         initMaterialRippleEffect();
         initAutocomplete(jQuery);
         initBlazy();
@@ -35,6 +34,7 @@
         if(shaarli.isAuth){
             initSortable();
             initFirefoxSocial();
+            initTextareaAutosize();
         }
     };
 
@@ -377,30 +377,6 @@
         });
     };
 
-    var initMaterialForms = function(){
-        $('input[type=text],input[type=search],input[type=password],textarea').on('focus', function(){
-            var $input = $(this);
-            var id = $input.attr('id');
-
-            if(typeof id === 'string' && id !== ''){
-                var $label = $('label[for=' + id + ']');
-                if($label.length > 0){
-                    $label.addClass('active');
-                }
-            }
-        }).on('blur', function(){
-            var $input = $(this);
-            var id = $input.attr('id');
-
-            if(typeof id === 'string' && id !== ''){
-                var $label = $('label[for=' + id + ']');
-                if($label.length > 0){
-                    $label.removeClass('active');
-                }
-            }
-        });
-    };
-
     var initMaterialRippleEffect = function(){
         $('.ripple, .button, .button-raised, .button-inverse')
             .off('mousedown.tinymaterialripple')
@@ -503,6 +479,10 @@
                 }
             });
         });
+    };
+
+    var initTextareaAutosize = function () {
+        autosize($('#lf_description'));
     };
 
     var initBlazy = function(){

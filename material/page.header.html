@@ -3,9 +3,9 @@
 {else}
     <div class="header-main container-fluid">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-3 is-flex">
                 <a href="?" class="header-brand ripple">{$shaarlititle}</a>
-                <a href="#" class="icon-rss icon-unfold pull-right hidden-lg ripple" title="Show/hide menu"></a>
+                <a href="#" class="icon-unfold hidden-lg ripple" title="Show/hide menu"><i class="mdi mdi-chevron-down"></i></a>
             </div>
             <div class="col-lg-6 header-middle">
                 <div class="header-nav">
@@ -208,13 +208,21 @@
         <div class="container">
             <div class="mbl row">
                 <form method="GET" id="form-search" class="col-md-8 col-md-offset-2">
-                    <input type="search" id="searchform_value" class="input-big" name="searchterm" 
-                        value="{if="isset($search_type)"}{if="$search_type=='fulltext'"}{$search_crits}{elseif="$search_type=='tags'"}{loop="$search_crits"}{$value} {/loop}{else}{/if}{/if}" 
-                        placeholder="Search something here..." autocomplete="off" data-multiple data-minChars="1"
-                        data-list="{loop="$tags"}{$key}, {/loop}" />    
-                    <div class="mtl">
-                        <button type="submit" id="button-search" class="pull-right button-raised button-primary ripple">{'Search'|t}</button>
-                        <button type="button" id="button-filter" class="pull-right button-raised ripple ripple-primary">{'Filter by tag'|t}</button>    
+                    <div class="search-field">
+                        <input type="search" id="searchform_value" class="input-big" name="searchterm" 
+                            value="{if="isset($search_type)"}{if="$search_type=='fulltext'"}{$search_crits}{elseif="$search_type=='tags'"}{loop="$search_crits"}{$value} {/loop}{else}{/if}{/if}" 
+                            placeholder="Search..." autocomplete="off" data-multiple data-minChars="1"
+                            data-list="{loop="$tags"}{$key}, {/loop}" />    
+                        <div class="search-overlay-actions">
+                            <button type="button" id="button-filter" class="button-raised ripple ripple-primary">
+                                <i class="visible-xs mdi mdi-tag-multiple"></i>
+                                <span class="hidden-xs"><i class="mdi mdi-magnify"></i>{'tags'|t}</span>
+                            </button>    
+                            <button type="submit" id="button-search" class="button-raised button-primary ripple">
+                                <i class="mdi mdi-magnify"></i>
+                                <span class="hidden-xs">{'search'|t}</span>
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>

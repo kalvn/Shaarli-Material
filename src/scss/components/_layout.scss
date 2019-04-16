@@ -1,0 +1,13 @@
+.is-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.is-flex-grown {
+    flex-grow: 1;
+}
+
+.is-flex-end {
+    justify-self: flex-end;
+}
