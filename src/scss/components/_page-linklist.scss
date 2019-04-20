@@ -50,12 +50,11 @@
 }
 a.link-title{
     display: block;
-    overflow: hidden;
     text-overflow: ellipsis;
     color: $color-text;
     text-decoration: none;
     font-weight: bold;
-    line-height: 1em;
+    line-height: 1.2;
     
     &:hover, 
     &:focus {
