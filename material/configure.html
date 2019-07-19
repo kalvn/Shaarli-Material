@@ -134,6 +134,21 @@
 
                         <div class="list-item">
                             <div class="list-item-content">
+                                <div class="list-item-label">{'Automatically retrieve description for new bookmarks'|t}</div>
+                                <div class="list-item-sublabel">{'Shaarli will try to retrieve the description from meta HTML headers'|t}</div>
+                            </div>
+                            <div class="list-item-side">
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox" name="retrieveDescription" id="retrieveDescription" {if="$retrieve_description"}checked{/if}/>
+                                        <span class="lever"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="list-item">
+                            <div class="list-item-content">
                                 <div class="list-item-label">{'Check updates'|t}</div>
                                 <div class="list-item-sublabel">{'Notify me when a new release is ready'|t}</div>
                             </div>
