@@ -730,6 +730,7 @@
      *                             - noHtmlEscape {Boolean} Prevent HTML escape of title and body.
      *                             - value {String} Value of input field when using type prompt.
      *                             - buttonLabelOk {String} Label for OK button. Defaults to 'OK'.
+     *                             - buttonClassesOk {String} Classes for OK button.
      * @return {Void}
      */
     var displayModal = function(title, text, type, callback, options){
@@ -749,11 +750,11 @@
                 footer += '<button class="button ripple pull-right modal-ok">' + (options && options.buttonLabelOk ? options.buttonLabelOk : 'OK') + '</button>';
                 break;
             case 'confirm':
-                footer += '<button class="button ripple button-alert pull-right modal-ok">' + (options && options.buttonLabelOk ? options.buttonLabelOk : 'OK') + '</button><button class="button ripple pull-right modal-cancel">Cancel</button>';
+                footer += '<button class="button ripple ' + (options && options.buttonClassesOk ? options.buttonClassesOk : 'button-alert') + ' pull-right modal-ok">' + (options && options.buttonLabelOk ? options.buttonLabelOk : 'OK') + '</button><button class="button ripple pull-right modal-cancel">Cancel</button>';
                 break;
             case 'prompt':
                 body += '<input type="text" class="input-new-tag" placeholder="Enter a new value..." value="' + options.value + '"/>';
-                footer += '<button class="button ripple button-primary pull-right modal-ok">' + (options && options.buttonLabelOk ? options.buttonLabelOk : 'OK') + '</button><button class="button ripple pull-right modal-cancel">Cancel</button>';
+                footer += '<button class="button ripple ' + (options && options.buttonClassesOk ? options.buttonClassesOk : 'button-primary') + ' pull-right modal-ok">' + (options && options.buttonLabelOk ? options.buttonLabelOk : 'OK') + '</button><button class="button ripple pull-right modal-cancel">Cancel</button>';
                 break;
             default:
                 console.log('Modal type must be alert, confirm or prompt. ' + type + ' isn\'t recognized.');
@@ -923,6 +924,66 @@
                             }, { 
                                 noHtmlEscape: true,
                                 buttonLabelOk: 'Delete ' + length + ' links'
+                            });
+                        }
+                    },
+                    {
+                        id: 'set-links-public-button',
+                        label: 'Set public',
+                        classes: 'button button-primary',
+                        callback: function (event) {
+                            var linksIds = '';
+                            var linksTexts = '<ul class="is-bordered">';
+                            var linksIdTab = [];
+                            var length = objectSize(model.selectedLinks);
+
+                            for(var id in model.selectedLinks){
+                                linksIdTab.push(id);
+                                linksTexts += '<li>#<strong>' + id + '</strong>' + model.selectedLinks[id].title + '</li>';
+                            }
+
+                            linksTexts += '</ul>';
+                            linksIds = linksIdTab.join('+');
+                            var url = '?change_visibility&newVisibility=public&ids='+ linksIds +'&token='+ encodeURIComponent($('#token').val());
+
+                            displayModal('Are you sure to set those ' + length + ' links public?', 'The following links will be set as <strong>public</strong>: ' + linksTexts, 'confirm', function(accepted){
+                                if(accepted){
+                                    window.location.href = url;
+                                }
+                            }, { 
+                                noHtmlEscape: true,
+                                buttonLabelOk: 'Set ' + length + ' links public',
+                                buttonClassesOk: 'button-primary'
+                            });
+                        }
+                    },
+                    {
+                        id: 'set-links-private-button',
+                        label: 'Set private',
+                        classes: 'button button-primary',
+                        callback: function (event) {
+                            var linksIds = '';
+                            var linksTexts = '<ul class="is-bordered">';
+                            var linksIdTab = [];
+                            var length = objectSize(model.selectedLinks);
+
+                            for(var id in model.selectedLinks){
+                                linksIdTab.push(id);
+                                linksTexts += '<li>#<strong>' + id + '</strong>' + model.selectedLinks[id].title + '</li>';
+                            }
+
+                            linksTexts += '</ul>';
+                            linksIds = linksIdTab.join('+');
+                            var url = '?change_visibility&newVisibility=private&ids='+ linksIds +'&token='+ encodeURIComponent($('#token').val());
+
+                            displayModal('Are you sure to set those ' + length + ' links private?', 'The following links will be set as <strong>private</strong>: ' + linksTexts, 'confirm', function(accepted){
+                                if(accepted){
+                                    window.location.href = url;
+                                }
+                            }, { 
+                                noHtmlEscape: true,
+                                buttonLabelOk: 'Set ' + length + ' links private',
+                                buttonClassesOk: 'button-primary'
                             });
                         }
                     }
