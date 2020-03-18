@@ -115,6 +115,14 @@
             } else{
                 hidePopups();
             }
+
+            if ($.inArray('actionbar-selectall-link', event.target.classList) > -1) {
+                event.preventDefault();
+                $('.link-outer').each(function () {
+                    console.log('lol');
+                    toggleLinkSelection($(this), true);
+                });
+            }
         });
 
         $('.popup-trigger').on('click', function(){
@@ -798,7 +806,7 @@
         }
 
         var uid = guid();
-        var html = '<div id="' + uid + '" class="hidden actionbar ' + options.classes + '"><div class="container"><div class="row"><div class="actionbar-label">' + options.label + '</div><div class="actionbar-controls">';
+        var html = '<div id="' + uid + '" class="hidden actionbar ' + options.classes + '"><div class="container"><div class="row"><div class="actionbar-label">' + options.label + '</div><div class="actionbar-selectall">- <a href="#" class="actionbar-selectall-link">select all</a></div><div class="actionbar-controls">';
 
         if(options.displayCancel){
             html += '<button type="button" class="button button-default" id="actionbar-cancel">Cancel</button>';
@@ -842,6 +850,54 @@
         localStorage.setItem('expand', isExpanded);
     };
 
+    var toggleLinkSelection = function ($link, forceSelect, forceDeselect) {
+        var id = $link.attr('id');
+
+        var select = function () {
+            $link.addClass('is-selected');
+            model.selectedLinks[id] = {
+                id: id,
+                title: escapeHtml($link.find('.link-title').text())
+            };
+
+            refreshActionBarLabel();
+        }
+
+        var deselect = function () {
+            $link.removeClass('is-selected');
+            delete model.selectedLinks[id];
+
+            refreshActionBarLabel();
+        }
+
+        if (forceSelect) {
+            select();
+            return;
+        }
+
+        if (forceDeselect) {
+            deselect();
+            return;
+        }
+
+        if($link.hasClass('is-selected')){
+            deselect();
+        } else {
+            select();
+        }
+    };
+
+    var refreshActionBarLabel = function() {
+        var numberOfLinksSelected = objectSize(model.selectedLinks);
+        $batchDeleteActionBar.find('.actionbar-label').text(numberOfLinksSelected + ' links selected');
+
+        if (numberOfLinksSelected === 0) {
+            $batchDeleteActionBar.find('button:not(#actionbar-cancel)').attr('disabled', 'disabled');
+        } else {
+            $batchDeleteActionBar.find('button:not(#actionbar-cancel)').removeAttr('disabled');
+        }
+    };
+
     var toggleBatchMode = function(){
         if(!isBatchModeEnabled){
             isBatchModeEnabled = true;
@@ -857,10 +913,6 @@
                 }, {
                     buttonLabelOk: 'Understood!'
                 });
-            }
-
-            var refreshActionBarLabel = function(){
-                $batchDeleteActionBar.find('.actionbar-label').text(objectSize(model.selectedLinks) + ' links selected');
             }
 
             $('.links-list').addClass('is-selectable');

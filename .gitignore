@@ -4,7 +4,7 @@
 
 # Removes some useless build files.
 material/dist/*
-!material/dist
+#!material/dist
 
 # Removes the user defined template.
 material/extra.html
