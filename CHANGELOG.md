@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Batch mode: option to select all links on the page.
 - Batch mode: visibility settings.
+- NPM dependencies updated.
 
 
 ## [v0.10.4](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.10.4) - 2019-04-16
