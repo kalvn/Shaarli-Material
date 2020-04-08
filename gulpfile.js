@@ -102,7 +102,6 @@ gulp.task('css', gulp.series('sass', 'csslib', function(){
         }))
         .pipe(concat('styles.css'))
         .pipe(autoprefixer({
-            browsers: ['last 5 versions', 'ie >= 8'],
             cascade: false
         }))
         .pipe(minifyCSS())
