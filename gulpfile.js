@@ -127,7 +127,7 @@ gulp.task('static', gulp.series('assets', function(){
 
 gulp.task('clean', function(){
     return del([
-        DIR_DIST + 'lib.css', 
+        DIR_DIST + 'lib.css',
         DIR_DIST + 'sass.css'
   ]);
 });
