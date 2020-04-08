@@ -1,47 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html{if="$language !== 'auto'"} lang="{$language}"{/if}>
 <head>{include="includes"}</head>
-<body
-{if="$user_can_login"}
-    {if="empty($username)"}
-        onload="document.loginform.login.focus();"
-    {else}
-        onload="document.loginform.password.focus();"
-    {/if}
-{/if}>
+<body>
 {include="page.header"}
 
 <div id="headerform" class="page-login container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            {if="!$user_can_login"}
-                {'You have been banned after too many failed login attempts. Try again later.'|t}
-            {else}
-                <form method="POST" name="loginform" class="card">
-                    <div class="card-title">{'Login'|t}</div>
-                    <div class="card-body">
-                        <div class="form-entry">
-                            <label for="login">{'Username'|t}</label><br/>
-                            <input type="text" name="login" id="login" tabindex="1" {if="!empty($username)"}value="{$username}"{/if}>
-                        </div>
-                        <div class="form-entry">
-                            <label for="password">{'Password'|t}</label><br/>
-                            <input type="password" name="password" id="password" tabindex="2" >
-                        </div>
-                        <div class="form-entry">
-                            <input type="checkbox" class="filled-in" name="longlastingsession" id="longlastingsession" tabindex="3"
-                            {if="$remember_user_default"}checked="checked"{/if}>
-                            <label for="longlastingsession">{'Stay signed in (Do not check on public computers)'|t}</label>
-                        </div>
+            <form method="POST" name="loginform" class="card">
+                <div class="card-title">{'Login'|t}</div>
+                <div class="card-body">
+                    <div class="form-entry">
+                        <label for="login">{'Username'|t}</label><br/>
+                        <input type="text" name="login" id="login" tabindex="1" {if="!empty($username)"}value="{$username}"{/if}>
                     </div>
-                    <div class="card-footer">
-                        <button type="submit" class="button-raised button-primary pull-right" tabindex="4">{'Login'|t}</button>
-                        <input type="hidden" name="token" value="{$token}">
-                        {if="$returnurl"}<input type="hidden" name="returnurl" value="{$returnurl}">{/if}
-                        <div class="clearfix"></div>
+                    <div class="form-entry">
+                        <label for="password">{'Password'|t}</label><br/>
+                        <input type="password" name="password" id="password" tabindex="2" >
                     </div>
-                </form>
-            {/if}
+                    <div class="form-entry">
+                        <input type="checkbox" class="filled-in" name="longlastingsession" id="longlastingsession" tabindex="3"
+                        {if="$remember_user_default"}checked="checked"{/if}>
+                        <label for="longlastingsession">{'Remember me'|t}</label>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="button-raised button-primary pull-right" tabindex="4">{'Login'|t}</button>
+                    <input type="hidden" name="token" value="{$token}">
+                    {if="$returnurl"}<input type="hidden" name="returnurl" value="{$returnurl}">{/if}
+                    <div class="clearfix"></div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
