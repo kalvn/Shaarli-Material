@@ -1,0 +1,45 @@
+.markdown {
+    pre {
+        margin: 1em 0;
+        padding: 20px;
+        max-width: 100%;
+        border: 1px solid $color-gray-200;
+        color: $color-gray-800;
+        line-height: 1.2em;
+        background: $color-gray-100;
+        border-radius: 5px;
+        box-shadow: none;
+    }
+
+    code {
+        padding: 0;
+        color: $color-gray-800;
+        font-size: 1em;
+        line-height: 1em;
+        font-weight: 400!important;
+        background: $color-gray-100;
+        border-radius: 3px;
+    }
+
+    :not(pre) code {
+        padding: 0 5px 2px;
+        box-shadow: none;
+    }
+
+    ul,
+    ol {
+        padding-left: 3em;
+        margin-bottom: 15px;
+
+        li {
+            list-style: unset;
+        }
+    }
+
+    blockquote {
+        border-left: 5px solid $color-gray-500;
+        padding: 15px 30px;
+        margin-bottom: 15px;
+        background-color: $color-gray-100;
+    }
+}

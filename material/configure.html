@@ -30,6 +30,16 @@
                         </select>
                     </div>
                     <div class="form-entry">
+                        <label for="theme">{'Description formatter'|t}</label>
+                        <select name="formatter" id="formatter">
+                        {loop="$formatter_available"}
+                            <option value="{$value}" {if="$value===$formatter"}selected="selected"{/if}>
+                              {$value|ucfirst}
+                            </option>
+                        {/loop}
+                        </select>
+                    </div>
+                    <div class="form-entry">
                         <label for="language">{'Language'|t}</label>
                         <select name="language" id="language">
                         {loop="$languages"}

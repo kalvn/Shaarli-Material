@@ -1,4 +1,4 @@
-*, 
+*,
 *:after,
 *:before {
     box-sizing: border-box;
@@ -68,9 +68,7 @@ dt {
     font-weight: 700;
 }
 
-pre,
-.link-description .markdown pre,
-.daily-item-body .markdown pre {
+pre {
     margin: 1em 0;
     padding: 20px;
     max-width: 100%;
@@ -82,9 +80,7 @@ pre,
     box-shadow: none;
 }
 
-code,
-.link-description .markdown pre code,
-.daily-item-body .markdown pre code {
+code {
     padding: 0;
     color: $color-gray-800;
     font-size: .8em;
@@ -94,9 +90,7 @@ code,
     border-radius: 3px;
 }
 
-code,
-.link-description .markdown :not(pre) code,
-.daily-item-body .markdown :not(pre) code {
+:not(pre) code {
     padding: 0 5px 2px;
     box-shadow: none;
 }

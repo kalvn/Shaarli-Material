@@ -12,11 +12,11 @@
                 <div class="card-body">
                     <div class="form-entry">
                         <label for="login">{'Username'|t}</label><br/>
-                        <input type="text" name="login" id="login" tabindex="1" {if="!empty($username)"}value="{$username}"{/if}>
+                        <input type="text" name="login" id="login" {if="empty($username)"}class="autofocus"{/if} tabindex="1" {if="!empty($username)"}value="{$username}"{/if}>
                     </div>
                     <div class="form-entry">
                         <label for="password">{'Password'|t}</label><br/>
-                        <input type="password" name="password" id="password" tabindex="2" >
+                        <input type="password" name="password" id="password" {if="!empty($username)"}class="autofocus"{/if} tabindex="2" >
                     </div>
                     <div class="form-entry">
                         <input type="checkbox" class="filled-in" name="longlastingsession" id="longlastingsession" tabindex="3"

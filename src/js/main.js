@@ -36,6 +36,9 @@
             initFirefoxSocial();
             initTextareaAutosize();
         }
+
+        // Handle autofocus fields.
+        $('.autofocus').focus();
     };
 
     var pollyfills = function(){
@@ -127,7 +130,7 @@
 
         $('.popup-trigger').on('click', function(){
             hidePopups();
-            
+
             var $popup = $('#' + $(this).data('popup'));
 
             if($popup.is(':visible')){
@@ -160,7 +163,7 @@
             event.preventDefault();
 
             var url = $(this).attr('href');
-            
+
             displayModal('Delete link', 'Are you sure you want to delete this link ?', 'confirm', function(accepts){
                 if(accepts){
                     window.location.href = url;
@@ -216,7 +219,7 @@
             var el = $(this);
             var tag = el.data('tag');
             var token = $('#token').val();
-            
+
             displayModal('Delete the tag "' + tag + '"', 'Are you sure you want to delete the tag "' + tag + '" from all links ?', 'confirm', function(accepts){
                 if(accepts){
                     $.ajax({
@@ -233,7 +236,7 @@
                             animations.compressHeight($toBeRemoved, null, function () {
                                 $toBeRemoved.remove();
                             });
-                            
+
                         },
                         error: function(){
                             displayModal('Error', 'Oops! something went wrong...', 'alert');
@@ -448,7 +451,7 @@
                     awesomplete.close();
                 });
             });
-            
+
 
             /**
              * Remove already selected items from autocompletion list.
@@ -709,7 +712,7 @@
             pfx  = '',
             elm = document.createElement('div');
 
-        if( elm.style.animationName !== undefined ) { animation = true; }    
+        if( elm.style.animationName !== undefined ) { animation = true; }
 
         if( animation === false ) {
             for( var i = 0; i < domPrefixes.length; i++ ) {
@@ -973,7 +976,7 @@
                                 if(accepted){
                                     window.location.href = url;
                                 }
-                            }, { 
+                            }, {
                                 noHtmlEscape: true,
                                 buttonLabelOk: 'Delete ' + length + ' links'
                             });
@@ -1002,7 +1005,7 @@
                                 if(accepted){
                                     window.location.href = url;
                                 }
-                            }, { 
+                            }, {
                                 noHtmlEscape: true,
                                 buttonLabelOk: 'Set ' + length + ' links public',
                                 buttonClassesOk: 'button-primary'
@@ -1032,7 +1035,7 @@
                                 if(accepted){
                                     window.location.href = url;
                                 }
-                            }, { 
+                            }, {
                                 noHtmlEscape: true,
                                 buttonLabelOk: 'Set ' + length + ' links private',
                                 buttonClassesOk: 'button-primary'

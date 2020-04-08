@@ -10,7 +10,7 @@
                 <h1 class="card-header">{'Thumbnails update'|t}</h1>
                 <div class="card-body">
                     <div class="thumbnail-placeholder" style="width: {$thumbnails_width}px; height: {$thumbnails_height}px;">
-                        
+
                     </div>
                     <div class="thumbnail-link-title">
                         Loading...
@@ -22,7 +22,7 @@
                         <span class="progress-current">0</span> / <span class="progress-total">{$ids|count}</span>
                     </div>
 
-                    <input type="hidden" name="ids" value="{function="implode($ids, ',')"}" />
+                    <input type="hidden" name="ids" value="{function="implode(',', $ids)"}" />
                 </div>
             </div>
         </div>
