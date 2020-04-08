@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [v0.11.0](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.11.0) - 2020-04-08
+### Added
+- Batch mode: option to select all links on the page.
+- Batch mode: visibility settings.
+
+
 ## [v0.10.4](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.10.4) - 2019-04-16
 ### Added
 - Support of `<del>` tag in Markdown.
