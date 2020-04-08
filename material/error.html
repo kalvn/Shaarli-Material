@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html{if="$language !== 'auto'"} lang="{$language}"{/if}>
+<head>
+  {include="includes"}
+</head>
+<body>
+{include="page.header"}
+
+<div id="pageError" class="container text-center">
+    <h2>{$message}</h2>
+
+    {if="!empty($stacktrace)"}
+        <pre>
+            {$stacktrace}
+        </pre>
+    {/if}
+    <div>
+        <img src="dist/img/sad_star.png" alt="">
+    </div>
+</div>
+{include="page.footer"}
+</body>
+</html>
