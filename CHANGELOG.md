@@ -5,6 +5,19 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## vNEXT
+### Added
+- Support for Shaarli vNEXT.
+
+### Changed
+- Jump from jQuery v1.12.4 to v3.4.1. It lowers browser support to IE9+.
+- Other NPM dependencies updated.
+
+### Fixed
+- An issue where the login form couldn't be displayed.
+- An issue where images where overflowing their container when markdown is enabled.
+
+
 ## [v0.11.0](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.11.0) - 2020-04-08
 ### Added
 - Batch mode: option to select all links on the page.
