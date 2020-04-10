@@ -55,12 +55,12 @@ a.link-title{
     text-decoration: none;
     font-weight: bold;
     line-height: 1.2;
-    
-    &:hover, 
+
+    &:hover,
     &:focus {
         color: $color-gray-800;
     }
- 
+
     &:active {
         color: $color-gray-700;
     }
@@ -87,7 +87,7 @@ a.link-url{
     }
 
     &:active {
-        color: $color-gray-800;   
+        color: $color-gray-800;
     }
 }
 .link-date{
@@ -106,7 +106,7 @@ a.link-url{
         }
 
         &:active {
-            color: $color-gray-800;   
+            color: $color-gray-800;
         }
     }
 }
@@ -128,7 +128,6 @@ a.link-url{
     overflow: hidden;
     overflow-x: auto;
     text-overflow: ellipsis;
-    white-space: nowrap;
 }
 .link-tag{
     display: inline-block;
