@@ -8,8 +8,8 @@
     "awesomplete": "^1.1.5",
     "blazy": ">=1.3.0",
     "bootstrap": "^3.4.1",
-    "jquery": "^3.4.1",
-    "moment": "^2.24.0",
+    "jquery": "^3.5.0",
+    "moment": "^2.25.1",
     "salvattore": "^1.0.9",
     "sortablejs": "^1.10.2"
   },
@@ -24,14 +24,15 @@
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^2.0.0",
     "gulp-replace": "^1.0.0",
-    "gulp-sass": "^4.0.2",
+    "gulp-sass": "^4.1.0",
     "gulp-uglify": "^3.0.2",
     "merge-stream": "^2.0.0",
     "postcss-uncss": "^0.16.1",
     "uncss": "^0.16.2"
   },
   "scripts": {
-    "build": "gulp",
+    "build": "gulp build",
+    "dev": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
