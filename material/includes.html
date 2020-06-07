@@ -14,7 +14,7 @@
 <link rel="icon" type="image/png" href="dist/img/favicons/favicon-16x16.png" sizes="16x16">
 <link rel="manifest" href="dist/img/favicons/manifest.json">
 <link rel="shortcut icon" href="dist/img/favicons/favicon.ico">
-<link rel="search" type="application/opensearchdescription+xml" href="?do=opensearch#" title="Shaarli search - {$shaarlititle}"/> 
+<link rel="search" type="application/opensearchdescription+xml" href="?do=opensearch#" title="Shaarli search - {$shaarlititle}"/>
 <meta name="msapplication-TileColor" content="#603cba">
 <meta name="msapplication-config" content="dist/img/favicons/browserconfig.xml">
 {if="!empty($links) && count($links) === 1"}
@@ -44,10 +44,10 @@
 {else}
 <meta name="theme-color" content="#2196f3">
 {/if}
-{if="is_file('data/user.css')"}<link type="text/css" rel="stylesheet" href="data/user.css#" />{/if}
 {loop="$plugins_includes.css_files"}
 <link type="text/css" rel="stylesheet" href="{$value}?v={$version_hash}#"/>
 {/loop}
+{if="is_file('data/user.css')"}<link type="text/css" rel="stylesheet" href="data/user.css#" />{/if}
 <script>
 var shaarli = {
     source: '{$source}',
