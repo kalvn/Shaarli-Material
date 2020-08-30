@@ -1,9 +1,9 @@
 <div id="footer" class="container">
     <div>
         <b><a href="https://github.com/shaarli/Shaarli">Shaarli</a></b>
-        {if="isLoggedIn()"} v{$version}{/if}
+        {if="$is_logged_in"} v{$version}{/if}
          - {'The personal, minimalist, super-fast, database free, bookmarking service'|t} {'by the Shaarli community'|t}
-        {if="isLoggedIn()"} - <a href="doc/html/index.html">Help</a>{/if}
+        {if="$is_logged_in"} - <a href="{$base_path}/doc/html/index.html">Help</a>{/if}
          - Theme by <a href="https://github.com/kalvn">kalvn</a>
     </div>
     <div>
@@ -25,7 +25,7 @@
 
     <input type="hidden" name="token" value="{$token}" id="token" />
 </div>
-<script src="dist/scripts.min.js?v={$version_hash}"></script>
+<script src="{$asset_path}/dist/scripts.min.js?v={$version_hash}#"></script>
 {loop="$plugins_footer.js_files"}
      <script src="{$value}?v={$version_hash}#"></script>
 {/loop}

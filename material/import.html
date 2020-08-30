@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html{if="$language !== 'auto'"} lang="{$language}"{/if}>
 <head>{include="includes"}</head>
-<body onload="document.uploadform.filetoupload.focus();">
+<body>
 {include="page.header"}
 <div id="uploaddiv" class="container page-import">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
-			<form method="POST" action="?do=import" enctype="multipart/form-data" name="uploadform" id="uploadform" class="card">
+			<form method="post" action="{$base_path}/admin/import" enctype="multipart/form-data" name="uploadform" id="uploadform" class="card">
 				<input type="hidden" name="token" value="{$token}">
 				<input type="hidden" name="MAX_FILE_SIZE" value="{$maxfilesize}">
 				<div class="card-title">{"Import Database"|t}</div>
@@ -14,7 +14,7 @@
 					<p>Import Netscape HTML bookmarks (as exported from Firefox/Chrome/Opera/Delicious/Diigo...).</p>
 					<div class="form-entry">
 						<label for="filetoupload">File to upload</label>
-						<input type="file" id="filetoupload" name="filetoupload"/>
+						<input type="file" id="filetoupload" name="filetoupload" class="autofocus"/>
 						<div class="sublabel">{'Maximum size allowed:'|t} <strong>{$maxfilesizeHuman}</strong></div>
 					</div>
 					<div class="form-entry">

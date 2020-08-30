@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html{if="$language !== 'auto'"} lang="{$language}"{/if}>
 <head>{include="includes"}</head>
 <body>
 {include="page.header"}
@@ -7,18 +7,19 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <noscript>
-                <p>You need to enable Javascript to change plugin loading order.</p>
+                <p>{'You need to enable Javascript to change plugin loading order.'|t}</p>
             </noscript>
 
-            <h1>Plugin administration</h1>
+            <h1>{'Plugin administration'|t}</h1>
             <p>Drag and drop your plugin to change the order in which they'll be called. Uncheck enabled plugin to disable them and vice-versa.</p>
 
-            <form action="?do=save_pluginadmin" method="POST">
+            <form action="{$base_path}/admin/plugins" method="post">
+                <input type="hidden" name="token" value="{$token}">
                 <section class="card">
-                    <div class="card-title">Enabled plugins</div>
+                    <div class="card-title">{'Enabled Plugins'|t}</div>
                     {if="count($enabledPlugins)==0"}
                     <div class="card-body">
-                        <p>No plugin enabled.</p>
+                        <p>{'No plugin enabled.'|t}</p>
                     </div>
                     {else}
                     <ul id="list-plugin-enabled" class="list-sortable list-checkable">
@@ -42,7 +43,7 @@
                     <div class="card-title">Disabled plugins</div>
                     {if="count($disabledPlugins)==0"}
                     <div class="card-body">
-                        <p>No plugin disabled.</p>
+                        <p>{'No plugin disabled.'|t}</p>
                     </div>
                     {else}
                     <ul class="list-sortable list-checkable">
@@ -65,12 +66,13 @@
                 </div>
             </form>
             <hr class="darker">
-            <form action="?do=save_pluginadmin" method="POST">
+            <form action="{$base_path}/admin/plugins" method="post">
+                <input type="hidden" name="token" value="{$token}">
                 <section class="card">
                     <div class="card-title">Plugin parameters</div>
                     <div class="card-body">
                     {if="count($enabledPlugins)==0"}
-                        <p>No plugin enabled.</p>
+                        <p>{'No plugin enabled.'|t}</p>
                     {else}
                         {$count=0}
                         {loop="$enabledPlugins"}
@@ -93,7 +95,7 @@
                             {/if}
                         {/loop}
                         {if="$count==0"}
-                        <p>No parameters found for enabled plugins.</p>
+                        <p>{'No parameter available.'|t}</p>
                         {/if}
                     {/if}
                     </div>

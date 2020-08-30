@@ -33,7 +33,6 @@
 
         if(shaarli.isAuth){
             initSortable();
-            initFirefoxSocial();
             initTextareaAutosize();
         }
 
@@ -164,7 +163,7 @@
 
             var url = $(this).attr('href');
 
-            displayModal('Delete link', 'Are you sure you want to delete this link ?', 'confirm', function(accepts){
+            displayModal('Delete link', 'Are you sure you want to delete this link?', 'confirm', function(accepts){
                 if(accepts){
                     window.location.href = url;
                 }
@@ -177,7 +176,7 @@
 
             var url = $(this).attr('href');
 
-            displayModal('Delete link', 'Are you sure you want to delete this link ?', 'confirm', function(accepts){
+            displayModal('Delete link', 'Are you sure you want to delete this link?', 'confirm', function(accepts){
                 if(accepts){
                     window.location.href = url;
                 }
@@ -190,7 +189,7 @@
             var tag = $('#fromtag').val();
             var form = $(this).closest('form');
 
-            displayModal('Delete the tag "' + tag + '"', 'Are you sure you want to delete the tag "' + tag + '" from all links ?', 'confirm', function(accepts){
+            displayModal('Delete the tag "' + tag + '"', 'Are you sure you want to delete the tag "' + tag + '" from all links?', 'confirm', function(accepts){
                 if(accepts){
                     form.append('<input type="hidden" name="deletetag">');
                     form.submit();
@@ -223,7 +222,7 @@
             displayModal('Delete the tag "' + tag + '"', 'Are you sure you want to delete the tag "' + tag + '" from all links ?', 'confirm', function(accepts){
                 if(accepts){
                     $.ajax({
-                        url: '?do=changetag',
+                        url: shaarli.basePath + '/admin/tags',
                         method: 'post',
                         contentType: 'application/x-www-form-urlencoded',
                         data: {
@@ -266,7 +265,7 @@
                     listItem.find('.list-item-middle').append(feedback);
 
                     $.ajax({
-                        url: '?do=changetag',
+                        url: shaarli.basePath + '/admin/tags',
                         method: 'post',
                         contentType: 'application/x-www-form-urlencoded',
                         data: {
@@ -276,10 +275,10 @@
                             renametag: 'Rename tag'
                         },
                         success: function(){
-                            listItem.find('.tag-link').attr('href', '?searchtags=' + encodeURIComponent(newTag)).text(newTag);
+                            listItem.find('.tag-link').attr('href', shaarli.basePath + '/?searchtags=' + encodeURIComponent(newTag)).text(newTag);
                             listItem.find('[data-tag]').data('tag', newTag);
-                            listItem.find('.count').attr('href', '?addtag=' + encodeURIComponent(newTag));
-                            listItem.find('.rename-tag').attr('href', '?do=changetag&fromtag=' + encodeURIComponent(newTag));
+                            listItem.find('.count').attr('href', shaarli.basePath + '/add-tag/' + encodeURIComponent(newTag));
+                            listItem.find('.rename-tag').attr('href', shaarli.basePath + '/admin/tags?fromtag=' + encodeURIComponent(newTag));
 
                             feedback.addClass('text-success')
                                 .text('renamed successfully!');
@@ -462,11 +461,12 @@
              */
             var input = jQuery('#lf_tags');
             input.on('input', function(){
-                proposedTags = input.data('list').replace(/,/g, '').split(' ');
-                reg = /(\w+) /g;
+                var proposedTags = input.data('list').replace(/,/g, '').split(' ');
+                var reg = /(\w+) /g;
+                var match;
                 while((match = reg.exec(input.val())) !== null) {
-                    id = proposedTags.indexOf(match[1]);
-                    if(id != -1 ) {
+                    var id = proposedTags.indexOf(match[1]);
+                    if (id !== -1 ) {
                         proposedTags.splice(id, 1);
                     }
                 }
@@ -503,39 +503,6 @@
         var bLazy = new Blazy();
     };
 
-    var initFirefoxSocial = function(){
-        function activateFirefoxSocial(node) {
-            var loc = location.href;
-            var baseURL = loc.substring(0, loc.lastIndexOf("/"));
-            // Keeping the data separated (ie. not in the DOM) so that it's maintainable and diffable.
-            var data = {
-                name: document.title,
-                description: "The personal, minimalist, super-fast, no-database delicious clone.",
-                author: "Shaarli",
-                version: "1.0.0",
-                iconURL: baseURL + "/tpl/material/images/favicons/favicon-96x96.png",
-                icon32URL: baseURL + "/tpl/material/images/favicons/favicon-32x32.png",
-                icon64URL: baseURL + "/tpl/material/images/favicons/favicon-64x64.png",
-                shareURL: baseURL + "?post=%{url}&title=%{title}&description=%{description}&source=firefoxsocialapi",
-                homepageURL: baseURL
-            };
-            node.setAttribute("data-service", JSON.stringify(data));
-            var activate = new CustomEvent("ActivateSocialFeature");
-            node.dispatchEvent(activate);
-        }
-
-        // Hack taken from https://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
-        var isFirefox = typeof InstallTrigger !== 'undefined';
-        if(!isFirefox){
-            $('#firefoxsocial').attr('disabled', 'disabled');
-        } else{
-            // Attach events to the Firefox Social button.
-            $('#firefoxsocial').on('click', function(){
-                activateFirefoxSocial(this);
-            });
-        }
-    };
-
     var initOverlay = function(){
         overlay.get().on('click', function(event){
             if(event.target.id === 'overlay'){
@@ -563,10 +530,9 @@
         var updateThumbnail = function (id) {
             console.log('Updating thunmbnail #' + i + ' with id ' + id);
             $.ajax({
-                url: '?do=ajax_thumb_update',
-                method: 'post',
+                url: shaarli.basePath + '/admin/shaare/' + thumbnailsIdList[i] + '/update-thumbnail',
+                method: 'patch',
                 dataType: 'json',
-                data: 'id=' + thumbnailsIdList[i],
                 success: function(response){
                     i++;
                     $thumbnailTitle.text(response.title);
@@ -970,7 +936,7 @@
 
                             linksTexts += '</ul>';
                             linksIds = linksIdTab.join('+');
-                            var url = '?delete_link&lf_linkdate='+ linksIds +'&token='+ encodeURIComponent($('#token').val());
+                            var url = shaarli.basePath + '/admin/shaare/delete?id=' + linksIds + '&token=' + encodeURIComponent($('#token').val());
 
                             displayModal('Are you sure to delete ' + length + ' links?', 'The following links will be <strong>IRRETRIEVABLY</strong> deleted: ' + linksTexts, 'confirm', function(accepted){
                                 if(accepted){
@@ -999,7 +965,7 @@
 
                             linksTexts += '</ul>';
                             linksIds = linksIdTab.join('+');
-                            var url = '?change_visibility&newVisibility=public&ids='+ linksIds +'&token='+ encodeURIComponent($('#token').val());
+                            var url = shaarli.basePath + '/admin/shaare/visibility?token=' + encodeURIComponent($('#token').val()) + '&newVisibility=public&id=' + linksIds;
 
                             displayModal('Are you sure to set those ' + length + ' links public?', 'The following links will be set as <strong>public</strong>: ' + linksTexts, 'confirm', function(accepted){
                                 if(accepted){
@@ -1029,7 +995,7 @@
 
                             linksTexts += '</ul>';
                             linksIds = linksIdTab.join('+');
-                            var url = '?change_visibility&newVisibility=private&ids='+ linksIds +'&token='+ encodeURIComponent($('#token').val());
+                            var url = shaarli.basePath + '/admin/shaare/visibility?token=' + encodeURIComponent($('#token').val()) + '&newVisibility=private&id=' + linksIds;
 
                             displayModal('Are you sure to set those ' + length + ' links private?', 'The following links will be set as <strong>private</strong>: ' + linksTexts, 'confirm', function(accepted){
                                 if(accepted){
@@ -1088,7 +1054,7 @@
     // Refresh the CSRF token and pass it to the callback.
     var refreshToken = function(callback){
         $.ajax({
-            url: '?do=token',
+            url: shaarli.basePath + '/admin/token',
             method: 'get',
             success: function(token){
                 $('#token').val(token);

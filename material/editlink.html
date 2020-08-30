@@ -1,22 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html{if="$language !== 'auto'"} lang="{$language}"{/if}>
 <head>
     {include="includes"}
 </head>
-<body
-{if="$link.title==''"}onload="document.linkform.lf_title.focus();"
-{elseif="$link.description==''"}onload="document.linkform.lf_description.focus();"
-{else}onload="document.linkform.lf_tags.focus();"{/if}
-{if="!empty($_GET['source']) && $_GET['source']=='bookmarklet'"}class="from-bookmarklet"{/if} >
+<body {if="!empty($_GET['source']) && $_GET['source']=='bookmarklet'"}class="from-bookmarklet"{/if}>
 {include="page.header"}
 <div id="editlinkform" class="container page-edit">
     <div class="row" id="editlinkform-row">
         <div class="col-md-6 col-md-offset-3" id="editlinkform-col">
-            <form method="POST" name="linkform" class="card">
+            <form method="post" name="linkform" class="card" action="{$base_path}/admin/shaare">
                 {if="isset($link.id)"}
                    <input type="hidden" name="lf_id" value="{$link.id}">
                 {/if}
                 <input type="hidden" name="token" value="{$token}">
+                <input type="hidden" name="source" value="{$source}">
                 {if="$http_referer"}<input type="hidden" name="returnurl" value="{$http_referer}">{/if}
 
                 <div class="card-header">
@@ -31,15 +28,15 @@
                     </div>
                     <div class="form-entry">
                         <label for="lf_title">{'Title'|t}</label><br/>
-                        <input type="text" name="lf_title" id="lf_title" value="{$link.title}" placeholder="Title...">
+                        <input type="text" name="lf_title" id="lf_title" {if="$link.title==''"}class="autofocus"{/if} value="{$link.title}" placeholder="Title...">
                     </div>
                     <div class="form-entry">
                         <label for="lf_description">{'Description'|t}</label><br/>
-                        <textarea name="lf_description" id="lf_description" placeholder="Describe the link..." rows="4">{$link.description}</textarea>
+                        <textarea name="lf_description" id="lf_description" {if="$link.description==''"}class="autofocus"{/if} placeholder="Describe the link..." rows="4">{$link.description}</textarea>
                     </div>
                     <div class="form-entry">
                         <label for="lf_tags">{'Tags'|t}</label><br/>
-                        <input type="text" id="lf_tags" name="lf_tags" id="lf_tags" value="{$link.tags}" class="lf_input"
+                        <input type="text" id="lf_tags" name="lf_tags" class="autofocus" value="{$link.tags}" class="lf_input"
                             data-list="{loop="$tags"}{$key}, {/loop}" data-multiple autocomplete="off" />
                     </div>
                     {if="isset($edit_link_plugin)"}
@@ -66,7 +63,7 @@
                     <button type="submit" name="save_edit" class="button-raised button-primary pull-right">{'Save'|t}</button>
                     <button type="submit" name="cancel_edit" class="button pull-right ripple-primary">Cancel</button>
                     {if="!$link_is_new"}
-                        <a href="?delete_link&amp;lf_linkdate={$link.id}&amp;token={$token}"
+                        <a href="{$base_path}/admin/shaare/delete?id={$link.id}&amp;token={$token}"
                             name="delete_link" class="button-raised button-alert">{'Delete'|t}</a>
                     {/if}
                     <div class="clearfix"></div>
@@ -75,8 +72,6 @@
         </div>
     </div>
 </div>
-{if="$source !== 'firefoxsocialapi'"}
-    {include="page.footer"}
-{/if}
+{include="page.footer"}
 </body>
 </html>

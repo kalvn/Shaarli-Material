@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html{if="$language !== 'auto'"} lang="{$language}"{/if}>
 <head>{include="includes"}</head>
 <body>
 {include="page.header"}
 <div id="toolsdiv" class="container page-export">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form class="card" method="get">
-                <input type="hidden" name="do" value="export">
+            <form class="card" method="post" action="{$base_path}/admin/export">
+                <input type="hidden" name="token" value="{$token}">
                 <h1 class="card-header">{"Export Database"|t}</h1>
                 <div class="list-side-right">
                     <div class="list-body">

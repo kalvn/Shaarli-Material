@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html{if="$language !== 'auto'"} lang="{$language}"{/if}>
 <head>{include="includes"}</head>
 <body class="dark-toolbar">
 {include="page.header"}
@@ -16,12 +16,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-6">
-                    <a {if="$previousday"}href="?do=daily&amp;day={$previousday}"{else}href="#"{/if} class="button" {if="!$previousday"}disabled{/if}>
+                    <a {if="$previousday"}href="{$base_path}/daily?day={$previousday}"{else}href="#"{/if} class="button" {if="!$previousday"}disabled{/if}>
                         <i class="mdi mdi-arrow-left"></i> {'Previous day'|t}
                     </a>
                 </div>
-                <div class="col-xs-6"> 
-                    <a {if="$nextday"}href="?do=daily&amp;day={$nextday}"{else}href="#"{/if} class="button" {if="!$nextday"}disabled{/if}>
+                <div class="col-xs-6">
+                    <a {if="$nextday"}href="{$base_path}/daily?day={$nextday}"{else}href="#"{/if} class="button" {if="!$nextday"}disabled{/if}>
                         {'Next day'|t} <i class="mdi mdi-arrow-right"></i>
                     </a>
                 </div>
@@ -50,7 +50,7 @@
                     </a>
 
                     {if="$thumbnails_enabled && !empty($link.thumbnail)"}
-                        <div class="daily-item-image" style="background-image: url({$link.thumbnail})"></div>
+                        <div class="daily-item-image" style="background-image: url({$link.thumbnail}#)"></div>
                     {/if}
 
                     {if="$link.formatedDescription"}
@@ -59,8 +59,8 @@
                     </div>
                     {/if}
                     <div class="daily-item-footer clearfix">
-                        {if="!$hide_timestamps || isLoggedIn()"}
-                        <a href="?{$link.shorturl}" class="daily-item-footer-subtitle" title="{'Permalink'|t}">
+                        {if="!$hide_timestamps || $is_logged_in"}
+                        <a href="{$base_path}/shaare/{$value.shorturl}" class="daily-item-footer-subtitle" title="{'Permalink'|t}">
                             {function="strftime('%H:%M', $link.timestamp)"}
                         </a>
                         {/if}

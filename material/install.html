@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html{if="$language !== 'auto'"} lang="{$language}"{/if}>
 <head>{include="includes"}</head>
-<body onload="document.installform.setlogin.focus();">
+<body>
 <div id="install" class="container page-install">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form method="POST" action="#" name="installform" id="installform" class="card">
+            <form method="post" action="{$base_path}/install" name="installform" id="installform" class="card">
                 <div class="card-title">Welcome to your Shaarli</div>
                 <div class="card-body">
                     <p>{'It looks like it\'s the first time you run Shaarli. Please configure it.'|t}</p>
                     <div class="form-entry">
                         <label for="setlogin">{'Username'|t}</label>
-                        <input type="text" name="setlogin" id="setlogin" size="30"/>
+                        <input type="text" name="setlogin" id="setlogin" class="autofocus"/>
                     </div>
                     <div class="form-entry">
                         <label for="setpassword">{'Password'|t}</label>
-                        <input type="password" id="setpassword" name="setpassword" size="30"/>
+                        <input type="password" id="setpassword" name="setpassword"/>
                     </div>
                     <div class="form-entry">
                         <label for="continent">{'Timezone'|t}</label>

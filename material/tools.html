@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html{if="$language !== 'auto'"} lang="{$language}"{/if}>
 <head>{include="includes"}</head>
 <body>
 {include="page.header"}
@@ -9,7 +9,7 @@
             <div class="card">
                 <h1 class="card-header">{'Settings'|t}</h1>
                 <div class="list-action list-big">
-                    <a class="list-item ripple" href="?do=configure">
+                    <a class="list-item ripple" href="{$base_path}/admin/configure">
                         <div class="row">
                             <div class="col-sm-2 col-xs-3">
                                 <div class="round-image-container">
@@ -23,7 +23,7 @@
                         </div>
                     </a>
                     {if="!$openshaarli"}
-                    <a class="list-item ripple" href="?do=changepasswd">
+                    <a class="list-item ripple" href="{$base_path}/admin/password">
                         <div class="row">
                             <div class="col-sm-2 col-xs-3">
                                 <div class="round-image-container">
@@ -37,7 +37,7 @@
                         </div>
                     </a>
                     {/if}
-                    <a class="list-item ripple" href="?do=pluginadmin">
+                    <a class="list-item ripple" href="{$base_path}/admin/plugins">
                         <div class="row">
                             <div class="col-sm-2 col-xs-3">
                                 <div class="round-image-container">
@@ -50,7 +50,7 @@
                             </div>
                         </div>
                     </a>
-                    <a class="list-item ripple" href="?do=changetag">
+                    <a class="list-item ripple" href="{$base_path}/admin/tags">
                         <div class="row">
                             <div class="col-sm-2 col-xs-3">
                                 <div class="round-image-container">
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                     </a>
-                    <a class="list-item ripple" href="?do=import">
+                    <a class="list-item ripple" href="{$base_path}/admin/import">
                         <div class="row">
                             <div class="col-sm-2 col-xs-3">
                                 <div class="round-image-container">
@@ -76,7 +76,7 @@
                             </div>
                         </div>
                     </a>
-                    <a class="list-item ripple" href="?do=export">
+                    <a class="list-item ripple" href="{$base_path}/admin/export">
                         <div class="row">
                             <div class="col-sm-2 col-xs-3">
                                 <div class="round-image-container">
@@ -89,7 +89,8 @@
                             </div>
                         </div>
                     </a>
-                    <a class="list-item ripple" href="?do=thumbs_update">
+                    {if="$thumbnails_enabled"}
+                    <a class="list-item ripple" href="{$base_path}/admin/thumbnails">
                         <div class="row">
                             <div class="col-sm-2 col-xs-3">
                                 <div class="round-image-container">
@@ -102,6 +103,7 @@
                             </div>
                         </div>
                     </a>
+                    {/if}
                 </div>
             </div>
         </div>
@@ -125,31 +127,45 @@
             <p>They can be dragged and dropped among your browser's bookmarks. Then, you just have to click on them from your bookmarks menu.</p>
             <div class="row">
                 <div class="col-xs-6 text-center">
-                    <a class="bookmarklet" href="javascript:javascript:(function(){var%20url%20=%20location.href;var%20title%20=%20document.title%20||%20url;window.open('{$pageabsaddr}?post='%20+%20encodeURIComponent(url)+'&amp;title='%20+%20encodeURIComponent(title)+'&amp;description='%20+%20encodeURIComponent(document.getSelection())+'&amp;source=bookmarklet','_blank','menubar=no,height=720,width=600,toolbar=no,scrollbars=yes,status=no,dialog=1');})();">
-                        <img src="dist/img/tools/star-circle.png" alt="Favicon" /> {'Shaare link'|t}
+                    <a class="bookmarklet"
+                        href="javascript:(
+                          function(){
+                            var%20url%20=%20location.href;
+                            var%20title%20=%20document.title%20||%20url;
+                            var%20desc=document.getSelection().toString();
+                            if(desc.length>4000){
+                              desc=desc.substr(0,4000)+'...';
+                              alert('{function="str_replace(' ', '%20', t('The selected text is too long, it will be truncated.'))"}');
+                            }
+                            window.open(
+                              '{$pageabsaddr}admin/shaare?post='%20+%20encodeURIComponent(url)+
+                              '&amp;title='%20+%20encodeURIComponent(title)+
+                              '&amp;description='%20+%20encodeURIComponent(desc)+
+                              '&amp;source=bookmarklet','_blank','menubar=no,height=800,width=600,toolbar=no,scrollbars=yes,status=no,dialog=1'
+                            );
+                          }
+                        )();">
+                        <img src="{$asset_path}/dist/img/tools/star-circle.png#" alt="Favicon" /> {'Shaare link'|t}
                     </a>
                 </div>
                 <div class="col-xs-6 text-center">
-                    <a class="bookmarklet" href="?private=1&post=">
-                        <img src="dist/img/tools/star-circle.png" alt="Favicon" /> {'Add Note'|t}
+                    <a class="bookmarklet"
+                        href="javascript:(
+                          function(){
+                            var%20desc=document.getSelection().toString();
+                            if(desc.length>4000){
+                              desc=desc.substr(0,4000)+'...';
+                              alert('{function="str_replace(' ', '%20', t('The selected text is too long, it will be truncated.'))"}');
+                            }
+                            window.open(
+                              '{$pageabsaddr}?private=1&amp;post='+
+                              '&amp;description='%20+%20encodeURIComponent(desc)+
+                              '&amp;source=bookmarklet','_blank','menubar=no,height=800,width=600,toolbar=no,scrollbars=yes,status=no,dialog=1'
+                            );
+                          }
+                        )();">
+                        <img src="{$asset_path}/dist/img/tools/star-circle.png#" alt="Favicon" /> {'Add Note'|t}
                     </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <hr class="darker"/>
-            <h2 class="mtm" id="firefox-api-title">Firefox Social API integration</h2>
-            <p>Adds Shaarli to the <em>Share this page</em> button in Firefox.</p>
-            {if="!$sslenabled"}
-            <p class="highlight">{'You need to browse your Shaarli over <strong>HTTPS</strong> to use this functionality.'|t}</p>
-            {/if}
-            <div class="row">
-                <div class="col-xs-12 text-center">
-                    <button type="button" id="firefoxsocial" class="firefoxsocial button-raised button-firefox" {if="!$sslenabled"}disabled{/if}>
-                        Activate Now
-                    </button>
                 </div>
             </div>
         </div>

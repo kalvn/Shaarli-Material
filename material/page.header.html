@@ -4,19 +4,19 @@
     <div class="header-main container-fluid">
         <div class="row">
             <div class="col-lg-3 is-flex">
-                <a href="?" class="header-brand ripple">{$shaarlititle}</a>
+                <a href="{$titleLink}" class="header-brand ripple">{$shaarlititle}</a>
                 <a href="#" class="icon-unfold hidden-lg ripple" title="Show/hide menu"><i class="mdi mdi-chevron-down"></i></a>
             </div>
             <div class="col-lg-6 header-middle">
                 <div class="header-nav">
                     <div class="col-xs-6 col-sm-3 text-center">
-                        <a href="?do=tagcloud" class="toolbar-link button-inverse ripple">{'Tag cloud'|t}</a>
+                        <a href="{$base_path}/tags/cloud" class="toolbar-link button-inverse ripple">{'Tag cloud'|t}</a>
                     </div>
                     <div class="col-xs-6 col-sm-3 text-center">
-                        <a href="?do=picwall{$searchcrits}" class="toolbar-link button-inverse ripple">{'Picture wall'|t}</a>
+                        <a href="{$base_path}/picture-wall?{function="ltrim($searchcrits, '&')"}" class="toolbar-link button-inverse ripple">{'Picture wall'|t}</a>
                     </div>
                     <div class="col-xs-6 col-sm-3 text-center">
-                        <a href="?do=daily" class="toolbar-link button-inverse ripple">{'Daily'|t}</a>
+                        <a href="{$base_path}/daily" class="toolbar-link button-inverse ripple">{'Daily'|t}</a>
                     </div>
                     <div class="col-xs-6 col-sm-3 text-center">
                         <button class="toolbar-link button-inverse ripple" id="button-search">{'Search'|t}</button>
@@ -63,18 +63,18 @@
                         </div>
                     {/if}
                     {if="$is_logged_in"}
-                        <a href="?do=logout" class="icon-header popup-trigger ripple" title="{'Logout'|t}">
+                        <a href="{$base_path}/admin/logout" class="icon-header popup-trigger ripple" title="{'Logout'|t}">
                             <i class="mdi mdi-logout"></i>
                         </a>
-                        <a href="?do=tools" class="icon-header ripple" title="{'Tools'|t}">
+                        <a href="{$base_path}/admin/tools" class="icon-header ripple" title="{'Tools'|t}">
                             <i class="mdi mdi-settings"></i>
                         </a>
                     {elseif="$openshaarli"}
-                        <a href="?do=tools" class="icon-header ripple" title="{'Tools'|t}">
+                        <a href="{$base_path}/admin/tools" class="icon-header ripple" title="{'Tools'|t}">
                             <i class="mdi mdi-settings"></i>
                         </a>
                     {else}
-                        <a href="/login" class="icon-header popup-trigger ripple" title="{'Login'|t}">
+                        <a href="{$base_path}/login" class="icon-header popup-trigger ripple" title="{'Login'|t}">
                             <i class="mdi mdi-account"></i>
                         </a>
                     {/if}
@@ -86,11 +86,8 @@
                             <div class="popup-title">{'RSS Feed'|t}<button class="popup-close"><i class="mdi mdi-close"></i></button></div>
                             <div class="popup-body">
                                 <ul>
-                                    <li><a href="{$feedurl}?do=rss{$searchcrits}" class="ripple">{'RSS Feed'|t}</a></li>
-                                    {if="$showatom"}
-                                    <li><a href="{$feedurl}?do=atom{$searchcrits}" class="ripple">ATOM Feed</a></li>
-                                    {/if}
-                                    <li><a href="{$feedurl}?do=dailyrss" class="ripple" title="1 RSS entry per day">Daily Feed</a></li>
+                                    <li><a href="{$base_path}/feed/{$feed_type}?{$searchcrits}" class="ripple">{'RSS Feed'|t}</a></li>
+                                    <li><a href="{$base_path}/daily-rss" class="ripple" title="1 RSS entry per day">Daily Feed</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -112,25 +109,25 @@
                             <div class="popup-body">
                                 <h2>{'Links per page'|t}</h2>
                                 <ul class="filters-links-per-page">
-                                    <li><a href="?linksperpage=20" class="ripple">20 links</a></li>
-                                    <li><a href="?linksperpage=50" class="ripple">50 links</a></li>
-                                    <li><a href="?linksperpage=100" class="ripple">100 links</a></li>
+                                    <li><a href="{$base_path}/links-per-page?nb=20" class="ripple">20 links</a></li>
+                                    <li><a href="{$base_path}/links-per-page?nb=50" class="ripple">50 links</a></li>
+                                    <li><a href="{$base_path}/links-per-page?nb=100" class="ripple">100 links</a></li>
                                 </ul>
-                                <form method="GET" class="popup-content-area">
-                                    <input type="text" name="linksperpage" size="2" placeholder="Custom value..."/>
+                                <form method="get" action="{$base_path}/links-per-page" class="popup-content-area">
+                                    <input type="text" name="nb" placeholder="Custom value..."/>
                                 </form>
 
-                                <h2>{'Display'|t}</h2>
+                                <h2>{'Filters'|t}</h2>
                                 <div class="list-side-right">
                                     <div class="list-body">
                                         {if="$is_logged_in"}
                                         <div class="list-item">
                                             <div class="list-item-content">
-                                                <div class="list-item-label">{'Only display private links'|t}</div>
+                                                <div class="list-item-label">{'Only private links'|t}</div>
                                             </div>
                                             <div class="list-item-side">
                                                 <div class="switch">
-                                                    <label data-url="?visibility=private">
+                                                    <label data-url="{$base_path}/admin/visibility/private">
                                                         <input type="checkbox" name="input-visibility-private" id="input-visibility-private" {if="$visibility==='private'"}checked{/if}/>
                                                         <span class="lever"></span>
                                                     </label>
@@ -139,11 +136,11 @@
                                         </div>
                                         <div class="list-item">
                                             <div class="list-item-content">
-                                                <div class="list-item-label">{'Only display public links'|t}</div>
+                                                <div class="list-item-label">{'Only public links'|t}</div>
                                             </div>
                                             <div class="list-item-side">
                                                 <div class="switch">
-                                                    <label data-url="?visibility=public">
+                                                    <label data-url="{$base_path}/admin/visibility/public">
                                                         <input type="checkbox" name="input-visibility-public" id="input-visibility-public" {if="$visibility==='public'"}checked{/if}/>
                                                         <span class="lever"></span>
                                                     </label>
@@ -153,11 +150,11 @@
                                         {/if}
                                         <div class="list-item">
                                             <div class="list-item-content">
-                                                <div class="list-item-label">{'Filter untagged links'|t}</div>
+                                                <div class="list-item-label">{'Untagged links'|t}</div>
                                             </div>
                                             <div class="list-item-side">
                                                 <div class="switch">
-                                                    <label data-url="?untaggedonly">
+                                                    <label data-url="{$base_path}/untagged-only">
                                                         <input type="checkbox" name="input-untaggedonly" id="input-untaggedonly" {if="$untaggedonly"}checked{/if}/>
                                                         <span class="lever"></span>
                                                     </label>
@@ -174,7 +171,7 @@
         </div>
     </div>
     {if="($is_logged_in || $openshaarli) && !isset($_GET['edit_link']) && !isset($_GET['post']) && (!isset($_GET['do']) || !in_array($_GET['do'], array('addlink', 'changepasswd', 'configure', 'changetag', 'import', 'export')))"}
-        <a href="?do=addlink" class="button-floating ripple">
+        <a href="{$base_url}/admin/add-shaare" class="button-floating ripple">
             <i class="icon-add-link mdi mdi-plus"></i>
         </a>
     {/if}
@@ -207,7 +204,7 @@
     <div class="content-fullscreen">
         <div class="container">
             <div class="mbl row">
-                <form method="GET" id="form-search" class="col-md-8 col-md-offset-2">
+                <form method="get" action="{$base_path}/" id="form-search" class="col-md-8 col-md-offset-2">
                     <div class="search-field">
                         <input type="search" id="searchform_value" class="input-big" name="searchterm"
                             value="{if="isset($search_type)"}{if="$search_type=='fulltext'"}{$search_crits}{elseif="$search_type=='tags'"}{loop="$search_crits"}{$value} {/loop}{else}{/if}{/if}"

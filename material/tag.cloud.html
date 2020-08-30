@@ -1,6 +1,6 @@
 <!-- {$tagCategory = 'cloud'} -->
 <!DOCTYPE html>
-<html>
+<html{if="$language !== 'auto'"} lang="{$language}"{/if}>
 <head>{include="includes"}</head>
 <body>
 {include="page.header"}
@@ -15,7 +15,7 @@
     </div>
     <div id="cloudtag">
         {loop="$tags"}
-            <span class="count">{$value.count}</span><a href="?searchtags={$key|urlencode}" style="font-size:{$value.size}em;">{$key}</a>
+            <span class="count">{$value.count}</span><a href="{$base_path}/?searchtags={$key|urlencode}" style="font-size:{$value.size}em;">{$key}</a>
             {loop="$value.tag_plugin"}
                 {$value}
             {/loop}

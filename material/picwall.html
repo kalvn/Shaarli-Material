@@ -1,8 +1,16 @@
 <!DOCTYPE html>
-<html class="dark">
+<html class="dark"{if="$language !== 'auto'"} lang="{$language}"{/if}>
 <head>{include="includes"}</head>
 <body class="dark dark-toolbar">
 {include="page.header"}
+
+{if="count($linksToDisplay) === 0 && $is_logged_in"}
+  <div>
+      {'There is no cached thumbnail.'|t}
+      <a href="{$base_path}/admin/thumbnails">{'Try to synchronize them.'|t}</a>
+  </div>
+{/if}
+
 <div id="plugin_zone_start_picwall" class="plugin_zone">
     {loop="$plugin_start_zone"}
         {$value}

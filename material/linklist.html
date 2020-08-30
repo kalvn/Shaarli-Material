@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html{if="$language !== 'auto'"} lang="{$language}"{/if}>
 <head>{include="includes"}</head>
 <body>
 {include="page.header"}
@@ -16,7 +16,7 @@
 
     {if="count($links)==0"}
         <div class="text-center">
-            <img src="dist/img/sad_star.png" alt="Nothing found" />
+            <img src="{$asset_path}/dist/img/sad_star.png#" alt="Nothing found" />
         </div>
         <div class="nothing-found">Sorry... We found nothing{if="!empty($search_term)"} for <strong>{$search_term}</strong>{/if}{if="!empty($search_tags)"}{$exploded_tags=explode(' ', $search_tags)} tagged <strong>{loop="$exploded_tags"} {$value}{/loop}</strong>{/if}.</div>
     {elseif="!empty($search_term) or !empty($search_tags) or !empty($visibility) or $untaggedonly"}
@@ -25,7 +25,7 @@
             {if="!empty($search_term)"} {'for'|t} <strong>{$search_term}</strong>{/if}
             {if="!empty($search_tags)"}{$exploded_tags=explode(' ', $search_tags)} {'tagged'|t} <i>
             {loop="$exploded_tags"}
-                <a href="?removetag={$value}" class="link-tag-filter" title="{'Remove tag'|t}">{$value}&nbsp;
+                <a href="{$base_path}/remove-tag/{function="urlencode($value)"}" class="link-tag-filter" title="{'Remove tag'|t}">{$value}&nbsp;
                     <span class="remove">&#x2715;</span>
                 </a>
             {/loop}
@@ -78,9 +78,9 @@
                             <div class="col-sm-4">
                                 <div class="link-date">
                                     {if="!$hide_timestamps || $is_logged_in"}
-                                        <span title="Permalink - {function="strftime($dateFormat, $value.timestamp)"}"><a href="?{$value.shorturl}" class="link-actual-date">{function="strftime($dateFormat, $value.timestamp)"}</a></span>
+                                        <span title="Permalink - {function="strftime($dateFormat, $value.timestamp)"}"><a href="{$base_path}/shaare/{$value.shorturl}" class="link-actual-date">{function="strftime($dateFormat, $value.timestamp)"}</a></span>
                                     {else}
-                                        <span title="Short link here"><a href="?{$value.shorturl}">Permalink</a></span>
+                                        <span title="Short link here"><a href="{$base_path}/shaare/{$value.shorturl}">Permalink</a></span>
                                     {/if}
                                     {loop="$value.link_plugin"}
                                         <span class="link-plugin">{$value}</span>
@@ -97,7 +97,7 @@
                             <div class="thumb">
                                 <a href="{$value.real_url}">
                                   {ignore}RainTPL hack: put the 2 src on two different line to avoid path replace bug{/ignore}
-                                  <img data-src="{$value.thumbnail}#" class="b-lazy"
+                                  <img data-src="{$base_path}/{$value.thumbnail}#" class="b-lazy"
                                     src="#"
                                     alt="thumbnail" width="{$thumbnails_width}" height="{$thumbnails_height}" />
                                   </a>
@@ -112,19 +112,19 @@
                         <div class="link-tag-list is-flex-grown">
                         {if="$value.tags"}
                             {loop="$value.taglist"}
-                                <span class="link-tag" title="Find links with the same tag"><a href="?addtag={$value|urlencode}">{$value}</a></span>
+                                <span class="link-tag" title="Find links with the same tag"><a href="{$base_path}/add-tag/{$value|urlencode}">{$value}</a></span>
                             {/loop}
                         {/if}
                         </div>
-                        
+
                         <div class="link-actions is-flex-end">
                             {if="!$qrCodeDisabled"}
                                 <a href="http://qrfree.kaywa.com/?l=1&amp;s=8&amp;d={$value.real_url|urlencode}" data-permalink="{$value.real_url|urlencode}" title="Show link QR Code" class="qrcode"><i class="mdi mdi-qrcode"></i></a>
                             {/if}
                             {if="$is_logged_in"}
-                                <a href="?delete_link&amp;lf_linkdate={$value.id}&amp;token={$token}" title="{$strDelete}" class="button-delete"><i class="mdi mdi-delete"></i></a>
-                                <a href="?edit_link={$value.id}" title="{$strEdit}"><i class="mdi mdi-pencil"></i></a>
-                                <a href="?do=pin&amp;id={$value.id}&amp;token={$token}" title="{$strToggleSticky}" {if="isset($value.sticky) && $value.sticky"}class="is-pinned"{/if}><i class="mdi mdi-pin"></i></a>
+                                <a href="{$base_path}/admin/shaare/delete?id={$value.id}&amp;token={$token}" title="{$strDelete}" class="button-delete"><i class="mdi mdi-delete"></i></a>
+                                <a href="{$base_path}/admin/shaare/{$value.id}" title="{$strEdit}"><i class="mdi mdi-pencil"></i></a>
+                                <a href="{$base_path}/admin/shaare/{$value.id}/pin?token={$token}" title="{$strToggleSticky}" {if="isset($value.sticky) && $value.sticky"}class="is-pinned"{/if}><i class="mdi mdi-pin"></i></a>
                             {else}
                                 {if="isset($value.sticky) && $value.sticky"}
                                 <span title="{$strSticky}"><i class="mdi mdi-pin"></i></span>
@@ -138,7 +138,7 @@
     </div>
 
     {include="linklist.paging"}
-    
+
     {loop="$plugin_end_zone"}
         {$value}
     {/loop}

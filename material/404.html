@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html{if="$language !== 'auto'"} lang="{$language}"{/if}>
 <head>{include="includes"}</head>
 <body>
 {include="page.header"}
 <div class="container">
     <div class="text-center">
-        <img src="dist/img/sad_star.png" alt="Nothing found">
+        <img src={$asset_path}/dist/img/sad_star.png" alt="Nothing found">
     </div>
-    <div class="nothing-found">Sorry... We found nothing here. That's a <strong>404</strong>.</div>
+    <div class="nothing-found">{'Sorry, nothing to see here.'|t} That's a <strong>404</strong>.</div>
     <p class="text-center">{$error_message}</p>
 </div>
 {include="page.footer"}
