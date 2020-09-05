@@ -66,11 +66,22 @@ a.link-title{
     }
 }
 .private{
-    background: url(img/private-band.png) top left no-repeat #fff;
-}
-.private a.link-title{
-    margin-left: $space-l;
-    color: #B71C1C;
+    &:before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border: 16px solid transparent;
+        border-right: 16px solid #b71c1c;
+        top: -16px;
+        left: -16px;
+        transform: rotate(45deg);
+    }
+
+    a.link-title{
+        color: #b71c1c;
+    }
 }
 a.link-url{
     color: $color-gray-600;
