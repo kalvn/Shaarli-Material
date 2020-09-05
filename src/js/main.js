@@ -374,15 +374,25 @@
 
     var initQrCode = function(){
         // Removes the onclick attribute to override the Shaarli default qrcode button's behavior.
-        $('.icon-qrcode, .qrcode').removeAttr('onclick').on('click', function(event){
+        $('.icon-qrcode, .qrcode').removeAttr('onclick').off('click').on('click', function(event){
             event.preventDefault();
 
-            var url = $(this).attr('href');
+            var url = $(this).data('permalink');
 
             overlay.addListener('qrcode', function(event){
                 overlay.hide();
             });
-            overlay.addContent('qrcode', '<img src="' + url + '" alt="QR Code" />');
+            overlay.addContent('qrcode', '<div id="qrcode"></div>');
+
+            var qrcode = new QRCode(document.getElementById('qrcode'), {
+                text: url,
+                width: 192,
+                height: 192,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+
             overlay.show();
 
             // Disable original click event.

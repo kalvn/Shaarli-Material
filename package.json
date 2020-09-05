@@ -10,6 +10,7 @@
     "bootstrap": "^3.4.1",
     "jquery": "^3.5.0",
     "moment": "^2.25.1",
+    "qrcodejs2": "0.0.2",
     "salvattore": "^1.0.9",
     "sortablejs": "^1.10.2"
   },

@@ -119,7 +119,7 @@
 
                         <div class="link-actions is-flex-end">
                             {if="!$qrCodeDisabled"}
-                                <a href="http://qrfree.kaywa.com/?l=1&amp;s=8&amp;d={$value.real_url|urlencode}" data-permalink="{$value.real_url|urlencode}" title="Show link QR Code" class="qrcode"><i class="mdi mdi-qrcode"></i></a>
+                                <a href="#" data-permalink="{$value.real_url}" title="Show link QR Code" class="qrcode"><i class="mdi mdi-qrcode"></i></a>
                             {/if}
                             {if="$is_logged_in"}
                                 <a href="{$base_path}/admin/shaare/delete?id={$value.id}&amp;token={$token}" title="{$strDelete}" class="button-delete"><i class="mdi mdi-delete"></i></a>

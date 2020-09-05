@@ -89,6 +89,7 @@ This theme uses a few Javascript libraries.
 - [Sortable](http://rubaxa.github.io/Sortable/)
 - [Salvattore](https://salvattore.js.org/)
 - [Autosize](https://github.com/jackmoore/autosize/)
+- [QRCode.js](https://github.com/davidshimjs/qrcodejs) - [on npm](https://www.npmjs.com/package/qrcodejs2)
 
 
 ## Demo
