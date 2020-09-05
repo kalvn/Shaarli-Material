@@ -11,7 +11,7 @@ Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), t
 ## Compatibility
 Shaarli Material follows the exact same versions numbers than Shaarli. It means that if you install Shaarli vX.Y.Z, you should use Shaarli Material vX.Y.Z.
 
-Shaarli Material was tested and validated with **Shaarli 0.11**.
+Shaarli Material was tested and validated with **Shaarli 0.12.0-beta**.
 
 
 ## Download
@@ -56,7 +56,7 @@ Here is an example of what you can configure (in real life, there will be other 
     "resource": {
         "raintpl_tpl": "tpl\/material\/"
     },
-    
+
     "config": {
         "MATERIAL_PHP_DATE_PATTERN": "%d\/%m\/%Y %H:%M:%S",
         "MATERIAL_NO_QRCODE": true,
