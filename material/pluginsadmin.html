@@ -86,6 +86,7 @@
                                 <div class="row plugin-param">
                                     <div class="col-sm-4 plugin-param-key">
                                         <label for="{$key}" {if="isset($value.desc)"}title="{$value.desc}"{/if}>{function="str_replace('_', ' ', $key)"}</label>
+                                        {if="isset($value.desc)"}<div class="sublabel">{$value.desc}</div>{/if}
                                     </div>
                                     <div class="col-sm-8">
                                         <input type="text" name="{$key}" value="{$value.value}" id="{$key}" {if="isset($value.desc)"}placeholder="{$value.desc}"{/if}>

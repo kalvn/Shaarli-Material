@@ -79,7 +79,6 @@
     line-height: 20px;
 }
 
-
 /* Errors */
 .errors{
     color: #fff;
@@ -124,9 +123,22 @@
 }
 
 /* Plugin administration */
-.plugin-param:focus-within {
-    .plugin-param-key label {
-        color: $color-primary;
+.plugin-param {
+    label {
+        margin-bottom: 0;
+        line-height: 1.2;
+    }
+
+    .sublabel {
+        margin-top: 0;
+        text-align: left;
+        line-height: 1.5;
+    }
+
+    &:focus-within {
+        .plugin-param-key label {
+            color: $color-primary;
+        }
     }
 }
 .plugin-param-key{
