@@ -42,11 +42,11 @@
                             data-list="{loop="$tags"}{$key}, {/loop}" data-multiple autocomplete="off" />
                     </div>
                     {if="isset($edit_link_plugin)"}
-                    <div class="form-entry">
                         {loop="$edit_link_plugin"}
+                        <div class="form-entry">
                              {$value}
+                        </div>
                         {/loop}
-                    </div>
                     {/if}
                     <div class="form-entry">
                         <input type="checkbox" class="filled-in" {if="($link_is_new && $default_private_links) || $link.private == true"}checked="checked"{/if} name="lf_private" id="lf_private"/>
