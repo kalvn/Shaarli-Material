@@ -27,5 +27,5 @@
 </div>
 <script src="{$asset_path}/dist/scripts.min.js?v={$version_hash}#"></script>
 {loop="$plugins_footer.js_files"}
-     <script src="{$value}?v={$version_hash}#"></script>
+     <script src="{$base_path}/{$value}?v={$version_hash}#"></script>
 {/loop}

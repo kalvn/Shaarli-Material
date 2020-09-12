@@ -45,7 +45,7 @@
 <meta name="theme-color" content="#2196f3">
 {/if}
 {loop="$plugins_includes.css_files"}
-<link type="text/css" rel="stylesheet" href="{$value}?v={$version_hash}#"/>
+<link type="text/css" rel="stylesheet" href="{$base_path}/{$value}?v={$version_hash}#"/>
 {/loop}
 {if="is_file('data/user.css')"}<link type="text/css" rel="stylesheet" href="data/user.css#" />{/if}
 <script>
