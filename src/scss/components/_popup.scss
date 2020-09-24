@@ -19,6 +19,12 @@
         color: $color-subtitle;
     }
 
+    label {
+        margin-bottom: 0;
+        font-size: 12px;
+        color: $color-subtitle;
+    }
+
     @media (max-width: 600px){
         position: fixed;
         overflow-x: auto;

@@ -112,12 +112,13 @@
                             <div class="popup-body">
                                 <h2>{'Links per page'|t}</h2>
                                 <ul class="filters-links-per-page">
-                                    <li><a href="{$base_path}/links-per-page?nb=20" class="ripple">20 links</a></li>
-                                    <li><a href="{$base_path}/links-per-page?nb=50" class="ripple">50 links</a></li>
-                                    <li><a href="{$base_path}/links-per-page?nb=100" class="ripple">100 links</a></li>
+                                    <li><a href="{$base_path}/links-per-page?nb=20" class="ripple {if="$links_per_page == 20"}is-bold{/if}">20 links</a></li>
+                                    <li><a href="{$base_path}/links-per-page?nb=50" class="ripple {if="$links_per_page == 50"}is-bold{/if}">50 links</a></li>
+                                    <li><a href="{$base_path}/links-per-page?nb=100" class="ripple {if="$links_per_page == 100"}is-bold{/if}">100 links</a></li>
                                 </ul>
                                 <form method="get" action="{$base_path}/links-per-page" class="popup-content-area">
-                                    <input type="text" name="nb" placeholder="Custom value..."/>
+                                    <label for="filter-nb">Custom value</label>
+                                    <input type="text" id="filter-nb" name="nb" placeholder="Type a number..." value="{$links_per_page}"/>
                                 </form>
 
                                 <h2>{'Filters'|t}</h2>
