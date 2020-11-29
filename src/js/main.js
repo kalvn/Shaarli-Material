@@ -34,6 +34,7 @@
         if(shaarli.isAuth){
             initSortable();
             initTextareaAutosize();
+            initMetadata();
         }
 
         // Handle autofocus fields.
@@ -507,6 +508,49 @@
 
     var initTextareaAutosize = function () {
         autosize($('#lf_description'));
+    };
+
+    var initMetadata = function () {
+        if (shaarli.pageName !== 'editlink' || !shaarli.asyncMetadata) {
+            return;
+        }
+
+        var $loadingWrappers = $('.loading-wrapper');
+        var $inputTitle = $('input[name="lf_title"]');
+        var $inputDescription = $('input[name="lf_description"]');
+        var $inputTags = $('input[name="lf_tags"]');
+        var url = $('input[name="lf_url"]').val();
+
+        if ($inputTitle.length > 0 && $inputTitle.val().length > 0) {
+            return;
+        }
+
+        $loadingWrappers.addClass('is-loading');
+
+        $.ajax({
+            url: shaarli.basePath + '/admin/metadata?url=' + encodeURIComponent(url),
+            method: 'get',
+            success: function (data) {
+                if ($inputTitle && $inputTitle.length > 0 && $inputTitle.val().length > 0) {
+                    $inputTitle.val(data.title);
+                }
+
+                if ($inputDescription && $inputDescription.length > 0 && $inputDescription.val().length > 0) {
+                    $inputDescription.val(data.description);
+                }
+
+                if ($inputTags && $inputTags.length > 0 && $inputTags.val().length > 0) {
+                    $inputTags.val(data.tags);
+                }
+            },
+            error: function (error) {
+                console.error('Failed to get link metadata.');
+                displayModal('Error', 'An error occurred while getting metadata for ' + escapeHtml(url), 'alert');
+            },
+            complete: function () {
+                $loadingWrappers.removeClass('is-loading');
+            }
+        });
     };
 
     var initBlazy = function(){

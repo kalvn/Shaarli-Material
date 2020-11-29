@@ -60,7 +60,8 @@ var shaarli = {
     {/if},
     datePattern: '{$conf->get('config.MATERIAL_DATE_PATTERN')}',
     isAuth: {if="$is_logged_in"}true{else}false{/if},
-    pageName: '{$pageName}'
+    pageName: '{$pageName}',
+    asyncMetadata: {if="isset($async_metadata) && $async_metadata"}true{else}false{/if}
 };
 </script>
 {if="file_exists('tpl/material/extra.html')"}

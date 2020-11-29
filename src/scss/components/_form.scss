@@ -112,9 +112,27 @@ label.active{
             color: $color-primary;
         }
     }
-    
+
     &:last-child{
         margin-bottom: 0;
+    }
+}
+
+.loading-wrapper.is-loading {
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 7px;
+        right: 7px;
+        border: 2px solid $color-primary;
+        border-bottom-color: transparent;
+        border-radius: 50%;
+
+        @extend .animate-turn-forever;
     }
 }
 
@@ -144,7 +162,7 @@ label.active{
             -ms-user-select: none; /* IE10+ */
         }
     }
-    
+
     & + label{
         color: $radio-label-color;
     }

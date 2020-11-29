@@ -6,6 +6,7 @@
 </head>
 <body {if="!empty($_GET['source']) && $_GET['source']=='bookmarklet'"}class="from-bookmarklet"{/if}>
 {include="page.header"}
+{$asyncLoadClass=$link_is_new && $async_metadata && empty($link.title) ? 'loading-wrapper' : ''}
 <div id="editlinkform" class="container page-edit">
     <div class="row" id="editlinkform-row">
         <div class="col-md-6 col-md-offset-3" id="editlinkform-col">
@@ -31,16 +32,22 @@
                     </div>
                     <div class="form-entry">
                         <label for="lf_title">{'Title'|t}</label><br/>
-                        <input type="text" name="lf_title" id="lf_title" {if="$link.title==''"}class="autofocus"{/if} value="{$link.title}" placeholder="Title...">
+                        <div class="{$asyncLoadClass}">
+                            <input type="text" name="lf_title" id="lf_title" {if="$link.title==''"}class="autofocus"{/if} value="{$link.title}" placeholder="Title...">
+                        </div>
                     </div>
                     <div class="form-entry">
                         <label for="lf_description">{'Description'|t}</label><br/>
-                        <textarea name="lf_description" id="lf_description" {if="$link.description==''"}class="autofocus"{/if} placeholder="Describe the link..." rows="4">{$link.description}</textarea>
+                        <div class="{$asyncLoadClass}">
+                            <textarea name="lf_description" id="lf_description" {if="$link.description==''"}class="autofocus"{/if} placeholder="Describe the link..." rows="4">{$link.description}</textarea>
+                        </div>
                     </div>
                     <div class="form-entry">
                         <label for="lf_tags">{'Tags'|t}</label><br/>
-                        <input type="text" id="lf_tags" name="lf_tags" class="autofocus" value="{$link.tags}" class="lf_input"
-                            data-list="{loop="$tags"}{$key}, {/loop}" data-multiple autocomplete="off" />
+                        <div class="{$asyncLoadClass}">
+                            <input type="text" id="lf_tags" name="lf_tags" class="autofocus" value="{$link.tags}" class="lf_input"
+                                data-list="{loop="$tags"}{$key}, {/loop}" data-multiple autocomplete="off" />
+                        </div>
                     </div>
                     {if="isset($edit_link_plugin)"}
                         {loop="$edit_link_plugin"}

@@ -102,3 +102,16 @@
         max-height: 0;
     }
 }
+
+.animate-turn-forever {
+    animation: turn $animation-speed-long linear infinite;
+}
+@keyframes turn {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
