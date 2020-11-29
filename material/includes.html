@@ -45,13 +45,16 @@
 <meta name="theme-color" content="#2196f3">
 {/if}
 {loop="$plugins_includes.css_files"}
-<link type="text/css" rel="stylesheet" href="{$base_path}/{$value}?v={$version_hash}#"/>
+<link type="text/css" rel="stylesheet" href="{$root_path}/{$value}?v={$version_hash}#"/>
 {/loop}
-{if="is_file('data/user.css')"}<link type="text/css" rel="stylesheet" href="data/user.css#" />{/if}
+{if="is_file('data/user.css')"}
+<link type="text/css" rel="stylesheet" href="${root_path}/data/user.css#" />
+{/if}
 <script>
 var shaarli = {
     source: '{$source}',
     basePath: '{$base_path}',
+    rootPath: '{$root_path}',
     assetPath: '{$asset_path}',
     fromNow: {if="$conf->get('config.MATERIAL_DATE_FROMNOW')"}
         {$conf->get('config.MATERIAL_DATE_FROMNOW')}
