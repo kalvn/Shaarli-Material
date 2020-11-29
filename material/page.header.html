@@ -1,5 +1,5 @@
 {$isCalledFromBookmarklet=(!empty($_GET['source']) && $_GET['source'] === 'bookmarklet')}
-{$displayAddNewLinkIcon=(($is_logged_in || $openshaarli) && in_array($_PAGE_, array('linklist', 'tools', 'tag.cloud', 'tag.list', 'picwall', 'daily')))}
+{$displayAddNewLinkIcon=(($is_logged_in || $openshaarli) && in_array($pageName, array('linklist', 'tools', 'tag.cloud', 'tag.list', 'picwall', 'daily')))}
 
 {if="$isCalledFromBookmarklet"}
     {ignore} When called as a popup from bookmarklet, do not display menu. {/ignore}
@@ -175,7 +175,7 @@
         </div>
     </div>
     {if="$displayAddNewLinkIcon"}
-        <a href="{$base_url}/admin/add-shaare" class="button-floating ripple">
+        <a href="{$base_path}/admin/add-shaare" class="button-floating ripple">
             <i class="icon-add-link mdi mdi-plus"></i>
         </a>
     {/if}

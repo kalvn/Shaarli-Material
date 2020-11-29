@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html{if="$language !== 'auto'"} lang="{$language}"{/if}>
 <head>
-    {include="includes"}
+{$pageName="editlink"}
+{include="includes"}
 </head>
 <body {if="!empty($_GET['source']) && $_GET['source']=='bookmarklet'"}class="from-bookmarklet"{/if}>
 {include="page.header"}

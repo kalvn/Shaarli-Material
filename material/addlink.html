@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html{if="$language !== 'auto'"} lang="{$language}"{/if}>
-<head>{include="includes"}</head>
+<head>
+{$pageName="addlink"}
+{include="includes"}
+</head>
 <body onload="document.addform.post.focus();">
 {include="page.header"}
 <div id="headerform" class="page-add container">
