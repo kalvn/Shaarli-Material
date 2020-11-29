@@ -74,7 +74,7 @@
                                     {if="strpos($value.url, $value.shorturl) !== false"}
                                     <i class="mdi mdi-note"></i>
                                     {/if}
-                                    {$value.title}
+                                    {$value.title_html}
                                 </a>
                                 <a href="{$value.real_url}" class="link-url"><span title="Real URL">{$value.real_url}</span></a>
                             </div>
@@ -115,7 +115,7 @@
                         <div class="link-tag-list is-flex-grown">
                         {if="$value.tags"}
                             {loop="$value.taglist"}
-                                <span class="link-tag" title="Find links with the same tag"><a href="{$base_path}/add-tag/{$value|urlencode}">{$value}</a></span>
+                                <span class="link-tag" title="Find links with the same tag"><a href="{$base_path}/add-tag/{$value1.taglist_urlencoded.$key2}">{$value1.taglist_html.$key2}</a></span>
                             {/loop}
                         {/if}
                         </div>
