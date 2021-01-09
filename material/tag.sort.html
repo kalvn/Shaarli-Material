@@ -1,7 +1,7 @@
 <div class="subheader">
     <div class="container text-center">
-        <a class="button-inverse button-default{if="$_PAGE_ === 'tag.cloud'"} active{/if}" href="{$base_path}/tags/cloud" title="{'Cloud'|t}">{'Cloud'|t}</a>
-        <a class="button-inverse button-default{if="$_PAGE_ === 'tag.list' && $_GET['sort'] === 'usage'"} active{/if}" href="{$base_path}/tags/list?sort=usage" title="{'Most used'|t}">{'Most used'|t}</a>
-        <a class="button-inverse button-default{if="$_PAGE_ === 'tag.list' && $_GET['sort'] === 'alpha'"} active{/if}" href="{$base_path}/tags/list?sort=alpha" title="{'Alphabetical'|t}">{'Alphabetical'|t}</a>
+        <a class="button-inverse button-default{if="$pageName === 'tag.cloud'"} active{/if}" href="{$base_path}/tags/cloud" title="{'Cloud'|t}">{'Cloud'|t}</a>
+        <a class="button-inverse button-default{if="$pageName === 'tag.list' && $_GET['sort'] === 'usage'"} active{/if}" href="{$base_path}/tags/list?sort=usage" title="{'Most used'|t}">{'Most used'|t}</a>
+        <a class="button-inverse button-default{if="$pageName === 'tag.list' && $_GET['sort'] === 'alpha'"} active{/if}" href="{$base_path}/tags/list?sort=alpha" title="{'Alphabetical'|t}">{'Alphabetical'|t}</a>
     </div>
 </div>

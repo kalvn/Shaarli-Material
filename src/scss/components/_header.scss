@@ -7,7 +7,7 @@
 }
 
 /* Toolbar icon buttons */
-.icon-login, 
+.icon-login,
 .icon-tools,
 .icon-rss,
 .icon-private,
@@ -148,7 +148,7 @@
     .header-middle{
 
         a:hover{
-            background-color: rgba(255, 255, 255, 0.15);    
+            background-color: rgba(255, 255, 255, 0.15);
         }
 
 
@@ -191,7 +191,7 @@
 .subheader{
     width: 100%;
     background-color: $color-primary-second;
-    
+
     @extend .shadow-1;
 
     margin-top: -15px;
@@ -209,5 +209,9 @@
         float: left;
         color: #fff;
         margin-right: $space-t;
+    }
+
+    &.is-dark {
+        background-color: $color-gray-800;
     }
 }

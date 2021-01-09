@@ -6,6 +6,16 @@
 </head>
 <body class="dark-toolbar">
 {include="page.header"}
+
+<div class="subheader is-dark">
+    <div class="container text-center">
+        <a class="button-inverse button-default{if="array_key_exists('day', $_GET) || (!array_key_exists('week', $_GET) && !array_key_exists('month', $_GET))"} active{/if}" href="{$base_path}/daily?day" title="{'Daily'|t}">{'Daily'|t}</a>
+        <a class="button-inverse button-default{if="array_key_exists('week', $_GET)"} active{/if}" href="{$base_path}/daily?week" title="{'Weekly'|t}">{'Weekly'|t}</a>
+        <a class="button-inverse button-default{if="array_key_exists('month', $_GET)"} active{/if}" href="{$base_path}/daily?month" title="{'Monthly'|t}">{'Monthly'|t}</a>
+    </div>
+</div>
+
+
 <div class="daily">
     <div id="plugin_zone_start_picwall" class="plugin_zone">
          {loop="$plugin_start_zone"}
@@ -14,18 +24,18 @@
     </div>
 
     <div class="daily-header">
-        <h1>{'The Daily Shaarli'|t}</h1>
-        <p class="daily-header-subtitle">{'All links of one day in a single page.'|t}</p>
+        <h1>{$localizedType} Shaarli</h1>
+        <p class="daily-header-subtitle">{function="t('All links of one :type in a single page.', '', 1, 'shaarli', [':type' => t($type)])"}</p>
         <div class="container">
             <div class="row">
                 <div class="col-xs-6">
-                    <a {if="$previousday"}href="{$base_path}/daily?day={$previousday}"{else}href="#"{/if} class="button" {if="!$previousday"}disabled{/if}>
-                        <i class="mdi mdi-arrow-left"></i> {'Previous day'|t}
+                    <a {if="$previousday"}href="{$base_path}/daily?{$type}={$previousday}"{else}href="#"{/if} class="button" {if="!$previousday"}disabled{/if}>
+                        <i class="mdi mdi-arrow-left"></i> {function="t('Previous :type', '', 1, 'shaarli', [':type' => t($type)], true)"}
                     </a>
                 </div>
                 <div class="col-xs-6">
-                    <a {if="$nextday"}href="{$base_path}/daily?day={$nextday}"{else}href="#"{/if} class="button" {if="!$nextday"}disabled{/if}>
-                        {'Next day'|t} <i class="mdi mdi-arrow-right"></i>
+                    <a {if="$nextday"}href="{$base_path}/daily?{$type}day={$nextday}"{else}href="#"{/if} class="button" {if="!$nextday"}disabled{/if}>
+                        {function="t('Next :type', '', 1, 'shaarli', [':type' => t($type)], true)"} <i class="mdi mdi-arrow-right"></i>
                     </a>
                 </div>
             </div>
@@ -34,7 +44,7 @@
         </div>
     </div>
 
-    <h2 class="daily-title">{function="format_date($dayDate, false)"}</h2>
+    <h2 class="daily-title">{$dayDesc}</h2>
 
     <div id="plugin_zone_about_daily" class="plugin_zone">
     {loop="$daily_about_plugin"}
@@ -64,7 +74,15 @@
                     <div class="daily-item-footer clearfix">
                         {if="!$hide_timestamps || $is_logged_in"}
                         <a href="{$base_path}/shaare/{$value.shorturl}" class="daily-item-footer-subtitle" title="{'Permalink'|t}">
-                            {function="strftime('%H:%M', $link.timestamp)"}
+                            {if="$type === 'week'"}
+                                {function="strftime('%a %e %b, %H:%M', $link.timestamp)"}
+                            {else}
+                                {if="$type === 'month'"}
+                                    {function="strftime('%a %e %b %Y, %H:%M', $link.timestamp)"}
+                                {else}
+                                    {function="strftime('%H:%M', $link.timestamp)"}
+                                {/if}
+                            {/if}
                         </a>
                         {/if}
                         {if="$link.tags"}
