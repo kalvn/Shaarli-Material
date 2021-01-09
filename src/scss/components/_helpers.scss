@@ -74,6 +74,9 @@ hr.margin{
         &.mdi-image {
             color: #9E9E9E;
         }
+        &.mdi-server {
+            color: #607D8B;
+        }
     }
 }
 p.highlight{
@@ -98,6 +101,10 @@ p.highlight{
 
 .text-center {
   text-align: center;
+}
+
+.text-warning {
+    color: #FF9800;
 }
 
 .text-success{

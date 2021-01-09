@@ -53,6 +53,19 @@
                             </div>
                         </div>
                     </a>
+                    <a class="list-item ripple" href="{$base_path}/admin/server">
+                        <div class="row">
+                            <div class="col-sm-2 col-xs-3">
+                                <div class="round-image-container">
+                                    <i class="mdi mdi-server" title="{'Check instance\'s server configuration'|t}"></i>
+                                </div>
+                            </div>
+                            <div class="col-sm-10 col-xs-9">
+                                <div class="list-item-label">{'Server administration'|t}</div>
+                                <div class="list-item-sublabel">{'Check instance\'s server configuration'|t}</div>
+                            </div>
+                        </div>
+                    </a>
                     <a class="list-item ripple" href="{$base_path}/admin/tags">
                         <div class="row">
                             <div class="col-sm-2 col-xs-3">
@@ -92,21 +105,6 @@
                             </div>
                         </div>
                     </a>
-                    {if="$thumbnails_enabled"}
-                    <a class="list-item ripple" href="{$base_path}/admin/thumbnails">
-                        <div class="row">
-                            <div class="col-sm-2 col-xs-3">
-                                <div class="round-image-container">
-                                    <i class="mdi mdi-image" title="{'Synchronize thumbnails'|t}"></i>
-                                </div>
-                            </div>
-                            <div class="col-sm-10 col-xs-9">
-                                <div class="list-item-label">{'Synchronize thumbnails'|t}</div>
-                                <div class="list-item-sublabel">{'Downloads shaares thumbnails according to your settings'|t}</div>
-                            </div>
-                        </div>
-                    </a>
-                    {/if}
                 </div>
             </div>
         </div>

@@ -101,6 +101,16 @@
         margin-bottom: 0;
     }
 }
+.successes {
+    background-color: #4CAF50;
+    padding: $space-m 0;
+    margin-top: -$space-m;
+    margin-bottom: $space-m;
+
+    ul{
+        margin-bottom: 0;
+    }
+}
 
 /* QRCode */
 #overlay-content-qrcode{

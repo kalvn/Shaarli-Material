@@ -1,4 +1,13 @@
 .modal{
+    // Overrides Bootstrap
+    position: relative;
+    display: block;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    z-index: 1;
+    // End override Bootstrap
     margin-top: 10%;
     margin-top: 10vh;
     background: #fff;
@@ -6,6 +15,7 @@
 }
 .modal-title{
     padding: 20px 20px 10px 20px;
+    line-height: inherit;
     @include font-title();
 }
 .modal-body{
@@ -16,4 +26,6 @@
 }
 .modal-footer{
     padding: 10px 20px 20px 20px;
+    border: none;
+    text-align: left;
 }

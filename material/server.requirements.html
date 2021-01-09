@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="card">
+                <div class="card-header">{'Permissions'|t}</div>
+                <div class="card-body">
+                    {if="count($permissions) > 0"}
+                        <p><i class="mdi mdi-close text-error"></i> {'There are permissions that need to be fixed.'|t}</p>
+                        <ul>
+                            {loop="$permissions"}
+                                <li>{$value}</li>
+                            {/loop}
+                        </ul>
+                    {else}
+                        <p><i class="mdi mdi-check text-success"></i> {'All read/write permissions are properly set.'|t}</p>
+                    {/if}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-10 col-md-offset-1">
+            <div class="card">
+                <div class="card-header">PHP</div>
+                <div class="card-body">
+                    <p>
+                        <strong>{'Running PHP'|t} {$php_version}</strong>
+
+                        {if="$php_has_reached_eol"}
+                            <i class="mdi mdi-circle text-warning" aria-label="hidden"></i><br>
+                        {'End of life: '|t} {$php_eol}
+                        {else}
+                            <i class="mdi mdi-circle text-success" aria-label="hidden"></i><br>
+                        {/if}
+                    </p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>{'Extension'|t}</th>
+                                <th>{'Usage'|t}</th>
+                                <th>{'Status'|t}</th>
+                                <th class="text-center">{'Loaded'|t}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {loop="$php_extensions"}
+                            <tr>
+                                <td>{$value.name}</td>
+                                <td>{$value.desc}</td>
+                                <td>{$value.required ? t('Required') : t('Optional')}</td>
+                                <td class="text-center">
+                                    {if="$value.loaded"}
+                                        {$classLoaded="text-success"}
+                                        {$strLoaded=t('Loaded')}
+                                    {else}
+                                        {$strLoaded=t('Not loaded')}
+                                        {if="$value.required"}
+                                            {$classLoaded="text-error"}
+                                        {else}
+                                            {$classLoaded="text-warning"}
+                                        {/if}
+                                    {/if}
+
+                                    <i class="mdi mdi-circle {$classLoaded}" aria-label="{$strLoaded}" title="{$strLoaded}"></i>
+                                </td>
+                            </tr>
+                            {/loop}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

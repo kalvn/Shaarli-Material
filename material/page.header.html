@@ -193,10 +193,30 @@
         </div>
     {/if}
 
-    {if="!empty($global_warnings) && $is_logged_in"}
+    {if="!empty($global_errors)"}
+      <div class="errors">
+            <ul class="container">
+                {loop="global_errors"}
+                    <li>{$value}</li>
+                {/loop}
+            </ul>
+        </div>
+    {/if}
+
+    {if="!empty($global_warnings)"}
         <div class="warnings">
             <ul class="container">
                 {loop="global_warnings"}
+                    <li>{$value}</li>
+                {/loop}
+            </ul>
+        </div>
+    {/if}
+
+    {if="!empty($global_successes)"}
+        <div class="successes">
+            <ul class="container">
+                {loop="global_successes"}
                     <li>{$value}</li>
                 {/loop}
             </ul>

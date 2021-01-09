@@ -1,0 +1,24 @@
+table {
+    width: 100%;
+}
+
+th,
+td {
+    padding: $space-t $space-s;
+
+    &:first-child {
+        padding-left: 0;
+    }
+
+    &:last-child {
+        padding-right: 0;
+    }
+}
+
+th {
+    font-weight: bold;
+}
+
+tr {
+    border-bottom: 1px solid $color-gray-300;
+}

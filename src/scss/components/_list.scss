@@ -165,9 +165,7 @@ label.list-item-content{
 
 
 .list-sortable{
-    
     .list-item{
-
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
@@ -194,12 +192,25 @@ label.list-item-content{
         @extend .list-sublabel;
         margin-top: $space-t;
     }
-    
+
 }
 
 .list-checkable{
     input[type=checkbox]{
         display: block;
         margin-right: $space-m;
+    }
+}
+
+.key-value-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $space-t 0;
+    background: #fff;
+    border: none;
+
+    & > *:first-child {
+        font-weight: bold;
     }
 }

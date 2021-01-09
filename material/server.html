@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html{if="$language !== 'auto'"} lang="{$language}"{/if}>
+<head>
+{$pageName="server"}
+{include="includes"}
+</head>
+<body>
+{include="page.header"}
+
+<div id="toolsdiv" class="page-server">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1>{'Server administration'|t}</h1>
+
+                <div class="card">
+                    <div class="card-header">{'General'|t}</div>
+                    <div class="card-body">
+                        <div class="list">
+                            <div class="key-value-item">
+                                <div>{'Index URL'|t}</div>
+                                <div><a href="{$index_url}" title="{$pagetitle}">{$index_url}</a></div>
+                            </div>
+                            <div class="key-value-item">
+                                <div>{'Base path'|t}</div>
+                                <div>{$base_path}</div>
+                            </div>
+                            <div class="key-value-item">
+                                <div>{'Client IP'|t}</div>
+                                <div>{$client_ip}</div>
+                            </div>
+                            <div class="key-value-item">
+                                <div>{'Trusted reverse proxies'|t}</div>
+                                <div>
+                                    {if="count($trusted_proxies) > 0"}
+                                    <ul>
+                                        {loop="$trusted_proxies"}
+                                            <li>{$value}</li>
+                                        {/loop}
+                                    </ul>
+                                    {else}
+                                    {'N/A'|t}
+                                {/if}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{include="server.requirements"}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="card">
+                    <div class="card-header">{'Version'|t}</div>
+                    <div class="card-body">
+                        <div class="list">
+                            <div class="key-value-item">
+                                <div>{'Current version'|t}</div>
+                                <div>{$current_version}</div>
+                            </div>
+                            <div class="key-value-item">
+                                <div>{'Latest release'|t}</div>
+                                <div><a href="{$release_url}" title="{'Visit releases page on Github'|t}">{$latest_version}</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-md-offset-3">
+                <div class="card">
+                    <div class="card-header">{'Thumbnails'|t}</div>
+                    <div class="card-body">
+                        <div class="list">
+                            <div class="key-value-item">
+                                <div>{'Thumbnails status'|t}</div>
+                                <div>
+                                    {if="$thumbnails_mode==='all'"}
+                                        {'All'|t}
+                                    {elseif="$thumbnails_mode==='common'"}
+                                        {'Only common media hosts'|t}
+                                    {else}
+                                        {'None'|t}
+                                    {/if}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {if="$thumbnails_mode!=='none'"}
+                    <div class="card-footer">
+                        <a href="{$base_path}/admin/thumbnails" title="{'Synchronize all link thumbnails'|t}" class="button-raised pull-right">{'Synchronize thumbnails'|t}</a>
+                        <div class="clearfix"></div>
+                    </div>
+                    {/if}
+                </div>
+            </div>
+
+            <div class="col-md-6 col-md-offset-3">
+                <div class="card">
+                    <div class="card-header">{'Cache'|t}</div>
+                    <div class="card-footer">
+                        <a href="{$base_path}/admin/clear-cache?type=main" class="button-raised pull-right">{'Clear main cache'|t}</a>
+                        <a href="{$base_path}/admin/clear-cache?type=thumbnails" class="button-raised pull-right">{'Clear thumbnails cache'|t}</a>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{include="page.footer"}
+</body>
+</html>
