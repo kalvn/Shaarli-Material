@@ -26,7 +26,7 @@
                         <label for="totag">&#8230;into this tag</label>
                         <input type="text" name="totag" id="totag">
                     </div>
-                    <p>{'You can also edit tags in the'|t} <a href="?do=taglist&sort=usage">{'tag list'|t}</a>.</p>
+                    <p>{'You can also edit tags in the'|t} <a href="{$base_path}/tags/list?sort=usage">{'tag list'|t}</a>.</p>
                 </div>
                 <div class="card-footer">
                     <button type="submit" id="button-delete" name="deletetag" class="button-raised button-alert pull-right" value="Delete tag">{'Delete tag'|t}</button>
@@ -35,6 +35,29 @@
                 </div>
             </form>
         </div>
+
+         <div class="col-md-6 col-md-offset-3">
+            <form method="POST" action="{$base_path}/admin/tags/change-separator" name="changeseparator" id="changeseparator" class="card">
+                <div class="card-header">{"Change tags separator"|t}</div>
+                <div class="card-body">
+                    <p>
+                        {'Your current tag separator is'|t} <code>{$tags_separator}</code>{if="!empty($tags_separator_desc)"} ({$tags_separator_desc}){/if}.
+                    </p>
+                    <div class="form-entry">
+                        <label for="separator">{'New separator'|t}</label>
+                        <input type="text" name="separator" id="separator" autocomplete="off"/>
+                        <input type="hidden" name="token" value="{$token}">
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <p>
+                        {'Note that hashtags won\'t fully work with a non-whitespace separator.'|t}
+                    </p>
+                    <button type="submit" name="saveseparator" class="button-raised button-primary pull-right">{'Save'|t}</button>
+                    <div class="clearfix"></div>
+                </div>
+            </form>
+         </div>
     </div>
 </div>
 {include="page.footer"}
