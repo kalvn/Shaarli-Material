@@ -50,6 +50,7 @@
 {if="is_file('data/user.css')"}
 <link type="text/css" rel="stylesheet" href="${root_path}/data/user.css#" />
 {/if}
+{$tagSeparator=str_replace("'", "\\'", $tags_separator)}
 <script>
 var shaarli = {
     source: '{$source}',
@@ -64,7 +65,8 @@ var shaarli = {
     datePattern: '{$conf->get('config.MATERIAL_DATE_PATTERN')}',
     isAuth: {if="$is_logged_in"}true{else}false{/if},
     pageName: '{$pageName}',
-    asyncMetadata: {if="isset($async_metadata) && $async_metadata"}true{else}false{/if}
+    asyncMetadata: {if="isset($async_metadata) && $async_metadata"}true{else}false{/if},
+    tagsSeparator: '{$tagSeparator}'
 };
 </script>
 {if="file_exists('tpl/material/extra.html')"}
