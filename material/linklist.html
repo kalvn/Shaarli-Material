@@ -26,7 +26,7 @@
         <div id="searchcriteria">
             {function="sprintf(t('%s result', '%s results', $result_count), $result_count)"}
             {if="!empty($search_term)"} {'for'|t} <strong>{$search_term}</strong>{/if}
-            {if="!empty($search_tags)"}{$exploded_tags=explode(' ', $search_tags)} {'tagged'|t} <i>
+            {if="!empty($search_tags)"}{$exploded_tags=tags_str2array($search_tags, $tags_separator)} {'tagged'|t} <i>
             {loop="$exploded_tags"}
                 <a href="{$base_path}/remove-tag/{function="urlencode($value)"}" class="link-tag-filter" title="{'Remove tag'|t}">{$value}&nbsp;
                     <span class="remove">&#x2715;</span>
