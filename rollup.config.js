@@ -9,6 +9,7 @@ import clean from 'postcss-clean';
 import autoprefixer from 'autoprefixer';
 import copy from 'rollup-plugin-copy';
 // import purgecss from '@fullhuman/postcss-purgecss';
+import eslint from '@rollup/plugin-eslint';
 
 const config = {
   input: 'src/js/index.js',
@@ -19,26 +20,27 @@ const config = {
   plugins: [
     resolve(),
     commonjs(),
-    terser(),
+    eslint(),
+    // terser(),
     postcss({
-        extract: path.resolve('material/dist/bundle.css'),
-        plugins: [
-            // purgecss({
-            //   content: ['material/*.html']
-            // }),
-            autoprefixer(),
-            clean()
-        ]
+      extract: path.resolve('material/dist/bundle.css'),
+      plugins: [
+        // purgecss({
+        //   content: ['material/*.html']
+        // }),
+        autoprefixer(),
+        clean()
+      ]
     }),
     babel({
-        babelHelpers: 'bundled',
+      babelHelpers: 'bundled',
     }),
     copy({
-        targets: [
-            { src: 'src/assets/fonts', dest: 'material/dist' },
-            { src: 'src/assets/img', dest: 'material/dist' },
-            { src: 'node_modules/bootstrap/dist/fonts/*', dest: 'material/dist/fonts' }
-        ]
+      targets: [
+        { src: 'src/assets/fonts', dest: 'material/dist' },
+        { src: 'src/assets/img', dest: 'material/dist' },
+        { src: 'node_modules/bootstrap/dist/fonts/*', dest: 'material/dist/fonts' }
+      ]
     })
   ],
   watch: {
