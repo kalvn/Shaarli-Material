@@ -2,7 +2,7 @@
   "name": "shaarlimaterial",
   "version": "0.12.1",
   "description": "Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), the personal, minimalist, super-fast, database free, bookmarking service.",
-  "main": "gulpfile.js",
+  "main": "src/js/main.js",
   "dependencies": {
     "autosize": "^4.0.2",
     "awesomplete": "^1.1.5",
@@ -58,6 +58,13 @@
     "parserOptions": {
       "ecmaVersion": 2021,
       "parser": "babel-eslint"
+    },
+    "rules": {
+      "node/no-callback-literal": "off",
+      "node/handle-callback-err": "off"
+    },
+    "globals": {
+      "shaarli": true
     }
   },
   "repository": {

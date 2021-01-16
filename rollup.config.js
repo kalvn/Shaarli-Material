@@ -12,7 +12,7 @@ import copy from 'rollup-plugin-copy';
 import eslint from '@rollup/plugin-eslint';
 
 const config = {
-  input: 'src/js/index.js',
+  input: 'src/js/main.js',
   output: {
     file: 'material/dist/bundle.js',
     format: 'iife'
@@ -20,7 +20,12 @@ const config = {
   plugins: [
     resolve(),
     commonjs(),
-    eslint(),
+    eslint({
+      exclude: [
+        'node_modules/**',
+        'src/scss/**'
+      ]
+    }),
     // terser(),
     postcss({
       extract: path.resolve('material/dist/bundle.css'),
