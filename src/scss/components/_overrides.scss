@@ -6,6 +6,10 @@
 }
 div.awesomplete{
     display: block;
+
+    mark {
+        padding: 0;
+    }
 }
 div.awesomplete > input{
     display: inline-block;
