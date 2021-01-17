@@ -5,7 +5,31 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
-## v0.12.0
+## v0.12.1
+## Added
+- Support for Shaarli v0.12.1.
+- Async metadata loading when adding a new link.
+- Working with URL rewriting disabled.
+- Highlight searched text in links and tags.
+- Server page which shows you details about your server config.
+- Weekly and Monthly Shaarli, in addition to the Daily.
+- Support for customized tag separator.
+- ESLint to ensure better JS code quality.
+
+### Changed
+- Replaced the QR Code JS library from [qrcodejs](https://davidshimjs.github.io/qrcodejs/) to [qrcode](https://github.com/soldair/node-qrcode).
+- Improved overall localization.
+- Build system from Gulp to Rollup.
+
+### Fixed
+- Page unique identification.
+
+### Removed
+- `config.MATERIAL_DATE_FROMNOW` option, in order to greatly reduce JS dependencies size.
+- `moment.js` JS dependency.
+
+
+## [v0.12.0](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.12.0) - 2020-11-28
 ### Added
 - Support for Shaarli v0.12.0.
 - Support for new page URLs.
