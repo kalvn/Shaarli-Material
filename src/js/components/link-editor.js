@@ -11,7 +11,7 @@ const initMetadata = function () {
 
   const $loadingWrappers = $('.loading-wrapper');
   const $inputTitle = $('input[name="lf_title"]');
-  const $inputDescription = $('input[name="lf_description"]');
+  const $inputDescription = $('textarea[name="lf_description"]');
   const $inputTags = $('input[name="lf_tags"]');
   const url = $('input[name="lf_url"]').val();
 
@@ -25,15 +25,15 @@ const initMetadata = function () {
     url: shaarli.basePath + '/admin/metadata?url=' + encodeURIComponent(url),
     method: 'get',
     success: function (data) {
-      if ($inputTitle && $inputTitle.length > 0 && $inputTitle.val().length > 0) {
+      if (data.title && $inputTitle && $inputTitle.length > 0 && $inputTitle.val().length === 0) {
         $inputTitle.val(data.title);
       }
 
-      if ($inputDescription && $inputDescription.length > 0 && $inputDescription.val().length > 0) {
+      if (data.description && $inputDescription && $inputDescription.length > 0 && $inputDescription.val().length === 0) {
         $inputDescription.val(data.description);
       }
 
-      if ($inputTags && $inputTags.length > 0 && $inputTags.val().length > 0) {
+      if (data.tags && $inputTags && $inputTags.length > 0 && $inputTags.val().length === 0) {
         $inputTags.val(data.tags);
       }
     },
