@@ -41,19 +41,19 @@
                     <div class="form-entry">
                         <label for="lf_title{$index}">{'Title'|t}</label><br/>
                         <div class="{$asyncLoadClass}">
-                            <input type="text" name="lf_title" id="lf_title{$index}" {if="$link.title==''"}class="autofocus"{/if} value="{$link.title}" placeholder="Title...">
+                            <input type="text" name="lf_title" id="lf_title{$index}" {if="empty($batch_mode) && $link.title==''"}class="autofocus"{/if} value="{$link.title}" placeholder="Title...">
                         </div>
                     </div>
                     <div class="form-entry">
                         <label for="lf_description{$index}">{'Description'|t}</label><br/>
                         <div class="{$asyncLoadClass}">
-                            <textarea name="lf_description" id="lf_description{$index}" {if="$link.description==''"}class="autofocus"{/if} placeholder="Describe the link..." rows="4">{$link.description}</textarea>
+                            <textarea name="lf_description" id="lf_description{$index}" {if="empty($batch_mode) && $link.description==''"}class="autofocus"{/if} placeholder="Describe the link..." rows="4">{$link.description}</textarea>
                         </div>
                     </div>
                     <div class="form-entry">
                         <label for="lf_tags{$index}">{'Tags'|t}</label><br/>
                         <div class="{$asyncLoadClass}">
-                            <input type="text" id="lf_tags{$index}" name="lf_tags" class="autofocus" value="{$link.tags}" class="lf_input"
+                            <input type="text" id="lf_tags{$index}" name="lf_tags" {if="empty($batch_mode)"}class="autofocus"{/if} value="{$link.tags}" class="lf_input"
                                 data-list="{loop="$tags"}{$key}, {/loop}" data-multiple autocomplete="off" />
                         </div>
                     </div>
