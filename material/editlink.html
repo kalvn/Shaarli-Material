@@ -1,3 +1,4 @@
+{if="empty($batch_mode)"}
 <!DOCTYPE html>
 <html{if="$language !== 'auto'"} lang="{$language}"{/if}>
 <head>
@@ -6,10 +7,17 @@
 </head>
 <body {if="!empty($_GET['source']) && $_GET['source']=='bookmarklet'"}class="from-bookmarklet"{/if}>
 {include="page.header"}
+{else}
+  {ignore}Lil hack: when included in a loop in batch mode, `$value` is assigned by RainTPL with template vars.{/ignore}
+  {function="extract($value) ? '' : ''"}
+{/if}
 {$asyncLoadClass=$link_is_new && $async_metadata && empty($link.title) ? 'loading-wrapper' : ''}
-<div id="editlinkform" class="container page-edit">
-    <div class="row" id="editlinkform-row">
-        <div class="col-md-6 col-md-offset-3" id="editlinkform-col">
+{if="$index === null"}
+  {$index=""}
+{/if}
+<div id="editlinkform{$index}" class="editlinkform container page-edit">
+    <div class="row editlinkform-row">
+        <div class="col-md-6 col-md-offset-3 editlinkform-col">
             <form method="post" name="linkform" class="card" action="{$base_path}/admin/shaare">
                 {if="isset($link.id)"}
                    <input type="hidden" name="lf_id" value="{$link.id}">
@@ -27,25 +35,25 @@
                 </div>
                 <div class="card-body">
                     <div class="form-entry">
-                        <label for="lf_url">{'URL'|t}</label><br/>
-                        <input type="text" name="lf_url" id="lf_url" value="{$link.url}" placeholder="Type a url...">
+                        <label for="lf_url{$index}">{'URL'|t}</label><br/>
+                        <input type="text" name="lf_url" id="lf_url{$index}" value="{$link.url}" placeholder="Type a url...">
                     </div>
                     <div class="form-entry">
-                        <label for="lf_title">{'Title'|t}</label><br/>
+                        <label for="lf_title{$index}">{'Title'|t}</label><br/>
                         <div class="{$asyncLoadClass}">
-                            <input type="text" name="lf_title" id="lf_title" {if="$link.title==''"}class="autofocus"{/if} value="{$link.title}" placeholder="Title...">
+                            <input type="text" name="lf_title" id="lf_title{$index}" {if="$link.title==''"}class="autofocus"{/if} value="{$link.title}" placeholder="Title...">
                         </div>
                     </div>
                     <div class="form-entry">
-                        <label for="lf_description">{'Description'|t}</label><br/>
+                        <label for="lf_description{$index}">{'Description'|t}</label><br/>
                         <div class="{$asyncLoadClass}">
-                            <textarea name="lf_description" id="lf_description" {if="$link.description==''"}class="autofocus"{/if} placeholder="Describe the link..." rows="4">{$link.description}</textarea>
+                            <textarea name="lf_description" id="lf_description{$index}" {if="$link.description==''"}class="autofocus"{/if} placeholder="Describe the link..." rows="4">{$link.description}</textarea>
                         </div>
                     </div>
                     <div class="form-entry">
-                        <label for="lf_tags">{'Tags'|t}</label><br/>
+                        <label for="lf_tags{$index}">{'Tags'|t}</label><br/>
                         <div class="{$asyncLoadClass}">
-                            <input type="text" id="lf_tags" name="lf_tags" class="autofocus" value="{$link.tags}" class="lf_input"
+                            <input type="text" id="lf_tags{$index}" name="lf_tags" class="autofocus" value="{$link.tags}" class="lf_input"
                                 data-list="{loop="$tags"}{$key}, {/loop}" data-multiple autocomplete="off" />
                         </div>
                     </div>
@@ -57,8 +65,8 @@
                         {/loop}
                     {/if}
                     <div class="form-entry">
-                        <input type="checkbox" class="filled-in" {if="($link_is_new && $default_private_links) || $link.private == true"}checked="checked"{/if} name="lf_private" id="lf_private"/>
-                        <label for="lf_private">{'Private'|t}</label>
+                        <input type="checkbox" class="filled-in" {if="$link.private === true"}checked="checked"{/if} name="lf_private" id="lf_private{$index}"/>
+                        <label for="lf_private{$index}">{'Private'|t}</label>
                     </div>
                     {if="$formatter==='markdown'"}
                         <div class="form-entry">
@@ -71,10 +79,12 @@
                 </div>
                 <div class="card-footer">
                     <button type="submit" name="save_edit" class="button-raised button-primary pull-right">{'Save'|t}</button>
-                    <button type="submit" name="cancel_edit" class="button pull-right ripple-primary">Cancel</button>
                     {if="!$link_is_new"}
                         <a href="{$base_path}/admin/shaare/delete?id={$link.id}&amp;token={$token}"
                             name="delete_link" class="button-raised button-alert">{'Delete'|t}</a>
+                    {/if}
+                    {if="!empty($batch_mode)"}
+                        <button type="button" name="cancel-batch-link" title="{'Remove this bookmark from batch creation/modification.'|t}" class="button pull-right ripple-primary">{'Cancel'|t}</button>
                     {/if}
                     <div class="clearfix"></div>
                 </div>
@@ -82,6 +92,8 @@
         </div>
     </div>
 </div>
+{if="empty($batch_mode)"}
 {include="page.footer"}
+{/if}
 </body>
 </html>

@@ -23,6 +23,38 @@
                 </div>
         	</form>
         </div>
+
+        <div class="col-md-6 col-md-offset-3">
+            <button type="button" class="button pull-right button-batch-addform"><i class="mdi mdi-playlist-plus" aria-hidden="true"></i>&nbsp;{'BULK CREATION'|t}</button>
+            <div class="clearfix"></div>
+
+            <form class="card batch-addform hidden" method="POST" action="{$base_path}/admin/shaare-batch" name="batch-addform">
+                <div class="card-header">{"Shaare multiple new links"|t}</div>
+                <div class="card-body">
+                    <div class="form-entry">
+                        <label for="urls">{'Add one URL per line to create multiple bookmarks.'|t}</label>
+                        <textarea name="urls" id="urls" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-entry">
+                        <label for="tags">{'Tags'|t}</label><br/>
+                        <input type="text" name="tags" id="tags" class="lf_input" data-list="{loop="$tags"}{$key}, {/loop}" data-multiple data-autofirst autocomplete="off">
+                    </div>
+
+                    <input type="hidden" name="private" value="0">
+                    <div class="form-entry">
+                        <input type="checkbox" name="private" {if="$default_private_links"} checked="checked"{/if} id="lf_private" class="filled-in"/>
+                        <label for="lf_private">{'Private'|t}</label>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <input type="hidden" name="token" value="{$token}">
+                    <button type="submit" class="button-raised button-primary pull-right">{'Add links'|t}</button>
+                    <div class="clearfix"></div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 {include="page.footer"}

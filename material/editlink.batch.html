@@ -7,7 +7,37 @@
 <body>
 {include="page.header"}
 
-to be developped
+<div id="progress-overlay" class="fullscreen hidden">
+    <div class="content-fullscreen">
+        <div class="container">
+            <div class="mbl row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="is-inverted">
+                        <div class="progress-counter">
+                            <span class="progress-current">0</span> / <span class="progress-total"></span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-actual"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <button type="submit" name="save_edit_batch" class="button-raised button-primary">{'Save all'|t}</button>
+</div>
+
+{loop="$links"}
+  {$index=$key}
+  {include="editlink"}
+{/loop}
+
+<div class="text-center">
+    <button type="submit" name="save_edit_batch" class="button-raised button-primary">{'Save all'|t}</button>
+</div>
 
 {include="page.footer"}
 </body>

@@ -4,27 +4,33 @@ import autosize from 'autosize';
 import modal from './modal';
 import { escapeHtml } from './utils';
 
-const initMetadata = function () {
-  if (shaarli.pageName !== 'editlink' || !shaarli.asyncMetadata) {
+const initMetadata = async function () {
+  if ((shaarli.pageName !== 'editlink' && shaarli.pageName !== 'editlinkbatch') || !shaarli.asyncMetadata) {
     return;
   }
 
-  const $loadingWrappers = $('.loading-wrapper');
-  const $inputTitle = $('input[name="lf_title"]');
-  const $inputDescription = $('textarea[name="lf_description"]');
-  const $inputTags = $('input[name="lf_tags"]');
-  const url = $('input[name="lf_url"]').val();
+  // For each edit form present in the page.
+  $('.editlinkform').each(async function (index, form) {
+    const $form = $(form);
 
-  if ($inputTitle.length > 0 && $inputTitle.val().length > 0) {
-    return;
-  }
+    const $loadingWrappers = $form.find('.loading-wrapper');
+    const $inputTitle = $form.find('input[name="lf_title"]');
+    const $inputDescription = $form.find('textarea[name="lf_description"]');
+    const $inputTags = $form.find('input[name="lf_tags"]');
+    const url = $form.find('input[name="lf_url"]').val();
 
-  $loadingWrappers.addClass('is-loading');
+    if ($inputTitle.length > 0 && $inputTitle.val().length > 0) {
+      return;
+    }
 
-  $.ajax({
-    url: shaarli.basePath + '/admin/metadata?url=' + encodeURIComponent(url),
-    method: 'get',
-    success: function (data) {
+    $loadingWrappers.addClass('is-loading');
+
+    try {
+      const data = await $.ajax({
+        url: shaarli.basePath + '/admin/metadata?url=' + encodeURIComponent(url),
+        method: 'get'
+      });
+
       if (data.title && $inputTitle && $inputTitle.length > 0 && $inputTitle.val().length === 0) {
         $inputTitle.val(data.title);
       }
@@ -36,14 +42,12 @@ const initMetadata = function () {
       if (data.tags && $inputTags && $inputTags.length > 0 && $inputTags.val().length === 0) {
         $inputTags.val(data.tags);
       }
-    },
-    error: function (error) {
+    } catch (err) {
       console.error('Failed to get link metadata.');
       modal('Error', 'An error occurred while getting metadata for ' + escapeHtml(url), 'alert');
-    },
-    complete: function () {
-      $loadingWrappers.removeClass('is-loading');
     }
+
+    $loadingWrappers.removeClass('is-loading');
   });
 };
 
@@ -77,9 +81,10 @@ const linkEditor = {
     });
   },
 
-  toggleExpand: function (element) {
-    const isExpanded = element.closest('.card').toggleClass('is-expanded').hasClass('is-expanded') ? 1 : 0;
-    $('#editlinkform-row').toggleClass('row').find('#editlinkform-col').toggleClass('col-md-6 col-md-offset-3');
+  toggleExpand: function ($element) {
+    const $card = $element.closest('.card');
+    const isExpanded = $card.toggleClass('is-expanded').hasClass('is-expanded') ? 1 : 0;
+    $card.closest('.editlinkform-row').toggleClass('row').find('.editlinkform-col').toggleClass('col-md-6 col-md-offset-3');
 
     localStorage.setItem('expand', isExpanded);
   }
