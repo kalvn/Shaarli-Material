@@ -59,17 +59,21 @@ const deleteLink = async function ($buttonDelete) {
   const url = $buttonDelete.attr('href');
   const $form = $buttonDelete.closest('form');
 
-  try {
-    formBeforeLoad($form);
+  modal('Delete link', 'Are you sure you want to delete this link?', 'confirm', async function (accepts) {
+    if (accepts) {
+      try {
+        formBeforeLoad($form);
 
-    await http.deleteLinkByUrl(url);
+        await http.deleteLinkByUrl(url);
 
-    formAfterLoad($form, 'deleted', 'danger');
-  } catch (err) {
-    console.error(err);
-    formError($form);
-    modal('Error', 'Something went wrong when deleting the link.', 'alert');
-  }
+        formAfterLoad($form, 'deleted', 'danger');
+      } catch (err) {
+        console.error(err);
+        formError($form);
+        modal('Error', 'Something went wrong when deleting the link.', 'alert');
+      }
+    }
+  });
 };
 
 const cancelLink = function ($buttonCancel) {
