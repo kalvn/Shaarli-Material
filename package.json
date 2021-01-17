@@ -26,6 +26,7 @@
     "@rollup/plugin-node-resolve": "^11.1.0",
     "autoprefixer": "^9.8.6",
     "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.3",
     "eslint": "^7.18.0",
     "eslint-config-semistandard": "^15.0.1",
     "eslint-config-standard": "^16.0.2",
@@ -44,8 +45,8 @@
     "sass": "^1.32.4"
   },
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c --watch",
+    "build": "cross-env NODE_ENV=production rollup -c",
+    "dev": "cross-env NODE_ENV=development rollup -c --watch",
     "lint": "eslint src/js",
     "lint:fix": "eslint src/js --fix"
   },
