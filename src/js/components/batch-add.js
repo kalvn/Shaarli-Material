@@ -5,6 +5,7 @@ import modal from './modal';
 
 const saveLink = async function ($form) {
   const data = {};
+  const exists = $form.find('[name="lf_id"]').length > 0;
 
   $form.find('input[type="text"], textarea, input[type="checkbox"], input[type="hidden"]')
     .each(function (index, element) {
@@ -21,47 +22,90 @@ const saveLink = async function ($form) {
     });
 
   try {
+    formBeforeLoad($form);
+
     await http.createLink(data);
-    $form.closest('.editlinkform').html('Link created successfully.');
+
+    formAfterLoad($form, exists ? 'updated' : 'created', 'success');
   } catch (err) {
     console.error(err);
+    formError($form);
     modal('Error', 'Something went wrong when saving the link.', 'alert');
   }
 };
 
 const saveAllLinks = async function () {
-  $('form[name="linkform"]').each(async function (index, form) {
-    const $form = $(form);
+  const forms = document.querySelectorAll('form[name="linkform"]');
+  const total = forms.length;
+  const $progressOverlay = $('#progress-overlay');
+  const $progressCurrent = $progressOverlay.find('.progress-current');
+  const $progressTotal = $progressOverlay.find('.progress-total');
+  const $progressActual = $progressOverlay.find('.progress-actual');
 
-    await saveLink($form);
-    console.log('end of 1 round of saveAllLinks');
-  });
+  $progressTotal.text(total);
 
-  console.log('end of saveAllLinks');
+  $progressOverlay.removeClass('hidden');
+
+  for (let i = 0; i < total; i++) {
+    await saveLink($(forms[i]));
+    $progressCurrent.text(i + 1);
+    $progressActual.css('width', `${(i + 1) * 100 / total}%`);
+  }
+
+  $progressOverlay.addClass('hidden');
 };
 
 const deleteLink = async function ($buttonDelete) {
   const url = $buttonDelete.attr('href');
-
-  console.log('url to delete: ' + url);
+  const $form = $buttonDelete.closest('form');
 
   try {
+    formBeforeLoad($form);
+
     await http.deleteLinkByUrl(url);
-    $buttonDelete.closest('.editlinkform').html('Link deleted successfully.');
+
+    formAfterLoad($form, 'deleted', 'danger');
   } catch (err) {
     console.error(err);
+    formError($form);
     modal('Error', 'Something went wrong when deleting the link.', 'alert');
   }
 };
 
 const cancelLink = function ($buttonCancel) {
-  $buttonCancel.closest('.editlinkform').html('Link addition cancelled successfully.');
+  const $form = $buttonCancel.closest('form');
+
+  formBeforeLoad($form);
+
+  // Necessary for the animation to play properly.
+  setTimeout(function () {
+    formAfterLoad($form, 'cancelled');
+  }, 100);
 };
 
-const redirectIfNoLinks = function () {
+// Checks if there are remaining links.
+const noMoreLinks = function () {
   if ($('form[name="linkform"]').length === 0) {
-    window.location.href = `${shaarli.basePath}/`;
+    $('[name="save_edit_batch"]').attr('disabled', 'disabled');
   }
+};
+
+const formBeforeLoad = function ($form) {
+  $form.append('<div class="card-overlay"></div>');
+  const height = $form.height();
+  $form.css('max-height', `${height}px`);
+};
+const formAfterLoad = function ($form, message, type) {
+  const url = $form.find('[name="lf_url"]').val();
+  const customClass = type ? `is-${type}` : '';
+  $form.find('.card-overlay').html(`<div class="is-flex"><div class="nowrap">${url}</div><div class="tag is-light ${customClass}">${message}</div></div>`);
+  $form.closest('.editlinkform').addClass('is-batch-done');
+  // Prevents this form from being treated again.
+  $form.removeAttr('name');
+};
+const formError = function ($form) {
+  $form.find('.card-overlay').remove();
+  $form.css('max-height', 'none');
 };
 
 const batchAdd = {
@@ -78,14 +122,14 @@ const batchAdd = {
       $('[name="save_edit"]').on('click', async function (event) {
         event.preventDefault();
         await saveLink($(this).closest('form'));
-        redirectIfNoLinks();
+        noMoreLinks();
         return false;
       });
 
       $('[name="save_edit_batch"]').on('click', async function (event) {
         event.preventDefault();
         await saveAllLinks();
-        redirectIfNoLinks();
+        noMoreLinks();
         return false;
       });
 
@@ -93,7 +137,7 @@ const batchAdd = {
       $('[name="delete_link"]').off('click').on('click', async function (event) {
         event.preventDefault();
         await deleteLink($(this));
-        redirectIfNoLinks();
+        noMoreLinks();
         return false;
       });
 
@@ -101,7 +145,7 @@ const batchAdd = {
       $('[name="cancel-batch-link"]').on('click', function (event) {
         event.preventDefault();
         cancelLink($(this));
-        redirectIfNoLinks();
+        noMoreLinks();
         return false;
       });
     }

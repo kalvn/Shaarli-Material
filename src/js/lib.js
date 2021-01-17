@@ -3,6 +3,7 @@ import Blazy from 'blazy';
 import Awesomplete from 'awesomplete';
 import Sortable from 'sortablejs';
 import QRCode from '../../node_modules/qrcode/build/qrcode';
+import autosize from 'autosize';
 
 import overlay from './components/overlay';
 
@@ -107,7 +108,13 @@ const lib = {
     initQrCode();
 
     if (shaarli.isAuth) {
-      initSortable();
+      if (shaarli.pageName === 'pluginsadmin') {
+        initSortable();
+      }
+
+      if (['editlink', 'editlinkbatch'].includes(shaarli.pageName)) {
+        autosize($('[name="lf_description"]'));
+      }
     }
   }
 };

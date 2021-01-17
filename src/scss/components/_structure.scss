@@ -44,6 +44,24 @@
         background-image: url(img/arrow-compress.png);
     }
 }
+.editlinkform {
+  transition: margin $animation-speed ease-in-out;
+
+  .page-edit-link-batch & {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+.is-batch-done {
+  .card {
+    max-height: 58px !important;
+    overflow: hidden;
+  }
+
+  .card-overlay {
+    background-color: rgba(255, 255, 255, 1);
+  }
+}
 
 /* Picture wall */
 .picwall-pictureframe{
