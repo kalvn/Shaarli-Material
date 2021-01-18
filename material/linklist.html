@@ -64,7 +64,7 @@
         {ignore}End of translations{/ignore}
 
         {loop="$links"}
-            <div id="{$value.id}" class="link-outer{if="$value.class"} {$value.class}{/if}">
+            <div id="{$value.id}" class="link-outer{if="$value.class"} {$value.class}{/if}" data-id="{$value.id}">
                 <div class="link-overlay"></div>
                 <div class="link-inner">
                     <div class="link-header">
@@ -96,11 +96,11 @@
                     </div>
                     <div class="link-content">
                         <div>
-                            {if="$thumbnails_enabled && !empty($value.thumbnail)"}
-                            <div class="thumb">
+                            {if="$thumbnails_enabled && $value.thumbnail !== false"}
+                            <div class="thumb{if="$value.thumbnail === null"} hidden{/if}" {if="$value.thumbnail === null"}data-async-thumbnail="1"{/if}>
                                 <a href="{$value.real_url}">
                                   {ignore}RainTPL hack: put the 2 src on two different line to avoid path replace bug{/ignore}
-                                  <img data-src="{$root_path}/{$value.thumbnail}#" class="b-lazy"
+                                  <img data-src="{$root_path}/{$value.thumbnail}#" class="b-lazy link-thumbnail"
                                     src="#"
                                     alt="thumbnail" width="{$thumbnails_width}" height="{$thumbnails_height}" />
                                   </a>

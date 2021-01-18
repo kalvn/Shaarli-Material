@@ -30,6 +30,15 @@ const http = {
     return response;
   },
 
+  updateThumbnail: async function (id) {
+    const response = await $.ajax({
+      method: 'patch',
+      url: `${shaarli.basePath}/admin/shaare/${id}/update-thumbnail`
+    });
+
+    return response;
+  },
+
   refreshToken: function (callback) {
     $.ajax({
       url: shaarli.basePath + '/admin/token',

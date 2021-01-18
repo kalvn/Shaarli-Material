@@ -8,6 +8,7 @@ import overlay from './components/overlay';
 import batchEdit from './components/batch-edit';
 import batchAdd from './components/batch-add';
 import linkEditor from './components/link-editor';
+import linkList from './components/link-list';
 import search from './components/search';
 import popup from './components/popup';
 import thumbnail from './components/thumbnail';
@@ -33,20 +34,6 @@ const init = function () {
 };
 
 const initAdmin = function () {
-  // Delete button in the link list.
-  $('.button-delete').on('click', function (event) {
-    event.preventDefault();
-
-    const url = $(this).attr('href');
-
-    modal('Delete link', 'Are you sure you want to delete this link?', 'confirm', function (accepts) {
-      if (accepts) {
-        window.location.href = url;
-      }
-    });
-    return false;
-  });
-
   // Bookmarklet warning.
   $('.bookmarklet').on('click', function (event) {
     event.preventDefault();
@@ -66,6 +53,7 @@ $(document).ready(function () {
   lib.init();
 
   if (shaarli.isAuth) {
+    linkList.init();
     linkEditor.init();
     batchEdit.init();
     batchAdd.init();
@@ -74,5 +62,9 @@ $(document).ready(function () {
     initAdmin();
   }
 
-  $('.autofocus').focus();
+  // Only autofocus the first element found.
+  $('.autofocus').each(function (index, element) {
+    $(element).focus();
+    return false;
+  });
 });

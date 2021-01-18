@@ -145,7 +145,7 @@
         float: left;
     }
 
-    .thumb + .link-description{
+    .thumb:not(.hidden) + .link-description{
         padding-left: 150px;
     }
 }
