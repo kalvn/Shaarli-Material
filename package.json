@@ -10,8 +10,10 @@
     "awesomplete": "^1.1.5",
     "blazy": ">=1.3.0",
     "bootstrap": "^3.4.1",
+    "core-js": "^3.8.3",
     "jquery": "^3.5.1",
     "qrcode": "^1.4.4",
+    "regenerator-runtime": "^0.13.7",
     "salvattore": "^1.0.9",
     "sortablejs": "^1.13.0"
   },

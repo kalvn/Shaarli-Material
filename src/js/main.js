@@ -1,3 +1,7 @@
+// Needed to polyfill promises for IE11.
+import 'core-js/stable/promise';
+import 'regenerator-runtime/runtime';
+
 import $ from 'jquery';
 import 'salvattore';
 

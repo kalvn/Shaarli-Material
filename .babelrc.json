@@ -10,7 +10,8 @@
         "corejs": 3,
         "helpers": false,
         "regenerator": true,
-        "useESModules": false
+        "useESModules": false,
+        "proposals": true
       }
     ]
   ]
