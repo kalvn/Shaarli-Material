@@ -76,15 +76,15 @@ const deleteLink = async function ($buttonDelete) {
   });
 };
 
-const cancelLink = function ($buttonCancel) {
+const cancelLink = async function ($buttonCancel) {
   const $form = $buttonCancel.closest('form');
 
   formBeforeLoad($form);
 
   // Necessary for the animation to play properly.
-  setTimeout(function () {
-    formAfterLoad($form, 'cancelled');
-  }, 100);
+  await new Promise(resolve => setTimeout(resolve, 100));
+
+  formAfterLoad($form, 'cancelled');
 };
 
 // Checks if there are remaining links.
@@ -146,9 +146,9 @@ const batchAdd = {
       });
 
       // Single cancel buttons.
-      $('[name="cancel-batch-link"]').on('click', function (event) {
+      $('[name="cancel-batch-link"]').on('click', async function (event) {
         event.preventDefault();
-        cancelLink($(this));
+        await cancelLink($(this));
         noMoreLinks();
         return false;
       });
