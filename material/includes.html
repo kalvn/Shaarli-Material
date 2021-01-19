@@ -17,7 +17,7 @@
 <link rel="search" type="application/opensearchdescription+xml" href="{$base_path}/open-search#" title="Shaarli search - {$shaarlititle}"/>
 <meta name="msapplication-TileColor" content="#603cba">
 <meta name="msapplication-config" content="{$asset_path}/dist/img/favicons/browserconfig.xml#">
-{if="!empty($links) && count($links) === 1"}
+{if="$pageName === 'linklist' && !empty($links) && count($links) === 1"}
   {$link=reset($links)}
   <meta property="og:title" content="{$link.title}" />
   <meta property="og:type" content="article" />

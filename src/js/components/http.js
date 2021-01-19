@@ -23,7 +23,7 @@ const http = {
 
   deleteLinkByUrl: async function (url) {
     const response = await $.ajax({
-      url: url,
+      url: `${url}&source=batch`,
       method: 'get'
     });
 
