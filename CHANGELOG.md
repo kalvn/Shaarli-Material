@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ## v0.12.1
-## Added
+### Added
 - Support for Shaarli v0.12.1.
 - Async metadata loading when adding a new link.
 - Working with URL rewriting disabled.
@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 - `config.MATERIAL_DATE_FROMNOW` option, in order to greatly reduce JS dependencies size.
 - `moment.js` JS dependency.
+- Dropped support for IE9 and IE10.
 
 
 ## [v0.12.0](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.12.0) - 2020-11-28

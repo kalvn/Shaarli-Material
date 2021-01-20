@@ -12,7 +12,7 @@
   {function="extract($value) ? '' : ''"}
 {/if}
 {$asyncLoadClass=$link_is_new && $async_metadata && empty($link.title) ? 'loading-wrapper' : ''}
-{if="$index === null"}
+{if="!isset($index)"}
   {$index=""}
 {/if}
 <div id="editlinkform{$index}" class="editlinkform container page-edit">
