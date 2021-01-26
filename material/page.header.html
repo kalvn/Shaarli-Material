@@ -97,7 +97,7 @@
                             </div>
                         </div>
                     </div>
-                    {if="$is_logged_in"}
+                    {if="$is_logged_in && $pageName === 'linklist'"}
                     <div class="toolbar-button-container">
                         <button type="button" class="icon-header ripple batch-trigger" title="Select multiple links for deletion">
                             <i class="mdi mdi-checkbox-marked-outline"></i>
@@ -105,6 +105,7 @@
                     </div>
                     {/if}
                     <div class="toolbar-button-container">
+                        {if="$pageName === 'linklist'"}
                         <button type="button" class="popup-trigger icon-header ripple" data-popup="popup-filter" title="{'Filters'|t}">
                             <i class="mdi mdi-filter"></i>
                             {if="$visibility==='private' || $visibility==='public' || $untaggedonly"}<div class="red-dot"></div>{/if}
@@ -171,6 +172,7 @@
                                 </div>
                             </div>
                         </div>
+                        {/if}
                     </div>
                 </div>
             </div>
