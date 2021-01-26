@@ -1,281 +1,284 @@
 /* Link list */
 .link-outer{
-    @extend .card;
-    position: relative;
-    overflow: hidden;
+  @extend .card;
+  position: relative;
+  overflow: hidden;
 
-    .links-list.is-selectable &.is-selected{
-        box-shadow: 0 0 4px 4px $color-batch-selection;
-    }
+  .links-list.is-selectable &.is-selected{
+    box-shadow: 0 0 4px 4px $color-batch-selection;
+  }
 }
 // Used for batch mode (delete).
 .link-overlay{
-    display: none;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    cursor: pointer;
-    z-index: 10;
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+  z-index: 10;
 
-    .links-list.is-selectable &:hover{
-        background-color: rgba($color-gray-300, 0.5);
-    }
+  .links-list.is-selectable &:hover{
+    background-color: rgba($color-gray-300, 0.5);
+  }
 
-    .links-list.is-selectable &{
-        display: block;
-        background-color: rgba(#fff, 0);
-    }
+  .links-list.is-selectable &{
+    display: block;
+    background-color: rgba(#fff, 0);
+  }
 
-    .links-list.is-selectable .is-selected &{
-        display: block;
-        background-color: rgba($color-alert, .5);
-    }
+  .links-list.is-selectable .is-selected &{
+    display: block;
+    background-color: rgba($color-alert, .5);
+  }
 }
 .link-inner{
-    border-radius: 2px 0 0 2px;
+  border-radius: 2px 0 0 2px;
 }
 .link-header{
-    @extend .card-header;
-    border-bottom: none;
-    padding-bottom: 5px;
-    text-transform: none;
+  @extend .card-header;
+  border-bottom: none;
+  padding-bottom: 5px;
+  text-transform: none;
 }
 .link-content{
-    overflow: hidden;
+  overflow: hidden;
 }
 .link-footer{
-    padding: 10px 15px 15px 15px;
+  padding: 10px 15px 15px 15px;
 }
 a.link-title{
-    display: block;
-    text-overflow: ellipsis;
-    color: $color-text;
-    text-decoration: none;
-    font-weight: bold;
-    line-height: 1.2;
+  display: block;
+  margin-bottom: $space-t;
+  text-overflow: ellipsis;
+  color: $color-text;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 1.2;
 
-    &:hover,
-    &:focus {
-        color: $color-gray-800;
-    }
+  &:hover,
+  &:focus {
+    color: $color-gray-800;
+  }
 
-    &:active {
-        color: $color-gray-700;
-    }
+  &:active {
+    color: $color-gray-700;
+  }
 }
 .private{
-    &:before {
-        content: '';
-        position: absolute;
-        display: block;
-        width: 0;
-        height: 0;
-        border: 16px solid transparent;
-        border-right: 16px solid #b71c1c;
-        top: -16px;
-        left: -16px;
-        transform: rotate(45deg);
-    }
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border: 16px solid transparent;
+    border-right: 16px solid #b71c1c;
+    top: -16px;
+    left: -16px;
+    transform: rotate(45deg);
+  }
 
-    a.link-title{
-        color: #b71c1c;
-    }
+  a.link-title{
+    color: #b71c1c;
+  }
 }
 a.link-url{
+  display: block;
+  margin-bottom: $space-t;
+  color: $color-gray-600;
+  text-decoration: none;
+  line-height: 1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  @include font-sub();
+
+  &:hover,
+  &:focus {
+    color: $color-gray-700;
+  }
+
+  &:active {
+    color: $color-gray-800;
+  }
+}
+.link-date{
+  @include font-sub();
+  color: $color-gray-600;
+  float: right;
+
+  a,
+  .link-archive {
     color: $color-gray-600;
     text-decoration: none;
-    line-height: 1em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    @include font-sub();
 
     &:hover,
     &:focus {
-        color: $color-gray-700;
+      color: $color-text;
     }
 
     &:active {
-        color: $color-gray-800;
+      color: $color-gray-800;
     }
-}
-.link-date{
-    @include font-sub();
-    color: $color-gray-600;
-    float: right;
-
-    a,
-    .link-archive {
-        color: $color-gray-600;
-        text-decoration: none;
-
-        &:hover,
-        &:focus {
-            color: $color-text;
-        }
-
-        &:active {
-            color: $color-gray-800;
-        }
-    }
+  }
 }
 .link-description{
-    padding: 5px 15px;
+  padding: 5px 15px;
 
-    p:first-child{
-        margin-top: 0;
-    }
+  p:first-child{
+    margin-top: 0;
+  }
 
-    p:last-child{
-        margin-bottom: 0;
-    }
+  p:last-child{
+    margin-bottom: 0;
+  }
 }
 .thumb img{
-    margin: 15px;
+  margin: 15px;
 }
 .link-tag-list{
-    overflow: hidden;
-    overflow-x: auto;
-    text-overflow: ellipsis;
+  overflow: hidden;
+  overflow-x: auto;
+  text-overflow: ellipsis;
 }
 .link-tag{
-    display: inline-block;
+  display: inline-block;
 
-    a{
-        display: block;
-        color: $color-gray-800;
-        text-decoration: none;
-        padding: 3px 10px;
-        background-color: $color-gray-200;
-        border-radius: 20px;
-        font-size: .7rem;
+  a{
+    display: block;
+    color: $color-gray-800;
+    text-decoration: none;
+    padding: 3px 10px;
+    background-color: $color-gray-200;
+    border-radius: 20px;
+    font-size: .7rem;
 
-        &:hover,
-        &:focus {
-            background-color: $color-gray-300;
-        }
-
-        &:active {
-            background-color: $color-gray-400;
-        }
+    &:hover,
+    &:focus {
+      background-color: $color-gray-300;
     }
+
+    &:active {
+      background-color: $color-gray-400;
+    }
+  }
 }
 
 .link-tag-filter {
-    display: inline-block;
-    padding: 3px 3px 3px 10px;
-    border-radius: 20px;
-    background-color: $color-gray-200;
+  display: inline-block;
+  padding: 3px 3px 3px 10px;
+  border-radius: 20px;
+  background-color: $color-gray-200;
+  color: $color-gray-800;
+  text-decoration: none;
+  border: 1px solid $color-gray-300;
+
+  &:hover,
+  &:focus {
     color: $color-gray-800;
+    background-color: $color-gray-300;
     text-decoration: none;
-    border: 1px solid $color-gray-300;
+  }
+
+  &:active {
+    color: $color-gray-800;
+    background-color: $color-gray-400;
+    text-decoration: none;
+  }
+
+  .remove {
+    font-style: normal;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 0 5px;
+    padding-bottom: 1px;
+  }
+}
+.link-actions{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  height: 24px;
+  text-align: right;
+
+  a,
+  span {
+    color: $color-gray-700;
+    font-size: 18px;
+  }
+
+  a {
+    &.is-pinned {
+      color: $color-primary;
+    }
 
     &:hover,
     &:focus {
-        color: $color-gray-800;
-        background-color: $color-gray-300;
-        text-decoration: none;
+      color: $color-gray-800;
     }
 
     &:active {
-        color: $color-gray-800;
-        background-color: $color-gray-400;
-        text-decoration: none;
+      color: $color-gray-900;
     }
+  }
 
-    .remove {
-        font-style: normal;
-        background-color: #fff;
-        border-radius: 50%;
-        padding: 0 5px;
-        padding-bottom: 1px;
-    }
-}
-.link-actions{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    height: 24px;
-    text-align: right;
-
-    a,
-    span {
-        color: $color-gray-700;
-        font-size: 18px;
-    }
-
-    a {
-        &.is-pinned {
-            color: $color-primary;
-        }
-
-        &:hover,
-        &:focus {
-            color: $color-gray-800;
-        }
-
-        &:active {
-            color: $color-gray-900;
-        }
-    }
-
-    .is-selectable &{
+  .is-selectable &{
         // Actions are hidden when the list is in batch select mode.
         display: none;
+      }
     }
-}
-.link-actions > *{
-    display: block;
-    width: 24px;
-    right: 24px;
-    margin-left: 5px;
-}
-.link-actions form > *{
-    display: block;
-}
-/* Plugins in links */
-.link-plugin{
-    &:not(:last-child){
+    .link-actions > *{
+      display: block;
+      width: 24px;
+      right: 24px;
+      margin-left: 5px;
+    }
+    .link-actions form > *{
+      display: block;
+    }
+    /* Plugins in links */
+    .link-plugin{
+      &:not(:last-child){
         margin-right: $space-t;
-    }
+      }
 
-    &:nth-child(2){
+      &:nth-child(2){
         &:before{
-            content: "-";
-            margin: 0 $space-t;
+          content: "-";
+          margin: 0 $space-t;
         }
+      }
     }
-}
 
-.link-counter{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    color: $color-gray-700;
-}
+    .link-counter{
+      margin-top: 20px;
+      margin-bottom: 20px;
+      color: $color-gray-700;
+    }
 
-.favorite-tag{
-    display: block;
-    float: left;
-    padding: $space-s;
-    margin-right: $space-s;
-    background-color: rgba(0, 0, 0, .05);
-    color: $color-subtitle;
+    .favorite-tag{
+      display: block;
+      float: left;
+      padding: $space-s;
+      margin-right: $space-s;
+      background-color: rgba(0, 0, 0, .05);
+      color: $color-subtitle;
 
-    &:hover,
-    &:focus{
+      &:hover,
+      &:focus{
         background-color: rgba(0, 0, 0, .1);
         color: inherit;
         text-decoration: none;
-    }
+      }
 
-    &:active{
+      &:active{
         background-color: rgba(0, 0, 0, .2);
+      }
     }
-}
 
-.search-highlight {
-    background-color: #ff0;
-}
+    .search-highlight {
+      background-color: #ff0;
+    }

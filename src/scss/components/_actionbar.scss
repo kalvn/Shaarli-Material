@@ -10,6 +10,7 @@
 
     .row{
         padding: $space-m;
+        padding-bottom: $space-m - $space-s;
     }
 }
 
@@ -28,5 +29,6 @@
 
     button{
         margin-left: $space-s;
+        margin-bottom: $space-s;
     }
 }
