@@ -1,4 +1,4 @@
-{$isCalledFromBookmarklet=(!empty($_GET['source']) && $_GET['source'] === 'bookmarklet')}
+{$isCalledFromBookmarklet=array_key_exists('source', $_GET) && in_array($_GET['source'], array('bookmarklet'))}
 {$displayAddNewLinkIcon=(($is_logged_in || $openshaarli) && in_array($pageName, array('linklist', 'tools', 'tag.cloud', 'tag.list', 'picwall', 'daily')))}
 
 {if="$isCalledFromBookmarklet"}
