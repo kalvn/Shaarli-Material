@@ -187,45 +187,43 @@
         <input type="hidden" name="searchtags" id="tagfilter_value" value=""/>
     </form>
 
-    {if="!empty($plugin_errors) && $is_logged_in"}
-        <div class="errors">
-            <ul class="container">
-                {loop="plugin_errors"}
-                    <li>{$value}</li>
-                {/loop}
-            </ul>
-        </div>
-    {/if}
+    <div class="notifications">
+      {if="!empty($plugin_errors) && $is_logged_in"}
+        {loop="plugin_errors"}
+            <div class="notification is-danger">
+              <button class="notification-close"><i class="mdi mdi-close"></i></button>
+              {$value}
+            </div>
+        {/loop}
+      {/if}
 
-    {if="!empty($global_errors)"}
-      <div class="errors">
-            <ul class="container">
-                {loop="global_errors"}
-                    <li>{$value}</li>
-                {/loop}
-            </ul>
-        </div>
-    {/if}
+      {if="!empty($global_errors)"}
+        {loop="global_errors"}
+            <div class="notification is-danger">
+              <button class="notification-close"><i class="mdi mdi-close"></i></button>
+              {$value}
+            </div>
+        {/loop}
+      {/if}
 
-    {if="!empty($global_warnings)"}
-        <div class="warnings">
-            <ul class="container">
-                {loop="global_warnings"}
-                    <li>{$value}</li>
-                {/loop}
-            </ul>
-        </div>
-    {/if}
+      {if="!empty($global_warnings)"}
+        {loop="global_warnings"}
+            <div class="notification is-warning">
+              <button class="notification-close"><i class="mdi mdi-close"></i></button>
+              {$value}
+            </div>
+        {/loop}
+      {/if}
 
-    {if="!empty($global_successes)"}
-        <div class="successes">
-            <ul class="container">
-                {loop="global_successes"}
-                    <li>{$value}</li>
-                {/loop}
-            </ul>
-        </div>
-    {/if}
+      {if="!empty($global_successes)"}
+        {loop="global_successes"}
+            <div class="notification is-success">
+              <button class="notification-close"><i class="mdi mdi-close"></i></button>
+              {$value}
+            </div>
+        {/loop}
+      {/if}
+    </div>
 {/if}
 
 <div id="search-overlay" class="fullscreen hidden">

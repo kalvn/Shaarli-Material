@@ -17,6 +17,7 @@ import search from './components/search';
 import popup from './components/popup';
 import thumbnail from './components/thumbnail';
 import tag from './components/tag';
+import notification from './components/notification';
 import lib from './lib';
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
@@ -52,6 +53,7 @@ $(document).ready(function () {
   overlay.init();
   search.init();
   popup.init();
+  notification.init();
   init();
 
   lib.init();

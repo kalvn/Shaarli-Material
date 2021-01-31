@@ -86,6 +86,39 @@ $color-gray-700: #6d7988;
 $color-gray-800: #414d5a;
 $color-gray-900: #252d37;
 
+$color-success-50: #E8F5E9;
+$color-success-100: #C8E6C9;
+$color-success-200: #A5D6A7;
+$color-success-300: #81C784;
+$color-success-400: #66BB6A;
+$color-success-500: #4CAF50;
+$color-success-600: #43A047;
+$color-success-700: #388E3C;
+$color-success-800: #2E7D32;
+$color-success-900: #1B5E20;
+
+$color-danger-50: #FFEBEE;
+$color-danger-100: #FFCDD2;
+$color-danger-200: #EF9A9A;
+$color-danger-300: #E57373;
+$color-danger-400: #EF5350;
+$color-danger-500: #F44336;
+$color-danger-600: #E53935;
+$color-danger-700: #D32F2F;
+$color-danger-800: #C62828;
+$color-danger-900: #B71C1C;
+
+$color-warning-50: #FFF8E1;
+$color-warning-100: #FFECB3;
+$color-warning-200: #FFE082;
+$color-warning-300: #FFD54F;
+$color-warning-400: #FFCA28;
+$color-warning-500: #FFC107;
+$color-warning-600: #FFB300;
+$color-warning-700: #FFA000;
+$color-warning-800: #FF8F00;
+$color-warning-900: #FF6F00;
+
 $color-text: $color-gray-900;
 $color-primary: $color-primary-500;
 $color-primary-second: #1976D2; //1976D2
@@ -135,6 +168,7 @@ $space-xl: 40px;
 
 // Radius.
 $radius-s: 2px;
+$radius: 5px;
 
 
 // Animations speed.

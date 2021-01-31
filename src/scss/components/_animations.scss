@@ -20,7 +20,7 @@
 
 /* Fade out */
 .animate-fade-out{
-    animation: fade-out $animation-speed ease;
+    animation: fade-out $animation-speed ease forwards !important;
 }
 @keyframes fade-out {
     0% {
@@ -48,7 +48,7 @@
 
 /* From right */
 .animate-slide-from-right{
-    animation: slide-from-right $animation-speed ease;
+    animation: slide-from-right $animation-speed ease forwards;
 }
 @keyframes slide-from-right {
     0% {
@@ -62,7 +62,7 @@
 }
 
 .animate-hide-slide-to-bottom{
-    animation: hide-slide-to-bottom $animation-speed ease;
+    animation: hide-slide-to-bottom $animation-speed ease forwards;
 }
 @keyframes hide-slide-to-bottom {
     0% {

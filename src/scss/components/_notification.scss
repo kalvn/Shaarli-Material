@@ -1,0 +1,57 @@
+.notifications {
+  position: fixed;
+  bottom: $space-l;
+  right: $space-l;
+  max-width: 400px;
+  z-index: 1000;
+
+  @media (max-width: 450px) {
+    left: $space-s;
+    right: $space-s;
+  }
+
+  .notification:not(:last-child) {
+    margin-bottom: $space-m;
+  }
+}
+
+.notification {
+  @extend .shadow-3;
+  @extend .animate-slide-from-right;
+
+  position: relative;
+  padding: $space-m;
+  padding-right: $space-l;
+
+  border-radius: $radius;
+  background-color: $color-gray-100;
+  opacity: 1;
+
+  button.notification-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: ($space-t / 2) $space-t;
+    color: $color-gray-600;
+
+    &:hover,
+    &:focus {
+       background-color: rgba(10, 10, 10, .2);
+    }
+  }
+
+  &.is-success {
+    color: $color-success-900;
+    background-color: $color-success-50;
+  }
+
+  &.is-warning {
+    color: $color-warning-900;
+    background-color: $color-warning-50;
+  }
+
+  &.is-danger {
+    color: $color-danger-900;
+    background-color: $color-danger-50;
+  }
+}
