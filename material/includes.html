@@ -48,7 +48,7 @@
 <link type="text/css" rel="stylesheet" href="{$root_path}/{$value}?v={$version_hash}#"/>
 {/loop}
 {if="is_file('data/user.css')"}
-<link type="text/css" rel="stylesheet" href="${root_path}/data/user.css#" />
+<link type="text/css" rel="stylesheet" href="{$root_path}/data/user.css#" />
 {/if}
 {$tagSeparator=str_replace("'", "\\'", $tags_separator)}
 <script>
