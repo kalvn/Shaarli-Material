@@ -1,5 +1,8 @@
 .notifications {
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   bottom: $space-l;
   right: $space-l;
   max-width: 400px;
@@ -8,6 +11,7 @@
   @media (max-width: 450px) {
     left: $space-s;
     right: $space-s;
+    bottom: $space-s;
   }
 
   .notification:not(:last-child) {
@@ -20,8 +24,8 @@
   @extend .animate-slide-from-right;
 
   position: relative;
-  padding: $space-m;
-  padding-right: $space-l;
+  padding: $space-l;
+  padding-right: $space-xl;
 
   border-radius: $radius;
   background-color: $color-gray-100;

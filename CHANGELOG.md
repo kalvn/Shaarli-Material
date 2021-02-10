@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
-## v0.12.1
+## [v0.12.1](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.12.1) - 2021-02-10
 ### Added
 - Support for Shaarli v0.12.1.
 - Async metadata loading when adding a new link.
@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Replaced the QR Code JS library from [qrcodejs](https://davidshimjs.github.io/qrcodejs/) to [qrcode](https://github.com/soldair/node-qrcode).
 - Improved overall localization.
 - Build system from Gulp to Rollup.
+- Redesign of error/warning/success notifications (after saving configuration for example).
 
 ### Fixed
 - Page unique identification.
