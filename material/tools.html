@@ -109,6 +109,20 @@
             </div>
         </div>
     </div>
+
+    {if="!empty($linkcount)"}
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+          <hr class="darker"/>
+          <h2 class="mtm">{'Statistics'|t}</h2>
+          <ul>
+            <li><strong>{$linkcount}</strong> links in total</li>
+            <li><strong>{$privateLinkcount}</strong> private links</li>
+          </ul>
+      </div>
+    </div>
+    {/if}
+
     {if="isset($tools_plugin)"}
     <div class="row">
         <div class="col-md-8 col-md-offset-2">

@@ -1,32 +1,36 @@
 @use "values";
 
-.paging .row {
+.paging{
+  .paging-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: .9rem;
+    color: values.$color-gray-600;
+
+    .paging-current {
+      margin-right: values.$space-m;
+    }
+
     a{
-        display: inline-block;
-        height: 45px;
-        width: 45px;
-        vertical-align: middle;
-        text-align: center;
-        border-radius: 50%;
+      display: block;
+      height: 35px;
+      width: 35px;
+      text-align: center;
+      border-radius: 50%;
+      line-height: 35px;
 
-        color: values.$color-gray-600;
-        font-size: 2rem;
+      color: values.$color-gray-600;
+      font-size: 1.6rem;
 
-        &:hover,
-        &:focus {
-            background-color: values.$color-gray-300;
-        }
+      &:hover,
+      &:focus {
+        background-color: values.$color-gray-300;
+      }
 
-        &:active {
-            background-color: values.$color-gray-400;
-        }
+      &:active {
+        background-color: values.$color-gray-400;
+      }
     }
-
-    .paging-current{
-        display: inline-block;
-
-        line-height: 3rem;
-        color: values.$color-gray-700;
-        font-size: 1rem;
-    }
+  }
 }

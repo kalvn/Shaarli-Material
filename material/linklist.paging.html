@@ -1,23 +1,33 @@
-<div class="paging clearfix">
-  {if="$page_max > 1"}
-  <div class="row">
-    <div class="col-xs-3 col-sm-2 text-left">{if="$previous_page_url"}<a href="{$previous_page_url}" class="paging-older" title="Older"><i class="mdi mdi-arrow-left"></i></a>{/if}</div>
-    <div class="paging-current col-xs-6 col-sm-8 text-center">p<span class="hidden-xs">age</span> {$page_current} / {$page_max}</div>
-    <div class="col-xs-3 col-sm-2 text-right">{if="$next_page_url"}<a href="{$next_page_url}" class="paging-newer" title="Newer"><i class="mdi mdi-arrow-right"></i></a>{/if}</div>
-  </div>
+{if="$page_max > 1"}
+  {if="$is_logged_in"}
+    {$total="$linkcount"}
+  {else}
+    {if="empty($privateLinkcount)"}
+      {$total="$linkcount"}
+    {else}
+      {$total="$linkcount" - "$privateLinkcount"}
+    {/if}
   {/if}
-  <div>
-    {loop="$action_plugin"}
-      <div class="paging_privatelinks">
-        {$value.attr.class=isset($value.attr.class) ? $value.attr.class : ''}
-        {$value.attr.class=!empty($value.on) ? $value.attr.class .' filter-on' : $value.attr.class .' filter-off'}
-        <a
-          {loop="$value.attr"}
-            {$key}="{$value}"
-          {/loop}>
-          {$value.html}
-        </a>
-      </div>
-    {/loop}
+  {$from=("$page_current" - 1) * "$links_per_page" + 1}
+  {$to=min($total, ("$page_current" - 1) * "$links_per_page" + "$links_per_page")}
+  <div class="paging clearfix">
+    <div class="paging-links">
+      <div class="paging-current"><strong>{$from}-{$to}</strong> of {$total}</div>
+      <!--<div class="paging-current">p<span class="hidden-xs">age</span> {$page_current} / {$page_max}</div>-->
+      <div>{if="$next_page_url"}<a href="{$next_page_url}" class="paging-newer" title="Newer"><i class="mdi mdi-arrow-left"></i></a>{/if}</div>
+      <div>{if="$previous_page_url"}<a href="{$previous_page_url}" class="paging-older" title="Older"><i class="mdi mdi-arrow-right"></i></a>{/if}</div>
+    </div>
+    <div>
+      {loop="$action_plugin"}
+        <div class="paging_privatelinks">
+          <a
+            {loop="$value.attr"}
+              {$key}="{$value}"
+            {/loop}>
+            {$value.html}
+          </a>
+        </div>
+      {/loop}
+    </div>
   </div>
-</div>
+{/if}
