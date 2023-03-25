@@ -1,4 +1,4 @@
-.paging{
+.paging .row {
     a{
         display: inline-block;
         height: 45px;
@@ -22,7 +22,7 @@
 
     .paging-current{
         display: inline-block;
-        
+
         line-height: 3rem;
         color: $color-gray-700;
         font-size: 1rem;

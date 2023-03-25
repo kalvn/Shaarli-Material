@@ -36,6 +36,10 @@ const init = function () {
       document.location.href = url;
     }
   });
+
+  if ($('.filter-on').length > 0) {
+    $('#input-readlater').prop('checked', true);
+  }
 };
 
 const initAdmin = function () {
@@ -48,7 +52,7 @@ const initAdmin = function () {
 };
 
 // Initialize components
-$(document).ready(function () {
+$(function () {
   ripple.init();
   overlay.init();
   search.init();
@@ -70,7 +74,7 @@ $(document).ready(function () {
 
   // Only autofocus the first element found.
   $('.autofocus').each(function (index, element) {
-    $(element).focus();
+    $(element).trigger('focus');
     return false;
   });
 });

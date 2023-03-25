@@ -1,21 +1,23 @@
-{if="$page_max > 1"}
 <div class="paging clearfix">
-    <div class="row">
-        <div class="col-xs-3 col-sm-2 text-left">{if="$previous_page_url"}<a href="{$previous_page_url}" class="paging-older" title="Older"><i class="mdi mdi-arrow-left"></i></a>{/if}</div>
-        <div class="paging-current col-xs-6 col-sm-8 text-center">p<span class="hidden-xs">age</span> {$page_current} / {$page_max}</div>
-        <div class="col-xs-3 col-sm-2 text-right">{if="$next_page_url"}<a href="{$next_page_url}" class="paging-newer" title="Newer"><i class="mdi mdi-arrow-right"></i></a>{/if}</div>
-    </div>
-    <div>
-        {loop="$action_plugin"}
-            <div class="paging_privatelinks">
-                <a
-                    {loop="$value.attr"}
-                        {$key}="{$value}"
-                    {/loop}>
-                    {$value.html}
-                </a>
-            </div>
-        {/loop}
-    </div>
+  {if="$page_max > 1"}
+  <div class="row">
+    <div class="col-xs-3 col-sm-2 text-left">{if="$previous_page_url"}<a href="{$previous_page_url}" class="paging-older" title="Older"><i class="mdi mdi-arrow-left"></i></a>{/if}</div>
+    <div class="paging-current col-xs-6 col-sm-8 text-center">p<span class="hidden-xs">age</span> {$page_current} / {$page_max}</div>
+    <div class="col-xs-3 col-sm-2 text-right">{if="$next_page_url"}<a href="{$next_page_url}" class="paging-newer" title="Newer"><i class="mdi mdi-arrow-right"></i></a>{/if}</div>
+  </div>
+  {/if}
+  <div>
+    {loop="$action_plugin"}
+      <div class="paging_privatelinks">
+        {$value.attr.class=isset($value.attr.class) ? $value.attr.class : ''}
+        {$value.attr.class=!empty($value.on) ? $value.attr.class .' filter-on' : $value.attr.class .' filter-off'}
+        <a
+          {loop="$value.attr"}
+            {$key}="{$value}"
+          {/loop}>
+          {$value.html}
+        </a>
+      </div>
+    {/loop}
+  </div>
 </div>
-{/if}
