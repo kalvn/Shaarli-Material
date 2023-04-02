@@ -37,7 +37,7 @@ const search = {
     $('#button-filter').on('click', function () {
       const val = $('#searchform_value').val().trim();
       $('#tagfilter_value').val(val);
-      $('#hidden-tag-form').submit();
+      $('#hidden-tag-form').trigger('submit');
 
       return false;
     });

@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .notifications {
   position: fixed;
   display: flex;
@@ -35,7 +37,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    padding: ($space-t / 2) $space-t;
+    padding: math.div($space-t, 2) $space-t;
     color: $color-gray-600;
 
     &:hover,

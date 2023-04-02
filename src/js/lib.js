@@ -2,7 +2,8 @@ import $ from 'jquery';
 import Blazy from 'blazy';
 import Awesomplete from 'awesomplete';
 import Sortable from 'sortablejs';
-import QRCode from '../../node_modules/qrcode/build/qrcode';
+// import QRCode from '../../node_modules/qrcode/build/qrcode';
+import QRCode from 'qrcode';
 import autosize from 'autosize';
 
 import overlay from './components/overlay';

@@ -57,7 +57,7 @@ const batchEdit = {
         } else {
           $element.addClass('is-selected');
           model.selectedLinks[id] = {
-            id: id,
+            id,
             title: escapeHtml($element.find('.link-title').text())
           };
 
@@ -193,7 +193,7 @@ const batchEdit = {
     const select = function () {
       $link.addClass('is-selected');
       model.selectedLinks[id] = {
-        id: id,
+        id,
         title: escapeHtml($link.find('.link-title').text())
       };
 

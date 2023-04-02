@@ -39,7 +39,7 @@ const tag = {
             data: {
               deletetag: 1,
               fromtag: tag,
-              token: token
+              token
             },
             success: function () {
               const $toBeRemoved = el.closest('.list-item-flex');
@@ -82,7 +82,7 @@ const tag = {
             data: {
               fromtag: tag,
               totag: newTag,
-              token: token,
+              token,
               renametag: 'Rename tag'
             },
             success: function () {

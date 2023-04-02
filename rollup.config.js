@@ -1,15 +1,17 @@
 import path from 'path';
+import fs from 'fs';
 
 import resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
-import postcss from 'rollup-plugin-postcss';
+import postcss from 'postcss';
 import clean from 'postcss-clean';
-import autoprefixer from 'autoprefixer';
 import copy from 'rollup-plugin-copy';
-// import purgecss from '@fullhuman/postcss-purgecss';
 import eslint from '@rollup/plugin-eslint';
-import { terser } from "rollup-plugin-terser"; // minify JS
+import terser from '@rollup/plugin-terser';
+import sass from 'rollup-plugin-sass';
+import css from 'rollup-plugin-css-only';
+import { minify } from 'csso';
 
 const config = {
   input: 'src/js/main.js',
@@ -18,8 +20,21 @@ const config = {
     format: 'iife'
   },
   plugins: [
-    resolve(),
+    resolve({
+      browser: true
+    }),
     commonjs(),
+    css({
+      output: function (styles) {
+        fs.writeFileSync(path.join('material', 'dist', 'lib.css'), minify(styles).css);
+      }
+    }),
+    sass({
+      output: true,
+      processor: css => postcss([clean])
+        .process(css, { from: undefined })
+        .then(result => result.css)
+    }),
     eslint({
       exclude: [
         'node_modules/**',
@@ -27,18 +42,8 @@ const config = {
       ]
     }),
     process.env.NODE_ENV === 'production' ? terser() : null,
-    postcss({
-      extract: path.resolve('material/dist/bundle.css'),
-      plugins: [
-        // purgecss({
-        //   content: ['material/*.html']
-        // }),
-        autoprefixer(),
-        clean()
-      ]
-    }),
     babel({
-      babelHelpers: 'bundled',
+      babelHelpers: 'bundled'
     }),
     copy({
       targets: [
