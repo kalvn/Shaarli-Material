@@ -83,16 +83,28 @@
     }
 }
 
-.red-dot {
-    position: absolute;
-    width: 7px;
-    height: 7px;
-    top: 4px;
-    right: 4px;
-    border-radius: 50%;
-    background: $color-secondary;
+
+.header-button-filter {
+  &.has-filter-readlater,
+  &.has-filters {
+    &::before {
+      content: '';
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      top: 4px;
+      right: 4px;
+      border-radius: 50%;
+      background: $color-secondary;
+      z-index: 10;
+    }
+  }
 }
 
+// Remove the readlater filter button from the original theme.
+a[href="/plugin/readitlater/toggle-filter"] {
+  display: none;
+}
 
 .header-main{
     width: 100%;

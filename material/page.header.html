@@ -1,7 +1,9 @@
+<!--
 {$isCalledFromBookmarklet=array_key_exists('source', $_GET) && in_array($_GET['source'], array('bookmarklet'))}
 {$displayAddNewLinkIcon=(($is_logged_in || $openshaarli) && in_array($pageName, array('linklist', 'tools', 'tag.cloud', 'tag.list', 'picwall', 'daily')))}
 {$plugins=$conf->get('general.enabled_plugins')}
-
+{$filterClass=(($visibility==='private'||$visibility==='public'||$untaggedonly)?'has-filters':'')}
+-->
 {if="$isCalledFromBookmarklet"}
     {ignore} When called as a popup from bookmarklet, do not display menu. {/ignore}
 {else}
@@ -107,9 +109,8 @@
                     {/if}
                     <div class="toolbar-button-container">
                         {if="$pageName === 'linklist'"}
-                        <button type="button" class="popup-trigger icon-header ripple" data-popup="popup-filter" title="{'Filters'|t}">
+                        <button type="button" class="header-button-filter popup-trigger icon-header ripple {$filterClass}" data-popup="popup-filter" title="{'Filters'|t}">
                             <i class="mdi mdi-filter"></i>
-                            {if="$visibility==='private' || $visibility==='public' || $untaggedonly"}<div class="red-dot"></div>{/if}
                         </button>
                         <div id="popup-filter" class="popup popup-filter hidden">
                             <div class="popup-title">{'Filters'|t}<button class="popup-close"><i class="mdi mdi-close"></i></button></div>

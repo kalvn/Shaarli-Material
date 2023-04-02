@@ -39,6 +39,7 @@ const init = function () {
 
   if ($('.filter-on').length > 0) {
     $('#input-readlater').prop('checked', true);
+    $('.header-button-filter').addClass('has-filter-readlater');
   }
 };
 
