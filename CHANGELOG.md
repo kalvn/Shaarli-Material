@@ -5,6 +5,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [v0.12.2](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.12.2) - 2024-12-23
+### Added
+- Support for Shaarli v0.12.2.
+- Support for new core plugin ReadItLater.
+
+### Removed
+- Support for Internet Explorer.
+
+
 ## [v0.12.1](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.12.1) - 2021-02-10
 ### Added
 - Support for Shaarli v0.12.1.
