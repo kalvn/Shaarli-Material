@@ -1,9 +1,12 @@
+@use "values";
+@use "shadow";
+
 .header-main .popup a{
     display: block;
 }
 .header-main .popup a,
 .header-main .popup a:hover{
-    color: $color-text;
+    color: values.$color-text;
 }
 
 /* Toolbar icon buttons */
@@ -79,7 +82,7 @@
     }
 
     &.filter-on{
-        color: $color-alert;
+        color: values.$color-alert;
     }
 }
 
@@ -95,7 +98,7 @@
       top: 4px;
       right: 4px;
       border-radius: 50%;
-      background: $color-secondary;
+      background: values.$color-secondary;
       z-index: 10;
     }
   }
@@ -109,7 +112,7 @@ a[href="/plugin/readitlater/toggle-filter"] {
 .header-main{
     width: 100%;
     min-height: 56px;
-    background-color: $color-primary;
+    background-color: values.$color-primary;
     box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
     margin-bottom: 15px;
 
@@ -125,13 +128,13 @@ a[href="/plugin/readitlater/toggle-filter"] {
         &.header-brand{
             display: inline-block;
             padding: 0 15px;
-            @include font-brand();
+            @include values.font-brand();
             color: #fff;
             text-decoration: none;
             line-height: 56px;
             height: 56px;
             max-width: 100%;
-            @include truncate-ellipsis();
+            @include values.truncate-ellipsis();
 
             &:hover{
                 background-color: rgba(255,255,255,.15);
@@ -202,7 +205,7 @@ a[href="/plugin/readitlater/toggle-filter"] {
 /* Subheader */
 .subheader{
     width: 100%;
-    background-color: $color-primary-second;
+    background-color: values.$color-primary-second;
 
     @extend .shadow-1;
 
@@ -211,7 +214,7 @@ a[href="/plugin/readitlater/toggle-filter"] {
 
     color: #fff;
 
-    padding: $space-s;
+    padding: values.$space-s;
 
     z-index: 5;
 
@@ -220,10 +223,10 @@ a[href="/plugin/readitlater/toggle-filter"] {
         display: block;
         float: left;
         color: #fff;
-        margin-right: $space-t;
+        margin-right: values.$space-t;
     }
 
     &.is-dark {
-        background-color: $color-gray-800;
+        background-color: values.$color-gray-800;
     }
 }

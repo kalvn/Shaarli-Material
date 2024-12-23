@@ -1,7 +1,9 @@
+@use "values";
+
 /* Awesomplete */
 .awesomplete ul{
     z-index: 400;
-    border: 1px solid $color-gray-500;
+    border: 1px solid values.$color-gray-500;
     border-radius: 2px;
 }
 div.awesomplete{
@@ -27,18 +29,18 @@ div.awesomplete > ul > li{
     padding: 5px 10px;
 }
 div.awesomplete > ul > li:hover{
-    background-color: $color-gray-200;
+    background-color: values.$color-gray-200;
 }
 div.awesomplete li:hover mark{
-    background-color: $color-gray-300;
+    background-color: values.$color-gray-300;
 }
 div.awesomplete > ul > li[aria-selected=true]{
-    background-color: $color-primary;
+    background-color: values.$color-primary;
     color: #fff;
 }
 div.awesomplete > ul > li[aria-selected=true]:hover{
     // background-color: #1E88E5;
-    background-color: $color-primary-700;
+    background-color: values.$color-primary-700;
 }
 div.awesomplete li[aria-selected=true]:hover mark{
     background: #3c6b00;

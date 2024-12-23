@@ -1,10 +1,12 @@
+@use "values";
+
 table {
     width: 100%;
 }
 
 th,
 td {
-    padding: $space-t $space-s;
+    padding: values.$space-t values.$space-s;
 
     &:first-child {
         padding-left: 0;
@@ -20,5 +22,5 @@ th {
 }
 
 tr {
-    border-bottom: 1px solid $color-gray-300;
+    border-bottom: 1px solid values.$color-gray-300;
 }

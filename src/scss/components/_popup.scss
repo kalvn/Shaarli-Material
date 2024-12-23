@@ -1,9 +1,11 @@
+@use "values";
+
 .popup{
     position: absolute;
     top: 48px;
     right: 0px;
     min-width: 220px;
-    color: $color-text;
+    color: values.$color-text;
     box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
     background: #fff;
     line-height: 1.5;
@@ -11,18 +13,18 @@
     z-index: 50;
 
     h2 {
-        padding: 0 $space-s;
-        margin-top: $space-s;
-        margin-bottom: $space-s;
+        padding: 0 values.$space-s;
+        margin-top: values.$space-s;
+        margin-bottom: values.$space-s;
         text-transform: uppercase;
         font-size: 12px;
-        color: $color-subtitle;
+        color: values.$color-subtitle;
     }
 
     label {
         margin-bottom: 0;
         font-size: 12px;
-        color: $color-subtitle;
+        color: values.$color-subtitle;
     }
 
     @media (max-width: 600px){
@@ -36,7 +38,7 @@
 }
 .popup-title{
     font-weight: bold;
-    background-color: $color-gray-200;
+    background-color: values.$color-gray-200;
     padding: 10px;
 }
 .popup-close {
@@ -54,7 +56,7 @@
     padding: 10px 0 10px 0;
 
     .list-item {
-        padding: $space-t $space-s;
+        padding: values.$space-t values.$space-s;
         border: none;
 
         &:last-child {
@@ -78,7 +80,7 @@
     padding: 5px 10px;
 }
 .popup ul li a:hover{
-    background-color: $color-gray-200;
+    background-color: values.$color-gray-200;
 }
 .popup input[type=text]{
     width: 100%;

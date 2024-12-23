@@ -1,23 +1,27 @@
 @use "sass:math";
 
+@use "values";
+@use "shadow";
+@use "animations";
+
 .notifications {
   position: fixed;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  bottom: $space-l;
-  right: $space-l;
+  bottom: values.$space-l;
+  right: values.$space-l;
   max-width: 400px;
   z-index: 1000;
 
   @media (max-width: 450px) {
-    left: $space-s;
-    right: $space-s;
-    bottom: $space-s;
+    left: values.$space-s;
+    right: values.$space-s;
+    bottom: values.$space-s;
   }
 
   .notification:not(:last-child) {
-    margin-bottom: $space-m;
+    margin-bottom: values.$space-m;
   }
 }
 
@@ -26,19 +30,19 @@
   @extend .animate-slide-from-right;
 
   position: relative;
-  padding: $space-l;
-  padding-right: $space-xl;
+  padding: values.$space-l;
+  padding-right: values.$space-xl;
 
-  border-radius: $radius;
-  background-color: $color-gray-100;
+  border-radius: values.$radius;
+  background-color: values.$color-gray-100;
   opacity: 1;
 
   button.notification-close {
     position: absolute;
     top: 0;
     right: 0;
-    padding: math.div($space-t, 2) $space-t;
-    color: $color-gray-600;
+    padding: math.div(values.$space-t, 2) values.$space-t;
+    color: values.$color-gray-600;
 
     &:hover,
     &:focus {
@@ -47,17 +51,17 @@
   }
 
   &.is-success {
-    color: $color-success-900;
-    background-color: $color-success-50;
+    color: values.$color-success-900;
+    background-color: values.$color-success-50;
   }
 
   &.is-warning {
-    color: $color-warning-900;
-    background-color: $color-warning-50;
+    color: values.$color-warning-900;
+    background-color: values.$color-warning-50;
   }
 
   &.is-danger {
-    color: $color-danger-900;
-    background-color: $color-danger-50;
+    color: values.$color-danger-900;
+    background-color: values.$color-danger-50;
   }
 }

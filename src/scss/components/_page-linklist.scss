@@ -1,3 +1,6 @@
+@use "card";
+@use "values";
+
 /* Link list */
 .link-outer{
   @extend .card;
@@ -5,7 +8,7 @@
   overflow: hidden;
 
   .links-list.is-selectable &.is-selected{
-    box-shadow: 0 0 4px 4px $color-batch-selection;
+    box-shadow: 0 0 4px 4px values.$color-batch-selection;
   }
 }
 // Used for batch mode (delete).
@@ -20,7 +23,7 @@
   z-index: 10;
 
   .links-list.is-selectable &:hover{
-    background-color: rgba($color-gray-300, 0.5);
+    background-color: rgba(values.$color-gray-300, 0.5);
   }
 
   .links-list.is-selectable &{
@@ -30,7 +33,7 @@
 
   .links-list.is-selectable .is-selected &{
     display: block;
-    background-color: rgba($color-alert, .5);
+    background-color: rgba(values.$color-alert, .5);
   }
 }
 .link-inner{
@@ -50,20 +53,20 @@
 }
 a.link-title{
   display: block;
-  margin-bottom: $space-t;
+  margin-bottom: values.$space-t;
   text-overflow: ellipsis;
-  color: $color-text;
+  color: values.$color-text;
   text-decoration: none;
   font-weight: bold;
   line-height: 1.2;
 
   &:hover,
   &:focus {
-    color: $color-gray-800;
+    color: values.$color-gray-800;
   }
 
   &:active {
-    color: $color-gray-700;
+    color: values.$color-gray-700;
   }
 }
 .private{
@@ -86,41 +89,41 @@ a.link-title{
 }
 a.link-url{
   display: block;
-  margin-bottom: $space-t;
-  color: $color-gray-600;
+  margin-bottom: values.$space-t;
+  color: values.$color-gray-600;
   text-decoration: none;
   line-height: 1em;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  @include font-sub();
+  @include values.font-sub();
 
   &:hover,
   &:focus {
-    color: $color-gray-700;
+    color: values.$color-gray-700;
   }
 
   &:active {
-    color: $color-gray-800;
+    color: values.$color-gray-800;
   }
 }
 .link-date{
-  @include font-sub();
-  color: $color-gray-600;
+  @include values.font-sub();
+  color: values.$color-gray-600;
   float: right;
 
   a,
   .link-archive {
-    color: $color-gray-600;
+    color: values.$color-gray-600;
     text-decoration: none;
 
     &:hover,
     &:focus {
-      color: $color-text;
+      color: values.$color-text;
     }
 
     &:active {
-      color: $color-gray-800;
+      color: values.$color-gray-800;
     }
   }
 }
@@ -148,20 +151,20 @@ a.link-url{
 
   a{
     display: block;
-    color: $color-gray-800;
+    color: values.$color-gray-800;
     text-decoration: none;
     padding: 3px 10px;
-    background-color: $color-gray-200;
+    background-color: values.$color-gray-200;
     border-radius: 20px;
     font-size: .7rem;
 
     &:hover,
     &:focus {
-      background-color: $color-gray-300;
+      background-color: values.$color-gray-300;
     }
 
     &:active {
-      background-color: $color-gray-400;
+      background-color: values.$color-gray-400;
     }
   }
 }
@@ -170,21 +173,21 @@ a.link-url{
   display: inline-block;
   padding: 3px 3px 3px 10px;
   border-radius: 20px;
-  background-color: $color-gray-200;
-  color: $color-gray-800;
+  background-color: values.$color-gray-200;
+  color: values.$color-gray-800;
   text-decoration: none;
-  border: 1px solid $color-gray-300;
+  border: 1px solid values.$color-gray-300;
 
   &:hover,
   &:focus {
-    color: $color-gray-800;
-    background-color: $color-gray-300;
+    color: values.$color-gray-800;
+    background-color: values.$color-gray-300;
     text-decoration: none;
   }
 
   &:active {
-    color: $color-gray-800;
-    background-color: $color-gray-400;
+    color: values.$color-gray-800;
+    background-color: values.$color-gray-400;
     text-decoration: none;
   }
 
@@ -206,22 +209,22 @@ a.link-url{
 
   a,
   span {
-    color: $color-gray-700;
+    color: values.$color-gray-700;
     font-size: 18px;
   }
 
   a {
     &.is-pinned {
-      color: $color-primary;
+      color: values.$color-primary;
     }
 
     &:hover,
     &:focus {
-      color: $color-gray-800;
+      color: values.$color-gray-800;
     }
 
     &:active {
-      color: $color-gray-900;
+      color: values.$color-gray-900;
     }
   }
 
@@ -242,13 +245,13 @@ a.link-url{
     /* Plugins in links */
     .link-plugin{
       &:not(:last-child){
-        margin-right: $space-t;
+        margin-right: values.$space-t;
       }
 
       &:nth-child(2){
         &:before{
           content: "-";
-          margin: 0 $space-t;
+          margin: 0 values.$space-t;
         }
       }
     }
@@ -256,16 +259,16 @@ a.link-url{
     .link-counter{
       margin-top: 20px;
       margin-bottom: 20px;
-      color: $color-gray-700;
+      color: values.$color-gray-700;
     }
 
     .favorite-tag{
       display: block;
       float: left;
-      padding: $space-s;
-      margin-right: $space-s;
+      padding: values.$space-s;
+      margin-right: values.$space-s;
       background-color: rgba(0, 0, 0, .05);
-      color: $color-subtitle;
+      color: values.$color-subtitle;
 
       &:hover,
       &:focus{

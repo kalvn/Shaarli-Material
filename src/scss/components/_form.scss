@@ -1,3 +1,8 @@
+@use "sass:color";
+
+@use "values";
+@use "animations";
+
 button::-moz-focus-inner,
 input::-moz-focus-inner {
     padding: 0;
@@ -32,8 +37,8 @@ textarea{
     }
 
     &:focus{
-        border-color: $color-primary;
-        box-shadow: 0 1px 0 $color-primary;
+        border-color: values.$color-primary;
+        box-shadow: 0 1px 0 values.$color-primary;
         outline: none;
     }
 
@@ -73,43 +78,43 @@ input.input-big{
 select{
     width: 100%;
     padding: 6px 12px;
-    border: 1px solid $color-gray-400;
+    border: 1px solid values.$color-gray-400;
     outline: none;
 
     &:focus {
-        border: 1px solid $color-primary;
+        border: 1px solid values.$color-primary;
         outline: none;
     }
 }
 
 label{
-    color: $color-gray-700;
+    color: values.$color-gray-700;
     font-weight: normal;
 }
 label.active{
-    color: $color-primary;
+    color: values.$color-primary;
 }
 .sublabel{
-    @include font-caption();
+    @include values.font-caption();
     text-align: right;
-    margin-top: $space-t;
-    color: $color-gray-500;
+    margin-top: values.$space-t;
+    color: values.$color-gray-500;
 }
 .form-section{
-    margin-top: $space-l;
-    margin-bottom: $space-l;
+    margin-top: values.$space-l;
+    margin-bottom: values.$space-l;
 }
 .form-section-title{
-    margin-bottom: $space-m;
-    @include font-subheading();
+    margin-bottom: values.$space-m;
+    @include values.font-subheading();
 }
 .form-entry{
-    margin-bottom: $space-m;
+    margin-bottom: values.$space-m;
     width: 100%;
 
     &:focus-within {
         label {
-            color: $color-primary;
+            color: values.$color-primary;
         }
     }
 
@@ -128,7 +133,7 @@ label.active{
         height: 20px;
         top: 7px;
         right: 7px;
-        border: 2px solid $color-primary;
+        border: 2px solid values.$color-primary;
         border-bottom-color: transparent;
         border-radius: 50%;
 
@@ -164,7 +169,7 @@ label.active{
     }
 
     & + label{
-        color: $radio-label-color;
+        color: values.$radio-label-color;
     }
     & + label:before,
     & + label:after{
@@ -183,11 +188,11 @@ label.active{
     &:not(:checked) + label{
         &:before{
             border-radius: 50%;
-            border: 2px solid $radio-empty-color;
+            border: 2px solid values.$radio-empty-color;
         }
         &:after{
             border-radius: 50%;
-            border: 2px solid $radio-empty-color;
+            border: 2px solid values.$radio-empty-color;
             z-index: -1;
 
             transform: scale(0);
@@ -202,8 +207,8 @@ label.active{
         }
         &:after{
             border-radius: 50%;
-            border: 2px solid $radio-fill-color;
-            background-color: $radio-fill-color;
+            border: 2px solid values.$radio-fill-color;
+            background-color: values.$radio-fill-color;
             z-index: 0;
             transform: scale(1.02);
         }
@@ -211,12 +216,12 @@ label.active{
     &.with-gap:checked + label{
         &:before{
             border-radius: 50%;
-            border: 2px solid $radio-fill-color;
+            border: 2px solid values.$radio-fill-color;
         }
         &:after{
             border-radius: 50%;
-            border: 2px solid $radio-fill-color;
-            background-color: $radio-fill-color;
+            border: 2px solid values.$radio-fill-color;
+            background-color: values.$radio-fill-color;
             z-index: 0;
             transform: scale(.5);
         }
@@ -226,13 +231,13 @@ label.active{
     &:disabled:not(:checked) + label:before,
     &:disabled:checked + label:before{
         background-color: transparent;
-        border-color: $color-radio-disabled;
+        border-color: values.$color-radio-disabled;
     }
     &:disabled + label{
-        color: $color-radio-disabled;
+        color: values.$color-radio-disabled;
     }
     &:disabled:not(:checked) + label:hover:before{
-        border-color: $color-radio-disabled;
+        border-color: values.$color-radio-disabled;
     }
 }
 
@@ -261,7 +266,7 @@ label.active{
         display: inline-block;
         height: 20px;
         line-height: 20px;
-        color: $radio-label-color;
+        color: values.$radio-label-color;
 
         -webkit-user-select: none; /* webkit (safari, chrome) browsers */
         -moz-user-select: none; /* mozilla browsers */
@@ -277,7 +282,7 @@ label.active{
             width: 18px;
             height: 18px;
             z-index: 0;
-            border: 2px solid $radio-empty-color;
+            border: 2px solid values.$radio-empty-color;
             border-radius: 1px;
             margin-top: 2px;
             transition: all .2s;
@@ -286,7 +291,7 @@ label.active{
 
     &:not(:checked):disabled + label:before {
         border: none;
-        background-color: $color-checkbox-disabled;
+        background-color: values.$color-checkbox-disabled;
     }
 
     &:checked{
@@ -296,8 +301,8 @@ label.active{
             width: 12px; height: 22px;
             border-top: 2px solid transparent;
             border-left: 2px solid transparent;
-            border-right: 2px solid $radio-fill-color;
-            border-bottom: 2px solid $radio-fill-color;
+            border-right: 2px solid values.$radio-fill-color;
+            border-bottom: 2px solid values.$radio-fill-color;
             transform: rotate(40deg);
             -webkit-backface-visibility: hidden;
             transform-origin: 100% 100%;
@@ -305,11 +310,11 @@ label.active{
     }
 
     &:disabled + label {
-        color: $color-checkbox-disabled;
+        color: values.$color-checkbox-disabled;
 
         &:before{
-            border-right: 2px solid $color-checkbox-disabled;
-            border-bottom: 2px solid $color-checkbox-disabled;
+            border-right: 2px solid values.$color-checkbox-disabled;
+            border-bottom: 2px solid values.$color-checkbox-disabled;
         }
     }
 
@@ -321,7 +326,7 @@ label.active{
             width: 10px; height: 22px;
             border-top: none;
             border-left: none;
-            border-right: 2px solid $radio-fill-color;
+            border-right: 2px solid values.$radio-fill-color;
             border-bottom: none;
             transform: rotate(90deg);
             -webkit-backface-visibility: hidden;
@@ -330,7 +335,7 @@ label.active{
 
         // Disabled indeterminate
         &:disabled + label:before {
-            border-right: 2px solid $color-checkbox-disabled;
+            border-right: 2px solid values.$color-checkbox-disabled;
             background-color: transparent;
         }
     }
@@ -370,7 +375,7 @@ label.active{
             height: 18px;
             width: 18px;
             background-color: transparent;
-            border: 2px solid $radio-empty-color;
+            border: 2px solid values.$radio-empty-color;
             z-index: 0;
         }
     }
@@ -392,8 +397,8 @@ label.active{
         &:after{
             width: 18px;
             height: 18px;
-            border: 2px solid $color-form-active;
-            background-color: $color-form-active;
+            border: 2px solid values.$color-form-active;
+            background-color: values.$color-form-active;
             z-index: 0;
         }
     }
@@ -407,19 +412,19 @@ label.active{
             }
             &:after{
                 border-color: transparent;
-                background-color: $color-checkbox-disabled;
+                background-color: values.$color-checkbox-disabled;
             }
         }
 
         &:checked + label{
-            color: $color-checkbox-disabled;
+            color: values.$color-checkbox-disabled;
 
             &:before{
                 background-color: transparent;
             }
             &:after{
-                background-color: $color-checkbox-disabled;
-                border-color: $color-checkbox-disabled;
+                background-color: values.$color-checkbox-disabled;
+                border-color: values.$color-checkbox-disabled;
             }
         }
     }
@@ -445,10 +450,10 @@ label.active{
     height: 0;
 }
 .switch label input[type=checkbox]:checked + .lever {
-    background-color: $switch-checked-lever-bg;
+    background-color: values.$switch-checked-lever-bg;
 }
 .switch label input[type=checkbox]:checked + .lever:after {
-    background-color: $switch-bg-color;
+    background-color: values.$switch-bg-color;
 }
 .switch label .lever {
     content: "";
@@ -456,7 +461,7 @@ label.active{
     position: relative;
     width: 40px;
     height: 15px;
-    background-color: $switch-unchecked-lever-bg;
+    background-color: values.$switch-unchecked-lever-bg;
     border-radius: 15px;
     margin-right: 10px;
     transition: background 0.3s ease;
@@ -469,7 +474,7 @@ label.active{
     display: inline-block;
     width: 21px;
     height: 21px;
-    background-color: $switch-unchecked-bg;
+    background-color: values.$switch-unchecked-bg;
     border-radius: 21px;
     box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4);
     left: -5px;
@@ -478,7 +483,7 @@ label.active{
 }
 // Switch active style
 input[type=checkbox]:checked:not(:disabled) ~ .lever:active:after {
-   box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4), 0 0 0 15px transparentize($switch-bg-color, .9);
+   box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4), 0 0 0 15px color.adjust(values.$switch-bg-color, $alpha: -.9);
 }
 input[type=checkbox]:not(:disabled) ~ .lever:active:after {
    box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4), 0 0 0 15px rgba(0, 0, 0, 0.08);
@@ -494,5 +499,5 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
 }
 .switch label input[type=checkbox][disabled] + .lever:after,
 .switch label input[type=checkbox][disabled]:checked + .lever:after {
-    background-color: $color-switch-disabled;
+    background-color: values.$color-switch-disabled;
 }

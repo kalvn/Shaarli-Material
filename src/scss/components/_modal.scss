@@ -1,3 +1,7 @@
+@use "values";
+@use "animations";
+@use "shadow";
+
 .modal{
     // Overrides Bootstrap
     position: relative;
@@ -16,13 +20,13 @@
 .modal-title{
     padding: 20px 20px 10px 20px;
     line-height: inherit;
-    @include font-title();
+    @include values.font-title();
 }
 .modal-body{
     padding: 10px 20px 10px 20px;
     max-height: 55vh;
     overflow: auto;
-    color: $color-gray-700;
+    color: values.$color-gray-700;
 }
 .modal-footer{
     padding: 10px 20px 20px 20px;

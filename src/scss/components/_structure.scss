@@ -1,3 +1,5 @@
+@use "values";
+
 /* Page specific */
 .page-login{
     margin-top: 50px;
@@ -30,11 +32,11 @@
 
     &:hover,
     &:focus{
-        background-color: $color-button-hover;
+        background-color: values.$color-button-hover;
     }
 
     &:active{
-        background-color: $color-button-active;
+        background-color: values.$color-button-active;
     }
 }
 .button-expand{
@@ -45,7 +47,7 @@
     }
 }
 .editlinkform {
-  transition: margin $animation-speed ease-in-out;
+  transition: margin values.$animation-speed ease-in-out;
 
   .page-edit-link-batch & {
     margin-top: 0;
@@ -77,10 +79,10 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: $color-gray-700;
-    background-color: rgba($color-gray-700, .7);
+    background-color: values.$color-gray-700;
+    background-color: rgba(values.$color-gray-700, .7);
     color: #fff;
-    @include font-caption();
+    @include values.font-caption();
 }
 .picwall-pictureframe:hover .picwall-link{
     display: block;
@@ -92,7 +94,7 @@
 
 /* Plugins */
 .plugin-actions{
-    @include font-title();
+    @include values.font-title();
     padding: 10px;
     line-height: 20px;
 }
@@ -132,7 +134,7 @@
 
     &:focus-within {
         .plugin-param-key label {
-            color: $color-primary;
+            color: values.$color-primary;
         }
     }
 }
@@ -143,11 +145,11 @@
 /* Thumbnail page */
 .thumbnail-placeholder {
     margin: auto;
-    margin-bottom: $space-s;
-    background-color: $color-gray-light;
+    margin-bottom: values.$space-s;
+    background-color: values.$color-gray-light;
 }
 .thumbnail-link-title {
-    margin-bottom: $space-m;
+    margin-bottom: values.$space-m;
     text-align: center;
     white-space: nowrap;
     text-overflow: ellipsis;

@@ -1,3 +1,4 @@
+@use "sass:color";
 // Typography.
 $font-stack: 'Roboto', sans-serif;
 $font-size: 16px;
@@ -153,7 +154,7 @@ $color-checkbox-disabled: $color-radio-disabled;
 // Switches
 $color-switch-disabled: $color-radio-disabled;
 $switch-bg-color: $color-form-active !default;
-$switch-checked-lever-bg: desaturate(lighten($color-form-active, 25%), 50%) !default;
+$switch-checked-lever-bg: color.adjust(color.adjust($color-form-active, $lightness: 25%), $saturation: -50%) !default;
 $switch-unchecked-bg: #F1F1F1 !default;
 $switch-unchecked-lever-bg: #818181 !default;
 

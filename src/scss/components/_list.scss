@@ -1,21 +1,23 @@
+@use "values";
+
 /* Generic classes */
 .list-label{
-    @include font-subheading();
-    color: $color-text;
+    @include values.font-subheading();
+    color: values.$color-text;
 }
 .list-sublabel{
-    margin-top: $space-t;
-    @include font-caption();
-    color: $color-gray-600;
+    margin-top: values.$space-t;
+    @include values.font-caption();
+    color: values.$color-gray-600;
 }
 
 .list-item{
     display: block;
-    padding: $space-m;
+    padding: values.$space-m;
 }
 
 .list-item-text{
-    padding: $space-m;
+    padding: values.$space-m;
 }
 
 // Controls (button with icon) displayed withing list item.
@@ -26,7 +28,7 @@
     align-items: center;
 
     .list-item-control{
-        color: $color-gray-600;
+        color: values.$color-gray-600;
         font-size: 20px;
         width: 35px;
         height: 35px;
@@ -36,11 +38,11 @@
 
         &:hover,
         &:focus{
-            background-color: $color-gray-200;
+            background-color: values.$color-gray-200;
         }
 
         &:active{
-            background-color: $color-gray-300;
+            background-color: values.$color-gray-300;
         }
     }
 
@@ -64,18 +66,18 @@
     justify-content: space-between;
     align-items: center;
     background: #fff;
-    border-top: 1px solid $color-gray-300;
+    border-top: 1px solid values.$color-gray-300;
 
     .card-header + &:first-child{
         border-top: 0;
     }
 
     &:last-child{
-        border-bottom: 1px solid $color-gray-300;
+        border-bottom: 1px solid values.$color-gray-300;
     }
 
     .list-item-start{
-        padding-left: $space-m;
+        padding-left: values.$space-m;
     }
 
     .list-item-middle{
@@ -83,7 +85,7 @@
     }
 
     .list-item-end{
-        padding-right: $space-m;
+        padding-right: values.$space-m;
     }
 }
 
@@ -96,21 +98,21 @@ label.list-item-content{
     .list-item{
         display: block;
         cursor: pointer;
-        color: $color-text;
+        color: values.$color-text;
 
-        border-top: 1px solid $color-gray-300;
+        border-top: 1px solid values.$color-gray-300;
 
         .card-header + &:first-child{
             border-top: 0;
         }
 
         &:last-child{
-            border-bottom: 1px solid $color-gray-300;
+            border-bottom: 1px solid values.$color-gray-300;
         }
 
         &:hover,
         &:focus{
-            background-color: $color-gray-200;
+            background-color: values.$color-gray-200;
             text-decoration: none;
         }
 
@@ -130,10 +132,10 @@ label.list-item-content{
     }
 
     .list-item-sublabel{
-        margin-top: $space-t;
+        margin-top: values.$space-t;
         font-weight: 400;
         font-size: 1rem;
-        color: $color-gray-600;
+        color: values.$color-gray-600;
     }
 }
 
@@ -144,12 +146,12 @@ label.list-item-content{
         justify-content: space-between;
         align-items: center;
 
-        padding: $space-l $space-m;
+        padding: values.$space-l values.$space-m;
 
-        border-top: 1px solid $color-gray-300;
+        border-top: 1px solid values.$color-gray-300;
 
         &:last-child{
-            border-bottom: 1px solid $color-gray-300;
+            border-bottom: 1px solid values.$color-gray-300;
         }
     }
 
@@ -159,7 +161,7 @@ label.list-item-content{
 
     .list-item-sublabel{
         @extend .list-sublabel;
-        margin-top: $space-t;
+        margin-top: values.$space-t;
     }
 }
 
@@ -178,10 +180,10 @@ label.list-item-content{
     }
 
     .list-sortable-handle{
-        padding: $space-s;
+        padding: values.$space-s;
         cursor: move;
         font-size: 2rem;
-        color: $color-gray-600;
+        color: values.$color-gray-600;
     }
 
     .list-item-label{
@@ -190,7 +192,7 @@ label.list-item-content{
 
     .list-item-sublabel{
         @extend .list-sublabel;
-        margin-top: $space-t;
+        margin-top: values.$space-t;
     }
 
 }
@@ -198,7 +200,7 @@ label.list-item-content{
 .list-checkable{
     input[type=checkbox]{
         display: block;
-        margin-right: $space-m;
+        margin-right: values.$space-m;
     }
 }
 
@@ -206,7 +208,7 @@ label.list-item-content{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: $space-t 0;
+    padding: values.$space-t 0;
     background: #fff;
     border: none;
 

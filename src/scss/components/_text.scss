@@ -1,5 +1,7 @@
-.light-heading{
-    @include font-subheading();
+@use "values";
 
-    color: $color-gray-600;
+.light-heading{
+    @include values.font-subheading();
+
+    color: values.$color-gray-600;
 }

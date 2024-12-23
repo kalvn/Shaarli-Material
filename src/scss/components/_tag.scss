@@ -1,7 +1,9 @@
+@use "values";
+
 .tag {
-  padding: $space-t;
+  padding: values.$space-t;
   font-size: .8rem;
-  background-color: $color-gray-100;
+  background-color: values.$color-gray-100;
   border-radius: 4px;
 
   &.is-light {

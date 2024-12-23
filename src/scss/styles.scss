@@ -1,38 +1,38 @@
-@import 'components/reset';
+@use 'components/reset';
 
-@import 'components/fonts';
-@import 'components/values';
-@import 'components/animations';
-@import 'components/shadow';
-@import 'components/icons';
+@use 'components/fonts';
+@use 'components/values';
+@use 'components/animations';
+@use 'components/shadow';
+@use 'components/icons';
 
-@import 'components/overrides';
+@use 'components/overrides';
 
-@import 'components/global';
-@import 'components/helpers';
-@import 'components/layout';
+@use 'components/global';
+@use 'components/helpers';
+@use 'components/layout';
 
-@import 'components/ripple';
-@import 'components/card';
-@import 'components/list';
-@import 'components/popup';
-@import 'components/button';
-@import 'components/modal';
-@import 'components/form';
-@import 'components/text';
-@import 'components/actionbar';
-@import 'components/progress';
-@import 'components/table';
-@import 'components/tag';
-@import 'components/notification';
+@use 'components/ripple';
+@use 'components/card';
+@use 'components/list';
+@use 'components/popup';
+@use 'components/button';
+@use 'components/modal';
+@use 'components/form';
+@use 'components/text';
+@use 'components/actionbar';
+@use 'components/progress';
+@use 'components/table';
+@use 'components/tag';
+@use 'components/notification';
 
-@import 'components/bookmarklet';
-@import 'components/header';
-@import 'components/pager';
-@import 'components/footer';
-@import 'components/overlay';
-@import 'components/structure';
-@import 'components/markdown';
+@use 'components/bookmarklet';
+@use 'components/header';
+@use 'components/pager';
+@use 'components/footer';
+@use 'components/overlay';
+@use 'components/structure';
+@use 'components/markdown';
 
-@import 'components/page-daily';
-@import 'components/page-linklist';
+@use 'components/page-daily';
+@use 'components/page-linklist';

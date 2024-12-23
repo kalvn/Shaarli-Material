@@ -2,12 +2,10 @@ import path from 'path';
 import fs from 'fs';
 
 import resolve from '@rollup/plugin-node-resolve';
-import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'postcss';
 import clean from 'postcss-clean';
 import copy from 'rollup-plugin-copy';
-import eslint from '@rollup/plugin-eslint';
 import terser from '@rollup/plugin-terser';
 import sass from 'rollup-plugin-sass';
 import css from 'rollup-plugin-css-only';
@@ -35,16 +33,7 @@ const config = {
         .process(css, { from: undefined })
         .then(result => result.css)
     }),
-    eslint({
-      exclude: [
-        'node_modules/**',
-        'src/scss/**'
-      ]
-    }),
     process.env.NODE_ENV === 'production' ? terser() : null,
-    babel({
-      babelHelpers: 'bundled'
-    }),
     copy({
       targets: [
         { src: 'src/assets/fonts', dest: 'material/dist' },

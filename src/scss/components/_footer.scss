@@ -1,10 +1,12 @@
+@use "values";
+
 /* Footer */
 #footer{
     text-align: center;
     margin-top: 50px;
     margin-bottom: 15px;
-    color: $color-gray-700;
-    @include font-caption();
+    color: values.$color-gray-700;
+    @include values.font-caption();
 
     .from-bookmarklet &{
         margin-top: 10px;

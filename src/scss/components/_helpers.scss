@@ -1,3 +1,5 @@
+@use "values";
+
 .nowrap{
     overflow: hidden;
     text-overflow: ellipsis;
@@ -9,11 +11,11 @@
 }
 
 hr.darker{
-    border-top-color: $color-gray-400;
+    border-top-color: values.$color-gray-400;
 }
 hr.margin{
-    margin-left: $space-xl;
-    margin-right: $space-xl;
+    margin-left: values.$space-xl;
+    margin-right: values.$space-xl;
 }
 
 .is-bold {
@@ -46,7 +48,7 @@ hr.margin{
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: $color-gray-200;
+    background-color: values.$color-gray-200;
     text-align: center;
 
     i{
@@ -86,8 +88,8 @@ p.highlight{
 /* Nothing found */
 .nothing-found{
     text-align: center;
-    @include font-display1();
-    color: $color-gray-600;
+    @include values.font-display1();
+    color: values.$color-gray-600;
     margin-bottom: 100px;
 }
 
@@ -117,8 +119,8 @@ p.highlight{
 
 .text-feedback{
     display: inline-block;
-    margin-left: $space-s;
-    margin-right: $space-s;
+    margin-left: values.$space-s;
+    margin-right: values.$space-s;
     font-style: italic;
     font-size: 90%;
 }
@@ -136,22 +138,22 @@ p.highlight{
 
 .is-highlighted-hover{
     &:hover{
-        background-color: $color-gray-hover-light;
+        background-color: values.$color-gray-hover-light;
     }
 }
 
 ul.is-bordered{
     li{
-        padding: $space-t;
-        border: 1px solid $color-gray-light;
+        padding: values.$space-t;
+        border: 1px solid values.$color-gray-light;
         border-bottom: none;
-        background-color: $color-gray-hover;
+        background-color: values.$color-gray-hover;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
 
         &:last-child{
-            border-bottom: 1px solid $color-gray-light;
+            border-bottom: 1px solid values.$color-gray-light;
         }
     }
 }

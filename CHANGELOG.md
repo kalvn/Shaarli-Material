@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [v0.14.0](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.14.0) - unreleased
+### Changed
+- Move from ESLint standard to neostandard for linting JS.
+
+### Removed
+- Babel for transpilation.
+- Core-JS for old-browser support.
 
 ## [v0.12.2](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.12.2) - 2024-12-23
 ### Added

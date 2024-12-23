@@ -1,3 +1,5 @@
+@use "values";
+
 /**
  * ANIMATIONS
  * To perform animations, add the desired class to the desired element.
@@ -7,7 +9,7 @@
 
 /* Fade in */
 .animate-fade-in{
-    animation: fade-in $animation-speed ease;
+    animation: fade-in values.$animation-speed ease;
 }
 @keyframes fade-in {
     0% {
@@ -20,7 +22,7 @@
 
 /* Fade out */
 .animate-fade-out{
-    animation: fade-out $animation-speed ease forwards !important;
+    animation: fade-out values.$animation-speed ease forwards !important;
 }
 @keyframes fade-out {
     0% {
@@ -33,7 +35,7 @@
 
 /* From top */
 .animate-slide-from-top{
-    animation: slide-from-top $animation-speed ease;
+    animation: slide-from-top values.$animation-speed ease;
 }
 @keyframes slide-from-top {
     0% {
@@ -48,7 +50,7 @@
 
 /* From right */
 .animate-slide-from-right{
-    animation: slide-from-right $animation-speed ease forwards;
+    animation: slide-from-right values.$animation-speed ease forwards;
 }
 @keyframes slide-from-right {
     0% {
@@ -62,7 +64,7 @@
 }
 
 .animate-hide-slide-to-bottom{
-    animation: hide-slide-to-bottom $animation-speed ease forwards;
+    animation: hide-slide-to-bottom values.$animation-speed ease forwards;
 }
 @keyframes hide-slide-to-bottom {
     0% {
@@ -76,7 +78,7 @@
 }
 
 .animate-show-slide-from-bottom{
-    animation: show-slide-from-bottom $animation-speed ease;
+    animation: show-slide-from-bottom values.$animation-speed ease;
 }
 @keyframes show-slide-from-bottom {
     0% {
@@ -89,7 +91,7 @@
     }
 }
 .animate-compress-height-50 {
-    animation: compress-height-50 $animation-speed-long ease forwards;
+    animation: compress-height-50 values.$animation-speed-long ease forwards;
     overflow: hidden;
 }
 @keyframes compress-height-50 {
@@ -104,7 +106,7 @@
 }
 
 .animate-turn-forever {
-    animation: turn $animation-speed-long linear infinite;
+    animation: turn values.$animation-speed-long linear infinite;
 }
 @keyframes turn {
     0% {

@@ -1,11 +1,13 @@
+@use "values";
+
 .card {
   position: relative;
   height: auto;
   background: #fff;
-  box-shadow: 0 -1px 0 $color-gray-200,0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);
+  box-shadow: 0 -1px 0 values.$color-gray-200,0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);
   margin: 15px 0 15px 0;
   border-radius: 4px;
-  transition: all $animation-speed ease-in-out;
+  transition: all values.$animation-speed ease-in-out;
 }
 
 .card-overlay {
@@ -14,10 +16,10 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: $space-m;
+  padding: values.$space-m;
   background-color: rgba(255, 255, 255, .8);
   z-index: 10;
-  transition: background-color $animation-speed ease-in-out;
+  transition: background-color values.$animation-speed ease-in-out;
 }
 
 .card-title,/* DEPRECATED use header instead */
@@ -26,8 +28,8 @@ h1.card-header {
   position: relative;
   margin: 0;
   padding: 15px;
-  border-bottom: 1px solid $color-gray-300;
-  @include font-body2();
+  border-bottom: 1px solid values.$color-gray-300;
+  @include values.font-body2();
   text-transform: uppercase;
 }
 
@@ -36,11 +38,11 @@ h1.card-header {
   font-size: 90%;
   font-weight: normal;
   font-style: italic;
-  color: $color-subtitle;
+  color: values.$color-subtitle;
 }
 
 .card-body {
-  padding: $space-m;
+  padding: values.$space-m;
 }
 
 .card-footer {
@@ -49,8 +51,8 @@ h1.card-header {
 
 .card-search {
   input[type="search"]{
-    padding: $space-s $space-m;
-    background-color: $color-gray-hover;
+    padding: values.$space-s values.$space-m;
+    background-color: values.$color-gray-hover;
     border-color: transparent;
   }
 }

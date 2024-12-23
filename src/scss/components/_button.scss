@@ -1,3 +1,9 @@
+@use "sass:color";
+
+@use "values";
+@use "helpers";
+@use "shadow";
+
 $button-padding: 8px 16px;
 $button-height: 36px;
 
@@ -7,11 +13,11 @@ $button-height: 36px;
 
     &:hover,
     &:focus{
-        background-color: darken($color, 5%);
+        background-color: color.adjust($color, $lightness: -5%);
         color: #fff;
     }
     &:active{
-        background-color: darken($color, 10%);
+        background-color: color.adjust($color, $lightness: -10%);
         color: #fff;
     }
     &:active:focus{
@@ -30,13 +36,13 @@ $button-height: 36px;
     padding: $button-padding;
 
     border: none;
-    border-radius: $radius-s;
+    border-radius: values.$radius-s;
     outline: 0;
 
-    background-color: $color-transparent;
+    background-color: values.$color-transparent;
 
-    @include font-button();
-    color: $color-text;
+    @include values.font-button();
+    color: values.$color-text;
     text-transform: uppercase;
     text-decoration: none;
     text-align: center;
@@ -50,14 +56,14 @@ $button-height: 36px;
         outline: 0;
         border: none;
         text-decoration: none;
-        color: $color-text;
+        color: values.$color-text;
     }
 
     &[disabled]{
         pointer-events: none;
     }
 
-    &::-moz-focus-inner { 
+    &::-moz-focus-inner {
         border: 0;
         padding: 0;
     }
@@ -72,10 +78,10 @@ $button-height: 36px;
 
     &:hover,
     &:focus{
-        background-color: $color-button-hover;
+        background-color: values.$color-button-hover;
         box-shadow: none;
 
-        color: $color-text;
+        color: values.$color-text;
     }
 
     &:active{
@@ -87,8 +93,8 @@ $button-height: 36px;
         &:hover,
         &:focus,
         &:active{
-            color: $color-button-disabled;
-            background-color: $color-transparent;
+            color: values.$color-button-disabled;
+            background-color: values.$color-transparent;
         }
     }
 }
@@ -97,13 +103,13 @@ $button-height: 36px;
     @extend .button-base;
     @extend .shadow-button;
 
-    background-color: $color-button-raised;
+    background-color: values.$color-button-raised;
 
     &:hover,
     &:focus{
         @extend .shadow-button-hover;
 
-        color: $color-text;
+        color: values.$color-text;
     }
 
     &:active{
@@ -117,8 +123,8 @@ $button-height: 36px;
         &:active{
             @extend .shadow-button;
 
-            color: $color-button-raised-disabled-text;
-            background-color: $color-button-raised-disabled;
+            color: values.$color-button-raised-disabled-text;
+            background-color: values.$color-button-raised-disabled;
         }
     }
 }
@@ -127,7 +133,7 @@ $button-height: 36px;
     @extend .button-base;
 
     color: #fff;
-    background-color: $color-transparent;
+    background-color: values.$color-transparent;
 
     &:hover,
     &:focus{
@@ -150,13 +156,13 @@ $button-height: 36px;
 
 /* Color variations. */
 .button-primary{
-    @include button-color($color-primary);
+    @include button-color(values.$color-primary);
 }
 .button-alert{
-    @include button-color($color-alert);
+    @include button-color(values.$color-alert);
 }
 .button-firefox{
-    @include button-color($color-firefox);
+    @include button-color(values.$color-firefox);
 }
 
 /* Floating action button */
@@ -167,7 +173,7 @@ $button-height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     width: 56px;
     height: 56px;
     bottom: 5%;
@@ -178,8 +184,8 @@ $button-height: 36px;
     font-size: 25px;
     color: #fff;
 
-    background-color: $color-secondary;
-    
+    background-color: values.$color-secondary;
+
     border-radius: 50%;
     transition: box-shadow 150ms cubic-bezier(0,0,.2,1);
 
@@ -198,26 +204,26 @@ $button-height: 36px;
 }
 
 .large-icon-button{
-    
+
     display: block;
     float: left;
-    padding: $space-m;
-    color: $color-text;
+    padding: values.$space-m;
+    color: values.$color-text;
     width: 140px;
     overflow: hidden;
     font-size: 16px;
     text-align: center;
-    border-radius: $radius-s;
+    border-radius: values.$radius-s;
 
     &:hover,
     &:focus{
         text-decoration: none;
-        background-color: $color-gray-light;
-        color: $color-text;
+        background-color: values.$color-gray-light;
+        color: values.$color-text;
     }
 
     &:active{
-        background-color: darken($color-gray-light, 5%);
+        background-color: color.adjust(values.$color-gray-light, $lightness: -5%);
     }
 
     i{

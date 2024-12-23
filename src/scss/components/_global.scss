@@ -1,3 +1,5 @@
+@use "values";
+
 *,
 *:after,
 *:before {
@@ -5,39 +7,39 @@
 }
 
 html{
-    background: $color-gray-150;
-    font-size: $font-size;
+    background: values.$color-gray-150;
+    font-size: values.$font-size;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 body{
-    font-family: $font-stack;
-    font-size: $font-size;
-    background: $color-gray-150;
-    color: $color-text;
+    font-family: values.$font-stack;
+    font-size: values.$font-size;
+    background: values.$color-gray-150;
+    color: values.$color-text;
 }
 h1{
-    @include font-headline();
-    margin: $space-s 0 $space-l 0;
+    @include values.font-headline();
+    margin: values.$space-s 0 values.$space-l 0;
 }
 h2{
-    @include font-subheading();
-    margin-bottom: $space-m;
+    @include values.font-subheading();
+    margin-bottom: values.$space-m;
 }
 p{
-    margin-bottom: $space-m;
-    @include font-body();
+    margin-bottom: values.$space-m;
+    @include values.font-body();
 }
 a{
-    color: $color-primary;
+    color: values.$color-primary;
 
     &:hover,
     &:focus{
-        color: $color-primary-600;
+        color: values.$color-primary-600;
     }
 
     &:active{
-        color: $color-primary-700;
+        color: values.$color-primary-700;
     }
 }
 em{
@@ -72,21 +74,21 @@ pre {
     margin: 1em 0;
     padding: 20px;
     max-width: 100%;
-    border: 1px solid $color-gray-200;
-    color: $color-gray-800;
+    border: 1px solid values.$color-gray-200;
+    color: values.$color-gray-800;
     line-height: 1.2em;
-    background: $color-gray-100;
+    background: values.$color-gray-100;
     border-radius: 5px;
     box-shadow: none;
 }
 
 code {
     padding: 0;
-    color: $color-gray-800;
+    color: values.$color-gray-800;
     font-size: .8em;
     line-height: 1em;
     font-weight: 400!important;
-    background: $color-gray-100;
+    background: values.$color-gray-100;
     border-radius: 3px;
 }
 
