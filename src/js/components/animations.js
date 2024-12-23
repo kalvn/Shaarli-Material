@@ -1,67 +1,25 @@
 import $ from 'jquery';
 
-let animationEventName = 'animationend';
-
-/**
- * Taken from: https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Animations/Detecting_CSS_animation_support
- */
-const checkAnimationSupport = function () {
-  if (typeof isAnimationSupported !== 'undefined') {
-    return isAnimationSupported;
-  }
-
-  let animation = false;
-  let animationstring = 'animation';
-  const domPrefixes = 'Webkit Moz O ms Khtml'.split(' ');
-  let pfx = '';
-  const elm = document.createElement('div');
-
-  if (elm.style.animationName !== undefined) { animation = true; }
-
-  if (animation === false) {
-    for (let i = 0; i < domPrefixes.length; i++) {
-      if (elm.style[domPrefixes[i] + 'AnimationName'] !== undefined) {
-        pfx = domPrefixes[i];
-        animationstring = pfx + 'Animation';
-        animation = true;
-        break;
-      }
-    }
-  }
-
-  animationEventName = animationstring + 'end';
-  return animation;
-};
-
-const isAnimationSupported = checkAnimationSupport();
+const animationEventName = 'animationend';
 
 const animations = {
   animation: function (animationName, element, callbackBegin, callbackEnd) {
-    if (isAnimationSupported) {
-      element.on(animationEventName + '.' + animationName, function () {
-        // Removes this listener and animation classes.
-        $(this).off(animationEventName + '.' + animationName)
-          .removeClass(function (index, classes) {
-            return (classes.match(/animate-\S+/g) || []).join(' ');
-          });
+    element.on(animationEventName + '.' + animationName, function () {
+      // Removes this listener and animation classes.
+      $(this).off(animationEventName + '.' + animationName)
+        .removeClass(function (index, classes) {
+          return (classes.match(/animate-\S+/g) || []).join(' ');
+        });
 
-        // Calls the specified callback if it exists.
-        if (typeof callbackEnd === 'function') {
-          callbackEnd();
-        }
-      });
-
-      element.addClass('animate-' + animationName);
-      if (typeof callbackBegin === 'function') {
-        callbackBegin();
-      }
-    } else {
-      if (typeof callbackBegin === 'function') {
-        callbackBegin();
-      }
+      // Calls the specified callback if it exists.
       if (typeof callbackEnd === 'function') {
         callbackEnd();
       }
+    });
+
+    element.addClass('animate-' + animationName);
+    if (typeof callbackBegin === 'function') {
+      callbackBegin();
     }
   },
   fadeIn: function (element, callbackBegin, callbackEnd) {

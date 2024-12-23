@@ -25,7 +25,7 @@
     "neostandard": "^0.12.0",
     "postcss": "^8.2.4",
     "postcss-clean": "^1.1.0",
-    "rollup": "^3.20.2",
+    "rollup": "^4.29.1",
     "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-css-only": "^4.3.0",
     "rollup-plugin-sass": "^1.12.19",
