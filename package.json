@@ -1,7 +1,7 @@
 {
   "name": "shaarlimaterial",
   "version": "0.14.0",
-  "description": "Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), the personal, minimalist, super-fast, database free, bookmarking service.",
+  "description": "Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), the personal, minimalist, super fast, database-free, bookmarking service.",
   "main": "src/js/main.js",
   "type": "module",
   "dependencies": {
