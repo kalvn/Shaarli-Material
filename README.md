@@ -11,7 +11,7 @@ Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), t
 ## Compatibility
 Shaarli Material follows the exact same versions numbers than Shaarli. It means that if you install Shaarli vX.Y.Z, you must use Shaarli Material vX.Y.Z.
 
-Shaarli Material was tested and validated with **Shaarli 0.12.1**.
+Shaarli Material was tested and validated with **Shaarli 0.14.0**.
 
 
 ## Download
@@ -64,10 +64,12 @@ Then, anything you add in this file will be included at the end of the `<head>` 
 
 This file is NOT commited on the repository, which allows you to update the theme without overriding this file.
 
+
 ## Plugins
 As from Shaarli v0.6.0, you can install plugins to enrich your experience.
 Most of them should work properly, although it's up to the plugin developer to ensure the code is as minimal as possible to integrates well in custom themes.
 I tested all plugins available with Shaarli 0.6.0 and they all work well even though the display is a bit weird for some of them. I will keep monitoring the behavior of popular plugins in the future.
+
 
 ## Libraries used
 This theme uses a few JavaScript libraries.
@@ -101,7 +103,6 @@ $ npm run dev
 $ npm install
 $ npm run build
 ```
-
 
 ------------------------------------------------------------------------------
 
