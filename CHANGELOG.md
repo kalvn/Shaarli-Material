@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
-## [v0.14.0](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.14.0) - unreleased
+## [v0.14.0](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.14.0) - 2024-12-24
 ### Added
 - Support for Shaarli v0.14.0.
 
