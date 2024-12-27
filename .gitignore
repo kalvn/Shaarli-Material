@@ -5,6 +5,7 @@
 # Removes some useless build files.
 material/dist/*
 #!material/dist
+material/opengraph.png
 
 # Removes the user defined template.
 material/extra.html

@@ -21,11 +21,13 @@
   {$link=reset($links)}
   <meta property="og:title" content="{$link.title}" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="{$index_url}?{$link.shorturl}" />
+  <meta property="og:url" content="{$index_url}shaare/{$link.shorturl}" />
   {$ogDescription=isset($link.description_src) ? $link.description_src : $link.description}
-  <meta property="og:description" content="{function="mb_substr(strip_tags($ogDescription), 0, 300)"}" />
+  <meta property="og:description" content="{function="mb_substr(strip_tags($ogDescription), 0, 300)"}{if="strlen($ogDescription) > 300"}...{/if}" />
   {if="!empty($link.thumbnail)"}
     <meta property="og:image" content="{$index_url}{$link.thumbnail}" />
+  {elseif="is_file('tpl/material/opengraph.png')"}
+    <meta property="og:image" content="{$index_url}tpl/material/opengraph.png" />
   {/if}
   {if="!$hide_timestamps || $is_logged_in"}
     <meta property="article:published_time" content="{$link.created->format(DateTime::ATOM)}" />
@@ -36,6 +38,12 @@
   {loop="link.taglist"}
     <meta property="article:tag" content="{$value}" />
   {/loop}
+{else}
+  <meta property="og:title" content="{$pagetitle}" />
+  <meta property="og:type" content="website" />
+  {if="is_file('tpl/material/opengraph.png')"}
+    <meta property="og:image" content="{$index_url}tpl/material/opengraph.png" />
+  {/if}
 {/if}
 <link type="text/css" rel="stylesheet" href="{$asset_path}/dist/lib.css?v={$version_hash}#" />
 <link type="text/css" rel="stylesheet" href="{$asset_path}/dist/bundle.css?v={$version_hash}#" />

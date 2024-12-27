@@ -31,8 +31,7 @@ You can now enjoy your new Material theme.
 
 
 ## Customization
-You can add your own CSS rules in file `data/user.css`. You'll find an example that shows how to change the whole theme color in `user.example.css`.
-
+### Configuration
 You can customize a few things using the `data/config.json.php` file of your Shaarli installation. If the file doesn't exist, just create it. Be careful to respect the JSON format notation (end lines with a comma except for the last item, just before the closing curly brace), otherwise you'll get errors.
 
 Here are parameters you can set.
@@ -57,6 +56,17 @@ Here is an example of what you can configure (in real life, there will be other 
     }
 }
 ```
+
+### Custom Open Graph image
+[Open Graph](https://ogp.me/#metadata) is a protocol that enables web site developers to attach rich metadata that will be used when sharing a link on social medias for example.
+
+Shaarli Material supports adding a custom image that will be used by default when no image is attached to a shared link.
+
+To add yours, create a PNG image and save it as `tpl/material/opengraph.png`.
+
+### Custom CSS
+You can add your own CSS rules in file `data/user.css`. You'll find an example that shows how to change the whole theme color in `user.example.css`.
+
 
 ## Add custom resources
 If you want to add your custom scripts or styles (for example analytics script), you must create a new template named `extra.html` in the *material* folder.
