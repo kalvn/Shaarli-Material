@@ -30,7 +30,7 @@
                 value="{$search_tags}"
                 {/if}
                 autocomplete="off" data-multiple data-autofirst data-minChars="1"
-                data-list="{loop="$tags"}{$key}, {/loop}"
+                data-list="{loop="$tags"}{$key|escape}, {/loop}"
             >
         </form>
         {loop="tags"}
@@ -67,7 +67,7 @@
 </div>
 
 {if="$is_logged_in"}
-  <input type="hidden" name="taglist" value="{loop="$tags"}{$key} {/loop}">
+  <input type="hidden" name="taglist" value="{loop="$tags"}{$key|escape} {/loop}">
 {/if}
 
 {include="page.footer"}

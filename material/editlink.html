@@ -54,7 +54,7 @@
                         <label for="lf_tags{$index}">{'Tags'|t}</label><br/>
                         <div class="{$asyncLoadClass}">
                             <input type="text" id="lf_tags{$index}" name="lf_tags" {if="empty($batch_mode)"}class="autofocus"{/if} value="{$link.tags}" class="lf_input"
-                                data-list="{loop="$tags"}{$key}, {/loop}" data-multiple autocomplete="off" />
+                                data-list="{loop="$tags"}{$key|escape}, {/loop}" data-multiple autocomplete="off" />
                         </div>
                     </div>
                     {if="isset($edit_link_plugin)"}

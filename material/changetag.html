@@ -19,7 +19,7 @@
                         <label for="fromtag">Modify this tag&#8230;</label>
                         <input type="text" name="fromtag" id="fromtag" value="{$fromtag}" class="autofocus"
                             autocomplete="off" data-multiple data-minChars="1"
-                            data-list="{loop="$tags"}{$key}, {/loop}"/>
+                            data-list="{loop="$tags"}{$key|escape}, {/loop}"/>
 
                     </div>
                     <div class="form-entry">
