@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
-## unreleased
+## [v0.16.1](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.16.1) - 2026-02-15
 ### Added
 - New pager on link list.
 - Add an option to specify a custom Open Graph image.
@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - Wrong image path for errors.
+- XSS vulnerabilities with tags.
 
 
 ## [v0.14.0](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.14.0) - 2024-12-24
