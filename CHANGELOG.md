@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [v0.16.1](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.16.1) - 2026-02-15
 ### Added
+- Support for Shaarli v0.16.1.
 - New pager on link list.
 - Add an option to specify a custom Open Graph image.
 
