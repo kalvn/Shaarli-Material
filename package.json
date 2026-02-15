@@ -1,6 +1,6 @@
 {
   "name": "shaarlimaterial",
-  "version": "0.14.0",
+  "version": "0.16.1",
   "description": "Shaarli Material is a theme for [Shaarli](https://github.com/shaarli/Shaarli), the personal, minimalist, super fast, database-free, bookmarking service.",
   "main": "src/js/main.js",
   "type": "module",
@@ -15,13 +15,12 @@
     "sortablejs": "^1.13.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-eslint": "^9.0.3",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-terser": "^0.4.0",
-    "cross-env": "^7.0.3",
     "csso": "^5.0.5",
-    "eslint": "^9.17.0",
+    "eslint": "^9.39.2",
     "neostandard": "^0.12.0",
     "postcss": "^8.2.4",
     "postcss-clean": "^1.1.0",
@@ -32,8 +31,8 @@
     "sass": "^1.32.4"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production rollup -c --strictDeprecations",
-    "dev": "cross-env NODE_ENV=development rollup -c --watch",
+    "build": "rollup -c --strictDeprecations --environment NODE_ENV:production",
+    "dev": "rollup -c --watch --environment NODE_ENV:development",
     "lint": "eslint src/js",
     "lint:fix": "eslint src/js --fix"
   },
@@ -50,5 +49,8 @@
   "license": "MIT",
   "browserslist": [
     "last 5 versions"
-  ]
+  ],
+  "volta": {
+    "node": "24.13.1"
+  }
 }
