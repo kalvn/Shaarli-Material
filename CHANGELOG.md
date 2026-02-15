@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## unreleased
 ### Added
 - New pager on link list.
+- Add an option to specify a custom Open Graph image.
 
 ### Removed
 - `v` prefix to the Shaarli version number in the footer.
