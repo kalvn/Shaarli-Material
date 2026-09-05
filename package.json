@@ -51,6 +51,6 @@
     "last 5 versions"
   ],
   "volta": {
-    "node": "24.13.1"
+    "node": "24.20.0"
   }
 }
