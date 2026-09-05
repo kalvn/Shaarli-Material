@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [v0.16.5](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.16.5) - 2026-09-05
+### Added
+- Support for Shaarli v0.16.5.
+
+### Changed
+- Update of front-end dependencies.
+- Removal of cross-env dependency in favor of Rollup built-in environment option.
+
+### Fixed
+- Dead link in plugins admin page.
 
 ## [v0.16.1](https://github.com/kalvn/Shaarli-Material/releases/tag/v0.16.1) - 2026-02-15
 ### Added
